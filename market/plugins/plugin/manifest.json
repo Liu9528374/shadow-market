@@ -1,0 +1,17 @@
+{
+  "manifestVersion": 1,
+  "kind": "resource-type",
+  "id": "plugin",
+  "label": "插件",
+  "labelEn": "Plugin",
+  "description": "SHADOW Studio 插件包（声明式清单 + 资源文件）。P0 只上架白名单插件，不执行远程代码；安装后由桌面端插件管理器启用。",
+  "icon": "puzzle",
+  "color": "#5B8CFF",
+  "fileExt": [".shadowplugin", ".json"],
+  "detailTabs": ["readme", "files", "versions"],
+  "cardBadges": ["free"],
+  "statsFields": [],
+  "install": { "mode": "desktop-import", "deepLink": "shadow-import" },
+  "permissions": { "network": false, "filesystem": false, "microphone": false },
+  "enabled": true
+}

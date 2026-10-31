@@ -1,0 +1,912 @@
+{
+  "round": "r11",
+  "title": "r11 独立验证报告（市场 Web P0 + 桌面课程包导入 + 工具侧字体/插件 + 既有回归）",
+  "generatedAt": "2026-10-25T15:27:49.810Z",
+  "verifier": "qa-verify",
+  "environment": {
+    "os": "win32",
+    "node": "v24.19.0",
+    "repoRoot": "D:\\FOLLOWSPEAK",
+    "userPackage": {
+      "path": "C:\\Users\\A pig\\OneDrive\\桌面\\SHADOW-Studio-0.7.0",
+      "appHtmlSha256": "72A0453B2720989A4AF52AEFFE2337AD04D6DE51716E68CB11C68522DEB956FB"
+    },
+    "edge": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "playwrightCore": "tools/qa/node_modules/playwright-core",
+    "isolatedPorts": {
+      "used": "18930+/18960+ 动态空闲端口；避开 18765-18775/8765/18920",
+      "privateTemp": "tools/qa/v07/.tmp/r11-verify-tmp"
+    }
+  },
+  "baseline": {
+    "mirror": "tools/qa/v07/.tmp/r11-verify-mirror",
+    "appHtmlSha256": "C781DB97BDBE1CC3E002ADD30AB581784D0AB6A859A8C6B9DDEFCD5DB4589B94",
+    "runAll": {
+      "file": "tools\\qa\\v07\\.tmp\\verify-runall.log",
+      "exists": true,
+      "bytes": 25481,
+      "lines": {
+        "summary": "[run-all] 通过 4 / 4 项；失败 0 项",
+        "allPass": "[run-all] ALL PASS",
+        "appE2E": "---- app PACKAGED E2E (takes=5): 97/97 PASS, 0 FAIL\r",
+        "appNumbers": "[app] 关键数字: takes ok=5/5 rms(min/avg/max)=0.0472/0.0491/0.0503 preRollMin=1.8720 wav 0->5\r"
+      },
+      "passCount": 0,
+      "failCount": 0
+    },
+    "appSmoke": {
+      "mode": "packaged",
+      "version": "0.7.0",
+      "root": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror",
+      "checks": {
+        "title": "app PACKAGED E2E (takes=5)",
+        "total": 97,
+        "passed": 97,
+        "failed": 0,
+        "checks": [
+          {
+            "name": "5) launch.ps1 退出码 0",
+            "pass": true,
+            "detail": "exit=0 tail=2/（scheme=http, host=127.0.0.1, IsFile=False） SHADOW_URL=http://127.0.0.1:18792/ SHADOW_PORT=18792 SHADOW_ROOT=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror SHADOW_DEV=False 2026-10-25 23:19:02 [INFO] 不打开浏览器窗口（-NoBrowser / -Browser none / -PrintUrl） 2026-10-25 23:19:02 [INFO] 启动完成：http://127.0.0.1:18792/ 2026-10-25 23:19:02 [INFO] ============================================================ "
+          },
+          {
+            "name": "5) launch.ps1 输出了 SHADOW_URL",
+            "pass": true,
+            "detail": "url=http://127.0.0.1:18792/"
+          },
+          {
+            "name": "5) URL 是合法 http://127.0.0.1:<port>/",
+            "pass": true,
+            "detail": "url=http://127.0.0.1:18792/"
+          },
+          {
+            "name": "5) URL 端口 == 请求端口（或 +1..+10 fallback）",
+            "pass": true,
+            "detail": "urlPort=18792 requested=18792"
+          },
+          {
+            "name": "5) 启动器 URL 的 /api/config 可访问且 version=0.7.0",
+            "pass": true,
+            "detail": "config={\"ok\":true,\"version\":\"0.7.0\",\"asrBase\":\"/api/asr\",\"asrUrl\":\"http://127.0.0.1:18792/api/asr\",\"asrUpstream\":\"http://127.0.0.1:8765\",\"takesEnabled\":true,\"takeUrl\":\"/api/take\",\"takesBase\":\"/takes\",\"takeDi"
+          },
+          {
+            "name": "1) app 页面 HTTP 200",
+            "pass": true,
+            "detail": "status=200 url=http://127.0.0.1:18780/"
+          },
+          {
+            "name": "1) window.SHADOW_APP.ready === true",
+            "pass": true,
+            "detail": ""
+          },
+          {
+            "name": "1) SHADOW_APP.version === \"0.7.0\"",
+            "pass": true,
+            "detail": "version=0.7.0"
+          },
+          {
+            "name": "1) state().api.server === true（/api/config 已生效）",
+            "pass": true,
+            "detail": "api={\"server\":true,\"asrBase\":\"/api/asr\",\"version\":\"0.7.0\"}"
+          },
+          {
+            "name": "1) state().api.asrBase === \"/api/asr\"",
+            "pass": true,
+            "detail": "asrBase=/api/asr"
+          },
+          {
+            "name": "1) state().asrOnline === true（ASR 在线）",
+            "pass": true,
+            "detail": "asrOnline=true waited=true"
+          },
+          {
+            "name": "1) /api/config ok + version 0.7.0",
+            "pass": true,
+            "detail": "status=200 dev=false asrUpstream=http://127.0.0.1:18781"
+          },
+          {
+            "name": "1) 打包版 /api/config.dev === false",
+            "pass": true,
+            "detail": "dev=false"
+          },
+          {
+            "name": "2) ingestWavBase64(12s WAV) 成功",
+            "pass": true,
+            "detail": "clipId=clip_nvur3i duration=12 sentences=2"
+          },
+          {
+            "name": "2) 注入媒体时长 ≈12s",
+            "pass": true,
+            "detail": "duration=12"
+          },
+          {
+            "name": "2) setSentence(0, refText) 成功",
+            "pass": true,
+            "detail": ""
+          },
+          {
+            "name": "2) setD(0.5,2.5,0) 成功（整个测试只设置一次）",
+            "pass": true,
+            "detail": ""
+          },
+          {
+            "name": "2) 录音面板关键控件齐全",
+            "pass": true,
+            "detail": "{\"micDevice\":true,\"micProcessing\":true,\"micTest\":true,\"recCanvas\":true,\"recordBtn\":true,\"scoreBtn\":true,\"mixedBtn\":true,\"micLevelDb\":true,\"micLevelFill\":true}"
+          },
+          {
+            "name": "2) openMic(null,\"raw\") 成功",
+            "pass": true,
+            "detail": "{\"open\":true,\"state\":\"running\",\"deviceId\":\"default\",\"deviceLabel\":\"Fake Default Audio Input\",\"sampleRate\":48000,\"rms\":0,\"peak\":0,\"db\":-100,\"speechLikely\":false,\"mode\":\"audioworklet\",\"lastError\":\"\",\"paused\":false,\"tracksLive\":true,\"processing\":\"raw\",\"workletVia\":\"blob\",\"version\":\"0.7.0\"}"
+          },
+          {
+            "name": "2) 采集 health.mode === \"audioworklet\"",
+            "pass": true,
+            "detail": "mode=audioworklet"
+          },
+          {
+            "name": "2) 采集 health.deviceLabel 非空",
+            "pass": true,
+            "detail": "deviceLabel=\"Fake Default Audio Input\""
+          },
+          {
+            "name": "2) open 后 4s 内 health.rms > 0.01",
+            "pass": true,
+            "detail": "maxRms=0.0948"
+          },
+          {
+            "name": "2) 连续 5 次 recordOnce 失败数 == 0",
+            "pass": true,
+            "detail": "ok=5/5 fails="
+          },
+          {
+            "name": "2) 整个 20/5 连录未在两次 take 之间重新 setD",
+            "pass": true,
+            "detail": "setD 调用次数=1（recordOnce 内部不依赖 currentSentence）"
+          },
+          {
+            "name": "2) take#1 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0503 (期望 > 0.01) rms=0.0503 db=-26"
+          },
+          {
+            "name": "2) take#1 preRollSec ≈ 2（首次可 <2）",
+            "pass": true,
+            "detail": "preRollSec=1.8720"
+          },
+          {
+            "name": "2) take#1 offset ≈ preRollSec",
+            "pass": true,
+            "detail": "offset=1.8720 preRoll=1.8720"
+          },
+          {
+            "name": "2) take#1 duration 合理（preRoll+1.2 ~ preRoll+12）",
+            "pass": true,
+            "detail": "duration=5.9800 preRoll=1.8720"
+          },
+          {
+            "name": "2) take#1 wavPath 非空且文件存在",
+            "pass": true,
+            "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941555650.wav"
+          },
+          {
+            "name": "2) take#2 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0497 (期望 > 0.01) rms=0.0497 db=-26.1000"
+          },
+          {
+            "name": "2) take#2 preRollSec ≈ 2（首次可 <2）",
+            "pass": true,
+            "detail": "preRollSec=2"
+          },
+          {
+            "name": "2) take#2 offset ≈ preRollSec",
+            "pass": true,
+            "detail": "offset=2 preRoll=2"
+          },
+          {
+            "name": "2) take#2 duration 合理（preRoll+1.2 ~ preRoll+12）",
+            "pass": true,
+            "detail": "duration=6.1200 preRoll=2"
+          },
+          {
+            "name": "2) take#2 wavPath 非空且文件存在",
+            "pass": true,
+            "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941562064.wav"
+          },
+          {
+            "name": "2) take#3 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0472 (期望 > 0.01) rms=0.0472 db=-26.5000"
+          },
+          {
+            "name": "2) take#3 preRollSec ≈ 2（首次可 <2）",
+            "pass": true,
+            "detail": "preRollSec=2"
+          },
+          {
+            "name": "2) take#3 offset ≈ preRollSec",
+            "pass": true,
+            "detail": "offset=2 preRoll=2"
+          },
+          {
+            "name": "2) take#3 duration 合理（preRoll+1.2 ~ preRoll+12）",
+            "pass": true,
+            "detail": "duration=6.1100 preRoll=2"
+          },
+          {
+            "name": "2) take#3 wavPath 非空且文件存在",
+            "pass": true,
+            "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941568468.wav"
+          },
+          {
+            "name": "2) take#4 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0503 (期望 > 0.01) rms=0.0503 db=-26"
+          },
+          {
+            "name": "2) take#4 preRollSec ≈ 2（首次可 <2）",
+            "pass": true,
+            "detail": "preRollSec=2"
+          },
+          {
+            "name": "2) take#4 offset ≈ preRollSec",
+            "pass": true,
+            "detail": "offset=2 preRoll=2"
+          },
+          {
+            "name": "2) take#4 duration 合理（preRoll+1.2 ~ preRoll+12）",
+            "pass": true,
+            "detail": "duration=6.1200 preRoll=2"
+          },
+          {
+            "name": "2) take#4 wavPath 非空且文件存在",
+            "pass": true,
+            "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941574867.wav"
+          },
+          {
+            "name": "2) take#5 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0479 (期望 > 0.01) rms=0.0479 db=-26.4000"
+          },
+          {
+            "name": "2) take#5 preRollSec ≈ 2（首次可 <2）",
+            "pass": true,
+            "detail": "preRollSec=2"
+          },
+          {
+            "name": "2) take#5 offset ≈ preRollSec",
+            "pass": true,
+            "detail": "offset=2 preRoll=2"
+          },
+          {
+            "name": "2) take#5 duration 合理（preRoll+1.2 ~ preRoll+12）",
+            "pass": true,
+            "detail": "duration=6.1100 preRoll=2"
+          },
+          {
+            "name": "2) take#5 wavPath 非空且文件存在",
+            "pass": true,
+            "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941581228.wav"
+          },
+          {
+            "name": "2) 落盘 WAV #1 为 16bit/mono PCM",
+            "pass": true,
+            "detail": "bits=16 ch=1 sr=48000 bytes=574124"
+          },
+          {
+            "name": "2) 落盘 WAV #1 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0503 (期望 > 0.01) rms=0.0503 peak=0.4391"
+          },
+          {
+            "name": "2) 落盘 WAV #1 首尾 100ms 非零",
+            "pass": true,
+            "detail": "first=0.3193 last=0.2571"
+          },
+          {
+            "name": "2) 落盘 WAV #2 为 16bit/mono PCM",
+            "pass": true,
+            "detail": "bits=16 ch=1 sr=48000 bytes=587692"
+          },
+          {
+            "name": "2) 落盘 WAV #2 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0497 (期望 > 0.01) rms=0.0497 peak=0.4306"
+          },
+          {
+            "name": "2) 落盘 WAV #2 首尾 100ms 非零",
+            "pass": true,
+            "detail": "first=0.0426 last=0.1852"
+          },
+          {
+            "name": "2) 落盘 WAV #3 为 16bit/mono PCM",
+            "pass": true,
+            "detail": "bits=16 ch=1 sr=48000 bytes=586412"
+          },
+          {
+            "name": "2) 落盘 WAV #3 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0472 (期望 > 0.01) rms=0.0472 peak=0.4391"
+          },
+          {
+            "name": "2) 落盘 WAV #3 首尾 100ms 非零",
+            "pass": true,
+            "detail": "first=0.0909 last=0.1023"
+          },
+          {
+            "name": "2) 落盘 WAV #4 为 16bit/mono PCM",
+            "pass": true,
+            "detail": "bits=16 ch=1 sr=48000 bytes=587436"
+          },
+          {
+            "name": "2) 落盘 WAV #4 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0503 (期望 > 0.01) rms=0.0503 peak=0.4306"
+          },
+          {
+            "name": "2) 落盘 WAV #4 首尾 100ms 非零",
+            "pass": true,
+            "detail": "first=0.0898 last=0.0448"
+          },
+          {
+            "name": "2) 落盘 WAV #5 为 16bit/mono PCM",
+            "pass": true,
+            "detail": "bits=16 ch=1 sr=48000 bytes=586668"
+          },
+          {
+            "name": "2) 落盘 WAV #5 rms > 0.01",
+            "pass": true,
+            "detail": "value=0.0479 (期望 > 0.01) rms=0.0479 peak=0.4391"
+          },
+          {
+            "name": "2) 落盘 WAV #5 首尾 100ms 非零",
+            "pass": true,
+            "detail": "first=0.1729 last=0.2987"
+          },
+          {
+            "name": "2) 包根 takes\\ 新增 >= 5 个 .wav（且都 >0 字节）",
+            "pass": true,
+            "detail": "before=0 after=5 dir=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes"
+          },
+          {
+            "name": "2) 统计：rms min>0.01 且 preRollMin>0",
+            "pass": true,
+            "detail": "rms min/max/avg=0.0472/0.0503/0.0491 preRollMin=1.8720"
+          },
+          {
+            "name": "3) scoreCurrent(0) 返回评分对象",
+            "pass": true,
+            "detail": "overall=55"
+          },
+          {
+            "name": "3) overall 0..100 数字",
+            "pass": true,
+            "detail": "overall=55"
+          },
+          {
+            "name": "3) dims 含 rhythm/fluency/completeness/intonation",
+            "pass": true,
+            "detail": "{\"rhythm\":36,\"fluency\":92,\"completeness\":48,\"intonation\":79}"
+          },
+          {
+            "name": "3) 逐词结果长度 == 参考词数",
+            "pass": true,
+            "detail": "rows=17 refTokenCount=17"
+          },
+          {
+            "name": "3) 每个词含 text/status/score/judged 且 status 合法",
+            "pass": true,
+            "detail": "[{\"text\":\"welcome\",\"heard\":\"welcome\",\"status\":\"exact\",\"confidence\":0.945,\"score\":100,\"judged\":true},{\"text\":\"to\",\"heard\":\"\",\"status\":\"unclear\",\"confidence\":0.724,\"score\":55,\"judged\":false},{\"text\":\"the\",\"heard\":\"\",\"status\":\"unclear\",\"confidence\":0.724,\"score\":55,\"judged\":false}]"
+          },
+          {
+            "name": "3) unclear 词 judged === false（不计入扣分）",
+            "pass": true,
+            "detail": "unclear=9 bad=0"
+          },
+          {
+            "name": "3) missing 词 judged === true（unreliable 时 missing 必须变 unclear）",
+            "pass": true,
+            "detail": "missing=0"
+          },
+          {
+            "name": "3) metrics 含 wordPct/judgedCount/refCount/coveragePct/asrReliable/wordSource",
+            "pass": true,
+            "detail": "keys=wordPct,judgedCount,refCount,coveragePct,asrMeanP,asrReliable,asrCoverage,missingCount,unclearCount,asrText,asrElapsedMs,wordSource,extraCount,exactCount,fuzzyCount,wrongCount,distanceRatio,speechSec,voicedPct,pauses,pauseSec,rmsDb,corr,durationMatch,referenceUsed,asrError,asrMs,device,gainDb"
+          },
+          {
+            "name": "3) metrics.wordSource === \"asr\"",
+            "pass": true,
+            "detail": "wordSource=asr asrReliable=false asrText=\"Slow down, breathe and finish every sentence. Welcome back. Today we talk about the small...\""
+          },
+          {
+            "name": "3) ASR 原文非空",
+            "pass": true,
+            "detail": "asrText=\"Slow down, breathe and finish every sentence. Welcome back. Today we talk about the small...\""
+          },
+          {
+            "name": "3) warnings 为数组",
+            "pass": true,
+            "detail": "[\"ASR 置信度低/漏识别：9 个词标为待确认，未扣分。\",\"录音时长和原句差得较多，可能没跟完或停早了。\"]"
+          },
+          {
+            "name": "3) advice 非空字符串",
+            "pass": true,
+            "detail": "\"逐词匹配 48%，慢一点，把每个词读完整，别含糊带过。 读错/替换的词：in、which、sit、down、with、women。 9 个词待确认，这次不算错。 节奏和原声差得多：先听一遍原声，跟着重\""
+          },
+          {
+            "name": "3) 评分已写入 state.scores",
+            "pass": true,
+            "detail": "stored=yes"
+          },
+          {
+            "name": "3) transcribeBuffer(12s xzg 语音) ASR 成功",
+            "pass": true,
+            "detail": "text=\"Neta Porte presents The Incredible Women Podcast, Series 9, Passion and Purpose.\""
+          },
+          {
+            "name": "3) scoreBuffer(真实语音, 正确参考文本) 返回结果",
+            "pass": true,
+            "detail": ""
+          },
+          {
+            "name": "3) 完美场景 wordRows 长度 == 参考词数",
+            "pass": true,
+            "detail": "rows=12 ref=12"
+          },
+          {
+            "name": "3) 完美场景 ASR 可靠 或 wordPct>=90",
+            "pass": true,
+            "detail": "asrReliable=true wordPct=100 meanP=0.6570 coverage=1"
+          },
+          {
+            "name": "3) 完美场景 wordPct>=90 或 asrReliable=true（满足其一）",
+            "pass": true,
+            "detail": "wordPct=100 asrReliable=true"
+          },
+          {
+            "name": "3) 完美场景 wordSource === \"asr\"",
+            "pass": true,
+            "detail": "wordSource=asr"
+          },
+          {
+            "name": "3) 完美场景 overall 0..100",
+            "pass": true,
+            "detail": "overall=90"
+          },
+          {
+            "name": "3) ASR 不可靠时 missing 词全部转 unclear（不计扣分）",
+            "pass": true,
+            "detail": "missing=0 unclear=0 judgedCount=17/17"
+          },
+          {
+            "name": "3) ASR 不可靠时 warnings 有提示",
+            "pass": true,
+            "detail": "[\"ASR 判定不太可靠（与参考文本差异偏大），逐词结果仅供参考。\"]"
+          },
+          {
+            "name": "4) state().source === \"mixed\"",
+            "pass": true,
+            "detail": "sources=mixed"
+          },
+          {
+            "name": "4) state().recSource === true（recSourceNode 建立）",
+            "pass": true,
+            "detail": "[{\"t\":1200,\"playing\":true,\"recSource\":true,\"node\":true}]"
+          },
+          {
+            "name": "4) state().clockFit 有 a/b",
+            "pass": true,
+            "detail": "clockFit={\"a\":0.97,\"b\":-38.7063,\"n\":16,\"span\":0.3680000000000021}"
+          },
+          {
+            "name": "4) state().playing 播放窗口内 true",
+            "pass": true,
+            "detail": "[true]"
+          },
+          {
+            "name": "4) console 出现 [SHADOW] mix align",
+            "pass": true,
+            "detail": "modes=?"
+          },
+          {
+            "name": "1) 无 pageerror",
+            "pass": true,
+            "detail": ""
+          },
+          {
+            "name": "1) 无 console.error（favicon 404 除外）",
+            "pass": true,
+            "detail": "errors=0 benign=0 "
+          },
+          {
+            "name": "4) 混合播放无 pageerror",
+            "pass": true,
+            "detail": ""
+          },
+          {
+            "name": "1) 截图数量 >= 6（1440x900）",
+            "pass": true,
+            "detail": "count=10"
+          }
+        ]
+      },
+      "takesSummary": {
+        "requested": 5,
+        "okCount": 5,
+        "failCount": 0,
+        "loopMs": 31651,
+        "avgMsPerTake": 6330,
+        "rms": {
+          "min": 0.0472,
+          "max": 0.0503,
+          "avg": 0.04908
+        },
+        "preRollMin": 1.872,
+        "duration": {
+          "min": 5.98,
+          "max": 6.12
+        },
+        "wavDir": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes",
+        "wavBefore": 0,
+        "wavAfter": 5,
+        "wavChecks": [
+          {
+            "idx": 0,
+            "bytes": 574124,
+            "duration": 5.98,
+            "sampleRate": 48000,
+            "channels": 1,
+            "bits": 16,
+            "rms": 0.05031901392596469,
+            "peak": 0.4390869140625,
+            "first100Rms": 0.08144541470808443,
+            "first100Peak": 0.3193359375,
+            "last100Rms": 0.06264611492886754,
+            "last100Peak": 0.257110595703125,
+            "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941555650.wav"
+          },
+          {
+            "idx": 1,
+            "bytes": 587692,
+            "duration": 6.121333333333333,
+            "sampleRate": 48000,
+            "channels": 1,
+            "bits": 16,
+            "rms": 0.04966172520549999,
+            "peak": 0.43060302734375,
+            "first100Rms": 0.01024605000676302,
+            "first100Peak": 0.0426025390625,
+            "last100Rms": 0.04946639306527196,
+            "last100Peak": 0.185211181640625,
+            "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941562064.wav"
+          },
+          {
+            "idx": 2,
+            "bytes": 586412,
+            "duration": 6.108,
+            "sampleRate": 48000,
+            "channels": 1,
+            "bits": 16,
+            "rms": 0.04724028748428898,
+            "peak": 0.4390869140625,
+            "first100Rms": 0.014316865711225,
+            "first100Peak": 0.090850830078125,
+            "last100Rms": 0.021323088417244184,
+            "last100Peak": 0.102264404296875,
+            "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941568468.wav"
+          },
+          {
+            "idx": 3,
+            "bytes": 587436,
+            "duration": 6.118666666666667,
+            "sampleRate": 48000,
+            "channels": 1,
+            "bits": 16,
+            "rms": 0.05033904700903145,
+            "peak": 0.43060302734375,
+            "first100Rms": 0.019859059806386387,
+            "first100Peak": 0.08978271484375,
+            "last100Rms": 0.012039687215080976,
+            "last100Peak": 0.0447998046875,
+            "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941574867.wav"
+          },
+          {
+            "idx": 4,
+            "bytes": 586668,
+            "duration": 6.110666666666667,
+            "sampleRate": 48000,
+            "channels": 1,
+            "bits": 16,
+            "rms": 0.04793037289729473,
+            "peak": 0.4390869140625,
+            "first100Rms": 0.02716429441195158,
+            "first100Peak": 0.172943115234375,
+            "last100Rms": 0.07677566936853292,
+            "last100Peak": 0.298675537109375,
+            "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-mirror\\takes\\e2e-12s.wav_S01_1792941581228.wav"
+          }
+        ]
+      },
+      "pass": true,
+      "finishedAt": "2026-10-25T15:19:47.440Z"
+    },
+    "subtitle": {
+      "file": "tools\\qa\\v07\\.tmp\\verify-r8-subtitle-check.mjs.log",
+      "exists": true,
+      "bytes": 1756,
+      "lines": {
+        "result": "R8 SUBTITLE PASS 25/25"
+      },
+      "passCount": 24,
+      "failCount": 0
+    },
+    "ass": {
+      "file": "tools\\qa\\v07\\.tmp\\verify-r8-ass-check.mjs.log",
+      "exists": true,
+      "bytes": 1367,
+      "lines": {
+        "result": "R8B ASS PASS 12/12"
+      },
+      "passCount": 11,
+      "failCount": 0
+    },
+    "record": {
+      "file": "tools\\qa\\v07\\.tmp\\verify-r9-record-check.mjs.log",
+      "exists": true,
+      "bytes": 732,
+      "lines": {
+        "result": "R9 RECORD PASS 10/10"
+      },
+      "passCount": 9,
+      "failCount": 0
+    },
+    "notes": "r8/r9 既有脚本内硬编码镜像 .tmp/r5-mirror；该目录当前 SHA 与用户 r10 包一致（C781DB97…），故 SUB_PACKAGED=1 复跑即 r10 等价包。"
+  },
+  "finalPackage": {
+    "root": "tools\\qa\\v07\\.tmp\\r11-final-mirror",
+    "exists": false
+  },
+  "dataContract": {
+    "status": "PASS",
+    "summary": {
+      "total": 12,
+      "passed": 12,
+      "failed": 0,
+      "resources": 5,
+      "packages": 5,
+      "categories": 5,
+      "manifests": 3
+    },
+    "checks": [
+      {
+        "id": "DC1",
+        "name": "data/catalog.json 存在",
+        "pass": true,
+        "detail": "D:\\FOLLOWSPEAK\\market\\data\\catalog.json",
+        "at": "2026-10-25T15:26:08.535Z"
+      },
+      {
+        "id": "DC2",
+        "name": "catalog.spec === \"shadow.market.catalog\"",
+        "pass": true,
+        "detail": "spec=shadow.market.catalog",
+        "at": "2026-10-25T15:26:08.537Z"
+      },
+      {
+        "id": "DC3",
+        "name": "catalog.schemaVersion === 1",
+        "pass": true,
+        "detail": "schemaVersion=1",
+        "at": "2026-10-25T15:26:08.537Z"
+      },
+      {
+        "id": "DC4",
+        "name": "resources ≥ 3",
+        "pass": true,
+        "detail": "count=5",
+        "at": "2026-10-25T15:26:08.537Z"
+      },
+      {
+        "id": "DC5",
+        "name": "categories ≥ 1 且每个含 id/label",
+        "pass": true,
+        "detail": "categories=daily,travel,work,podcast,movie",
+        "at": "2026-10-25T15:26:08.537Z"
+      },
+      {
+        "id": "DC6",
+        "name": "creators ≥ 1 且 handle/name 齐全",
+        "pass": true,
+        "detail": "creators=shadow-studio",
+        "at": "2026-10-25T15:26:08.537Z"
+      },
+      {
+        "id": "DC7",
+        "name": "resources 字段/包引用一致（id/category/creator/version/free/purge 下载量）",
+        "pass": true,
+        "detail": "all ok",
+        "at": "2026-10-25T15:26:08.539Z"
+      },
+      {
+        "id": "DC8",
+        "name": "全部包：schemaVersion=1 / byom / CC-BY-4.0 / ≤2MB / 纯数据（无脚本 iframe 事件属性）",
+        "pass": true,
+        "detail": "5 packages ok",
+        "at": "2026-10-25T15:26:08.539Z"
+      },
+      {
+        "id": "DC9",
+        "name": "plugins/index.json 声明 ≥1 资源类型",
+        "pass": true,
+        "detail": "{\"spec\":\"shadow.market.plugins\",\"schemaVersion\":1,\"comment\":\"资源类型插件登记表：市场启动时逐项读取 plugins/<type>/manifest.json 注册卡片/详情渲染器。市场只读声明、不执行插件代码。\",\"plugins\":[\"course\",\"plugin\",\"subtitle\"]}",
+        "at": "2026-10-25T15:26:08.540Z"
+      },
+      {
+        "id": "DC10",
+        "name": "每类 manifest 字段齐全（manifestVersion/kind/id/label/fileExt/detailTabs/permissions/enabled）",
+        "pass": true,
+        "detail": "3 manifests ok",
+        "at": "2026-10-25T15:26:08.540Z"
+      },
+      {
+        "id": "DC11",
+        "name": "catalog 使用的每种资源类型都有 manifest 声明（一切即插件）",
+        "pass": true,
+        "detail": "used=course declared=course,plugin,subtitle missing=",
+        "at": "2026-10-25T15:26:08.540Z"
+      },
+      {
+        "id": "DC12",
+        "name": "每个包都有 readme（详情页 README Tab 数据来源）",
+        "pass": true,
+        "detail": "5/5",
+        "at": "2026-10-25T15:26:08.540Z"
+      }
+    ],
+    "reportPath": "tools/qa/market/report-data-contract.json"
+  },
+  "market": {
+    "status": "NOT_RUN",
+    "reportPath": "tools/qa/market/report-market.json"
+  },
+  "desktop": {
+    "status": "NOT_RUN",
+    "reportPath": "tools/qa/market/report-desktop.json"
+  },
+  "productPrinciples": {
+    "note": "由 qa-verify 依据测试证据判定：是否违反 docs/52 §1 产品边界。",
+    "staticAudit": {
+      "status": "PASS",
+      "summary": {
+        "total": 16,
+        "passed": 16,
+        "failed": 0
+      },
+      "checks": [
+        {
+          "id": "SA1",
+          "name": "market/ 不引用桌面端代码（两个产品分开）",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "id": "SA2",
+          "name": "prototype/ 不嵌入市场商店 UI/路由（桌面只保留导入薄接口）",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "id": "SA3a",
+          "name": "market/ 无第三方支付/计费 SDK 集成",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "id": "SA3b",
+          "name": "market/ 关于支付/抽成/DRM 的提及均带否定（不做实现，只是边界说明）",
+          "pass": true,
+          "detail": "negative mentions=6"
+        },
+        {
+          "id": "SA4",
+          "name": "目录资源全部 points=0 / free=true（P0 全免费）",
+          "pass": true,
+          "detail": "5 个资源全免费"
+        },
+        {
+          "id": "SA5",
+          "name": "market/ 页面无媒体上传控件（BYOM：不接收用户媒体）",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "id": "SA6",
+          "name": "market/ 无 POST 上传/提交请求（纯静态站，无后端）",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "id": "SA7",
+          "name": "market/ 无第三方 CDN/分析 SDK 外链（本地优先，可离线）",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "id": "SA8",
+          "name": "market/ 无统计/分析埋点",
+          "pass": true,
+          "detail": ""
+        },
+        {
+          "id": "SA9",
+          "name": "market/ 资源类型插件清单存在（一切即插件）",
+          "pass": true,
+          "detail": "course,plugin,subtitle"
+        },
+        {
+          "id": "SA10",
+          "name": "market 前端启动时读取插件清单并注册类型渲染器",
+          "pass": true,
+          "detail": "app.js/data.js 引用 plugins/index.json"
+        },
+        {
+          "id": "SA11",
+          "name": "桌面端内置插件 manifest + #plugin= 设置深链（一切即插件继续深化）",
+          "pass": true,
+          "detail": "manifest=true deepLink=true"
+        },
+        {
+          "id": "SA12",
+          "name": "桌面导入路径代码不调用 ASR 转写（静态证据）",
+          "pass": true,
+          "detail": "ingestCourseText 段内 asrCall=false"
+        },
+        {
+          "id": "SA13",
+          "name": "shadow-server.py 提供只读 /api/font/list + /api/font/file（GET-only，非 GET→405）",
+          "pass": true,
+          "detail": "list=true file=true getOnly=true"
+        },
+        {
+          "id": "SA14",
+          "name": "字体接口白名单限定系统字体目录 + 处理函数无磁盘写入",
+          "pass": true,
+          "detail": "whitelist=true diskWrites=false fontSeg=1866B"
+        },
+        {
+          "id": "SA15",
+          "name": "字体文件名走白名单/ basename 解析（路径穿越防护静态证据）",
+          "pass": true,
+          "detail": "basenameOrWhitelist=true"
+        }
+      ],
+      "reportPath": "tools/qa/market/report-static-audit.json"
+    },
+    "twoProducts": "见 staticAudit SA1/SA2 + market.extra.dataMode / desktop.checks（市场独立静态站；桌面只做导入薄接口）",
+    "freeByomLocalFirst": "见 staticAudit SA3–SA8、SA12 与 market.checks M1.3/M3.x、desktop.checks D6.x/D8.4（P0 全免费、BYOM 不含媒体、无 ASR/无上传）",
+    "pluginEverything": "见 market.checks M0.5（plugins manifest）与 desktop.checks D11.x（内置插件 manifest + #plugin= 深链）"
+  },
+  "evidenceFiles": {
+    "dataContractReport": "tools/qa/market/report-data-contract.json",
+    "marketReport": "tools/qa/market/report-market.json",
+    "desktopReport": "tools/qa/market/report-desktop.json",
+    "baselineRunAllLog": "tools/qa/v07/.tmp/verify-runall.log",
+    "baselineR8SubtitleLog": "tools/qa/v07/.tmp/verify-r8-subtitle-check.mjs.log",
+    "baselineR8AssLog": "tools/qa/v07/.tmp/verify-r8-ass-check.mjs.log",
+    "baselineR9RecordLog": "tools/qa/v07/.tmp/verify-r9-record-check.mjs.log",
+    "shots": "tools/qa/market/shots/",
+    "appSmokeReport": "tools/qa/market/report-app-packaged-r10.json"
+  },
+  "summary": {
+    "dataContract": "12/12 PASS",
+    "staticAudit": "16/16 PASS",
+    "market": "NOT_RUN",
+    "desktop": "NOT_RUN",
+    "baselineRunAll": "4/4 PASS",
+    "appE2E": "97/97 PASS",
+    "r8Subtitle": "R8 SUBTITLE PASS 25/25",
+    "r8Ass": "R8B ASS PASS 12/12",
+    "r9Record": "R9 RECORD PASS 10/10"
+  }
+}

@@ -1,0 +1,163 @@
+/* ==========================================================================
+   SHADOW 市场 · Design Tokens
+   学习 GitHub 的网页设计逻辑（信息架构 / 中性色阶 / 边框分层 / 14px 基准），
+   品牌强调色延续 SHADOW 青绿（#2EE6A8），用 --brand 只在标识/高亮点缀出现，
+   正文链接与按钮用可读性更高的 --accent（浅色主题加深、深色主题提亮）。
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* 品牌 */
+  --brand: #2EE6A8;
+  --brand-deep: #17a97c;
+  --brand-soft: rgba(46, 230, 168, 0.14);
+  --accent: #0b6e4f;
+  --accent-strong: #08583f;
+  --accent-fg: #ffffff;
+  --accent-muted: rgba(11, 110, 79, 0.1);
+
+  /* 中性色阶（GitHub 式分层：canvas → subtle → surface → border） */
+  --canvas: #ffffff;
+  --canvas-subtle: #f6f8fa;
+  --canvas-inset: #f0f3f6;
+  --surface: #ffffff;
+  --surface-2: #f6f8fa;
+  --surface-hover: #eef1f4;
+  --overlay: rgba(31, 35, 40, 0.48);
+
+  --border: #d0d7de;
+  --border-muted: #d8dee4;
+  --border-subtle: #eaeef2;
+  --border-strong: #afb8c1;
+
+  --fg: #1f2328;
+  --fg-muted: #59636e;
+  --fg-subtle: #6e7781;
+  --fg-on-emphasis: #ffffff;
+  --fg-inverse: #ffffff;
+
+  /* 语义色 */
+  --success: #1a7f37;
+  --success-soft: rgba(26, 127, 55, 0.1);
+  --danger: #cf222e;
+  --danger-soft: rgba(207, 34, 46, 0.08);
+  --danger-border: rgba(207, 34, 46, 0.4);
+  --attention: #9a6700;
+  --attention-soft: #fff8c5;
+  --info: #0969da;
+  --info-soft: rgba(9, 105, 218, 0.08);
+
+  /* 强调按钮（浅色主题用深绿底白字，保证 4.5:1 对比度） */
+  --btn-primary-bg: #117a58;
+  --btn-primary-bg-hover: #0b6347;
+  --btn-primary-fg: #ffffff;
+  --btn-bg: #f6f8fa;
+  --btn-bg-hover: #eef1f4;
+  --btn-fg: #24292f;
+  --btn-border: rgba(31, 35, 40, 0.15);
+  --btn-danger-bg: #cf222e;
+  --btn-danger-hover: #a40e26;
+
+  /* 排版 */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, "Noto Sans Mono CJK SC", monospace;
+  --font-size-base: 14px;
+  --font-size-small: 12px;
+  --font-size-xs: 11px;
+  --font-size-h1: 26px;
+  --font-size-h2: 20px;
+  --font-size-h3: 16px;
+  --line-height: 1.5;
+  --line-height-relaxed: 1.65;
+
+  /* 间距 / 圆角 / 阴影 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --shadow-card: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --shadow-pop: 0 8px 24px rgba(66, 74, 83, 0.16), 0 1px 2px rgba(31, 35, 40, 0.12);
+  --shadow-modal: 0 16px 48px rgba(31, 35, 40, 0.28);
+
+  /* 布局 */
+  --container: 1280px;
+  --header-h: 62px;
+  --sidebar-w: 272px;
+  --aside-w: 296px;
+  --focus-ring: 0 0 0 3px rgba(46, 230, 168, 0.42);
+  --focus-ring-accent: 0 0 0 3px rgba(11, 110, 79, 0.25);
+  --transition: 120ms ease;
+  --z-header: 30;
+  --z-toast: 80;
+  --z-modal: 90;
+  --z-palette: 100;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --brand: #2EE6A8;
+  --brand-deep: #48f0b8;
+  --brand-soft: rgba(46, 230, 168, 0.16);
+  --accent: #2EE6A8;
+  --accent-strong: #7bf2ca;
+  --accent-fg: #06140d;
+  --accent-muted: rgba(46, 230, 168, 0.1);
+
+  --canvas: #0d1117;
+  --canvas-subtle: #010409;
+  --canvas-inset: #010409;
+  --surface: #161b22;
+  --surface-2: #1c2128;
+  --surface-hover: #21262d;
+  --overlay: rgba(1, 4, 9, 0.72);
+
+  --border: #30363d;
+  --border-muted: #3d444d;
+  --border-subtle: #21262d;
+  --border-strong: #6e7681;
+
+  --fg: #e6edf3;
+  --fg-muted: #9198a1;
+  --fg-subtle: #7d8590;
+  --fg-on-emphasis: #ffffff;
+
+  --success: #3fb950;
+  --success-soft: rgba(63, 185, 80, 0.12);
+  --danger: #f85149;
+  --danger-soft: rgba(248, 81, 73, 0.1);
+  --danger-border: rgba(248, 81, 73, 0.4);
+  --attention: #d29922;
+  --attention-soft: rgba(187, 128, 9, 0.12);
+  --info: #58a6ff;
+  --info-soft: rgba(56, 139, 253, 0.12);
+
+  --btn-primary-bg: #2EE6A8;
+  --btn-primary-bg-hover: #6df0c6;
+  --btn-primary-fg: #06140d;
+  --btn-bg: #21262d;
+  --btn-bg-hover: #30363d;
+  --btn-fg: #e6edf3;
+  --btn-border: rgba(240, 246, 252, 0.1);
+  --btn-danger-bg: #da3633;
+  --btn-danger-hover: #f85149;
+
+  --shadow-card: 0 0 0 0 transparent;
+  --shadow-pop: 0 8px 24px rgba(1, 4, 9, 0.7), 0 0 0 1px rgba(48, 54, 61, 0.6);
+  --shadow-modal: 0 16px 56px rgba(1, 4, 9, 0.85), 0 0 0 1px #30363d;
+  --focus-ring: 0 0 0 3px rgba(46, 230, 168, 0.35);
+  --focus-ring-accent: 0 0 0 3px rgba(46, 230, 168, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --transition: 0ms; }
+}

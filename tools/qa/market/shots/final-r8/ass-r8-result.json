@@ -1,0 +1,110 @@
+{
+  "checks": [
+    {
+      "n": "video imported+analyzed",
+      "ok": true
+    },
+    {
+      "n": "JASSUB instance active + canvas exists",
+      "ok": true,
+      "d": "{\"active\":true,\"clipId\":\"clip_q3as3z\",\"loading\":false,\"canvas\":true,\"name\":\"sample-jassub.ass\",\"fontName\":\"\",\"fontLoaded\":false}"
+    },
+    {
+      "n": "DOM bilingual subtitle hidden while ASS renders",
+      "ok": true,
+      "d": "{\"dom\":true,\"layer\":true}"
+    },
+    {
+      "n": "ASS canvas positioned over video",
+      "ok": true,
+      "d": "{\"x\":296.21875,\"y\":100,\"width\":788,\"height\":443}"
+    },
+    {
+      "n": "project JSON stores assSubtitle text",
+      "ok": true,
+      "d": "name=sample-jassub.ass"
+    },
+    {
+      "n": "close ASS removes canvas and returns to DOM subtitle",
+      "ok": true,
+      "d": "{\"active\":false,\"clipId\":null,\"loading\":false,\"canvas\":false,\"name\":\"\",\"fontName\":\"\",\"fontLoaded\":false}"
+    },
+    {
+      "n": "plugin off destroys JASSUB + hides subtitle",
+      "ok": true,
+      "d": "{\"ass\":{\"active\":false,\"clipId\":null,\"loading\":false,\"canvas\":false,\"name\":\"sample-jassub.ass\",\"fontName\":\"\",\"fontLoaded\":false},\"plugin\":false}"
+    },
+    {
+      "n": "plugin on re-creates JASSUB",
+      "ok": true,
+      "d": "{\"active\":true,\"clipId\":\"clip_q3as3z\",\"loading\":false,\"canvas\":true,\"name\":\"sample-jassub.ass\",\"fontName\":\"\",\"fontLoaded\":false}"
+    },
+    {
+      "n": "CJK .ass imported and rendered",
+      "ok": true,
+      "d": "sample-jassub-cjk.ass"
+    },
+    {
+      "n": "local CJK font loaded into JASSUB",
+      "ok": true,
+      "d": "{\"active\":true,\"clipId\":\"clip_q3as3z\",\"loading\":false,\"canvas\":true,\"name\":\"sample-jassub-cjk.ass\",\"fontName\":\"simhei.ttf\",\"fontLoaded\":true}"
+    },
+    {
+      "n": "no page errors",
+      "ok": true,
+      "d": ""
+    },
+    {
+      "n": "no fatal console errors",
+      "ok": true,
+      "d": ""
+    }
+  ],
+  "consoleAll": [
+    "info: [SHADOW] JASSUB ready {clip: clip_q3as3z, name: sample-jassub.ass}",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x0 for font: (Liberation Sans, 400, 0)",
+    "info: [SHADOW] JASSUB ready {clip: clip_q3as3z, name: sample-jassub.ass}",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x0 for font: (Liberation Sans, 400, 0)",
+    "info: [SHADOW] JASSUB ready {clip: clip_q3as3z, name: sample-jassub.ass}",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x0 for font: (Liberation Sans, 400, 0)",
+    "info: [SHADOW] JASSUB ready {clip: clip_q3as3z, name: sample-jassub-cjk.ass}",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x0 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: Using default font family: (SimHei, 400, 0) -> LiberationSans, 0, LiberationSans",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x4E2D for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x6587 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x5B57 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x4F53 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x6D4B for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x8BD5 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0xFF1A for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x8FD9 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x4E00 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x884C for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x5E94 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x8BE5 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x662F for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x6C49 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0xFF0C for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x4E0D for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x65B9 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x5757 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x5E95 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x90E8 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x5E55 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x6E32 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x67D3 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x4E00 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x5E55 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x4E00 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x5E55 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x4E00 for font: (SimHei, 400, 0)",
+    "debug: JASSUB: fontselect: failed to find any fallback with glyph 0x5E55 for font: (SimHei, 400, 0)",
+    "info: [SHADOW] JASSUB ready {clip: clip_q3as3z, name: sample-jassub-cjk.ass}"
+  ],
+  "pageErrors": [],
+  "startedAt": "2026-10-25T15:38:57.230Z",
+  "warns": [],
+  "errors": [],
+  "finishedAt": "2026-10-25T15:39:13.324Z",
+  "pass": true
+}

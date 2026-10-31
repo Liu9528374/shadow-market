@@ -1,0 +1,217 @@
+{
+  "spec": "shadow.market.catalog",
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-25T15:16:17.448Z",
+  "site": {
+    "name": "SHADOW 市场",
+    "tagline": "全免费 · 积分兑换 · 本地优先",
+    "baseUrl": ""
+  },
+  "categories": [
+    {
+      "id": "daily",
+      "label": "日常会话",
+      "labelEn": "Daily",
+      "count": 1
+    },
+    {
+      "id": "travel",
+      "label": "出行旅行",
+      "labelEn": "Travel",
+      "count": 1
+    },
+    {
+      "id": "work",
+      "label": "职场工作",
+      "labelEn": "Work",
+      "count": 1
+    },
+    {
+      "id": "podcast",
+      "label": "播客跟读",
+      "labelEn": "Podcast",
+      "count": 1
+    },
+    {
+      "id": "movie",
+      "label": "影视跟读",
+      "labelEn": "Movies",
+      "count": 1
+    }
+  ],
+  "creators": [
+    {
+      "handle": "shadow-studio",
+      "name": "SHADOW Studio",
+      "bio": "官方示例课程",
+      "avatarColor": "#2EE6A8"
+    }
+  ],
+  "resources": [
+    {
+      "id": "com.shadow.course.cafe-order",
+      "type": "course",
+      "title": "在咖啡店点单",
+      "subtitle": "Ordering at a Café · B1",
+      "description": "咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。",
+      "category": "daily",
+      "level": "B1",
+      "tags": [
+        "B1",
+        "日常",
+        "连读",
+        "美音"
+      ],
+      "creator": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "version": "1.0.0",
+      "points": 0,
+      "free": true,
+      "updatedAt": "2026-10-25T15:16:17.448Z",
+      "downloads": 0,
+      "stats": {
+        "sentences": 5,
+        "durationSec": 21.6,
+        "words": 40
+      },
+      "cover": {
+        "color1": "#1B4D3E",
+        "color2": "#2EE6A8"
+      },
+      "packageUrl": "data/packages/com.shadow.course.cafe-order.shadowcourse",
+      "readme": "## 在咖啡店点单\n\n咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。\n\n**适合人群**：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者\n\n- **5 句** · 时长约 **21.6 秒** · 难度 B1 · 分类「日常会话（Daily）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；请在详情页「下载」或「一键导入」。\n"
+    },
+    {
+      "id": "com.shadow.course.asking-directions",
+      "type": "course",
+      "title": "问路去火车站",
+      "subtitle": "Asking for Directions · A2",
+      "description": "问路去火车站的 5 句旅行英语：怎么问路、直走几个街区、左转、确认距离、道谢。逐句中文翻译与英音连读提示，导入免 ASR，自备音频即可跟读。",
+      "category": "travel",
+      "level": "A2",
+      "tags": [
+        "A2",
+        "旅行",
+        "问路",
+        "英音"
+      ],
+      "creator": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "version": "1.0.0",
+      "points": 0,
+      "free": true,
+      "updatedAt": "2026-10-25T15:16:17.448Z",
+      "downloads": 0,
+      "stats": {
+        "sentences": 5,
+        "durationSec": 13.5,
+        "words": 33
+      },
+      "cover": {
+        "color1": "#3D2B4D",
+        "color2": "#C77DFF"
+      },
+      "packageUrl": "data/packages/com.shadow.course.asking-directions.shadowcourse",
+      "readme": "## 问路去火车站\n\n问路去火车站的 5 句旅行英语：怎么问路、直走几个街区、左转、确认距离、道谢。逐句中文翻译与英音连读提示，导入免 ASR，自备音频即可跟读。\n\n**适合人群**：A2 左右、准备出国旅行或想巩固问路口语的学习者\n\n- **5 句** · 时长约 **13.5 秒** · 难度 A2 · 分类「出行旅行（Travel）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；请在详情页「下载」或「一键导入」。\n"
+    },
+    {
+      "id": "com.shadow.course.interview-intro",
+      "type": "course",
+      "title": "面试开场自我介绍",
+      "subtitle": "Interview: Tell Me About Yourself · B2",
+      "description": "面试开场自我介绍的 5 句职场英语：自我介绍、工作经历、申请动机、对岗位的兴趣、入职时间。含中文翻译与重音、连读提示，BYOM 纯数据包。",
+      "category": "work",
+      "level": "B2",
+      "tags": [
+        "B2",
+        "职场",
+        "面试",
+        "连读"
+      ],
+      "creator": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "version": "1.0.0",
+      "points": 0,
+      "free": true,
+      "updatedAt": "2026-10-25T15:16:17.448Z",
+      "downloads": 0,
+      "stats": {
+        "sentences": 5,
+        "durationSec": 17.5,
+        "words": 43
+      },
+      "cover": {
+        "color1": "#182B4D",
+        "color2": "#5B8CFF"
+      },
+      "packageUrl": "data/packages/com.shadow.course.interview-intro.shadowcourse",
+      "readme": "## 面试开场自我介绍\n\n面试开场自我介绍的 5 句职场英语：自我介绍、工作经历、申请动机、对岗位的兴趣、入职时间。含中文翻译与重音、连读提示，BYOM 纯数据包。\n\n**适合人群**：B2 左右、准备英文面试或想练职场自我介绍的学习者\n\n- **5 句** · 时长约 **17.5 秒** · 难度 B2 · 分类「职场工作（Work）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；请在详情页「下载」或「一键导入」。\n"
+    },
+    {
+      "id": "com.shadow.course.podcast-shadow-daily",
+      "type": "course",
+      "title": "每日英语播客跟读 · 演示",
+      "subtitle": "Daily Podcast Shadowing · B1",
+      "description": "5 句原创播客风格开场白，演示「播客跟读」类课程包形态：句级时间轴、中文翻译、连读提示齐备，导入免 ASR。文本为原创占位内容，不对应任何真实节目。",
+      "category": "podcast",
+      "level": "B1",
+      "tags": [
+        "B1",
+        "播客",
+        "听力",
+        "BYOM演示"
+      ],
+      "creator": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "version": "1.0.0",
+      "points": 0,
+      "free": true,
+      "updatedAt": "2026-10-25T15:16:17.448Z",
+      "downloads": 0,
+      "stats": {
+        "sentences": 5,
+        "durationSec": 19.6,
+        "words": 43
+      },
+      "cover": {
+        "color1": "#33261B",
+        "color2": "#F0A35B"
+      },
+      "packageUrl": "data/packages/com.shadow.course.podcast-shadow-daily.shadowcourse",
+      "readme": "## 每日英语播客跟读 · 演示\n\n5 句原创播客风格开场白，演示「播客跟读」类课程包形态：句级时间轴、中文翻译、连读提示齐备，导入免 ASR。文本为原创占位内容，不对应任何真实节目。\n\n**适合人群**：喜欢用播客 / 听力材料练跟读的学习者（本包为形态演示）\n\n- **5 句** · 时长约 **19.6 秒** · 难度 B1 · 分类「播客跟读（Podcast）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n\n> 本包是 SHADOW Studio 原创的**演示占位内容**：句子文本与时间轴均为自编，不对应任何真实播客节目；用于展示 BYOM 播客跟读类课程包的字段形态与导入流程。\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；请在详情页「下载」或「一键导入」。\n"
+    },
+    {
+      "id": "com.shadow.course.movie-scene-byom",
+      "type": "course",
+      "title": "影视片段跟读 · BYOM 演示",
+      "subtitle": "Shadowing a Movie Scene · A2（BYOM Demo）",
+      "description": "5 句原创双人对话，演示「影视片段跟读」的 BYOM 形态：包内只有文本与时间轴，媒体由你自备任意本地片段。不含任何影视作品台词、画面或音频。",
+      "category": "movie",
+      "level": "A2",
+      "tags": [
+        "A2",
+        "影视",
+        "对话",
+        "BYOM演示"
+      ],
+      "creator": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "version": "1.0.0",
+      "points": 0,
+      "free": true,
+      "updatedAt": "2026-10-25T15:16:17.448Z",
+      "downloads": 0,
+      "stats": {
+        "sentences": 5,
+        "durationSec": 15,
+        "words": 37
+      },
+      "cover": {
+        "color1": "#2B1B33",
+        "color2": "#B388EB"
+      },
+      "packageUrl": "data/packages/com.shadow.course.movie-scene-byom.shadowcourse",
+      "readme": "## 影视片段跟读 · BYOM 演示\n\n5 句原创双人对话，演示「影视片段跟读」的 BYOM 形态：包内只有文本与时间轴，媒体由你自备任意本地片段。不含任何影视作品台词、画面或音频。\n\n**适合人群**：想用自己喜欢的影视片段练跟读的学习者（媒体自备）\n\n- **5 句** · 时长约 **15 秒** · 难度 A2 · 分类「影视跟读（Movies）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n\n> 本包是 SHADOW Studio 原创的**演示占位对白**：不包含、也不影射任何具体影视作品的台词、画面或音频；仅用于展示 BYOM 影视跟读类课程包的字段形态与导入流程。用户自备媒体的版权与授权由使用者自行负责。\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；请在详情页「下载」或「一键导入」。\n"
+    }
+  ]
+}

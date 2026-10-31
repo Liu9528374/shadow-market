@@ -1,0 +1,103 @@
+{
+  "test": "market-data-contract",
+  "round": "r11",
+  "startedAt": "2026-10-25T15:26:08.534Z",
+  "marketDir": "D:\\FOLLOWSPEAK\\market",
+  "checks": [
+    {
+      "id": "DC1",
+      "name": "data/catalog.json 存在",
+      "pass": true,
+      "detail": "D:\\FOLLOWSPEAK\\market\\data\\catalog.json",
+      "at": "2026-10-25T15:26:08.535Z"
+    },
+    {
+      "id": "DC2",
+      "name": "catalog.spec === \"shadow.market.catalog\"",
+      "pass": true,
+      "detail": "spec=shadow.market.catalog",
+      "at": "2026-10-25T15:26:08.537Z"
+    },
+    {
+      "id": "DC3",
+      "name": "catalog.schemaVersion === 1",
+      "pass": true,
+      "detail": "schemaVersion=1",
+      "at": "2026-10-25T15:26:08.537Z"
+    },
+    {
+      "id": "DC4",
+      "name": "resources ≥ 3",
+      "pass": true,
+      "detail": "count=5",
+      "at": "2026-10-25T15:26:08.537Z"
+    },
+    {
+      "id": "DC5",
+      "name": "categories ≥ 1 且每个含 id/label",
+      "pass": true,
+      "detail": "categories=daily,travel,work,podcast,movie",
+      "at": "2026-10-25T15:26:08.537Z"
+    },
+    {
+      "id": "DC6",
+      "name": "creators ≥ 1 且 handle/name 齐全",
+      "pass": true,
+      "detail": "creators=shadow-studio",
+      "at": "2026-10-25T15:26:08.537Z"
+    },
+    {
+      "id": "DC7",
+      "name": "resources 字段/包引用一致（id/category/creator/version/free/purge 下载量）",
+      "pass": true,
+      "detail": "all ok",
+      "at": "2026-10-25T15:26:08.539Z"
+    },
+    {
+      "id": "DC8",
+      "name": "全部包：schemaVersion=1 / byom / CC-BY-4.0 / ≤2MB / 纯数据（无脚本 iframe 事件属性）",
+      "pass": true,
+      "detail": "5 packages ok",
+      "at": "2026-10-25T15:26:08.539Z"
+    },
+    {
+      "id": "DC9",
+      "name": "plugins/index.json 声明 ≥1 资源类型",
+      "pass": true,
+      "detail": "{\"spec\":\"shadow.market.plugins\",\"schemaVersion\":1,\"comment\":\"资源类型插件登记表：市场启动时逐项读取 plugins/<type>/manifest.json 注册卡片/详情渲染器。市场只读声明、不执行插件代码。\",\"plugins\":[\"course\",\"plugin\",\"subtitle\"]}",
+      "at": "2026-10-25T15:26:08.540Z"
+    },
+    {
+      "id": "DC10",
+      "name": "每类 manifest 字段齐全（manifestVersion/kind/id/label/fileExt/detailTabs/permissions/enabled）",
+      "pass": true,
+      "detail": "3 manifests ok",
+      "at": "2026-10-25T15:26:08.540Z"
+    },
+    {
+      "id": "DC11",
+      "name": "catalog 使用的每种资源类型都有 manifest 声明（一切即插件）",
+      "pass": true,
+      "detail": "used=course declared=course,plugin,subtitle missing=",
+      "at": "2026-10-25T15:26:08.540Z"
+    },
+    {
+      "id": "DC12",
+      "name": "每个包都有 readme（详情页 README Tab 数据来源）",
+      "pass": true,
+      "detail": "5/5",
+      "at": "2026-10-25T15:26:08.540Z"
+    }
+  ],
+  "pass": true,
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0,
+    "resources": 5,
+    "packages": 5,
+    "categories": 5,
+    "manifests": 3
+  },
+  "finishedAt": "2026-10-25T15:26:08.540Z"
+}

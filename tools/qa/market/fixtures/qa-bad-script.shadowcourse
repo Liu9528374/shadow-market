@@ -1,0 +1,97 @@
+{
+  "spec": "shadow.course",
+  "schemaVersion": 1,
+  "id": "com.qa.course.script",
+  "version": "1.0.0",
+  "title": "QA 咖啡店点单",
+  "subtitle": "QA Ordering at a Café · B1",
+  "description": "qa-verify 独立 fixture：4 句已知时间轴，用于桌面导入/保存重开验证。",
+  "category": "daily",
+  "tags": [
+    "B1",
+    "QA",
+    "fixture"
+  ],
+  "level": "B1",
+  "language": [
+    "en",
+    "zh"
+  ],
+  "creator": {
+    "name": "QA Verify",
+    "url": "",
+    "handle": "qa-verify"
+  },
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "QA fixture"
+  },
+  "mediaPolicy": "byom",
+  "media": [
+    {
+      "id": "m1",
+      "kind": "video",
+      "duration": 0,
+      "hint": "BYOM：任意本地英语视频/音频"
+    }
+  ],
+  "sentences": [
+    {
+      "sentenceId": "s_0001",
+      "start": 0.2,
+      "end": 1.5,
+      "text": "Hi, could I get a medium latte, please?",
+      "translation": "你好，我要一杯中杯拿铁。",
+      "notes": "连读 could I"
+    },
+    {
+      "sentenceId": "s_0002",
+      "start": 1.6,
+      "end": 3,
+      "text": "Sure. Would you like it hot or iced?",
+      "translation": "好的，你要热的还是冰的？",
+      "notes": ""
+    },
+    {
+      "sentenceId": "s_0003",
+      "start": 3.2,
+      "end": 4.8,
+      "text": "Iced, please. And a blueberry muffin.",
+      "translation": "冰的，谢谢。再来一个蓝莓松饼。",
+      "notes": ""
+    },
+    {
+      "sentenceId": "s_0004",
+      "start": 5,
+      "end": 7.5,
+      "text": "That will be eight fifty. Here is your receipt.",
+      "translation": "一共八块五。这是你的收据。",
+      "notes": "数字听力"
+    }
+  ],
+  "exercises": {
+    "spec": "shadow.exercises",
+    "schemaVersion": 1,
+    "default": {
+      "mode": "shadow",
+      "loopCount": 3,
+      "speed": 1,
+      "scoring": {
+        "enabled": true
+      },
+      "subtitle": {
+        "en": true,
+        "zh": true,
+        "position": "bottom"
+      }
+    }
+  },
+  "requires": {
+    "shadow": ">=0.7.0"
+  },
+  "createdAt": "2026-10-25T00:00:00Z",
+  "updatedAt": "2026-10-25T00:00:00Z",
+  "readme": "## 恶意 readme\n\n<script>window.__pwned = 1;</script>\n"
+}

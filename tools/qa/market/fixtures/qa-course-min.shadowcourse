@@ -1,0 +1,35 @@
+{
+  "spec": "shadow.course",
+  "schemaVersion": 1,
+  "id": "com.qa.course.min",
+  "version": "0.0.1",
+  "title": "QA 最小包",
+  "subtitle": "",
+  "description": "最小合法包（1 句）。",
+  "category": "daily",
+  "tags": [],
+  "level": "A1",
+  "language": [
+    "en"
+  ],
+  "creator": {
+    "name": "QA Verify",
+    "url": "",
+    "handle": "qa-verify"
+  },
+  "license": "CC-BY-4.0",
+  "mediaPolicy": "byom",
+  "media": [],
+  "sentences": [
+    {
+      "sentenceId": "s_0001",
+      "start": 0,
+      "end": 1,
+      "text": "Hello there.",
+      "translation": "你好。"
+    }
+  ],
+  "createdAt": "2026-10-25T00:00:00Z",
+  "updatedAt": "2026-10-25T00:00:00Z",
+  "readme": "## 最小包\n\n只有一句。"
+}

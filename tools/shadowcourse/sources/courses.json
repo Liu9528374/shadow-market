@@ -1,0 +1,175 @@
+{
+  "spec": "shadow.market.sources",
+  "schemaVersion": 1,
+  "site": {
+    "name": "SHADOW 市场",
+    "tagline": "全免费 · 积分兑换 · 本地优先",
+    "baseUrl": ""
+  },
+  "creator": {
+    "handle": "shadow-studio",
+    "name": "SHADOW Studio",
+    "bio": "官方示例课程",
+    "avatarColor": "#2EE6A8"
+  },
+  "categories": [
+    { "id": "daily", "label": "日常会话", "labelEn": "Daily" },
+    { "id": "travel", "label": "出行旅行", "labelEn": "Travel" },
+    { "id": "work", "label": "职场工作", "labelEn": "Work" },
+    { "id": "podcast", "label": "播客跟读", "labelEn": "Podcast" },
+    { "id": "movie", "label": "影视跟读", "labelEn": "Movies" }
+  ],
+  "courses": [
+    {
+      "kind": "lesson",
+      "lesson": "content/lessons/cafe-order.json",
+      "packageId": "com.shadow.course.cafe-order",
+      "version": "1.0.0",
+      "category": "daily",
+      "tags": ["B1", "日常", "连读", "美音"],
+      "description": "咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。",
+      "audience": "有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者",
+      "mediaKind": "audio",
+      "mediaHint": "任意英语音频或视频；句级时间轴按秒对齐（官方示范音频约 21.6 秒）",
+      "createdAt": "2026-10-25T00:00:00Z"
+    },
+    {
+      "kind": "lesson",
+      "lesson": "content/lessons/asking-directions.json",
+      "packageId": "com.shadow.course.asking-directions",
+      "version": "1.0.0",
+      "category": "travel",
+      "tags": ["A2", "旅行", "问路", "英音"],
+      "description": "问路去火车站的 5 句旅行英语：怎么问路、直走几个街区、左转、确认距离、道谢。逐句中文翻译与英音连读提示，导入免 ASR，自备音频即可跟读。",
+      "audience": "A2 左右、准备出国旅行或想巩固问路口语的学习者",
+      "mediaKind": "audio",
+      "mediaHint": "任意英语音频或视频；句级时间轴按秒对齐（官方示范音频约 13.5 秒）",
+      "createdAt": "2026-10-25T00:00:00Z"
+    },
+    {
+      "kind": "lesson",
+      "lesson": "content/lessons/interview-intro.json",
+      "packageId": "com.shadow.course.interview-intro",
+      "version": "1.0.0",
+      "category": "work",
+      "tags": ["B2", "职场", "面试", "连读"],
+      "description": "面试开场自我介绍的 5 句职场英语：自我介绍、工作经历、申请动机、对岗位的兴趣、入职时间。含中文翻译与重音、连读提示，BYOM 纯数据包。",
+      "audience": "B2 左右、准备英文面试或想练职场自我介绍的学习者",
+      "mediaKind": "audio",
+      "mediaHint": "任意英语音频或视频；句级时间轴按秒对齐（官方示范音频约 17.5 秒）",
+      "createdAt": "2026-10-25T00:00:00Z"
+    },
+    {
+      "kind": "inline",
+      "packageId": "com.shadow.course.podcast-shadow-daily",
+      "version": "1.0.0",
+      "category": "podcast",
+      "title": "每日英语播客跟读 · 演示",
+      "subtitle": "Daily Podcast Shadowing · B1",
+      "level": "B1",
+      "language": ["en", "zh"],
+      "tags": ["B1", "播客", "听力", "BYOM演示"],
+      "description": "5 句原创播客风格开场白，演示「播客跟读」类课程包形态：句级时间轴、中文翻译、连读提示齐备，导入免 ASR。文本为原创占位内容，不对应任何真实节目。",
+      "audience": "喜欢用播客 / 听力材料练跟读的学习者（本包为形态演示）",
+      "cover": ["#33261B", "#F0A35B"],
+      "expressions": ["small habit", "welcome back to the show", "become automatic"],
+      "mediaKind": "audio",
+      "mediaHint": "自备任意英语播客 / 听力音频；句级时间轴按秒对齐（本演示时间轴约 19.6 秒）",
+      "readmeNote": "本包是 SHADOW Studio 原创的**演示占位内容**：句子文本与时间轴均为自编，不对应任何真实播客节目；用于展示 BYOM 播客跟读类课程包的字段形态与导入流程。",
+      "createdAt": "2026-10-25T00:00:00Z",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 4.2,
+          "text": "Welcome back to the show. Today we're talking about small habits.",
+          "translation": "欢迎回来。今天我们聊聊小习惯。",
+          "notes": "重音：back · habits；语速平稳，句尾降调。"
+        },
+        {
+          "start": 5.0,
+          "end": 8.0,
+          "text": "A small habit can change your whole day.",
+          "translation": "一个小习惯能改变你的一整天。",
+          "notes": "重音：small · change · whole；change 的 ay 音要饱满。"
+        },
+        {
+          "start": 8.8,
+          "end": 12.2,
+          "text": "Start with one thing you can do in two minutes.",
+          "translation": "从一件两分钟就能做到的小事开始。",
+          "notes": "重音：Start · one · two；two minutes 连读成 two-minutes。"
+        },
+        {
+          "start": 13.0,
+          "end": 16.0,
+          "text": "Then repeat it at the same time every day.",
+          "translation": "然后在每天同一时间重复它。",
+          "notes": "重音：repeat · same · every；at the 弱读成 at-thuh。"
+        },
+        {
+          "start": 16.8,
+          "end": 19.6,
+          "text": "That's how progress becomes automatic.",
+          "translation": "进步就是这样变成自动的。",
+          "notes": "重音：progress · automatic；automatic 重音在 ma。"
+        }
+      ]
+    },
+    {
+      "kind": "inline",
+      "packageId": "com.shadow.course.movie-scene-byom",
+      "version": "1.0.0",
+      "category": "movie",
+      "title": "影视片段跟读 · BYOM 演示",
+      "subtitle": "Shadowing a Movie Scene · A2（BYOM Demo）",
+      "level": "A2",
+      "language": ["en", "zh"],
+      "tags": ["A2", "影视", "对话", "BYOM演示"],
+      "description": "5 句原创双人对话，演示「影视片段跟读」的 BYOM 形态：包内只有文本与时间轴，媒体由你自备任意本地片段。不含任何影视作品台词、画面或音频。",
+      "audience": "想用自己喜欢的影视片段练跟读的学习者（媒体自备）",
+      "cover": ["#2B1B33", "#B388EB"],
+      "expressions": ["be free this weekend", "have in mind", "check it out"],
+      "mediaKind": "video",
+      "mediaHint": "自备任意本地影视片段或视频；句级时间轴按秒对齐（本演示时间轴约 15 秒）",
+      "readmeNote": "本包是 SHADOW Studio 原创的**演示占位对白**：不包含、也不影射任何具体影视作品的台词、画面或音频；仅用于展示 BYOM 影视跟读类课程包的字段形态与导入流程。用户自备媒体的版权与授权由使用者自行负责。",
+      "createdAt": "2026-10-25T00:00:00Z",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 2.2,
+          "text": "Hey, are you free this weekend?",
+          "translation": "嘿，你这周末有空吗？",
+          "notes": "句尾升调；are you 连读成 are-you。"
+        },
+        {
+          "start": 2.8,
+          "end": 5.4,
+          "text": "I think so. What did you have in mind?",
+          "translation": "应该有空。你有什么想法？",
+          "notes": "What did you 口语常说 whad-ya；in mind 连读。"
+        },
+        {
+          "start": 6.0,
+          "end": 9.2,
+          "text": "There's a new market downtown. Want to check it out?",
+          "translation": "市中心新开了一个市集。想去看看吗？",
+          "notes": "There's a 连读成 there-za；check it out 连读成 che-ki-tout。"
+        },
+        {
+          "start": 9.8,
+          "end": 12.0,
+          "text": "Sounds fun. Let's meet at noon.",
+          "translation": "听起来不错。中午见吧。",
+          "notes": "Sounds fun 的 ds 轻读；meet at 连读成 mee-tat。"
+        },
+        {
+          "start": 12.6,
+          "end": 15.0,
+          "text": "Perfect. See you by the entrance.",
+          "translation": "好极了。入口见。",
+          "notes": "See you 连读成 see-ya；by the 弱读。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3501 @@
+{
+  "test": "app-smoke",
+  "mode": "packaged",
+  "version": "0.7.0",
+  "startedAt": "2026-10-25T15:37:25.901Z",
+  "env": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "python": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\runtime\\python.exe",
+    "pythonSource": "package-runtime"
+  },
+  "root": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror",
+  "refText": "Welcome to the new series of the Incredible Women podcast, in which we sit down with women.",
+  "e2eWav": {
+    "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\e2e-12s.wav",
+    "extraction": "xzg-0-12s",
+    "bytes": 384044,
+    "mtime": "2026-10-25T15:37:40.171Z",
+    "detail": "E2E_WAV_OK media=C:\\Users\\A pig\\OneDrive\\桌面\\xzg_730510.mp4 start=0.00s dur=12.000s srcDur=1511.665s peak=0.9873 rms=0.0825 out=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\e2e-12s.wav\r\n"
+  },
+  "asr": {
+    "reused": false,
+    "port": 18781,
+    "health": {
+      "ok": true,
+      "loaded": true,
+      "model": "ggml-base.en.bin",
+      "version": "2.0",
+      "pid": 33468,
+      "threads": 8,
+      "uptime_sec": 1.4,
+      "model_path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\tools\\whisper-models\\ggml-base.en.bin",
+      "load_ms": 149,
+      "warmup_ms": 407.5,
+      "inflight": 0
+    }
+  },
+  "server": {
+    "root": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror",
+    "dev": false,
+    "requestedPort": 18780,
+    "port": 18780,
+    "baseUrl": "http://127.0.0.1:18780",
+    "takeDir": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes",
+    "beforeTakesWav": 0,
+    "logFile": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\shadow-server-qa-1792942665538-rmkwi.log",
+    "config": {
+      "ok": true,
+      "version": "0.7.0",
+      "asrBase": "/api/asr",
+      "asrUrl": "http://127.0.0.1:18780/api/asr",
+      "asrUpstream": "http://127.0.0.1:18781",
+      "takesEnabled": true,
+      "takeUrl": "/api/take",
+      "takesBase": "/takes",
+      "takeDir": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes",
+      "projectUrl": "/api/project",
+      "projectPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\data\\project-latest.json",
+      "settingsUrl": "/api/settings",
+      "settingsPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\data\\settings.json",
+      "fontListUrl": "/api/font/list",
+      "fontFileUrl": "/api/font/file",
+      "root": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror",
+      "dev": false,
+      "port": 18780,
+      "pid": 33268,
+      "startedAt": "2026-10-25T23:37:45"
+    }
+  },
+  "browser": {
+    "name": "edge",
+    "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "version": "正在现有浏览器会话中打开。",
+    "headless": true
+  },
+  "launch": {
+    "requestedPort": 18795,
+    "exitCode": 0,
+    "url": "http://127.0.0.1:18795/",
+    "reportedPort": 18795,
+    "stdoutTail": "2026-10-25 23:37:41 [INFO] ============================================================\n2026-10-25 23:37:41 [INFO] SHADOW Studio v0.7.0 启动器 Begin\n2026-10-25 23:37:41 [INFO] 参数：Root=\"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\" Port=18795 Browser=none NoServer=False NoBrowser=True Dev=False NoAsr=True AsrUrl=http://127.0.0.1:8765\n2026-10-25 23:37:41 [INFO] 根目录（-Root）：D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\n2026-10-25 23:37:41 [INFO] 应用页面：D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\app\\SHADOW-Studio-0.7.0.html\n2026-10-25 23:37:41 [INFO] Python：D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\runtime\\python.exe（3.12.10）\n2026-10-25 23:37:41 [INFO] pythonw：D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\runtime\\pythonw.exe\n2026-10-25 23:37:43 [INFO] 启动本地服务：\"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\runtime\\pythonw.exe\" \"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\tools\\launcher\\shadow-server.py\" --root \"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\" --port 18795 --asr \"http://127.0.0.1:8765\" --out-log \"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\launcher-1792942660316\\shadow-server.out.log\" --err-log \"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\launcher-1792942660316\\shadow-server.err.log\"\n2026-10-25 23:37:43 [INFO] 本地服务进程已启动（wmi，pid=32488）；等待 /api/config 就绪（最多 15 秒）…\n2026-10-25 23:37:43 [INFO] 指定了 -NoAsr：不自动启动 ASR\n2026-10-25 23:37:43 [INFO] 合法 URL：http://127.0.0.1:18795/（scheme=http, host=127.0.0.1, IsFile=False）\nSHADOW_URL=http://127.0.0.1:18795/\nSHADOW_PORT=18795\nSHADOW_ROOT=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\nSHADOW_DEV=False\n2026-10-25 23:37:43 [INFO] 不打开浏览器窗口（-NoBrowser / -Browser none / -PrintUrl）\n2026-10-25 23:37:43 [INFO] 启动完成：http://127.0.0.1:18795/\n2026-10-25 23:37:43 [INFO] ============================================================\n\n",
+    "logTail": "2026-10-25 23:37:41 [INFO] ============================================================\r\n2026-10-25 23:37:41 [INFO] SHADOW Studio v0.7.0 启动器 Begin\r\n2026-10-25 23:37:41 [INFO] 参数：Root=\"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\" Port=18795 Browser=none NoServer=False NoBrowser=True Dev=False NoAsr=True AsrUrl=http://127.0.0.1:8765\r\n2026-10-25 23:37:41 [INFO] 根目录（-Root）：D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\r\n2026-10-25 23:37:41 [INFO] 应用页面：D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\app\\SHADOW-Studio-0.7.0.html\r\n2026-10-25 23:37:41 [INFO] Python：D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\runtime\\python.exe（3.12.10）\r\n2026-10-25 23:37:41 [INFO] pythonw：D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\runtime\\pythonw.exe\r\n2026-10-25 23:37:43 [INFO] 启动本地服务：\"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\runtime\\pythonw.exe\" \"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\tools\\launcher\\shadow-server.py\" --root \"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\" --port 18795 --asr \"http://127.0.0.1:8765\" --out-log \"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\launcher-1792942660316\\shadow-server.out.log\" --err-log \"D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\launcher-1792942660316\\shadow-server.err.log\"\r\n2026-10-25 23:37:43 [INFO] 本地服务进程已启动（wmi，pid=32488）；等待 /api/config 就绪（最多 15 秒）…\r\n2026-10-25 23:37:43 [INFO] 指定了 -NoAsr：不自动启动 ASR\r\n2026-10-25 23:37:43 [INFO] 合法 URL：http://127.0.0.1:18795/（scheme=http, host=127.0.0.1, IsFile=False）\r\n2026-10-25 23:37:43 [INFO] 不打开浏览器窗口（-NoBrowser / -Browser none / -PrintUrl）\r\n2026-10-25 23:37:43 [INFO] 启动完成：http://127.0.0.1:18795/\r\n2026-10-25 23:37:43 [INFO] ============================================================\r\n",
+    "elapsedMs": 3514,
+    "isolatedTemp": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\launcher-1792942660316",
+    "config": {
+      "ok": true,
+      "version": "0.7.0",
+      "asrBase": "/api/asr",
+      "asrUrl": "http://127.0.0.1:18795/api/asr",
+      "asrUpstream": "http://127.0.0.1:8765",
+      "takesEnabled": true,
+      "takeUrl": "/api/take",
+      "takesBase": "/takes",
+      "takeDir": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes",
+      "projectUrl": "/api/project",
+      "projectPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\data\\project-latest.json",
+      "settingsUrl": "/api/settings",
+      "settingsPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\data\\settings.json",
+      "fontListUrl": "/api/font/list",
+      "fontFileUrl": "/api/font/file",
+      "root": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror",
+      "dev": false,
+      "port": 18795,
+      "pid": 32488,
+      "startedAt": "2026-10-25T23:37:43"
+    }
+  },
+  "takesSummary": {
+    "requested": 5,
+    "okCount": 5,
+    "failCount": 0,
+    "loopMs": 31582,
+    "avgMsPerTake": 6316,
+    "rms": {
+      "min": 0.0475,
+      "max": 0.0504,
+      "avg": 0.04903999999999999
+    },
+    "preRollMin": 1.88,
+    "duration": {
+      "min": 5.98,
+      "max": 6.12
+    },
+    "wavDir": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes",
+    "wavBefore": 0,
+    "wavAfter": 5,
+    "wavChecks": [
+      {
+        "idx": 0,
+        "bytes": 574380,
+        "duration": 5.982666666666667,
+        "sampleRate": 48000,
+        "channels": 1,
+        "bits": 16,
+        "rms": 0.05023060381638178,
+        "peak": 0.4390869140625,
+        "first100Rms": 0.08144541470808443,
+        "first100Peak": 0.3193359375,
+        "last100Rms": 0.061391115527245556,
+        "last100Peak": 0.257110595703125,
+        "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942677393.wav"
+      },
+      {
+        "idx": 1,
+        "bytes": 587692,
+        "duration": 6.121333333333333,
+        "sampleRate": 48000,
+        "channels": 1,
+        "bits": 16,
+        "rms": 0.04961601455490555,
+        "peak": 0.43060302734375,
+        "first100Rms": 0.013345545013931395,
+        "first100Peak": 0.076812744140625,
+        "last100Rms": 0.05452724159309982,
+        "last100Peak": 0.185211181640625,
+        "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942683788.wav"
+      },
+      {
+        "idx": 2,
+        "bytes": 587436,
+        "duration": 6.118666666666667,
+        "sampleRate": 48000,
+        "channels": 1,
+        "bits": 16,
+        "rms": 0.04746183809641813,
+        "peak": 0.4390869140625,
+        "first100Rms": 0.04261316253971101,
+        "first100Peak": 0.166778564453125,
+        "last100Rms": 0.03308924704047804,
+        "last100Peak": 0.125762939453125,
+        "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942690154.wav"
+      },
+      {
+        "idx": 3,
+        "bytes": 586412,
+        "duration": 6.108,
+        "sampleRate": 48000,
+        "channels": 1,
+        "bits": 16,
+        "rms": 0.050382561870555176,
+        "peak": 0.43060302734375,
+        "first100Rms": 0.013190845795193381,
+        "first100Peak": 0.05206298828125,
+        "last100Rms": 0.023975225467884647,
+        "last100Peak": 0.088897705078125,
+        "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942696558.wav"
+      },
+      {
+        "idx": 4,
+        "bytes": 587692,
+        "duration": 6.121333333333333,
+        "sampleRate": 48000,
+        "channels": 1,
+        "bits": 16,
+        "rms": 0.04750108476139168,
+        "peak": 0.4390869140625,
+        "first100Rms": 0.018271924877429638,
+        "first100Peak": 0.10986328125,
+        "last100Rms": 0.1078262145514911,
+        "last100Peak": 0.335601806640625,
+        "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav"
+      }
+    ]
+  },
+  "userVisible": {
+    "sentenceAdvancedAfterTake": false,
+    "sentenceTimeline": [
+      {
+        "idx": 0,
+        "before": 0,
+        "after": 0
+      },
+      {
+        "idx": 1,
+        "before": 0,
+        "after": 0
+      },
+      {
+        "idx": 2,
+        "before": 0,
+        "after": 0
+      },
+      {
+        "idx": 3,
+        "before": 0,
+        "after": 0
+      },
+      {
+        "idx": 4,
+        "before": 0,
+        "after": 0
+      }
+    ],
+    "note": "Space+B 录完 D 后右侧当前句会推进到下一句（旧版行为，用户需重选 D 才能重录）；Space 播放仍按 syncRepeat.dIdx 播 D。已记录，不要求修。"
+  },
+  "checks": {
+    "title": "app PACKAGED E2E (takes=5)",
+    "total": 97,
+    "passed": 97,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "5) launch.ps1 退出码 0",
+        "pass": true,
+        "detail": "exit=0 tail=95/（scheme=http, host=127.0.0.1, IsFile=False） SHADOW_URL=http://127.0.0.1:18795/ SHADOW_PORT=18795 SHADOW_ROOT=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror SHADOW_DEV=False 2026-10-25 23:37:43 [INFO] 不打开浏览器窗口（-NoBrowser / -Browser none / -PrintUrl） 2026-10-25 23:37:43 [INFO] 启动完成：http://127.0.0.1:18795/ 2026-10-25 23:37:43 [INFO] ============================================================ "
+      },
+      {
+        "name": "5) launch.ps1 输出了 SHADOW_URL",
+        "pass": true,
+        "detail": "url=http://127.0.0.1:18795/"
+      },
+      {
+        "name": "5) URL 是合法 http://127.0.0.1:<port>/",
+        "pass": true,
+        "detail": "url=http://127.0.0.1:18795/"
+      },
+      {
+        "name": "5) URL 端口 == 请求端口（或 +1..+10 fallback）",
+        "pass": true,
+        "detail": "urlPort=18795 requested=18795"
+      },
+      {
+        "name": "5) 启动器 URL 的 /api/config 可访问且 version=0.7.0",
+        "pass": true,
+        "detail": "config={\"ok\":true,\"version\":\"0.7.0\",\"asrBase\":\"/api/asr\",\"asrUrl\":\"http://127.0.0.1:18795/api/asr\",\"asrUpstream\":\"http://127.0.0.1:8765\",\"takesEnabled\":true,\"takeUrl\":\"/api/take\",\"takesBase\":\"/takes\",\"takeDi"
+      },
+      {
+        "name": "1) app 页面 HTTP 200",
+        "pass": true,
+        "detail": "status=200 url=http://127.0.0.1:18780/"
+      },
+      {
+        "name": "1) window.SHADOW_APP.ready === true",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "1) SHADOW_APP.version === \"0.7.0\"",
+        "pass": true,
+        "detail": "version=0.7.0"
+      },
+      {
+        "name": "1) state().api.server === true（/api/config 已生效）",
+        "pass": true,
+        "detail": "api={\"server\":true,\"asrBase\":\"/api/asr\",\"version\":\"0.7.0\"}"
+      },
+      {
+        "name": "1) state().api.asrBase === \"/api/asr\"",
+        "pass": true,
+        "detail": "asrBase=/api/asr"
+      },
+      {
+        "name": "1) state().asrOnline === true（ASR 在线）",
+        "pass": true,
+        "detail": "asrOnline=true waited=true"
+      },
+      {
+        "name": "1) /api/config ok + version 0.7.0",
+        "pass": true,
+        "detail": "status=200 dev=false asrUpstream=http://127.0.0.1:18781"
+      },
+      {
+        "name": "1) 打包版 /api/config.dev === false",
+        "pass": true,
+        "detail": "dev=false"
+      },
+      {
+        "name": "2) ingestWavBase64(12s WAV) 成功",
+        "pass": true,
+        "detail": "clipId=clip_5x43th duration=12 sentences=2"
+      },
+      {
+        "name": "2) 注入媒体时长 ≈12s",
+        "pass": true,
+        "detail": "duration=12"
+      },
+      {
+        "name": "2) setSentence(0, refText) 成功",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "2) setD(0.5,2.5,0) 成功（整个测试只设置一次）",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "2) 录音面板关键控件齐全",
+        "pass": true,
+        "detail": "{\"micDevice\":true,\"micProcessing\":true,\"micTest\":true,\"recCanvas\":true,\"recordBtn\":true,\"scoreBtn\":true,\"mixedBtn\":true,\"micLevelDb\":true,\"micLevelFill\":true}"
+      },
+      {
+        "name": "2) openMic(null,\"raw\") 成功",
+        "pass": true,
+        "detail": "{\"open\":true,\"state\":\"running\",\"deviceId\":\"default\",\"deviceLabel\":\"Fake Default Audio Input\",\"sampleRate\":48000,\"rms\":0,\"peak\":0,\"db\":-100,\"speechLikely\":false,\"mode\":\"audioworklet\",\"lastError\":\"\",\"paused\":false,\"tracksLive\":true,\"processing\":\"raw\",\"workletVia\":\"blob\",\"version\":\"0.7.0\"}"
+      },
+      {
+        "name": "2) 采集 health.mode === \"audioworklet\"",
+        "pass": true,
+        "detail": "mode=audioworklet"
+      },
+      {
+        "name": "2) 采集 health.deviceLabel 非空",
+        "pass": true,
+        "detail": "deviceLabel=\"Fake Default Audio Input\""
+      },
+      {
+        "name": "2) open 后 4s 内 health.rms > 0.01",
+        "pass": true,
+        "detail": "maxRms=0.0948"
+      },
+      {
+        "name": "2) 连续 5 次 recordOnce 失败数 == 0",
+        "pass": true,
+        "detail": "ok=5/5 fails="
+      },
+      {
+        "name": "2) 整个 20/5 连录未在两次 take 之间重新 setD",
+        "pass": true,
+        "detail": "setD 调用次数=1（recordOnce 内部不依赖 currentSentence）"
+      },
+      {
+        "name": "2) take#1 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0502 (期望 > 0.01) rms=0.0502 db=-26"
+      },
+      {
+        "name": "2) take#1 preRollSec ≈ 2（首次可 <2）",
+        "pass": true,
+        "detail": "preRollSec=1.8800"
+      },
+      {
+        "name": "2) take#1 offset ≈ preRollSec",
+        "pass": true,
+        "detail": "offset=1.8800 preRoll=1.8800"
+      },
+      {
+        "name": "2) take#1 duration 合理（preRoll+1.2 ~ preRoll+12）",
+        "pass": true,
+        "detail": "duration=5.9800 preRoll=1.8800"
+      },
+      {
+        "name": "2) take#1 wavPath 非空且文件存在",
+        "pass": true,
+        "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942677393.wav"
+      },
+      {
+        "name": "2) take#2 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0496 (期望 > 0.01) rms=0.0496 db=-26.1000"
+      },
+      {
+        "name": "2) take#2 preRollSec ≈ 2（首次可 <2）",
+        "pass": true,
+        "detail": "preRollSec=2"
+      },
+      {
+        "name": "2) take#2 offset ≈ preRollSec",
+        "pass": true,
+        "detail": "offset=2 preRoll=2"
+      },
+      {
+        "name": "2) take#2 duration 合理（preRoll+1.2 ~ preRoll+12）",
+        "pass": true,
+        "detail": "duration=6.1200 preRoll=2"
+      },
+      {
+        "name": "2) take#2 wavPath 非空且文件存在",
+        "pass": true,
+        "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942683788.wav"
+      },
+      {
+        "name": "2) take#3 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0475 (期望 > 0.01) rms=0.0475 db=-26.5000"
+      },
+      {
+        "name": "2) take#3 preRollSec ≈ 2（首次可 <2）",
+        "pass": true,
+        "detail": "preRollSec=2"
+      },
+      {
+        "name": "2) take#3 offset ≈ preRollSec",
+        "pass": true,
+        "detail": "offset=2 preRoll=2"
+      },
+      {
+        "name": "2) take#3 duration 合理（preRoll+1.2 ~ preRoll+12）",
+        "pass": true,
+        "detail": "duration=6.1200 preRoll=2"
+      },
+      {
+        "name": "2) take#3 wavPath 非空且文件存在",
+        "pass": true,
+        "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942690154.wav"
+      },
+      {
+        "name": "2) take#4 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0504 (期望 > 0.01) rms=0.0504 db=-25.9000"
+      },
+      {
+        "name": "2) take#4 preRollSec ≈ 2（首次可 <2）",
+        "pass": true,
+        "detail": "preRollSec=2"
+      },
+      {
+        "name": "2) take#4 offset ≈ preRollSec",
+        "pass": true,
+        "detail": "offset=2 preRoll=2"
+      },
+      {
+        "name": "2) take#4 duration 合理（preRoll+1.2 ~ preRoll+12）",
+        "pass": true,
+        "detail": "duration=6.1100 preRoll=2"
+      },
+      {
+        "name": "2) take#4 wavPath 非空且文件存在",
+        "pass": true,
+        "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942696558.wav"
+      },
+      {
+        "name": "2) take#5 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0475 (期望 > 0.01) rms=0.0475 db=-26.5000"
+      },
+      {
+        "name": "2) take#5 preRollSec ≈ 2（首次可 <2）",
+        "pass": true,
+        "detail": "preRollSec=2"
+      },
+      {
+        "name": "2) take#5 offset ≈ preRollSec",
+        "pass": true,
+        "detail": "offset=2 preRoll=2"
+      },
+      {
+        "name": "2) take#5 duration 合理（preRoll+1.2 ~ preRoll+12）",
+        "pass": true,
+        "detail": "duration=6.1200 preRoll=2"
+      },
+      {
+        "name": "2) take#5 wavPath 非空且文件存在",
+        "pass": true,
+        "detail": "wavPath=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav"
+      },
+      {
+        "name": "2) 落盘 WAV #1 为 16bit/mono PCM",
+        "pass": true,
+        "detail": "bits=16 ch=1 sr=48000 bytes=574380"
+      },
+      {
+        "name": "2) 落盘 WAV #1 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0502 (期望 > 0.01) rms=0.0502 peak=0.4391"
+      },
+      {
+        "name": "2) 落盘 WAV #1 首尾 100ms 非零",
+        "pass": true,
+        "detail": "first=0.3193 last=0.2571"
+      },
+      {
+        "name": "2) 落盘 WAV #2 为 16bit/mono PCM",
+        "pass": true,
+        "detail": "bits=16 ch=1 sr=48000 bytes=587692"
+      },
+      {
+        "name": "2) 落盘 WAV #2 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0496 (期望 > 0.01) rms=0.0496 peak=0.4306"
+      },
+      {
+        "name": "2) 落盘 WAV #2 首尾 100ms 非零",
+        "pass": true,
+        "detail": "first=0.0768 last=0.1852"
+      },
+      {
+        "name": "2) 落盘 WAV #3 为 16bit/mono PCM",
+        "pass": true,
+        "detail": "bits=16 ch=1 sr=48000 bytes=587436"
+      },
+      {
+        "name": "2) 落盘 WAV #3 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0475 (期望 > 0.01) rms=0.0475 peak=0.4391"
+      },
+      {
+        "name": "2) 落盘 WAV #3 首尾 100ms 非零",
+        "pass": true,
+        "detail": "first=0.1668 last=0.1258"
+      },
+      {
+        "name": "2) 落盘 WAV #4 为 16bit/mono PCM",
+        "pass": true,
+        "detail": "bits=16 ch=1 sr=48000 bytes=586412"
+      },
+      {
+        "name": "2) 落盘 WAV #4 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0504 (期望 > 0.01) rms=0.0504 peak=0.4306"
+      },
+      {
+        "name": "2) 落盘 WAV #4 首尾 100ms 非零",
+        "pass": true,
+        "detail": "first=0.0521 last=0.0889"
+      },
+      {
+        "name": "2) 落盘 WAV #5 为 16bit/mono PCM",
+        "pass": true,
+        "detail": "bits=16 ch=1 sr=48000 bytes=587692"
+      },
+      {
+        "name": "2) 落盘 WAV #5 rms > 0.01",
+        "pass": true,
+        "detail": "value=0.0475 (期望 > 0.01) rms=0.0475 peak=0.4391"
+      },
+      {
+        "name": "2) 落盘 WAV #5 首尾 100ms 非零",
+        "pass": true,
+        "detail": "first=0.1099 last=0.3356"
+      },
+      {
+        "name": "2) 包根 takes\\ 新增 >= 5 个 .wav（且都 >0 字节）",
+        "pass": true,
+        "detail": "before=0 after=5 dir=D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes"
+      },
+      {
+        "name": "2) 统计：rms min>0.01 且 preRollMin>0",
+        "pass": true,
+        "detail": "rms min/max/avg=0.0475/0.0504/0.0490 preRollMin=1.8800"
+      },
+      {
+        "name": "3) scoreCurrent(0) 返回评分对象",
+        "pass": true,
+        "detail": "overall=55"
+      },
+      {
+        "name": "3) overall 0..100 数字",
+        "pass": true,
+        "detail": "overall=55"
+      },
+      {
+        "name": "3) dims 含 rhythm/fluency/completeness/intonation",
+        "pass": true,
+        "detail": "{\"rhythm\":36,\"fluency\":92,\"completeness\":48,\"intonation\":80}"
+      },
+      {
+        "name": "3) 逐词结果长度 == 参考词数",
+        "pass": true,
+        "detail": "rows=17 refTokenCount=17"
+      },
+      {
+        "name": "3) 每个词含 text/status/score/judged 且 status 合法",
+        "pass": true,
+        "detail": "[{\"text\":\"welcome\",\"heard\":\"welcome\",\"status\":\"exact\",\"confidence\":0.954,\"score\":100,\"judged\":true},{\"text\":\"to\",\"heard\":\"\",\"status\":\"unclear\",\"confidence\":0.685,\"score\":55,\"judged\":false},{\"text\":\"the\",\"heard\":\"\",\"status\":\"unclear\",\"confidence\":0.685,\"score\":55,\"judged\":false}]"
+      },
+      {
+        "name": "3) unclear 词 judged === false（不计入扣分）",
+        "pass": true,
+        "detail": "unclear=9 bad=0"
+      },
+      {
+        "name": "3) missing 词 judged === true（unreliable 时 missing 必须变 unclear）",
+        "pass": true,
+        "detail": "missing=0"
+      },
+      {
+        "name": "3) metrics 含 wordPct/judgedCount/refCount/coveragePct/asrReliable/wordSource",
+        "pass": true,
+        "detail": "keys=wordPct,judgedCount,refCount,coveragePct,asrMeanP,asrReliable,asrCoverage,missingCount,unclearCount,asrText,asrElapsedMs,wordSource,extraCount,exactCount,fuzzyCount,wrongCount,distanceRatio,speechSec,voicedPct,pauses,pauseSec,rmsDb,corr,durationMatch,referenceUsed,asrError,asrMs,device,gainDb"
+      },
+      {
+        "name": "3) metrics.wordSource === \"asr\"",
+        "pass": true,
+        "detail": "wordSource=asr asrReliable=false asrText=\"Slow down, breathe and finish every sentence. Welcome back. Today we talk about the small\""
+      },
+      {
+        "name": "3) ASR 原文非空",
+        "pass": true,
+        "detail": "asrText=\"Slow down, breathe and finish every sentence. Welcome back. Today we talk about the small\""
+      },
+      {
+        "name": "3) warnings 为数组",
+        "pass": true,
+        "detail": "[\"ASR 置信度低/漏识别：9 个词标为待确认，未扣分。\",\"录音时长和原句差得较多，可能没跟完或停早了。\"]"
+      },
+      {
+        "name": "3) advice 非空字符串",
+        "pass": true,
+        "detail": "\"逐词匹配 48%，慢一点，把每个词读完整，别含糊带过。 读错/替换的词：in、which、sit、down、with、women。 9 个词待确认，这次不算错。 节奏和原声差得多：先听一遍原声，跟着重\""
+      },
+      {
+        "name": "3) 评分已写入 state.scores",
+        "pass": true,
+        "detail": "stored=yes"
+      },
+      {
+        "name": "3) transcribeBuffer(12s xzg 语音) ASR 成功",
+        "pass": true,
+        "detail": "text=\"Neta Porte presents The Incredible Women Podcast, Series 9, Passion and Purpose.\""
+      },
+      {
+        "name": "3) scoreBuffer(真实语音, 正确参考文本) 返回结果",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "3) 完美场景 wordRows 长度 == 参考词数",
+        "pass": true,
+        "detail": "rows=12 ref=12"
+      },
+      {
+        "name": "3) 完美场景 ASR 可靠 或 wordPct>=90",
+        "pass": true,
+        "detail": "asrReliable=true wordPct=100 meanP=0.6570 coverage=1"
+      },
+      {
+        "name": "3) 完美场景 wordPct>=90 或 asrReliable=true（满足其一）",
+        "pass": true,
+        "detail": "wordPct=100 asrReliable=true"
+      },
+      {
+        "name": "3) 完美场景 wordSource === \"asr\"",
+        "pass": true,
+        "detail": "wordSource=asr"
+      },
+      {
+        "name": "3) 完美场景 overall 0..100",
+        "pass": true,
+        "detail": "overall=90"
+      },
+      {
+        "name": "3) ASR 不可靠时 missing 词全部转 unclear（不计扣分）",
+        "pass": true,
+        "detail": "missing=0 unclear=0 judgedCount=17/17"
+      },
+      {
+        "name": "3) ASR 不可靠时 warnings 有提示",
+        "pass": true,
+        "detail": "[\"ASR 判定不太可靠（与参考文本差异偏大），逐词结果仅供参考。\"]"
+      },
+      {
+        "name": "4) state().source === \"mixed\"",
+        "pass": true,
+        "detail": "sources=mixed"
+      },
+      {
+        "name": "4) state().recSource === true（recSourceNode 建立）",
+        "pass": true,
+        "detail": "[{\"t\":1200,\"playing\":true,\"recSource\":true,\"node\":true}]"
+      },
+      {
+        "name": "4) state().clockFit 有 a/b",
+        "pass": true,
+        "detail": "clockFit={\"a\":0.97,\"b\":-38.5392,\"n\":16,\"span\":0.367999999999995}"
+      },
+      {
+        "name": "4) state().playing 播放窗口内 true",
+        "pass": true,
+        "detail": "[true]"
+      },
+      {
+        "name": "4) console 出现 [SHADOW] mix align",
+        "pass": true,
+        "detail": "modes=?"
+      },
+      {
+        "name": "1) 无 pageerror",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "1) 无 console.error（favicon 404 除外）",
+        "pass": true,
+        "detail": "errors=0 benign=0 "
+      },
+      {
+        "name": "4) 混合播放无 pageerror",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "1) 截图数量 >= 6（1440x900）",
+        "pass": true,
+        "detail": "count=10"
+      }
+    ]
+  },
+  "console": [
+    {
+      "type": "info",
+      "text": "[SHADOW] settings restored from server {applied: 1, server: 2026-10-25T15:36:51.626Z, local: }",
+      "location": "http://127.0.0.1:18780/:5660",
+      "at": "2026-10-25T15:37:46.938Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] ASS font restored from server {file: msyh.ttc, bytes: 19704352}",
+      "location": "http://127.0.0.1:18780/:5457",
+      "at": "2026-10-25T15:37:47.169Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture state {type: opened, mode: audioworklet, deviceId: default, deviceLabel: Fake Default Audio Input, sampleRate: 48000}",
+      "location": "http://127.0.0.1:18780/:2130",
+      "at": "2026-10-25T15:37:51.317Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture state opened",
+      "location": "http://127.0.0.1:18780/:9366",
+      "at": "2026-10-25T15:37:51.317Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: open, mode: audioworklet, deviceId: default, deviceLabel: Fake Default Audio Input, sampleRate: 48000}",
+      "location": "http://127.0.0.1:18780/:2638",
+      "at": "2026-10-25T15:37:51.318Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take-start, takeId: take-mvnzrwq9-1, frameStart: 90240, preRollSec: 1.88}",
+      "location": "http://127.0.0.1:18780/:3004",
+      "at": "2026-10-25T15:37:53.265Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take, takeId: take-mvnzrwq9-1, duration: 5.983, rms: 0.05023, peak: 0.439}",
+      "location": "http://127.0.0.1:18780/:3085",
+      "at": "2026-10-25T15:37:57.388Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] mic rms {pcm: 0.050231, backup: 0.0454, usedBackup: false, rms: 0.050231, gainDb: 5.1}",
+      "location": "http://127.0.0.1:18780/:10173",
+      "at": "2026-10-25T15:37:57.394Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take-start, takeId: take-mvnzs1no-2, frameStart: 396032, preRollSec: 2}",
+      "location": "http://127.0.0.1:18780/:3004",
+      "at": "2026-10-25T15:37:59.652Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take, takeId: take-mvnzs1no-2, duration: 6.121, rms: 0.04962, peak: 0.431}",
+      "location": "http://127.0.0.1:18780/:3085",
+      "at": "2026-10-25T15:38:03.782Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] mic rms {pcm: 0.049617, backup: 0.0482, usedBackup: false, rms: 0.049617, gainDb: 5.2}",
+      "location": "http://127.0.0.1:18780/:10173",
+      "at": "2026-10-25T15:38:03.789Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take-start, takeId: take-mvnzs6k1-3, frameStart: 701440, preRollSec: 2}",
+      "location": "http://127.0.0.1:18780/:3004",
+      "at": "2026-10-25T15:38:06.002Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take, takeId: take-mvnzs6k1-3, duration: 6.119, rms: 0.04746, peak: 0.439}",
+      "location": "http://127.0.0.1:18780/:3085",
+      "at": "2026-10-25T15:38:10.149Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] mic rms {pcm: 0.047463, backup: 0.0523, usedBackup: false, rms: 0.047463, gainDb: 5.6}",
+      "location": "http://127.0.0.1:18780/:10173",
+      "at": "2026-10-25T15:38:10.155Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take-start, takeId: take-mvnzsbio-4, frameStart: 1010048, preRollSec: 2}",
+      "location": "http://127.0.0.1:18780/:3004",
+      "at": "2026-10-25T15:38:12.432Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take, takeId: take-mvnzsbio-4, duration: 6.108, rms: 0.05038, peak: 0.431}",
+      "location": "http://127.0.0.1:18780/:3085",
+      "at": "2026-10-25T15:38:16.555Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] mic rms {pcm: 0.050383, backup: 0.0503, usedBackup: false, rms: 0.050383, gainDb: 5}",
+      "location": "http://127.0.0.1:18780/:10173",
+      "at": "2026-10-25T15:38:16.559Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take-start, takeId: take-mvnzsgfa-5, frameStart: 1315200, preRollSec: 2}",
+      "location": "http://127.0.0.1:18780/:3004",
+      "at": "2026-10-25T15:38:18.791Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] capture {event: take, takeId: take-mvnzsgfa-5, duration: 6.121, rms: 0.0475, peak: 0.439}",
+      "location": "http://127.0.0.1:18780/:3085",
+      "at": "2026-10-25T15:38:22.920Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] mic rms {pcm: 0.047502, backup: 0.0471, usedBackup: false, rms: 0.047502, gainDb: 5.5}",
+      "location": "http://127.0.0.1:18780/:10173",
+      "at": "2026-10-25T15:38:22.925Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] mix align {mode: scheduled, when: 40.247, now: 40.08, offset: 2, voiceGain: 0.5}",
+      "location": "http://127.0.0.1:18780/:6957",
+      "at": "2026-10-25T15:38:27.549Z"
+    }
+  ],
+  "pageErrors": [],
+  "requestFailures": [
+    {
+      "url": "blob:http://127.0.0.1:18780/e9f2c592-fbbd-463c-83b1-ffa7a063fbac",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-10-25T15:37:47.332Z"
+    }
+  ],
+  "screenshots": [
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-loaded.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-ingested.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-sent.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-mic.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-take.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-score.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-score-buffer.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-mixed.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-mixed2.png",
+    "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\shots\\app-final.png"
+  ],
+  "phases": {
+    "boot": {
+      "ready": true,
+      "version": "0.7.0",
+      "api": {
+        "server": true,
+        "asrBase": "/api/asr",
+        "mic": true
+      },
+      "hooks": [
+        "version",
+        "state",
+        "ingestWavBase64",
+        "setSentence",
+        "setD",
+        "openMic",
+        "measureMic",
+        "listInputs",
+        "recordOnce",
+        "stopRecord",
+        "scoreCurrent",
+        "score",
+        "scoreBuffer",
+        "transcribeBuffer",
+        "asrHealth",
+        "captureHealth",
+        "getScore",
+        "clipIds",
+        "recordings",
+        "prefs",
+        "plugins",
+        "course",
+        "courseClips",
+        "importCourseText",
+        "importCourseUrl",
+        "validateCourse",
+        "openCourseWizard",
+        "closeCourseWizard",
+        "openCourseReadme",
+        "setCourseTextOnly",
+        "startCourseMediaBind",
+        "fonts",
+        "loadServerFonts",
+        "applyServerFontByFile",
+        "openAssFontPicker",
+        "setAssSubtitle",
+        "pluginManifests",
+        "openPluginSettings",
+        "pluginManagerRows",
+        "hash",
+        "handlePluginDeepLink",
+        "setRecMode",
+        "setPlugin",
+        "subtitle"
+      ],
+      "state": {
+        "recording": false,
+        "phase": "idle",
+        "active": false,
+        "mic": {
+          "open": false,
+          "deviceId": "",
+          "deviceLabel": "",
+          "processing": "raw",
+          "level": {
+            "rms": 0,
+            "peak": 0,
+            "db": -100,
+            "speechLikely": false
+          },
+          "measure": null,
+          "health": null,
+          "error": ""
+        },
+        "api": {
+          "server": true,
+          "asrBase": "/api/asr",
+          "version": "0.7.0"
+        },
+        "asrOnline": true,
+        "currentSentence": 0,
+        "currentClipId": null,
+        "playing": false,
+        "source": "original",
+        "mediaPaused": null,
+        "mediaMuted": null,
+        "recMode": "clean",
+        "contaminated": false,
+        "clockFit": null,
+        "recSource": false,
+        "syncRepeat": {
+          "active": false,
+          "start": 0,
+          "end": 0,
+          "dIdx": -1
+        },
+        "lastTake": null,
+        "takePath": "",
+        "takesLog": [],
+        "clips": [],
+        "scores": 0,
+        "recordings": 0
+      },
+      "asrOnlineWaited": true
+    },
+    "ingest": {
+      "ok": true,
+      "res": {
+        "ok": true,
+        "clipId": "clip_5x43th",
+        "duration": 12,
+        "sentences": [
+          {
+            "start": 1.04,
+            "end": 2.52,
+            "en": "（待转写）第 1 句"
+          },
+          {
+            "start": 3.28,
+            "end": 8.52,
+            "en": "（待转写）第 2 句"
+          }
+        ]
+      }
+    },
+    "setup": {
+      "setSentence": true,
+      "setD": true,
+      "tokenCount": 17,
+      "state": {
+        "recording": false,
+        "phase": "idle",
+        "active": false,
+        "mic": {
+          "open": false,
+          "deviceId": "",
+          "deviceLabel": "",
+          "processing": "raw",
+          "level": {
+            "rms": 0,
+            "peak": 0,
+            "db": -100,
+            "speechLikely": false
+          },
+          "measure": null,
+          "health": null,
+          "error": ""
+        },
+        "api": {
+          "server": true,
+          "asrBase": "/api/asr",
+          "version": "0.7.0"
+        },
+        "asrOnline": true,
+        "currentSentence": 0,
+        "currentClipId": "clip_5x43th",
+        "playing": false,
+        "source": "original",
+        "mediaPaused": true,
+        "mediaMuted": false,
+        "recMode": "clean",
+        "contaminated": false,
+        "clockFit": null,
+        "recSource": false,
+        "syncRepeat": {
+          "active": true,
+          "start": 0.5,
+          "end": 2.5,
+          "dIdx": 0
+        },
+        "lastTake": null,
+        "takePath": "",
+        "takesLog": [],
+        "clips": [
+          {
+            "id": "clip_5x43th",
+            "name": "e2e-12s.wav",
+            "status": "analyzed",
+            "duration": 12,
+            "sentences": 2
+          }
+        ],
+        "scores": 0,
+        "recordings": 0
+      },
+      "panels": {
+        "micDevice": true,
+        "micProcessing": true,
+        "micTest": true,
+        "recCanvas": true,
+        "recordBtn": true,
+        "scoreBtn": true,
+        "mixedBtn": true,
+        "micLevelDb": true,
+        "micLevelFill": true
+      }
+    },
+    "openMic": {
+      "ok": true,
+      "res": {
+        "ok": true,
+        "health": {
+          "open": true,
+          "state": "running",
+          "deviceId": "default",
+          "deviceLabel": "Fake Default Audio Input",
+          "sampleRate": 48000,
+          "rms": 0,
+          "peak": 0,
+          "db": -100,
+          "speechLikely": false,
+          "mode": "audioworklet",
+          "lastError": "",
+          "paused": false,
+          "tracksLive": true,
+          "processing": "raw",
+          "workletVia": "blob",
+          "version": "0.7.0"
+        },
+        "error": ""
+      },
+      "state": {
+        "recording": false,
+        "phase": "idle",
+        "active": false,
+        "mic": {
+          "open": true,
+          "deviceId": "default",
+          "deviceLabel": "Fake Default Audio Input",
+          "processing": "raw",
+          "level": {
+            "rms": 0.09476551841087834,
+            "peak": 0.31935060024261475,
+            "db": -20.466993145221878,
+            "speechLikely": true,
+            "levels": [
+              0.04649,
+              0.09477
+            ]
+          },
+          "measure": null,
+          "health": {
+            "open": true,
+            "state": "running",
+            "deviceId": "default",
+            "deviceLabel": "Fake Default Audio Input",
+            "sampleRate": 48000,
+            "rms": 0,
+            "peak": 0,
+            "db": -100,
+            "speechLikely": false,
+            "mode": "audioworklet",
+            "lastError": "",
+            "paused": false,
+            "tracksLive": true,
+            "processing": "raw",
+            "workletVia": "blob",
+            "version": "0.7.0"
+          },
+          "error": ""
+        },
+        "api": {
+          "server": true,
+          "asrBase": "/api/asr",
+          "version": "0.7.0"
+        },
+        "asrOnline": true,
+        "currentSentence": 0,
+        "currentClipId": "clip_5x43th",
+        "playing": false,
+        "source": "original",
+        "mediaPaused": true,
+        "mediaMuted": false,
+        "recMode": "clean",
+        "contaminated": false,
+        "clockFit": null,
+        "recSource": false,
+        "syncRepeat": {
+          "active": true,
+          "start": 0.5,
+          "end": 2.5,
+          "dIdx": 0
+        },
+        "lastTake": null,
+        "takePath": "",
+        "takesLog": [],
+        "clips": [
+          {
+            "id": "clip_5x43th",
+            "name": "e2e-12s.wav",
+            "status": "analyzed",
+            "duration": 12,
+            "sentences": 2
+          }
+        ],
+        "scores": 0,
+        "recordings": 0
+      },
+      "maxRms": 0.09476551841087834,
+      "lastHealth": {
+        "open": true,
+        "state": "running",
+        "deviceId": "default",
+        "deviceLabel": "Fake Default Audio Input",
+        "sampleRate": 48000,
+        "rms": 0.09476551841087834,
+        "peak": 0.31935060024261475,
+        "db": -20.466993145221878,
+        "speechLikely": true,
+        "mode": "audioworklet",
+        "lastError": "",
+        "paused": false,
+        "tracksLive": true,
+        "processing": "raw",
+        "workletVia": "blob",
+        "version": "0.7.0"
+      }
+    },
+    "takes": [
+      {
+        "idx": 0,
+        "elapsedMs": 6063,
+        "ok": true,
+        "error": null,
+        "take": {
+          "rms": 0.0502,
+          "db": -26,
+          "duration": 5.98,
+          "speechDur": 2.68,
+          "offset": 1.88,
+          "preRollSec": 1.88,
+          "gainDb": 5.1,
+          "deviceLabel": "Fake Default Audio Input",
+          "usedBackup": false,
+          "backupRms": 0.0454,
+          "speechOnset": 0.02,
+          "speechEnd": 5.94,
+          "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942677393.wav",
+          "captureMode": "audioworklet"
+        },
+        "trace": [
+          {
+            "tag": "before",
+            "ms": 0,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 0
+          },
+          {
+            "tag": "started",
+            "ms": 9,
+            "rec": true,
+            "phase": "prep",
+            "nrec": 0
+          },
+          {
+            "tag": "active",
+            "ms": 1745,
+            "rec": true,
+            "phase": "recording",
+            "nrec": 0
+          },
+          {
+            "tag": "stored",
+            "ms": 5906,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          }
+        ],
+        "beforeSentence": 0,
+        "afterSentence": 0
+      },
+      {
+        "idx": 1,
+        "elapsedMs": 6056,
+        "ok": true,
+        "error": null,
+        "take": {
+          "rms": 0.0496,
+          "db": -26.1,
+          "duration": 6.12,
+          "speechDur": 3.02,
+          "offset": 2,
+          "preRollSec": 2,
+          "gainDb": 5.2,
+          "deviceLabel": "Fake Default Audio Input",
+          "usedBackup": false,
+          "backupRms": 0.0482,
+          "speechOnset": 0.12,
+          "speechEnd": 6.12,
+          "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942683788.wav",
+          "captureMode": "audioworklet"
+        },
+        "trace": [
+          {
+            "tag": "before",
+            "ms": 0,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          },
+          {
+            "tag": "started",
+            "ms": 14,
+            "rec": true,
+            "phase": "prep",
+            "nrec": 1
+          },
+          {
+            "tag": "active",
+            "ms": 1750,
+            "rec": true,
+            "phase": "recording",
+            "nrec": 1
+          },
+          {
+            "tag": "stored",
+            "ms": 5900,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          }
+        ],
+        "beforeSentence": 0,
+        "afterSentence": 0
+      },
+      {
+        "idx": 2,
+        "elapsedMs": 6067,
+        "ok": true,
+        "error": null,
+        "take": {
+          "rms": 0.0475,
+          "db": -26.5,
+          "duration": 6.12,
+          "speechDur": 2.6,
+          "offset": 2,
+          "preRollSec": 2,
+          "gainDb": 5.6,
+          "deviceLabel": "Fake Default Audio Input",
+          "usedBackup": false,
+          "backupRms": 0.0523,
+          "speechOnset": 0.16,
+          "speechEnd": 6.1,
+          "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942690154.wav",
+          "captureMode": "audioworklet"
+        },
+        "trace": [
+          {
+            "tag": "before",
+            "ms": 0,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          },
+          {
+            "tag": "started",
+            "ms": 10,
+            "rec": true,
+            "phase": "prep",
+            "nrec": 1
+          },
+          {
+            "tag": "active",
+            "ms": 1751,
+            "rec": true,
+            "phase": "recording",
+            "nrec": 1
+          },
+          {
+            "tag": "stored",
+            "ms": 5911,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          }
+        ],
+        "beforeSentence": 0,
+        "afterSentence": 0
+      },
+      {
+        "idx": 3,
+        "elapsedMs": 6051,
+        "ok": true,
+        "error": null,
+        "take": {
+          "rms": 0.0504,
+          "db": -25.9,
+          "duration": 6.11,
+          "speechDur": 2.76,
+          "offset": 2,
+          "preRollSec": 2,
+          "gainDb": 5,
+          "deviceLabel": "Fake Default Audio Input",
+          "usedBackup": false,
+          "backupRms": 0.0503,
+          "speechOnset": 0.34,
+          "speechEnd": 5.38,
+          "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942696558.wav",
+          "captureMode": "audioworklet"
+        },
+        "trace": [
+          {
+            "tag": "before",
+            "ms": 0,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          },
+          {
+            "tag": "started",
+            "ms": 10,
+            "rec": true,
+            "phase": "prep",
+            "nrec": 1
+          },
+          {
+            "tag": "active",
+            "ms": 1748,
+            "rec": true,
+            "phase": "recording",
+            "nrec": 1
+          },
+          {
+            "tag": "stored",
+            "ms": 5897,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          }
+        ],
+        "beforeSentence": 0,
+        "afterSentence": 0
+      },
+      {
+        "idx": 4,
+        "elapsedMs": 6058,
+        "ok": true,
+        "error": null,
+        "take": {
+          "rms": 0.0475,
+          "db": -26.5,
+          "duration": 6.12,
+          "speechDur": 2.92,
+          "offset": 2,
+          "preRollSec": 2,
+          "gainDb": 5.5,
+          "deviceLabel": "Fake Default Audio Input",
+          "usedBackup": false,
+          "backupRms": 0.0471,
+          "speechOnset": 0.12,
+          "speechEnd": 6.12,
+          "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+          "captureMode": "audioworklet"
+        },
+        "trace": [
+          {
+            "tag": "before",
+            "ms": 0,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          },
+          {
+            "tag": "started",
+            "ms": 10,
+            "rec": true,
+            "phase": "prep",
+            "nrec": 1
+          },
+          {
+            "tag": "active",
+            "ms": 1763,
+            "rec": true,
+            "phase": "recording",
+            "nrec": 1
+          },
+          {
+            "tag": "stored",
+            "ms": 5902,
+            "rec": false,
+            "phase": "idle",
+            "nrec": 1
+          }
+        ],
+        "beforeSentence": 0,
+        "afterSentence": 0
+      }
+    ],
+    "score": {
+      "ok": true,
+      "res": {
+        "overall": 55,
+        "dims": {
+          "rhythm": 36,
+          "fluency": 92,
+          "completeness": 48,
+          "intonation": 80
+        },
+        "words": [
+          {
+            "text": "welcome",
+            "heard": "welcome",
+            "status": "exact",
+            "confidence": 0.954,
+            "score": 100,
+            "judged": true
+          },
+          {
+            "text": "to",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "the",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "new",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "series",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "of",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "the",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "incredible",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "women",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "podcast",
+            "heard": "",
+            "status": "unclear",
+            "confidence": 0.685,
+            "score": 55,
+            "judged": false
+          },
+          {
+            "text": "in",
+            "heard": "back",
+            "status": "wrong",
+            "confidence": 0.468,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "which",
+            "heard": "today",
+            "status": "wrong",
+            "confidence": 0.978,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "we",
+            "heard": "we",
+            "status": "exact",
+            "confidence": 0.727,
+            "score": 100,
+            "judged": true
+          },
+          {
+            "text": "sit",
+            "heard": "talk",
+            "status": "wrong",
+            "confidence": 0.912,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "down",
+            "heard": "about",
+            "status": "wrong",
+            "confidence": 0.992,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "with",
+            "heard": "the",
+            "status": "wrong",
+            "confidence": 0.836,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "women",
+            "heard": "small",
+            "status": "wrong",
+            "confidence": 0.393,
+            "score": 30,
+            "judged": true
+          }
+        ],
+        "advice": "逐词匹配 48%，慢一点，把每个词读完整，别含糊带过。 读错/替换的词：in、which、sit、down、with、women。 9 个词待确认，这次不算错。 节奏和原声差得多：先听一遍原声，跟着重音走。",
+        "warnings": [
+          "ASR 置信度低/漏识别：9 个词标为待确认，未扣分。",
+          "录音时长和原句差得较多，可能没跟完或停早了。"
+        ],
+        "metrics": {
+          "wordPct": 48,
+          "judgedCount": 8,
+          "refCount": 17,
+          "coveragePct": 88,
+          "asrMeanP": 0.685,
+          "asrReliable": false,
+          "asrCoverage": 0.882,
+          "missingCount": 0,
+          "unclearCount": 9,
+          "asrText": "Slow down, breathe and finish every sentence. Welcome back. Today we talk about the small",
+          "asrElapsedMs": 576,
+          "wordSource": "asr",
+          "extraCount": 7,
+          "exactCount": 2,
+          "fuzzyCount": 0,
+          "wrongCount": 6,
+          "distanceRatio": 1.294,
+          "speechSec": 5.66,
+          "voicedPct": 92,
+          "pauses": 1,
+          "pauseSec": 0.46,
+          "rmsDb": -26.5,
+          "corr": 0.8,
+          "durationMatch": 0,
+          "referenceUsed": true,
+          "asrError": "",
+          "asrMs": 576,
+          "device": "Fake Default Audio Input",
+          "gainDb": 5.5
+        },
+        "contaminated": false,
+        "local": true,
+        "asrAvailable": true,
+        "hasRecording": true,
+        "ts": 1792942704316
+      }
+    },
+    "transcribeBuffer": {
+      "ok": true,
+      "asrText": "Neta Porte presents The Incredible Women Podcast, Series 9, Passion and Purpose."
+    },
+    "perfect": {
+      "usedRefText": "Neta Porte presents The Incredible Women Podcast, Series 9, Passion and Purpose.",
+      "result": {
+        "ok": true,
+        "result": {
+          "overall": 90,
+          "dims": {
+            "rhythm": 91,
+            "fluency": 81,
+            "completeness": 100,
+            "intonation": null
+          },
+          "wordRows": [
+            {
+              "text": "neta",
+              "heard": "neta",
+              "status": "exact",
+              "confidence": 0.388,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "porte",
+              "heard": "porte",
+              "status": "exact",
+              "confidence": 0.413,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "presents",
+              "heard": "presents",
+              "status": "exact",
+              "confidence": 0.94,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "the",
+              "heard": "the",
+              "status": "exact",
+              "confidence": 0.387,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "incredible",
+              "heard": "incredible",
+              "status": "exact",
+              "confidence": 0.87,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "women",
+              "heard": "women",
+              "status": "exact",
+              "confidence": 0.922,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "podcast",
+              "heard": "podcast",
+              "status": "exact",
+              "confidence": 0.484,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "series",
+              "heard": "series",
+              "status": "exact",
+              "confidence": 0.757,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "9",
+              "heard": "9",
+              "status": "exact",
+              "confidence": 0.686,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "passion",
+              "heard": "passion",
+              "status": "exact",
+              "confidence": 0.903,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "and",
+              "heard": "and",
+              "status": "exact",
+              "confidence": 0.74,
+              "score": 100,
+              "judged": true
+            },
+            {
+              "text": "purpose",
+              "heard": "purpose",
+              "status": "exact",
+              "confidence": 0.827,
+              "score": 100,
+              "judged": true
+            }
+          ],
+          "metrics": {
+            "wordPct": 100,
+            "judgedCount": 12,
+            "refCount": 12,
+            "coveragePct": 100,
+            "asrMeanP": 0.657,
+            "asrReliable": true,
+            "asrCoverage": 1,
+            "missingCount": 0,
+            "unclearCount": 0,
+            "asrText": "Neta Porte presents The Incredible Women Podcast, Series 9, Passion and Purpose.",
+            "asrElapsedMs": 560,
+            "wordSource": "asr",
+            "extraCount": 0,
+            "exactCount": 12,
+            "fuzzyCount": 0,
+            "wrongCount": 0,
+            "distanceRatio": 0
+          },
+          "warnings": [],
+          "advice": "逐词基本全对，节奏也稳，保持。"
+        },
+        "asr": {
+          "ok": true,
+          "text": "Neta Porte presents The Incredible Women Podcast, Series 9, Passion and Purpose.",
+          "segments": [
+            {
+              "t0": 0,
+              "t1": 8.6,
+              "text": "Neta Porte presents The Incredible Women Podcast, Series 9, Passion and Purpose.",
+              "probability": 0.5652
+            }
+          ],
+          "tokens": [
+            {
+              "text": " Net",
+              "p": 0.8164,
+              "t0": 0,
+              "t1": 0.37,
+              "id": 3433
+            },
+            {
+              "text": "a",
+              "p": 0.1842,
+              "t0": 0.37,
+              "t1": 0.5,
+              "id": 64
+            },
+            {
+              "text": " Port",
+              "p": 0.3127,
+              "t0": 1.03,
+              "t1": 1.26,
+              "id": 4347
+            },
+            {
+              "text": "e",
+              "p": 0.5454,
+              "t0": 1.26,
+              "t1": 1.45,
+              "id": 68
+            },
+            {
+              "text": " presents",
+              "p": 0.9395,
+              "t0": 1.45,
+              "t1": 2.56,
+              "id": 10969
+            },
+            {
+              "text": " The",
+              "p": 0.387,
+              "t0": 3.28,
+              "t1": 3.33,
+              "id": 383
+            },
+            {
+              "text": " Incredible",
+              "p": 0.8699,
+              "t0": 3.33,
+              "t1": 4.44,
+              "id": 33832
+            },
+            {
+              "text": " Women",
+              "p": 0.9221,
+              "t0": 4.44,
+              "t1": 4.9,
+              "id": 6926
+            },
+            {
+              "text": " Podcast",
+              "p": 0.5756,
+              "t0": 5.01,
+              "t1": 5.48,
+              "id": 16036
+            },
+            {
+              "text": ",",
+              "p": 0.4076,
+              "t0": 5.88,
+              "t1": 5.89,
+              "id": 11
+            },
+            {
+              "text": " Series",
+              "p": 0.7569,
+              "t0": 5.9,
+              "t1": 6.2,
+              "id": 7171
+            },
+            {
+              "text": " 9",
+              "p": 0.8556,
+              "t0": 6.2,
+              "t1": 7.12,
+              "id": 860
+            },
+            {
+              "text": ",",
+              "p": 0.5503,
+              "t0": 7.12,
+              "t1": 7.21,
+              "id": 11
+            },
+            {
+              "text": " Passion",
+              "p": 0.9032,
+              "t0": 7.21,
+              "t1": 7.53,
+              "id": 37580
+            },
+            {
+              "text": " and",
+              "p": 0.7404,
+              "t0": 7.54,
+              "t1": 7.83,
+              "id": 290
+            },
+            {
+              "text": " Purpose",
+              "p": 0.9674,
+              "t0": 7.83,
+              "t1": 8.52,
+              "id": 32039
+            },
+            {
+              "text": ".",
+              "p": 0.7064,
+              "t0": 8.52,
+              "t1": 8.54,
+              "id": 13
+            }
+          ],
+          "words": [
+            {
+              "word": "Neta",
+              "p": 0.3878,
+              "n": 2,
+              "t0": 0,
+              "t1": 0.5
+            },
+            {
+              "word": "Porte",
+              "p": 0.413,
+              "n": 2,
+              "t0": 1.03,
+              "t1": 1.45
+            },
+            {
+              "word": "presents",
+              "p": 0.9395,
+              "n": 1,
+              "t0": 1.45,
+              "t1": 2.56
+            },
+            {
+              "word": "The",
+              "p": 0.387,
+              "n": 1,
+              "t0": 3.28,
+              "t1": 3.33
+            },
+            {
+              "word": "Incredible",
+              "p": 0.8699,
+              "n": 1,
+              "t0": 3.33,
+              "t1": 4.44
+            },
+            {
+              "word": "Women",
+              "p": 0.9221,
+              "n": 1,
+              "t0": 4.44,
+              "t1": 4.9
+            },
+            {
+              "word": "Podcast,",
+              "p": 0.4844,
+              "n": 2,
+              "t0": 5.01,
+              "t1": 5.89
+            },
+            {
+              "word": "Series",
+              "p": 0.7569,
+              "n": 1,
+              "t0": 5.9,
+              "t1": 6.2
+            },
+            {
+              "word": "9,",
+              "p": 0.6862,
+              "n": 2,
+              "t0": 6.2,
+              "t1": 7.21
+            },
+            {
+              "word": "Passion",
+              "p": 0.9032,
+              "n": 1,
+              "t0": 7.21,
+              "t1": 7.53
+            },
+            {
+              "word": "and",
+              "p": 0.7404,
+              "n": 1,
+              "t0": 7.54,
+              "t1": 7.83
+            },
+            {
+              "word": "Purpose.",
+              "p": 0.8267,
+              "n": 2,
+              "t0": 7.83,
+              "t1": 8.54
+            }
+          ],
+          "avg_probability": 0.6188,
+          "n_tokens": 17,
+          "n_words": 12,
+          "n_segments": 1,
+          "duration_sec": 12,
+          "decode_ms": 24.2,
+          "asr_ms": 527,
+          "model": "ggml-base.en.bin",
+          "prompt_used": false,
+          "language": "en",
+          "threads": 8,
+          "filename": "take.wav",
+          "elapsed_ms": 553,
+          "elapsedMs": 560
+        },
+        "features": {
+          "invalid": false,
+          "voicedRatio": 0.6783333333333333,
+          "speechDur": 8.14,
+          "userDur": 10.88,
+          "pauses": 3,
+          "pauseDur": 2.16,
+          "durationMatch": 0.9066666666666667,
+          "rms": 0.04968415857858274,
+          "rmsDb": -26,
+          "cv": 1.2234728675626492,
+          "peak": 0.22235217993655867,
+          "threshold": 0.015564652595559109,
+          "corr": null,
+          "referenceUsed": false,
+          "dims": {
+            "rhythm": 81,
+            "fluency": 85,
+            "completeness": 92,
+            "intonation": null
+          },
+          "overall": 85
+        }
+      }
+    },
+    "unreliable": {
+      "ok": true,
+      "result": {
+        "overall": 66,
+        "dims": {
+          "rhythm": 87,
+          "fluency": 100,
+          "completeness": 42,
+          "intonation": null
+        },
+        "wordRows": [
+          {
+            "text": "welcome",
+            "heard": "welcome",
+            "status": "exact",
+            "confidence": 0.708,
+            "score": 100,
+            "judged": true
+          },
+          {
+            "text": "to",
+            "heard": "about",
+            "status": "wrong",
+            "confidence": 0.985,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "the",
+            "heard": "the",
+            "status": "exact",
+            "confidence": 0.905,
+            "score": 100,
+            "judged": true
+          },
+          {
+            "text": "new",
+            "heard": "habits",
+            "status": "wrong",
+            "confidence": 0.992,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "series",
+            "heard": "that",
+            "status": "wrong",
+            "confidence": 0.979,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "of",
+            "heard": "change",
+            "status": "wrong",
+            "confidence": 0.933,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "the",
+            "heard": "the",
+            "status": "exact",
+            "confidence": 0.985,
+            "score": 100,
+            "judged": true
+          },
+          {
+            "text": "incredible",
+            "heard": "rush",
+            "status": "wrong",
+            "confidence": 0.997,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "women",
+            "heard": "and",
+            "status": "wrong",
+            "confidence": 0.968,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "podcast",
+            "heard": "mumble",
+            "status": "wrong",
+            "confidence": 0.895,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "in",
+            "heard": "then",
+            "status": "wrong",
+            "confidence": 0.61,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "which",
+            "heard": "wonder",
+            "status": "wrong",
+            "confidence": 0.993,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "we",
+            "heard": "why",
+            "status": "wrong",
+            "confidence": 0.987,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "sit",
+            "heard": "nobody",
+            "status": "wrong",
+            "confidence": 0.944,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "down",
+            "heard": "follows",
+            "status": "wrong",
+            "confidence": 0.993,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "with",
+            "heard": "the",
+            "status": "wrong",
+            "confidence": 0.863,
+            "score": 30,
+            "judged": true
+          },
+          {
+            "text": "women",
+            "heard": "big",
+            "status": "wrong",
+            "confidence": 0.807,
+            "score": 30,
+            "judged": true
+          }
+        ],
+        "metrics": {
+          "wordPct": 42,
+          "judgedCount": 17,
+          "refCount": 17,
+          "coveragePct": 100,
+          "asrMeanP": 0.844,
+          "asrReliable": false,
+          "asrCoverage": 1,
+          "missingCount": 0,
+          "unclearCount": 0,
+          "asrText": "Welcome back today we talk about the small habits that change the way you see most people try too hard, they rush and mumble then wonder why nobody follows the big",
+          "asrElapsedMs": 679,
+          "wordSource": "asr",
+          "extraCount": 14,
+          "exactCount": 3,
+          "fuzzyCount": 0,
+          "wrongCount": 14,
+          "distanceRatio": 0.903
+        },
+        "warnings": [
+          "ASR 判定不太可靠（与参考文本差异偏大），逐词结果仅供参考。"
+        ],
+        "advice": "逐词匹配 42%，慢一点，把每个词读完整，别含糊带过。 读错/替换的词：to、new、series、of、incredible、women、podcast、in。"
+      },
+      "asr": {
+        "ok": true,
+        "text": "Welcome back today we talk about the small habits that change the way you see most people try too hard, they rush and mumble then wonder why nobody follows the big",
+        "segments": [
+          {
+            "t0": 0,
+            "t1": 7.1,
+            "text": "Welcome back today we talk about the small habits that change the way you see most people",
+            "probability": 0.7229
+          },
+          {
+            "t0": 7.1,
+            "t1": 12,
+            "text": "try too hard, they rush and mumble then wonder why nobody follows the big",
+            "probability": 0.5996
+          }
+        ],
+        "tokens": [
+          {
+            "text": " Welcome",
+            "p": 0.7083,
+            "t0": 0,
+            "t1": 1.09,
+            "id": 19134
+          },
+          {
+            "text": " back",
+            "p": 0.7571,
+            "t0": 1.51,
+            "t1": 1.71,
+            "id": 736
+          },
+          {
+            "text": " today",
+            "p": 0.4821,
+            "t0": 1.71,
+            "t1": 2.5,
+            "id": 1909
+          },
+          {
+            "text": " we",
+            "p": 0.6909,
+            "t0": 2.5,
+            "t1": 2.68,
+            "id": 356
+          },
+          {
+            "text": " talk",
+            "p": 0.6958,
+            "t0": 2.68,
+            "t1": 3.05,
+            "id": 1561
+          },
+          {
+            "text": " about",
+            "p": 0.9848,
+            "t0": 3.05,
+            "t1": 3.52,
+            "id": 546
+          },
+          {
+            "text": " the",
+            "p": 0.9047,
+            "t0": 3.52,
+            "t1": 3.79,
+            "id": 262
+          },
+          {
+            "text": " small",
+            "p": 0.831,
+            "t0": 3.83,
+            "t1": 4.29,
+            "id": 1402
+          },
+          {
+            "text": " habits",
+            "p": 0.9917,
+            "t0": 4.29,
+            "t1": 4.78,
+            "id": 13870
+          },
+          {
+            "text": " that",
+            "p": 0.9792,
+            "t0": 4.89,
+            "t1": 5.14,
+            "id": 326
+          },
+          {
+            "text": " change",
+            "p": 0.9325,
+            "t0": 5.18,
+            "t1": 5.57,
+            "id": 1487
+          },
+          {
+            "text": " the",
+            "p": 0.985,
+            "t0": 5.57,
+            "t1": 5.78,
+            "id": 262
+          },
+          {
+            "text": " way",
+            "p": 0.9945,
+            "t0": 5.78,
+            "t1": 5.96,
+            "id": 835
+          },
+          {
+            "text": " you",
+            "p": 0.9636,
+            "t0": 6,
+            "t1": 6.12,
+            "id": 345
+          },
+          {
+            "text": " see",
+            "p": 0.8939,
+            "t0": 6.12,
+            "t1": 6.4,
+            "id": 766
+          },
+          {
+            "text": " most",
+            "p": 0.8527,
+            "t0": 6.4,
+            "t1": 6.76,
+            "id": 749
+          },
+          {
+            "text": " people",
+            "p": 0.9396,
+            "t0": 6.76,
+            "t1": 7.1,
+            "id": 661
+          },
+          {
+            "text": " try",
+            "p": 0.9763,
+            "t0": 7.1,
+            "t1": 7.44,
+            "id": 1949
+          },
+          {
+            "text": " too",
+            "p": 0.6681,
+            "t0": 7.44,
+            "t1": 7.78,
+            "id": 1165
+          },
+          {
+            "text": " hard",
+            "p": 0.9952,
+            "t0": 7.78,
+            "t1": 8.26,
+            "id": 1327
+          },
+          {
+            "text": ",",
+            "p": 0.2672,
+            "t0": 8.26,
+            "t1": 8.4,
+            "id": 11
+          },
+          {
+            "text": " they",
+            "p": 0.8212,
+            "t0": 8.61,
+            "t1": 8.69,
+            "id": 484
+          },
+          {
+            "text": " rush",
+            "p": 0.9965,
+            "t0": 8.69,
+            "t1": 8.98,
+            "id": 10484
+          },
+          {
+            "text": " and",
+            "p": 0.9675,
+            "t0": 8.98,
+            "t1": 9.2,
+            "id": 290
+          },
+          {
+            "text": " m",
+            "p": 0.838,
+            "t0": 9.2,
+            "t1": 9.27,
+            "id": 285
+          },
+          {
+            "text": "umble",
+            "p": 0.9565,
+            "t0": 9.27,
+            "t1": 9.63,
+            "id": 10344
+          },
+          {
+            "text": " then",
+            "p": 0.61,
+            "t0": 9.63,
+            "t1": 9.92,
+            "id": 788
+          },
+          {
+            "text": " wonder",
+            "p": 0.9932,
+            "t0": 9.92,
+            "t1": 10.31,
+            "id": 4240
+          },
+          {
+            "text": " why",
+            "p": 0.9866,
+            "t0": 10.39,
+            "t1": 10.57,
+            "id": 1521
+          },
+          {
+            "text": " nobody",
+            "p": 0.9436,
+            "t0": 10.57,
+            "t1": 10.99,
+            "id": 8168
+          },
+          {
+            "text": " follows",
+            "p": 0.9929,
+            "t0": 11.09,
+            "t1": 11.47,
+            "id": 5679
+          },
+          {
+            "text": " the",
+            "p": 0.863,
+            "t0": 11.62,
+            "t1": 11.73,
+            "id": 262
+          },
+          {
+            "text": " big",
+            "p": 0.807,
+            "t0": 11.73,
+            "t1": 12,
+            "id": 1263
+          }
+        ],
+        "words": [
+          {
+            "word": "Welcome",
+            "p": 0.7083,
+            "n": 1,
+            "t0": 0,
+            "t1": 1.09
+          },
+          {
+            "word": "back",
+            "p": 0.7571,
+            "n": 1,
+            "t0": 1.51,
+            "t1": 1.71
+          },
+          {
+            "word": "today",
+            "p": 0.4821,
+            "n": 1,
+            "t0": 1.71,
+            "t1": 2.5
+          },
+          {
+            "word": "we",
+            "p": 0.6909,
+            "n": 1,
+            "t0": 2.5,
+            "t1": 2.68
+          },
+          {
+            "word": "talk",
+            "p": 0.6958,
+            "n": 1,
+            "t0": 2.68,
+            "t1": 3.05
+          },
+          {
+            "word": "about",
+            "p": 0.9848,
+            "n": 1,
+            "t0": 3.05,
+            "t1": 3.52
+          },
+          {
+            "word": "the",
+            "p": 0.9047,
+            "n": 1,
+            "t0": 3.52,
+            "t1": 3.79
+          },
+          {
+            "word": "small",
+            "p": 0.831,
+            "n": 1,
+            "t0": 3.83,
+            "t1": 4.29
+          },
+          {
+            "word": "habits",
+            "p": 0.9917,
+            "n": 1,
+            "t0": 4.29,
+            "t1": 4.78
+          },
+          {
+            "word": "that",
+            "p": 0.9792,
+            "n": 1,
+            "t0": 4.89,
+            "t1": 5.14
+          },
+          {
+            "word": "change",
+            "p": 0.9325,
+            "n": 1,
+            "t0": 5.18,
+            "t1": 5.57
+          },
+          {
+            "word": "the",
+            "p": 0.985,
+            "n": 1,
+            "t0": 5.57,
+            "t1": 5.78
+          },
+          {
+            "word": "way",
+            "p": 0.9945,
+            "n": 1,
+            "t0": 5.78,
+            "t1": 5.96
+          },
+          {
+            "word": "you",
+            "p": 0.9636,
+            "n": 1,
+            "t0": 6,
+            "t1": 6.12
+          },
+          {
+            "word": "see",
+            "p": 0.8939,
+            "n": 1,
+            "t0": 6.12,
+            "t1": 6.4
+          },
+          {
+            "word": "most",
+            "p": 0.8527,
+            "n": 1,
+            "t0": 6.4,
+            "t1": 6.76
+          },
+          {
+            "word": "people",
+            "p": 0.9396,
+            "n": 1,
+            "t0": 6.76,
+            "t1": 7.1
+          },
+          {
+            "word": "try",
+            "p": 0.9763,
+            "n": 1,
+            "t0": 7.1,
+            "t1": 7.44
+          },
+          {
+            "word": "too",
+            "p": 0.6681,
+            "n": 1,
+            "t0": 7.44,
+            "t1": 7.78
+          },
+          {
+            "word": "hard,",
+            "p": 0.5157,
+            "n": 2,
+            "t0": 7.78,
+            "t1": 8.4
+          },
+          {
+            "word": "they",
+            "p": 0.8212,
+            "n": 1,
+            "t0": 8.61,
+            "t1": 8.69
+          },
+          {
+            "word": "rush",
+            "p": 0.9965,
+            "n": 1,
+            "t0": 8.69,
+            "t1": 8.98
+          },
+          {
+            "word": "and",
+            "p": 0.9675,
+            "n": 1,
+            "t0": 8.98,
+            "t1": 9.2
+          },
+          {
+            "word": "mumble",
+            "p": 0.8953,
+            "n": 2,
+            "t0": 9.2,
+            "t1": 9.63
+          },
+          {
+            "word": "then",
+            "p": 0.61,
+            "n": 1,
+            "t0": 9.63,
+            "t1": 9.92
+          },
+          {
+            "word": "wonder",
+            "p": 0.9932,
+            "n": 1,
+            "t0": 9.92,
+            "t1": 10.31
+          },
+          {
+            "word": "why",
+            "p": 0.9866,
+            "n": 1,
+            "t0": 10.39,
+            "t1": 10.57
+          },
+          {
+            "word": "nobody",
+            "p": 0.9436,
+            "n": 1,
+            "t0": 10.57,
+            "t1": 10.99
+          },
+          {
+            "word": "follows",
+            "p": 0.9929,
+            "n": 1,
+            "t0": 11.09,
+            "t1": 11.47
+          },
+          {
+            "word": "the",
+            "p": 0.863,
+            "n": 1,
+            "t0": 11.62,
+            "t1": 11.73
+          },
+          {
+            "word": "big",
+            "p": 0.807,
+            "n": 1,
+            "t0": 11.73,
+            "t1": 12
+          }
+        ],
+        "avg_probability": 0.8331,
+        "n_tokens": 33,
+        "n_words": 31,
+        "n_segments": 2,
+        "duration_sec": 12,
+        "decode_ms": 24.1,
+        "asr_ms": 632.8,
+        "model": "ggml-base.en.bin",
+        "prompt_used": false,
+        "language": "en",
+        "threads": 8,
+        "filename": "take.wav",
+        "elapsed_ms": 670.3,
+        "elapsedMs": 679
+      },
+      "features": {
+        "invalid": false,
+        "voicedRatio": 0.8716666666666667,
+        "speechDur": 10.46,
+        "userDur": 10.46,
+        "pauses": 0,
+        "pauseDur": 0,
+        "durationMatch": 0.8716666666666667,
+        "rms": 0.033047429205949976,
+        "rmsDb": -30,
+        "cv": 1.0019610018228884,
+        "peak": 0.12777321237962252,
+        "threshold": 0.01838698580498147,
+        "corr": null,
+        "referenceUsed": false,
+        "dims": {
+          "rhythm": 79,
+          "fluency": 100,
+          "completeness": 100,
+          "intonation": null
+        },
+        "overall": 90
+      }
+    },
+    "mixed": {
+      "states": [
+        {
+          "t": 1200,
+          "playing": true,
+          "source": "mixed",
+          "recSource": true,
+          "clockFit": {
+            "a": 0.97,
+            "b": -38.5392,
+            "n": 16,
+            "span": 0.367999999999995
+          },
+          "recSourceNode": true
+        }
+      ],
+      "mixAlignLogs": [
+        {
+          "type": "info",
+          "text": "[SHADOW] mix align {mode: scheduled, when: 40.247, now: 40.08, offset: 2, voiceGain: 0.5}",
+          "location": "http://127.0.0.1:18780/:6957",
+          "at": "2026-10-25T15:38:27.549Z"
+        }
+      ]
+    },
+    "final": {
+      "state": {
+        "recording": false,
+        "phase": "idle",
+        "active": false,
+        "mic": {
+          "open": true,
+          "deviceId": "default",
+          "deviceLabel": "Fake Default Audio Input",
+          "processing": "raw",
+          "level": {
+            "rms": 0.010899971678255831,
+            "peak": 0.036966390907764435,
+            "db": -39.25149260998237,
+            "speechLikely": false,
+            "levels": [
+              0.11556,
+              0.06974,
+              0.01746,
+              0.02454,
+              0.01694,
+              0.00824,
+              0.03537,
+              0.05164,
+              0.04694,
+              0.01396,
+              0.01079,
+              0.01178,
+              0.01138,
+              0.0332,
+              0.09261,
+              0.09193,
+              0.03778,
+              0.01073,
+              0.00842,
+              0.0037,
+              0.0494,
+              0.06353,
+              0.04624,
+              0.02365,
+              0.00979,
+              0.01442,
+              0.04877,
+              0.06446,
+              0.02687,
+              0.01075,
+              0.00918,
+              0.0109
+            ]
+          },
+          "measure": null,
+          "health": {
+            "open": true,
+            "state": "running",
+            "deviceId": "default",
+            "deviceLabel": "Fake Default Audio Input",
+            "sampleRate": 48000,
+            "rms": 0.022940687491276576,
+            "peak": 0.08623968064785004,
+            "db": -32.787871424253986,
+            "speechLikely": false,
+            "mode": "audioworklet",
+            "lastError": "",
+            "paused": false,
+            "tracksLive": true,
+            "processing": "raw",
+            "workletVia": "blob",
+            "version": "0.7.0"
+          },
+          "error": ""
+        },
+        "api": {
+          "server": true,
+          "asrBase": "/api/asr",
+          "version": "0.7.0"
+        },
+        "asrOnline": true,
+        "currentSentence": 0,
+        "currentClipId": "clip_5x43th",
+        "playing": false,
+        "source": "mixed",
+        "mediaPaused": true,
+        "mediaMuted": false,
+        "recMode": "clean",
+        "contaminated": false,
+        "clockFit": {
+          "a": 0.97,
+          "b": -38.5392,
+          "n": 16,
+          "span": 0.367999999999995
+        },
+        "recSource": false,
+        "syncRepeat": {
+          "active": true,
+          "start": 0.5,
+          "end": 2.5,
+          "dIdx": 0
+        },
+        "lastTake": {
+          "rms": 0.0475,
+          "db": -26.5,
+          "duration": 6.12,
+          "speechDur": 2.92,
+          "offset": 2,
+          "preRollSec": 2,
+          "gainDb": 5.5,
+          "deviceLabel": "Fake Default Audio Input",
+          "usedBackup": false,
+          "backupRms": 0.0471,
+          "speechOnset": 0.12,
+          "speechEnd": 6.12,
+          "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+          "captureMode": "audioworklet"
+        },
+        "takePath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+        "takesLog": [
+          {
+            "at": 1792942677415,
+            "name": "e2e-12s.wav_S01_1792942677393.wav",
+            "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942677393.wav",
+            "url": "/takes/e2e-12s.wav_S01_1792942677393.wav",
+            "clip": "e2e-12s.wav",
+            "idx": 0,
+            "rms": 0.0502,
+            "duration": 5.98
+          },
+          {
+            "at": 1792942683808,
+            "name": "e2e-12s.wav_S01_1792942683788.wav",
+            "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942683788.wav",
+            "url": "/takes/e2e-12s.wav_S01_1792942683788.wav",
+            "clip": "e2e-12s.wav",
+            "idx": 0,
+            "rms": 0.0496,
+            "duration": 6.12
+          },
+          {
+            "at": 1792942690171,
+            "name": "e2e-12s.wav_S01_1792942690154.wav",
+            "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942690154.wav",
+            "url": "/takes/e2e-12s.wav_S01_1792942690154.wav",
+            "clip": "e2e-12s.wav",
+            "idx": 0,
+            "rms": 0.0475,
+            "duration": 6.12
+          },
+          {
+            "at": 1792942696579,
+            "name": "e2e-12s.wav_S01_1792942696558.wav",
+            "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942696558.wav",
+            "url": "/takes/e2e-12s.wav_S01_1792942696558.wav",
+            "clip": "e2e-12s.wav",
+            "idx": 0,
+            "rms": 0.0504,
+            "duration": 6.11
+          },
+          {
+            "at": 1792942702947,
+            "name": "e2e-12s.wav_S01_1792942702925.wav",
+            "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+            "url": "/takes/e2e-12s.wav_S01_1792942702925.wav",
+            "clip": "e2e-12s.wav",
+            "idx": 0,
+            "rms": 0.0475,
+            "duration": 6.12
+          }
+        ],
+        "clips": [
+          {
+            "id": "clip_5x43th",
+            "name": "e2e-12s.wav",
+            "status": "analyzed",
+            "duration": 12,
+            "sentences": 2
+          }
+        ],
+        "scores": 1,
+        "recordings": 1
+      },
+      "captureHealth": {
+        "open": true,
+        "state": "running",
+        "deviceId": "default",
+        "deviceLabel": "Fake Default Audio Input",
+        "sampleRate": 48000,
+        "rms": 0.010899971678255831,
+        "peak": 0.036966390907764435,
+        "db": -39.25149260998237,
+        "speechLikely": false,
+        "mode": "audioworklet",
+        "lastError": "",
+        "paused": false,
+        "tracksLive": true,
+        "processing": "raw",
+        "workletVia": "blob",
+        "version": "0.7.0"
+      }
+    }
+  },
+  "stateSnapshots": {
+    "boot": {
+      "recording": false,
+      "phase": "idle",
+      "active": false,
+      "mic": {
+        "open": false,
+        "deviceId": "",
+        "deviceLabel": "",
+        "processing": "raw",
+        "level": {
+          "rms": 0,
+          "peak": 0,
+          "db": -100,
+          "speechLikely": false
+        },
+        "measure": null,
+        "health": null,
+        "error": ""
+      },
+      "api": {
+        "server": true,
+        "asrBase": "/api/asr",
+        "version": "0.7.0"
+      },
+      "asrOnline": true,
+      "currentSentence": 0,
+      "currentClipId": null,
+      "playing": false,
+      "source": "original",
+      "mediaPaused": null,
+      "mediaMuted": null,
+      "recMode": "clean",
+      "contaminated": false,
+      "clockFit": null,
+      "recSource": false,
+      "syncRepeat": {
+        "active": false,
+        "start": 0,
+        "end": 0,
+        "dIdx": -1
+      },
+      "lastTake": null,
+      "takePath": "",
+      "takesLog": [],
+      "clips": [],
+      "scores": 0,
+      "recordings": 0
+    },
+    "setup": {
+      "recording": false,
+      "phase": "idle",
+      "active": false,
+      "mic": {
+        "open": false,
+        "deviceId": "",
+        "deviceLabel": "",
+        "processing": "raw",
+        "level": {
+          "rms": 0,
+          "peak": 0,
+          "db": -100,
+          "speechLikely": false
+        },
+        "measure": null,
+        "health": null,
+        "error": ""
+      },
+      "api": {
+        "server": true,
+        "asrBase": "/api/asr",
+        "version": "0.7.0"
+      },
+      "asrOnline": true,
+      "currentSentence": 0,
+      "currentClipId": "clip_5x43th",
+      "playing": false,
+      "source": "original",
+      "mediaPaused": true,
+      "mediaMuted": false,
+      "recMode": "clean",
+      "contaminated": false,
+      "clockFit": null,
+      "recSource": false,
+      "syncRepeat": {
+        "active": true,
+        "start": 0.5,
+        "end": 2.5,
+        "dIdx": 0
+      },
+      "lastTake": null,
+      "takePath": "",
+      "takesLog": [],
+      "clips": [
+        {
+          "id": "clip_5x43th",
+          "name": "e2e-12s.wav",
+          "status": "analyzed",
+          "duration": 12,
+          "sentences": 2
+        }
+      ],
+      "scores": 0,
+      "recordings": 0
+    },
+    "openMic": {
+      "recording": false,
+      "phase": "idle",
+      "active": false,
+      "mic": {
+        "open": true,
+        "deviceId": "default",
+        "deviceLabel": "Fake Default Audio Input",
+        "processing": "raw",
+        "level": {
+          "rms": 0.09476551841087834,
+          "peak": 0.31935060024261475,
+          "db": -20.466993145221878,
+          "speechLikely": true,
+          "levels": [
+            0.04649,
+            0.09477
+          ]
+        },
+        "measure": null,
+        "health": {
+          "open": true,
+          "state": "running",
+          "deviceId": "default",
+          "deviceLabel": "Fake Default Audio Input",
+          "sampleRate": 48000,
+          "rms": 0,
+          "peak": 0,
+          "db": -100,
+          "speechLikely": false,
+          "mode": "audioworklet",
+          "lastError": "",
+          "paused": false,
+          "tracksLive": true,
+          "processing": "raw",
+          "workletVia": "blob",
+          "version": "0.7.0"
+        },
+        "error": ""
+      },
+      "api": {
+        "server": true,
+        "asrBase": "/api/asr",
+        "version": "0.7.0"
+      },
+      "asrOnline": true,
+      "currentSentence": 0,
+      "currentClipId": "clip_5x43th",
+      "playing": false,
+      "source": "original",
+      "mediaPaused": true,
+      "mediaMuted": false,
+      "recMode": "clean",
+      "contaminated": false,
+      "clockFit": null,
+      "recSource": false,
+      "syncRepeat": {
+        "active": true,
+        "start": 0.5,
+        "end": 2.5,
+        "dIdx": 0
+      },
+      "lastTake": null,
+      "takePath": "",
+      "takesLog": [],
+      "clips": [
+        {
+          "id": "clip_5x43th",
+          "name": "e2e-12s.wav",
+          "status": "analyzed",
+          "duration": 12,
+          "sentences": 2
+        }
+      ],
+      "scores": 0,
+      "recordings": 0
+    },
+    "score": {
+      "recording": false,
+      "phase": "idle",
+      "active": false,
+      "mic": {
+        "open": true,
+        "deviceId": "default",
+        "deviceLabel": "Fake Default Audio Input",
+        "processing": "raw",
+        "level": {
+          "rms": 0.02919088806418085,
+          "peak": 0.12282370030879974,
+          "db": -30.695053848436675,
+          "speechLikely": false,
+          "levels": [
+            0.01205,
+            0.0056,
+            0.00431,
+            0.01254,
+            0.06246,
+            0.10666,
+            0.07913,
+            0.00498,
+            0.03282,
+            0.0324,
+            0.01404,
+            0.00393,
+            0.00579,
+            0.01036,
+            0.00676,
+            0.06148,
+            0.09934,
+            0.05046,
+            0.01922,
+            0.01271,
+            0.02519,
+            0.03916,
+            0.03856,
+            0.02512,
+            0.01502,
+            0.01187,
+            0.01117,
+            0.0044,
+            0.01274,
+            0.02769,
+            0.04574,
+            0.02919
+          ]
+        },
+        "measure": null,
+        "health": {
+          "open": true,
+          "state": "running",
+          "deviceId": "default",
+          "deviceLabel": "Fake Default Audio Input",
+          "sampleRate": 48000,
+          "rms": 0.022940687491276576,
+          "peak": 0.08623968064785004,
+          "db": -32.787871424253986,
+          "speechLikely": false,
+          "mode": "audioworklet",
+          "lastError": "",
+          "paused": false,
+          "tracksLive": true,
+          "processing": "raw",
+          "workletVia": "blob",
+          "version": "0.7.0"
+        },
+        "error": ""
+      },
+      "api": {
+        "server": true,
+        "asrBase": "/api/asr",
+        "version": "0.7.0"
+      },
+      "asrOnline": true,
+      "currentSentence": 0,
+      "currentClipId": "clip_5x43th",
+      "playing": true,
+      "source": "mine",
+      "mediaPaused": true,
+      "mediaMuted": false,
+      "recMode": "clean",
+      "contaminated": false,
+      "clockFit": null,
+      "recSource": true,
+      "syncRepeat": {
+        "active": true,
+        "start": 0.5,
+        "end": 2.5,
+        "dIdx": 0
+      },
+      "lastTake": {
+        "rms": 0.0475,
+        "db": -26.5,
+        "duration": 6.12,
+        "speechDur": 2.92,
+        "offset": 2,
+        "preRollSec": 2,
+        "gainDb": 5.5,
+        "deviceLabel": "Fake Default Audio Input",
+        "usedBackup": false,
+        "backupRms": 0.0471,
+        "speechOnset": 0.12,
+        "speechEnd": 6.12,
+        "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+        "captureMode": "audioworklet"
+      },
+      "takePath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+      "takesLog": [
+        {
+          "at": 1792942677415,
+          "name": "e2e-12s.wav_S01_1792942677393.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942677393.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942677393.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0502,
+          "duration": 5.98
+        },
+        {
+          "at": 1792942683808,
+          "name": "e2e-12s.wav_S01_1792942683788.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942683788.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942683788.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0496,
+          "duration": 6.12
+        },
+        {
+          "at": 1792942690171,
+          "name": "e2e-12s.wav_S01_1792942690154.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942690154.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942690154.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0475,
+          "duration": 6.12
+        },
+        {
+          "at": 1792942696579,
+          "name": "e2e-12s.wav_S01_1792942696558.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942696558.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942696558.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0504,
+          "duration": 6.11
+        },
+        {
+          "at": 1792942702947,
+          "name": "e2e-12s.wav_S01_1792942702925.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942702925.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0475,
+          "duration": 6.12
+        }
+      ],
+      "clips": [
+        {
+          "id": "clip_5x43th",
+          "name": "e2e-12s.wav",
+          "status": "analyzed",
+          "duration": 12,
+          "sentences": 2
+        }
+      ],
+      "scores": 1,
+      "recordings": 1
+    },
+    "final": {
+      "recording": false,
+      "phase": "idle",
+      "active": false,
+      "mic": {
+        "open": true,
+        "deviceId": "default",
+        "deviceLabel": "Fake Default Audio Input",
+        "processing": "raw",
+        "level": {
+          "rms": 0.010899971678255831,
+          "peak": 0.036966390907764435,
+          "db": -39.25149260998237,
+          "speechLikely": false,
+          "levels": [
+            0.11556,
+            0.06974,
+            0.01746,
+            0.02454,
+            0.01694,
+            0.00824,
+            0.03537,
+            0.05164,
+            0.04694,
+            0.01396,
+            0.01079,
+            0.01178,
+            0.01138,
+            0.0332,
+            0.09261,
+            0.09193,
+            0.03778,
+            0.01073,
+            0.00842,
+            0.0037,
+            0.0494,
+            0.06353,
+            0.04624,
+            0.02365,
+            0.00979,
+            0.01442,
+            0.04877,
+            0.06446,
+            0.02687,
+            0.01075,
+            0.00918,
+            0.0109
+          ]
+        },
+        "measure": null,
+        "health": {
+          "open": true,
+          "state": "running",
+          "deviceId": "default",
+          "deviceLabel": "Fake Default Audio Input",
+          "sampleRate": 48000,
+          "rms": 0.022940687491276576,
+          "peak": 0.08623968064785004,
+          "db": -32.787871424253986,
+          "speechLikely": false,
+          "mode": "audioworklet",
+          "lastError": "",
+          "paused": false,
+          "tracksLive": true,
+          "processing": "raw",
+          "workletVia": "blob",
+          "version": "0.7.0"
+        },
+        "error": ""
+      },
+      "api": {
+        "server": true,
+        "asrBase": "/api/asr",
+        "version": "0.7.0"
+      },
+      "asrOnline": true,
+      "currentSentence": 0,
+      "currentClipId": "clip_5x43th",
+      "playing": false,
+      "source": "mixed",
+      "mediaPaused": true,
+      "mediaMuted": false,
+      "recMode": "clean",
+      "contaminated": false,
+      "clockFit": {
+        "a": 0.97,
+        "b": -38.5392,
+        "n": 16,
+        "span": 0.367999999999995
+      },
+      "recSource": false,
+      "syncRepeat": {
+        "active": true,
+        "start": 0.5,
+        "end": 2.5,
+        "dIdx": 0
+      },
+      "lastTake": {
+        "rms": 0.0475,
+        "db": -26.5,
+        "duration": 6.12,
+        "speechDur": 2.92,
+        "offset": 2,
+        "preRollSec": 2,
+        "gainDb": 5.5,
+        "deviceLabel": "Fake Default Audio Input",
+        "usedBackup": false,
+        "backupRms": 0.0471,
+        "speechOnset": 0.12,
+        "speechEnd": 6.12,
+        "wavPath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+        "captureMode": "audioworklet"
+      },
+      "takePath": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+      "takesLog": [
+        {
+          "at": 1792942677415,
+          "name": "e2e-12s.wav_S01_1792942677393.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942677393.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942677393.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0502,
+          "duration": 5.98
+        },
+        {
+          "at": 1792942683808,
+          "name": "e2e-12s.wav_S01_1792942683788.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942683788.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942683788.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0496,
+          "duration": 6.12
+        },
+        {
+          "at": 1792942690171,
+          "name": "e2e-12s.wav_S01_1792942690154.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942690154.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942690154.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0475,
+          "duration": 6.12
+        },
+        {
+          "at": 1792942696579,
+          "name": "e2e-12s.wav_S01_1792942696558.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942696558.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942696558.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0504,
+          "duration": 6.11
+        },
+        {
+          "at": 1792942702947,
+          "name": "e2e-12s.wav_S01_1792942702925.wav",
+          "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\takes\\e2e-12s.wav_S01_1792942702925.wav",
+          "url": "/takes/e2e-12s.wav_S01_1792942702925.wav",
+          "clip": "e2e-12s.wav",
+          "idx": 0,
+          "rms": 0.0475,
+          "duration": 6.12
+        }
+      ],
+      "clips": [
+        {
+          "id": "clip_5x43th",
+          "name": "e2e-12s.wav",
+          "status": "analyzed",
+          "duration": 12,
+          "sentences": 2
+        }
+      ],
+      "scores": 1,
+      "recordings": 1
+    }
+  },
+  "error": null,
+  "pass": true,
+  "fakeMic": {
+    "path": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\final\\shadow-qa\\fake-mic-app-89s.wav",
+    "bytes": 8544044,
+    "durationSec": 89,
+    "rms": 0.047572913955026615,
+    "first100Peak": 0.200592041015625,
+    "last100Peak": 0.04498291015625
+  },
+  "finishedAt": "2026-10-25T15:38:29.092Z"
+}

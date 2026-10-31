@@ -1,0 +1,28 @@
+{
+  "spec": "shadow.course",
+  "schemaVersion": 1,
+  "id": "com.shadow.course.fixture-cafe-order",
+  "version": "0.0.1",
+  "title": "在咖啡店点单（夹具）",
+  "subtitle": "Ordering at a Café · B1 · 演示夹具",
+  "description": "【演示夹具】咖啡店点单场景的 3 句示例对话，用于 data/catalog.json 不可用时的界面降级演示。",
+  "category": "daily",
+  "tags": ["B1", "日常", "coffee", "夹具"],
+  "level": "B1",
+  "language": ["en", "zh"],
+  "creator": { "name": "SHADOW Studio", "url": "", "handle": "shadow-studio" },
+  "license": "CC-BY-4.0",
+  "rights": { "basis": "own", "evidenceUrl": "", "note": "演示夹具：内容用于界面测试。" },
+  "mediaPolicy": "byom",
+  "media": [{ "id": "m1", "kind": "audio", "duration": 0, "hint": "演示夹具：任意本地英语音频" }],
+  "sentences": [
+    { "sentenceId": "s_0001", "start": 0.104, "end": 3.667, "text": "Hi, could I get a medium oat milk latte, please?", "translation": "你好，我要一杯中杯燕麦拿铁。", "notes": "重音：get · medium · oat · latte\n连读：could I → coul-dai" },
+    { "sentenceId": "s_0002", "start": 4.429, "end": 8.033, "text": "Sure. Would you like it hot or iced?", "translation": "好的。你要热的还是冰的？", "notes": "重音：hot · iced" },
+    { "sentenceId": "s_0003", "start": 8.791, "end": 13.02, "text": "Iced, please. And can I get an extra shot?", "translation": "冰的，谢谢。可以再加一份浓缩吗？", "notes": "重音：Iced · extra · shot" }
+  ],
+  "exercises": { "spec": "shadow.exercises", "schemaVersion": 1, "default": { "mode": "shadow", "loopCount": 3, "speed": 1, "scoring": { "enabled": true }, "subtitle": { "en": true, "zh": true, "position": "bottom" } } },
+  "requires": { "shadow": ">=0.7.0" },
+  "createdAt": "2026-10-25T00:00:00.000Z",
+  "updatedAt": "2026-10-25T00:00:00.000Z",
+  "readme": "# 在咖啡店点单（演示夹具）\n\n> 这是**演示夹具**，仅用于 `data/catalog.json` 不可用时的界面降级演示；不是线上真实资源。\n\n## 课程介绍\n\n咖啡店点单场景的 3 句示例对话：点单、选冷热、加浓缩。\n\n## 逐句预览\n\n| # | 时间（秒） | 英文 | 中文 |\n|---|---|---|---|\n| 1 | 0.104–3.667 | Hi, could I get a medium oat milk latte, please? | 你好，我要一杯中杯燕麦拿铁。 |\n| 2 | 4.429–8.033 | Sure. Would you like it hot or iced? | 好的。你要热的还是冰的？ |\n| 3 | 8.791–13.02 | Iced, please. And can I get an extra shot? | 冰的，谢谢。可以再加一份浓缩吗？ |\n\n## 使用\n\n1. 下载 `.shadowcourse`；\n2. 打开 SHADOW Studio；\n3. 拖入窗口并选择本地媒体（BYOM）。\n\n**BYOM**：夹具同样不包含任何媒体文件。\n"
+}

@@ -1,0 +1,872 @@
+{
+  "test": "market-e2e",
+  "round": "r11",
+  "startedAt": "2026-10-25T15:33:48.809Z",
+  "baseUrl": "http://127.0.0.1:18930",
+  "server": {
+    "baseUrl": "http://127.0.0.1:18930",
+    "port": 18930,
+    "reused": false,
+    "serveLog": "C:\\Users\\APIG~1\\AppData\\Local\\Temp\\market-qa-18930.log",
+    "marketDir": "D:\\FOLLOWSPEAK\\market"
+  },
+  "browser": {
+    "name": "edge",
+    "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "version": "156.0.4314.42",
+    "headless": true
+  },
+  "checks": {
+    "title": "market-e2e",
+    "total": 43,
+    "passed": 41,
+    "failed": 2,
+    "checks": [
+      {
+        "id": "M0.1",
+        "name": "data/catalog.json 200 + JSON 可解析",
+        "pass": true,
+        "detail": "status=200 bytes=10132",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:49.148Z"
+      },
+      {
+        "id": "M0.2",
+        "name": "catalog.spec === \"shadow.market.catalog\"",
+        "pass": true,
+        "detail": "spec=shadow.market.catalog",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:49.149Z"
+      },
+      {
+        "id": "M0.3",
+        "name": "catalog.resources ≥ 3",
+        "pass": true,
+        "detail": "count=5",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:49.149Z"
+      },
+      {
+        "id": "M0.4",
+        "name": "每个资源 packageUrl 可下载且 spec=shadow.course",
+        "pass": true,
+        "detail": "ok=5/5",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:49.214Z"
+      },
+      {
+        "id": "M0.5",
+        "name": "plugins/index.json 200 且声明 ≥1 资源类型（一切即插件）",
+        "pass": true,
+        "detail": "status=200 types=3",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:49.230Z"
+      },
+      {
+        "id": "M1.1",
+        "name": "首页 HTTP 200 且渲染资源卡 ≥3",
+        "pass": true,
+        "detail": "status=200 cards=5 ids=com.shadow.course.cafe-order,com.shadow.course.asking-directions,com.shadow.course.interview-intro,com.shadow.course.podcast-shadow-daily,com.shadow.course.movie-scene-byom",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:50.398Z"
+      },
+      {
+        "id": "M1.2",
+        "name": "首页卡片标题来自 catalog（≥3 个标题可见）",
+        "pass": true,
+        "detail": "visibleTitles=5/5",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:50.398Z"
+      },
+      {
+        "id": "M1.3",
+        "name": "首页有 Free/免费 徽标（P0 全免费）",
+        "pass": true,
+        "detail": "textHasFree=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:50.398Z"
+      },
+      {
+        "id": "M1.8",
+        "name": "使用真实 catalog 数据（无演示夹具标记、未加载 dev-fixtures）",
+        "pass": true,
+        "detail": "fixtureFlag=null badge=false urls=http://127.0.0.1:18930/data/catalog.json",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:50.401Z"
+      },
+      {
+        "id": "M1.4-coffee",
+        "name": "搜索 \"coffee\" 过滤正确（结果集=目录匹配集）",
+        "pass": true,
+        "detail": "got=[com.shadow.course.cafe-order] expected=[com.shadow.course.cafe-order] hash=#/search?q=coffee",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:52.123Z"
+      },
+      {
+        "id": "M1.4-咖啡",
+        "name": "搜索 \"咖啡\" 过滤正确（结果集=目录匹配集）",
+        "pass": true,
+        "detail": "got=[com.shadow.course.cafe-order] expected=[com.shadow.course.cafe-order] hash=#/search?q=%E5%92%96%E5%95%A1",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:53.644Z"
+      },
+      {
+        "id": "M1.5",
+        "name": "hash 搜索路由 #/search?q=coffee 可用",
+        "pass": true,
+        "detail": "got=[com.shadow.course.cafe-order] expected=[com.shadow.course.cafe-order]",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:54.864Z"
+      },
+      {
+        "id": "M1.6",
+        "name": "分类页 #/category/daily 可达且资源集正确",
+        "pass": true,
+        "detail": "label=日常会话 got=[com.shadow.course.cafe-order] expected=[com.shadow.course.cafe-order]",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:55.375Z"
+      },
+      {
+        "id": "M1.7",
+        "name": "作者页 #/creator/shadow-studio 可达且显示作者信息",
+        "pass": true,
+        "detail": "name=SHADOW Studio got=[com.shadow.course.asking-directions,com.shadow.course.cafe-order,com.shadow.course.interview-intro,com.shadow.course.movie-scene-byom,com.shadow.course.podcast-shadow-daily] expected=[com.shadow.course.asking-directions,com.shadow.course.cafe-order,com.shadow.course.interview-intro,com.shadow.course.movie-scene-byom,com.shadow.course.podcast-shadow-daily]",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:55.932Z"
+      },
+      {
+        "id": "M2.1",
+        "name": "详情页 #/resource/com.shadow.course.cafe-order hash 可达",
+        "pass": true,
+        "detail": "loadedTitle=true url=http://127.0.0.1:18930/#/resource/com.shadow.course.cafe-order",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:56.930Z"
+      },
+      {
+        "id": "M2.2",
+        "name": "刷新 hash 直达详情页不 404（重新加载仍渲染）",
+        "pass": true,
+        "detail": "url=http://127.0.0.1:18930/#/resource/com.shadow.course.cafe-order",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:57.097Z"
+      },
+      {
+        "id": "M2.3",
+        "name": "README Tab 渲染（包内 readme 标题渲染为标题元素）",
+        "pass": true,
+        "detail": "heading=在咖啡店点单 container=true headingEl=true textLen=1439",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:57.115Z"
+      },
+      {
+        "id": "M2.4",
+        "name": "README 安全渲染（无 <script>/内联事件）",
+        "pass": true,
+        "detail": "scripts=0 inlineHandlers=0",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:57.115Z"
+      },
+      {
+        "id": "M2.5",
+        "name": "句子预览条数 = 包内句子数（5）",
+        "pass": true,
+        "detail": "tab=true panel=true rows=5 (期望 5) textPresent=5/5",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:57.914Z"
+      },
+      {
+        "id": "M2.6",
+        "name": "文件 Tab 含 packageUrl 文件名 + 下载入口",
+        "pass": true,
+        "detail": "clicked=true row=true name=true download=true text=com.shadow.course.cafe-order.shadowcourse 课程包 · 单文件 JSON（UTF-8） 6.1 KB 下载",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:58.702Z"
+      },
+      {
+        "id": "M2.7",
+        "name": "版本 Tab 显示包版本号（v1.0.0）",
+        "pass": true,
+        "detail": "clicked=true rows=1 text=v1.0.0 当前发布版本 · 更新于 2026-10-25（17 分钟前） spec shadow.course · schemaVersion 1 · 许可 CC-BY-4.0 2026-10-25",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:59.436Z"
+      },
+      {
+        "id": "M2.8",
+        "name": "详情页 About 侧栏（作者/许可）",
+        "pass": true,
+        "detail": "aside=true license=CC-BY-4.0 creatorName=SHADOW Studio",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:59.437Z"
+      },
+      {
+        "id": "M3.1",
+        "name": "下载 packageUrl 返回 200 且 JSON 可解析",
+        "pass": true,
+        "detail": "status=200 bytes=6259 contentType=application/json; charset=utf-8",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:59.440Z"
+      },
+      {
+        "id": "M3.2",
+        "name": "下载内容 spec=shadow.course 且句子数与包一致",
+        "pass": true,
+        "detail": "spec=shadow.course sentences=5 expected=5",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:59.440Z"
+      },
+      {
+        "id": "M3.3",
+        "name": "单包 ≤ 2MB（docs/52 §2 硬性规则）",
+        "pass": true,
+        "detail": "bytes=6259",
+        "screenshot": null,
+        "at": "2026-10-25T15:33:59.441Z"
+      },
+      {
+        "id": "M3.4",
+        "name": "页面下载按钮可触发下载（download 事件，.shadowcourse）",
+        "pass": true,
+        "detail": "file=com.shadow.course.cafe-order.shadowcourse",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:00.679Z"
+      },
+      {
+        "id": "M3.5",
+        "name": "一键导入无本地服务时降级（不报错 + 3 步说明 + 自动下载）",
+        "pass": true,
+        "detail": "fallback=true steps=3 [下载课程包 / 打开 SHADOW Studio 桌面应用 / 把文件拖进窗口（或菜单导入）] download=com.shadow.course.cafe-order.shadowcourse fallbackBtn=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:03.675Z"
+      },
+      {
+        "id": "M3.6",
+        "name": "降级路径无 pageerror / 无非探测类 console.error",
+        "pass": true,
+        "detail": "filteredErrors=0 pageErrors=0（端口探测失败属预期网络噪声，已过滤）",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:03.675Z"
+      },
+      {
+        "id": "M3.7",
+        "name": "appPort 覆盖生效：未探测/未打开用户真实端口 18765–18775（无 popup）",
+        "pass": false,
+        "detail": "blockedAttempts=0 popups=[about:blank]",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:03.675Z"
+      },
+      {
+        "id": "M3.8",
+        "name": "一键导入成功路径：探测到服务后打开 http://127.0.0.1:<port>/?import=<包URL> 深链",
+        "pass": false,
+        "detail": "successShown=false healthHits=1 importHits=1 popup=http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18930%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse expectedPrefix=http://127.0.0.1:19015/?import=",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:22.093Z"
+      },
+      {
+        "id": "M3.9",
+        "name": "成功路径同样未触碰用户真实端口 18765–18775",
+        "pass": true,
+        "detail": "blockedAttempts=0",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:22.093Z"
+      },
+      {
+        "id": "M4.1",
+        "name": "设置页 #/settings 可达且有左侧分类导航（≥4 项）",
+        "pass": true,
+        "detail": "navItems=6 [账户 | 积分 | 外观 | 提醒 | 开发者 | 危险区] viaTestid=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:24.093Z"
+      },
+      {
+        "id": "M4.2",
+        "name": "设置页含账户/积分/外观/开发者/危险区等分组（≥4 个 section）",
+        "pass": true,
+        "detail": "sections=settings-account,settings-points,settings-appearance,settings-notifications,settings-developer,settings-danger",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:24.093Z"
+      },
+      {
+        "id": "M4.3",
+        "name": "深浅色切换生效（html 属性/背景色/localStorage 至少一处变化）",
+        "pass": true,
+        "detail": "clicked=true beforeTheme=light afterTheme=dark beforeBg=rgb(255, 255, 255) afterBg=rgb(13, 17, 23)",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:25.117Z"
+      },
+      {
+        "id": "M4.4",
+        "name": "Ctrl+K 命令面板可打开（有可见面板/输入焦点）",
+        "pass": true,
+        "detail": "open=true count=78 text=/ active={\"tag\":\"input\",\"placeholder\":\"搜索资源或输入命令…\",\"cls\":\"palette-input\"}",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:27.819Z"
+      },
+      {
+        "id": "M4.5",
+        "name": "Ctrl+K 面板输入关键字有过滤/命中结果",
+        "pass": true,
+        "detail": "keyword=在咖 hits=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:27.819Z"
+      },
+      {
+        "id": "M5.1",
+        "name": "1440×900 各路由无横向溢出",
+        "pass": true,
+        "detail": "all routes ok",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:42.578Z"
+      },
+      {
+        "id": "M5.2",
+        "name": "1024×768 各路由无横向溢出",
+        "pass": true,
+        "detail": "all routes ok",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:42.578Z"
+      },
+      {
+        "id": "M6.1",
+        "name": "未知 hash 路由显示 404 而不崩（契约 #/404）",
+        "pass": true,
+        "detail": "url=http://127.0.0.1:18930/#/definitely-not-a-route-1792942482578 text=跳到主内容 SHADOW 搜索资源 / 探索 积分 导入 设置 命令 登录 404 这里没有你要找的页面 SHADOW 市场是 hash 路由的纯静态站。 无法识别 [object HTMLElement]。 可能链接写错了，或资源已从目录",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:43.625Z"
+      },
+      {
+        "id": "M6.2",
+        "name": "P1 积分页 #/points 可达且标注本地演示（无后端）",
+        "pass": true,
+        "detail": "标注=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:45.140Z"
+      },
+      {
+        "id": "M6.3",
+        "name": "无第三方 CDN/外网请求（本地优先，不引 CDN）",
+        "pass": true,
+        "detail": "none",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:45.140Z"
+      },
+      {
+        "id": "M7.1",
+        "name": "标准浏览路径 0 console.error（探测噪声除外）",
+        "pass": true,
+        "detail": "raw=0 filtered=0 sample=",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:54.559Z"
+      },
+      {
+        "id": "M7.2",
+        "name": "0 pageerror",
+        "pass": true,
+        "detail": "count=0 sample=",
+        "screenshot": null,
+        "at": "2026-10-25T15:34:54.559Z"
+      }
+    ]
+  },
+  "extra": {
+    "plugins": {
+      "indexStatus": 200,
+      "count": 3,
+      "list": [
+        "course",
+        "plugin",
+        "subtitle"
+      ]
+    },
+    "dataMode": {
+      "fixtureFlag": null,
+      "hasFixtureBadge": false,
+      "usedDataUrls": [
+        "http://127.0.0.1:18930/data/catalog.json"
+      ]
+    },
+    "externalRequests": [],
+    "emptyState": {
+      "hasEmptyState": true,
+      "text": "没有找到匹配的资源 试试更短的关键词、中文或英文（例如「咖啡 / coffee」「问路 / directions」），或清除类型筛选。 浏览全部资源 查看积分说明"
+    },
+    "contrastLightTheme": "light",
+    "contrastLight": {
+      "body": {
+        "fg": "rgb(31, 35, 40)",
+        "bg": "rgb(255, 255, 255)",
+        "ratio": 15.8,
+        "fontSize": "14px"
+      },
+      "cardTitle": {
+        "fg": "rgb(11, 110, 79)",
+        "bg": "rgb(255, 255, 255)",
+        "ratio": 6.25,
+        "fontSize": "16px"
+      },
+      "cardDesc": {
+        "fg": "rgb(89, 99, 110)",
+        "bg": "rgb(255, 255, 255)",
+        "ratio": 6.11,
+        "fontSize": "13px"
+      },
+      "sideLink": {
+        "fg": "rgb(11, 110, 79)",
+        "bg": "rgba(11, 110, 79, 0.1)",
+        "ratio": 1,
+        "fontSize": "13px"
+      },
+      "navLink": {
+        "fg": "rgb(31, 35, 40)",
+        "bg": "rgb(240, 243, 246)",
+        "ratio": 14.18,
+        "fontSize": "13px"
+      },
+      "badge": {
+        "fg": "rgb(26, 127, 55)",
+        "bg": "rgba(26, 127, 55, 0.1)",
+        "ratio": 1,
+        "fontSize": "11px"
+      },
+      "toolbarCount": {
+        "fg": "rgb(89, 99, 110)",
+        "bg": "rgb(255, 255, 255)",
+        "ratio": 6.11,
+        "fontSize": "13px"
+      }
+    },
+    "contrastDarkTheme": "dark",
+    "contrastDark": {
+      "body": {
+        "fg": "rgb(230, 237, 243)",
+        "bg": "rgb(13, 17, 23)",
+        "ratio": 16.02,
+        "fontSize": "14px"
+      },
+      "cardTitle": {
+        "fg": "rgb(46, 230, 168)",
+        "bg": "rgb(22, 27, 34)",
+        "ratio": 10.71,
+        "fontSize": "16px"
+      },
+      "cardDesc": {
+        "fg": "rgb(145, 152, 161)",
+        "bg": "rgb(22, 27, 34)",
+        "ratio": 5.94,
+        "fontSize": "13px"
+      },
+      "sideLink": {
+        "fg": "rgb(46, 230, 168)",
+        "bg": "rgba(46, 230, 168, 0.1)",
+        "ratio": 1,
+        "fontSize": "13px"
+      },
+      "navLink": {
+        "fg": "rgb(230, 237, 243)",
+        "bg": "rgb(1, 4, 9)",
+        "ratio": 17.38,
+        "fontSize": "13px"
+      },
+      "badge": {
+        "fg": "rgb(63, 185, 80)",
+        "bg": "rgba(63, 185, 80, 0.12)",
+        "ratio": 1,
+        "fontSize": "11px"
+      },
+      "toolbarCount": {
+        "fg": "rgb(145, 152, 161)",
+        "bg": "rgb(13, 17, 23)",
+        "ratio": 6.5,
+        "fontSize": "13px"
+      }
+    },
+    "themeSwitchInfo": {
+      "light": "light",
+      "dark": "dark"
+    },
+    "darkMode": "dark",
+    "mobileOverflow": {
+      "overflow": false,
+      "docOverflow": false,
+      "offenders": [],
+      "vw": 390,
+      "scrollWidth": 390
+    },
+    "mobileDetailOverflow": {
+      "overflow": true,
+      "docOverflow": false,
+      "offenders": [
+        {
+          "tag": "button",
+          "cls": "tab",
+          "left": 346.6,
+          "right": 446.1
+        },
+        {
+          "tag": "span",
+          "cls": "tab-count",
+          "left": 413.6,
+          "right": 434.1
+        }
+      ],
+      "vw": 390,
+      "scrollWidth": 390
+    },
+    "consoleErrorRaw": [],
+    "consoleErrorFiltered": []
+  },
+  "console": [],
+  "pageErrors": [],
+  "requestFailures": [],
+  "screenshots": [
+    "market-home-1440.png",
+    "market-category-daily.png",
+    "market-creator-shadow-studio.png",
+    "market-detail-1440.png",
+    "market-detail-sentences.png",
+    "market-import-degraded.png",
+    "market-import-success.png",
+    "market-settings-dark.png",
+    "market-settings-light.png",
+    "market-ctrlk-palette.png",
+    "market-404.png",
+    "market-empty-search.png",
+    "market-home-dark.png",
+    "market-mobile-390.png",
+    "market-mobile-detail-390.png"
+  ],
+  "phases": {
+    "catalog": {
+      "status": 200,
+      "bytes": 10132,
+      "spec": "shadow.market.catalog"
+    },
+    "home": {
+      "status": 200,
+      "cardIds": [
+        "com.shadow.course.cafe-order",
+        "com.shadow.course.asking-directions",
+        "com.shadow.course.interview-intro",
+        "com.shadow.course.podcast-shadow-daily",
+        "com.shadow.course.movie-scene-byom"
+      ],
+      "url": "http://127.0.0.1:18930/#/"
+    },
+    "search": {
+      "queries": {
+        "coffee": {
+          "inputSel": "[data-testid=\"search-input\"]",
+          "got": [
+            "com.shadow.course.cafe-order"
+          ],
+          "expected": [
+            "com.shadow.course.cafe-order"
+          ],
+          "sameSet": true,
+          "url": "http://127.0.0.1:18930/#/search?q=coffee",
+          "hash": "#/search?q=coffee"
+        },
+        "咖啡": {
+          "inputSel": "[data-testid=\"search-input\"]",
+          "got": [
+            "com.shadow.course.cafe-order"
+          ],
+          "expected": [
+            "com.shadow.course.cafe-order"
+          ],
+          "sameSet": true,
+          "url": "http://127.0.0.1:18930/#/search?q=%E5%92%96%E5%95%A1",
+          "hash": "#/search?q=%E5%92%96%E5%95%A1"
+        }
+      },
+      "hashRoute": {
+        "q": "coffee",
+        "got": [
+          "com.shadow.course.cafe-order"
+        ],
+        "expected": [
+          "com.shadow.course.cafe-order"
+        ],
+        "same": true
+      }
+    },
+    "detailReload": {
+      "status": 200,
+      "ok": true,
+      "url": "http://127.0.0.1:18930/#/resource/com.shadow.course.cafe-order"
+    },
+    "readme": {
+      "heading": "在咖啡店点单",
+      "hasContentContainer": true,
+      "headingEl": true,
+      "hasHeadingText": true,
+      "textLen": 1439,
+      "scriptsInMain": 0,
+      "inlineHandlers": 0
+    },
+    "sentences": {
+      "tabClick": {
+        "ok": true,
+        "selector": "[data-testid=\"tab-sentences\"]"
+      },
+      "panel": true,
+      "rows": 5,
+      "visible": 5,
+      "expected": 5,
+      "sample": "共 5 句 时间轴 0:22 约 40 词 词级时间：无（整句评分） 媒体：BYOM（包内不含媒体） 过滤只影响显示，不改变课程包内容 0.1–3.7s #01 Hi, could I get a medium oat milk latte, please? 你好，我要一杯中杯燕麦拿铁。 重音：get · medium · oat · latte 连读：could I → coul-dai 提示："
+    },
+    "files": {
+      "clicked": true,
+      "baseName": "com.shadow.course.cafe-order.shadowcourse",
+      "hasRow": true,
+      "rowText": "com.shadow.course.cafe-order.shadowcourse 课程包 · 单文件 JSON（UTF-8） 6.1 KB 下载",
+      "hasName": true,
+      "hasDownload": true
+    },
+    "versions": {
+      "clicked": true,
+      "version": "1.0.0",
+      "rows": 1,
+      "hasVersion": true,
+      "text": "v1.0.0 当前发布版本 · 更新于 2026-10-25（17 分钟前） spec shadow.course · schemaVersion 1 · 许可 CC-BY-4.0 2026-10-25"
+    },
+    "aside": {
+      "hasAside": true,
+      "license": "CC-BY-4.0",
+      "creatorName": "SHADOW Studio"
+    },
+    "download": {
+      "status": 200,
+      "bytes": 6259,
+      "contentType": "application/json; charset=utf-8",
+      "spec": "shadow.course",
+      "sentences": 5,
+      "packageSentenceCount": 5
+    },
+    "downloadEvent": {
+      "suggestedFilename": "com.shadow.course.cafe-order.shadowcourse",
+      "url": "http://127.0.0.1:18930/data/packages/com.shadow.course.cafe-order.shadowcourse"
+    },
+    "importDegrade": {
+      "closedPort": 19010,
+      "clicked": true,
+      "fallbackShown": true,
+      "has3Steps": true,
+      "modal": {
+        "hasModal": true,
+        "steps": 3,
+        "stepTitles": [
+          "下载课程包",
+          "打开 SHADOW Studio 桌面应用",
+          "把文件拖进窗口（或菜单导入）"
+        ],
+        "hasFallbackDownload": true,
+        "text": "一键导入：已降级为下载 指定端口 19010 上没有检测到 SHADOW Studio（未扫描默认端口区间）。 已自动降级为下载 + 手动导入：课程包是纯数据 JSON，不跑 ASR、不含媒体。 下载课程包 点击下方「下载 .shadowcourse」，文件会保存到本机（约几十 KB）。 打开 SHADOW Studio 桌面应用 市场与 SHADOW Studio 是两个产品：市场只负责浏览与下载，桌面端只保留「导入课程包」这一个薄接口。 把文件拖进窗口（或菜单导入） 拖入后选一句课程包，工具会提示你选择本地媒体（BYOM）；没有媒体也可以先用「仅文本模式」。 高级用法：如果 SHADOW Studio 监听在自定义端口，可在市场地址后加 ?appPort=<端口>（例如 #/resource/com.shadow.course.cafe-order?appPort=18770）后重试一键导入；默认仍扫描 18765–18775。 下载 .shadowcourse 记录导入成功 +20 积分（本地演示） 关闭"
+      },
+      "downloadInPage": {
+        "suggestedFilename": "com.shadow.course.cafe-order.shadowcourse"
+      },
+      "popups": [
+        "about:blank"
+      ],
+      "blockedUserPortRequests": 0,
+      "consoleErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+          "location": "http://127.0.0.1:19010/api/health"
+        }
+      ],
+      "filteredConsoleErrors": [],
+      "pageErrors": [],
+      "textSample": "跳到主内容 SHADOW 市场 P0 · 全免费 搜索资源 / 探索 积分 导入 设置 命令 Ctrl K 登录 市场 / 日常会话 / 在咖啡店点单 在咖啡店点单 Free 课程包 B1 Ordering at a Café · B1 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 一键导入到 SHADOW Studio 下载 .shadowcourse 收藏 会先探测本机 SHADOW Studio（127.0.0.1:18765–18775，单端口 300ms 超时）；未检测到会自动降级为下载 + 3 步说明。高级：导入原理 · 当前使用 ?appPort=19010 README 句子预览 5 文件 1 版本 1 README.md · 来自课程包（包内 readme 为准） 在咖啡店点单 Ordering at a Café · B1 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0 课程介绍 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 适合人群：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者 你会练到 Could I get ...? oat milk extra shot 内容结构 句子数量：5 句 时间轴：第 1 句 0.104s → 最后一句 21.634s（时长约 21.6 秒） 英文词数：约 40 词 每句包含：英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点） 词级时间：本包未提供（评分退化为整句参考） 媒体：BYOM，包内不含音频 / 视频（media[].duration = 0 表示未知） 分"
+    },
+    "importSuccess": {
+      "fakePort": 19015,
+      "successShown": false,
+      "popupUrl": "http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18930%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse",
+      "expectedPrefix": "http://127.0.0.1:19015/?import=",
+      "healthHits": 1,
+      "importHits": [
+        {
+          "method": "GET",
+          "url": "/?import=http%3A%2F%2F127.0.0.1%3A18930%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse"
+        }
+      ],
+      "blockedAttempts": 0,
+      "hits": [
+        {
+          "method": "GET",
+          "url": "/api/health"
+        },
+        {
+          "method": "GET",
+          "url": "/?import=http%3A%2F%2F127.0.0.1%3A18930%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse"
+        }
+      ]
+    },
+    "settings": {
+      "nav": {
+        "count": 6,
+        "items": [
+          "账户",
+          "积分",
+          "外观",
+          "提醒",
+          "开发者",
+          "危险区"
+        ],
+        "viaTestid": true
+      },
+      "sections": [
+        "settings-account",
+        "settings-points",
+        "settings-appearance",
+        "settings-notifications",
+        "settings-developer",
+        "settings-danger"
+      ],
+      "textSample": "跳到主内容 SHADOW 市场 P0 · 全免费 搜索资源 / 探索 积分 导入 设置 命令 Ctrl K 登录 设置 GitHub 式分组设置：账户 / 积分 / 外观 / 提醒 / 开发者 / 危险区。P0 全部设置只作用于本机浏览器，无后端账号。 返回探索 P0/P1 本地设置 这些选项保存在本机浏览器（localStorage），换设备 / 清缓存会恢复默认；P1 没有账户后端，也不会同步到服务器。 账户 积分 外观 提醒 开发者 危险区 账户 P0 没有账号后端：市场用匿名设备 ID 区分本机演示数据，不收集邮箱 / 手机号 / 行为数据。 匿名设备 ID 本机生成、仅保存在 localStorage；不可跨设备识别，也不会上传。 dev_8d2fd7f5-7d11-42db-b688-403b6bb6cdfd 复制 登录状态 P1 将支持可选账户（邮箱验证码 / 第三方登录）；当前是匿名本地演示，浏览与下载不需要登录。 未登录 · 本地演示 登录（占位） 数据存储位置 积分 / 我的资源 / 收藏 / 偏好全部只在本机；没有服务器同步，也不上传任何数据。 localStorage · 本机浏览器 积分 积分只是全免费资源的兑换凭证：免费获取、不可购买 / 提现 / 转让。P1 为本地演示。 当前积分 来自本机演示数据（MarketPoints 适配器）。 0 分 去积分"
+    },
+    "theme": {
+      "clicked": {
+        "method": "input[name=theme][value=dark]"
+      },
+      "before": {
+        "htmlTheme": "light",
+        "themePref": "system",
+        "htmlClass": "",
+        "bodyBg": "rgb(255, 255, 255)",
+        "bodyColor": "rgb(31, 35, 40)",
+        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_8d2fd7f5-7d"
+      },
+      "after": {
+        "htmlTheme": "dark",
+        "themePref": "dark",
+        "htmlClass": "",
+        "bodyBg": "rgb(13, 17, 23)",
+        "bodyColor": "rgb(230, 237, 243)",
+        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_8d2fd7f5-7d|shadow.market.theme.v1=dark"
+      },
+      "changed": true,
+      "back": {
+        "htmlTheme": "light",
+        "themePref": "light",
+        "htmlClass": "",
+        "bodyBg": "rgb(255, 255, 255)",
+        "bodyColor": "rgb(31, 35, 40)",
+        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_8d2fd7f5-7d|shadow.market.theme.v1=light"
+      },
+      "toggledBack": true
+    },
+    "palette": {
+      "open": true,
+      "count": 78,
+      "text": "/",
+      "active": {
+        "tag": "input",
+        "placeholder": "搜索资源或输入命令…",
+        "cls": "palette-input"
+      },
+      "filter": {
+        "keyword": "在咖",
+        "hits": true,
+        "text": "程包文件，也不影响任何下载到磁盘的文件。 清除本地演示数据 删除本机积分、流水、我的资源、收藏、偏好与主题设置（localStorage 中以 shadow.market. 开头的键）。不可撤销。 清除本地演示数据 SHADOW 市场 全免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。 市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。 浏览 探索资源 搜索 积分（P1 本地演示） 一键导入说明 设置 P0 边界 全免费 · 积分只是兑换凭证 BYOM：不托管影视媒体 不收集账号 · 无支付/抽成/DRM 一切即插件：声明式资源类型 技术 纯静态 · 无构建 · 无 CDN hash 路由 · 原生 ES Modules 插件清单（JSON） 资源目录（JSON） SHADOW 市场 · P0 本地演示版（无后端账号） · 统计数字为示例数据，P0 不采集用户行为 Esc 资源 在咖啡店点单 日常会话 · B1 ↑↓ 选择 Enter 打开 Esc 关闭 Ctrl+K 打开 · / 聚焦搜索"
+      }
+    },
+    "overflow": {
+      "1440x900-home": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1440,
+        "scrollWidth": 1440
+      },
+      "1440x900-detail": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1440,
+        "scrollWidth": 1440
+      },
+      "1440x900-category": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1440,
+        "scrollWidth": 1440
+      },
+      "1440x900-creator": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1440,
+        "scrollWidth": 1440
+      },
+      "1440x900-settings": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1440,
+        "scrollWidth": 1440
+      },
+      "1440x900-points": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1440,
+        "scrollWidth": 1440
+      },
+      "1024x768-home": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1024,
+        "scrollWidth": 1024
+      },
+      "1024x768-detail": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1024,
+        "scrollWidth": 1024
+      },
+      "1024x768-category": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1024,
+        "scrollWidth": 1024
+      },
+      "1024x768-creator": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1024,
+        "scrollWidth": 1024
+      },
+      "1024x768-settings": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1024,
+        "scrollWidth": 1024
+      },
+      "1024x768-points": {
+        "overflow": false,
+        "docOverflow": false,
+        "offenders": [],
+        "vw": 1024,
+        "scrollWidth": 1024
+      }
+    }
+  },
+  "error": null,
+  "pass": false,
+  "summary": {
+    "total": 43,
+    "passed": 41,
+    "failed": 2
+  },
+  "finishedAt": "2026-10-25T15:34:54.932Z"
+}

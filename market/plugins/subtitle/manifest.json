@@ -1,0 +1,17 @@
+{
+  "manifestVersion": 1,
+  "kind": "resource-type",
+  "id": "subtitle",
+  "label": "字幕包",
+  "labelEn": "Subtitle",
+  "description": "PRESET 字幕样式 / ASS、SRT 字幕文本包。纯文本资源，导入后由桌面端字幕插件读取，不联网、不含媒体。",
+  "icon": "captions",
+  "color": "#C77DFF",
+  "fileExt": [".ass", ".ssa", ".srt", ".json"],
+  "detailTabs": ["readme", "files", "versions"],
+  "cardBadges": ["free"],
+  "statsFields": [],
+  "install": { "mode": "desktop-import", "deepLink": "shadow-import" },
+  "permissions": { "network": false, "filesystem": false, "microphone": false },
+  "enabled": true
+}

@@ -1,0 +1,106 @@
+{
+  "spec": "shadow.course",
+  "schemaVersion": 1,
+  "id": "com.shadow.course.interview-intro",
+  "version": "1.0.0",
+  "title": "面试开场自我介绍",
+  "subtitle": "Interview: Tell Me About Yourself · B2",
+  "description": "面试开场自我介绍的 5 句职场英语：自我介绍、工作经历、申请动机、对岗位的兴趣、入职时间。含中文翻译与重音、连读提示，BYOM 纯数据包。",
+  "category": "work",
+  "tags": [
+    "B2",
+    "职场",
+    "面试",
+    "连读"
+  ],
+  "level": "B2",
+  "language": [
+    "en",
+    "zh"
+  ],
+  "creator": {
+    "name": "SHADOW Studio",
+    "url": "",
+    "handle": "shadow-studio"
+  },
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。"
+  },
+  "mediaPolicy": "byom",
+  "media": [
+    {
+      "id": "m1",
+      "kind": "audio",
+      "duration": 0,
+      "hint": "任意英语音频或视频；句级时间轴按秒对齐（官方示范音频约 17.5 秒）"
+    }
+  ],
+  "sentences": [
+    {
+      "sentenceId": "s_0001",
+      "start": 0.103,
+      "end": 2.664,
+      "text": "So, tell me a little about yourself.",
+      "translation": "那么，请简单介绍一下你自己。",
+      "notes": "重音：tell · little · yourself\n连读：tell me → tel-me；about yourself → abou-chur-self\n提示：tell me 的 m 和 a 连读；yourself 重音在 self。"
+    },
+    {
+      "sentenceId": "s_0002",
+      "start": 3.395,
+      "end": 6.864,
+      "text": "I've been working as a product designer for about three years.",
+      "translation": "我做产品设计师大约三年了。",
+      "notes": "重音：working · product · designer · three · years\n连读：as a → a-za；for about → fo-ra-bout\n提示：I've been 弱读成 aiv-bin，重点信息放在 three years。"
+    },
+    {
+      "sentenceId": "s_0003",
+      "start": 7.592,
+      "end": 9.759,
+      "text": "What made you want to apply for this role?",
+      "translation": "是什么让你想申请这个职位？",
+      "notes": "重音：What · want · apply · role\n连读：want to → wanna；apply for → apply-fer\n提示：want to 口语里常说 wanna；apply 重音在第二音节。"
+    },
+    {
+      "sentenceId": "s_0004",
+      "start": 10.487,
+      "end": 13.483,
+      "text": "I'm really drawn to your focus on accessibility.",
+      "translation": "我真的很被你们对无障碍设计的专注吸引。",
+      "notes": "重音：really · drawn · focus · accessibility\n连读：drawn to → drawn-tuh；focus on → focu-son\n提示：drawn to 连读；accessibility 重音在 bil。"
+    },
+    {
+      "sentenceId": "s_0005",
+      "start": 14.211,
+      "end": 17.496,
+      "text": "That's great to hear. When could you start?",
+      "translation": "很高兴听你这么说。你什么时候能入职？",
+      "notes": "重音：great · hear · When · start\n连读：could you → coul-joo\n提示：could you 连读成 coul-joo，句尾 start 降调。"
+    }
+  ],
+  "exercises": {
+    "spec": "shadow.exercises",
+    "schemaVersion": 1,
+    "default": {
+      "mode": "shadow",
+      "loopCount": 3,
+      "speed": 1,
+      "scoring": {
+        "enabled": true
+      },
+      "subtitle": {
+        "en": true,
+        "zh": true,
+        "position": "bottom"
+      }
+    }
+  },
+  "requires": {
+    "shadow": ">=0.7.0"
+  },
+  "createdAt": "2026-10-25T00:00:00.000Z",
+  "updatedAt": "2026-10-25T15:16:17.448Z",
+  "readme": "# 面试开场自我介绍\n\n> Interview: Tell Me About Yourself · B2 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0\n\n## 课程介绍\n\n面试开场自我介绍的 5 句职场英语：自我介绍、工作经历、申请动机、对岗位的兴趣、入职时间。含中文翻译与重音、连读提示，BYOM 纯数据包。\n\n**适合人群**：B2 左右、准备英文面试或想练职场自我介绍的学习者\n\n## 你会练到\n\n- `be drawn to`\n- `focus on`\n- `a little about yourself`\n\n## 内容结构\n\n- 句子数量：**5 句**\n- 时间轴：第 1 句 0.103s → 最后一句 17.496s（时长约 **17.5 秒**）\n- 英文词数：约 **43 词**\n- 每句包含：英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点）\n- 词级时间：本包未提供（评分退化为整句参考）\n- 媒体：BYOM，包内不含音频 / 视频（media[].duration = 0 表示未知）\n- 分类：职场工作（Work）\n\n## 逐句预览\n\n| # | 时间（秒） | 英文 | 中文 |\n|---|---|---|---|\n| 1 | 0.103–2.664 | So, tell me a little about yourself. | 那么，请简单介绍一下你自己。 |\n| 2 | 3.395–6.864 | I've been working as a product designer for about three years. | 我做产品设计师大约三年了。 |\n| 3 | 7.592–9.759 | What made you want to apply for this role? | 是什么让你想申请这个职位？ |\n| 4 | 10.487–13.483 | I'm really drawn to your focus on accessibility. | 我真的很被你们对无障碍设计的专注吸引。 |\n| 5 | 14.211–17.496 | That's great to hear. When could you start? | 很高兴听你这么说。你什么时候能入职？ |\n\n## 如何使用（BYOM · 自带媒体）\n\n本课程包是**纯数据包，不含任何音频 / 视频文件**。导入 SHADOW Studio 后：\n\n1. 把 `.shadowcourse` 拖入 SHADOW Studio 窗口（或在市场详情页点「一键导入」）；\n2. 按提示选择**你本地**的英语音频 / 视频作为练习媒体；\n3. 句子时间轴已随包提供，导入**不跑 ASR**，直接开始跟读；\n4. 暂时没有合适媒体时，可用「仅文本模式」查看句子、翻译与时间轴。\n\n> **BYOM（Bring Your Own Media）**：市场不托管影视媒体、不上传用户媒体。媒体版权由使用者自行负责；本包不含任何第三方影视 / 音乐素材。\n\n## 授权与素材说明\n\n- 包内文本、翻译、句级时间轴：由 SHADOW Studio 创作，许可 **CC-BY-4.0**。\n- 包内**不含媒体**；媒体由用户自备（BYOM），其版权与授权由用户自行负责。\n- 本包不包含任何第三方影视作品台词、画面或音频。\n- 权利依据：`rights.basis = own`。如需商用或再分发，请遵循 CC-BY-4.0 并署名 SHADOW Studio。\n\n## 版本\n\n- 包 id：`com.shadow.course.interview-intro`\n- 版本：`1.0.0`（创建 2026-10-25T00:00:00.000Z，更新 2026-10-25T15:16:17.448Z）\n- 格式：`.shadowcourse` P0 单文件 JSON（`schemaVersion: 1`）\n- 校验：`node tools/shadowcourse/validate.mjs <file>`\n"
+}

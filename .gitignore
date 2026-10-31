@@ -1,0 +1,13 @@
+# 依赖/构建产物
+node_modules/
+tools/qa/node_modules/
+.tmp/
+*.log
+
+# 测试/截图临时产物
+tools/qa/market/shots/*.tmp.png
+release/evidence-market/videos/
+
+# 系统文件
+.DS_Store
+Thumbs.db

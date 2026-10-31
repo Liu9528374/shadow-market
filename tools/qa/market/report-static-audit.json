@@ -1,0 +1,110 @@
+{
+  "test": "static-audit",
+  "round": "r11",
+  "startedAt": "2026-10-25T15:27:40.576Z",
+  "checks": [
+    {
+      "id": "SA1",
+      "name": "market/ 不引用桌面端代码（两个产品分开）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "SA2",
+      "name": "prototype/ 不嵌入市场商店 UI/路由（桌面只保留导入薄接口）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "SA3a",
+      "name": "market/ 无第三方支付/计费 SDK 集成",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "SA3b",
+      "name": "market/ 关于支付/抽成/DRM 的提及均带否定（不做实现，只是边界说明）",
+      "pass": true,
+      "detail": "negative mentions=6"
+    },
+    {
+      "id": "SA4",
+      "name": "目录资源全部 points=0 / free=true（P0 全免费）",
+      "pass": true,
+      "detail": "5 个资源全免费"
+    },
+    {
+      "id": "SA5",
+      "name": "market/ 页面无媒体上传控件（BYOM：不接收用户媒体）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "SA6",
+      "name": "market/ 无 POST 上传/提交请求（纯静态站，无后端）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "SA7",
+      "name": "market/ 无第三方 CDN/分析 SDK 外链（本地优先，可离线）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "SA8",
+      "name": "market/ 无统计/分析埋点",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "id": "SA9",
+      "name": "market/ 资源类型插件清单存在（一切即插件）",
+      "pass": true,
+      "detail": "course,plugin,subtitle"
+    },
+    {
+      "id": "SA10",
+      "name": "market 前端启动时读取插件清单并注册类型渲染器",
+      "pass": true,
+      "detail": "app.js/data.js 引用 plugins/index.json"
+    },
+    {
+      "id": "SA11",
+      "name": "桌面端内置插件 manifest + #plugin= 设置深链（一切即插件继续深化）",
+      "pass": true,
+      "detail": "manifest=true deepLink=true"
+    },
+    {
+      "id": "SA12",
+      "name": "桌面导入路径代码不调用 ASR 转写（静态证据）",
+      "pass": true,
+      "detail": "ingestCourseText 段内 asrCall=false"
+    },
+    {
+      "id": "SA13",
+      "name": "shadow-server.py 提供只读 /api/font/list + /api/font/file（GET-only，非 GET→405）",
+      "pass": true,
+      "detail": "list=true file=true getOnly=true"
+    },
+    {
+      "id": "SA14",
+      "name": "字体接口白名单限定系统字体目录 + 处理函数无磁盘写入",
+      "pass": true,
+      "detail": "whitelist=true diskWrites=false fontSeg=1866B"
+    },
+    {
+      "id": "SA15",
+      "name": "字体文件名走白名单/ basename 解析（路径穿越防护静态证据）",
+      "pass": true,
+      "detail": "basenameOrWhitelist=true"
+    }
+  ],
+  "pass": true,
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "finishedAt": "2026-10-25T15:27:40.592Z"
+}

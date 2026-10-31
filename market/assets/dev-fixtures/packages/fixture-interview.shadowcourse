@@ -1,0 +1,27 @@
+{
+  "spec": "shadow.course",
+  "schemaVersion": 1,
+  "id": "com.shadow.course.fixture-interview",
+  "version": "0.0.1",
+  "title": "面试自我介绍（夹具）",
+  "subtitle": "Interview Intro · B2 · 演示夹具",
+  "description": "【演示夹具】面试自我介绍场景的 2 句示例对话。",
+  "category": "work",
+  "tags": ["B2", "职场", "面试", "夹具"],
+  "level": "B2",
+  "language": ["en", "zh"],
+  "creator": { "name": "SHADOW Studio", "url": "", "handle": "shadow-studio" },
+  "license": "CC-BY-4.0",
+  "rights": { "basis": "own", "evidenceUrl": "", "note": "演示夹具。" },
+  "mediaPolicy": "byom",
+  "media": [{ "id": "m1", "kind": "audio", "duration": 0, "hint": "演示夹具：任意本地英语音频" }],
+  "sentences": [
+    { "sentenceId": "s_0001", "start": 0.103, "end": 2.664, "text": "So, tell me a little about yourself.", "translation": "那么，请简单介绍一下你自己。", "notes": "重音：tell · little · yourself" },
+    { "sentenceId": "s_0002", "start": 3.395, "end": 6.864, "text": "I've been working as a product designer for about three years.", "translation": "我做产品设计师大约三年了。", "notes": "弱读：I've been → aiv-bin" }
+  ],
+  "exercises": { "spec": "shadow.exercises", "schemaVersion": 1, "default": { "mode": "shadow", "loopCount": 3, "speed": 1, "scoring": { "enabled": true }, "subtitle": { "en": true, "zh": true, "position": "bottom" } } },
+  "requires": { "shadow": ">=0.7.0" },
+  "createdAt": "2026-10-23T00:00:00.000Z",
+  "updatedAt": "2026-10-23T00:00:00.000Z",
+  "readme": "# 面试自我介绍（演示夹具）\n\n演示夹具课程包，共 2 句示例。\n\n> 夹具仅用于界面演示，不是真实课程。\n"
+}

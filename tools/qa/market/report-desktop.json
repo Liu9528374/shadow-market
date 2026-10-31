@@ -1,0 +1,986 @@
+{
+  "test": "desktop-import-e2e",
+  "round": "r11",
+  "startedAt": "2026-10-25T15:36:34.393Z",
+  "mode": "packaged",
+  "root": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror",
+  "appHtml": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\app\\SHADOW-Studio-0.7.0.html",
+  "appHtmlSha256": "6FAF8982031362529FFA9F5C9CA4C9BC0AA989FB4B07304CDF7EB9E39FB8B656",
+  "server": {
+    "port": 18960,
+    "baseUrl": "http://127.0.0.1:18960",
+    "dev": false,
+    "root": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror",
+    "logFile": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\desktop\\shadow-server-18960-1792942594417.log",
+    "asrUrl": "http://127.0.0.1:8765",
+    "staticPort": 18961,
+    "restarted": true
+  },
+  "browser": {
+    "name": "edge",
+    "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "version": "156.0.4314.42",
+    "headless": true
+  },
+  "checks": {
+    "title": "desktop-import-e2e",
+    "total": 39,
+    "passed": 39,
+    "failed": 0,
+    "checks": [
+      {
+        "id": "D0.1",
+        "name": "页面 HTTP 200 且 SHADOW_APP.ready=true",
+        "pass": true,
+        "detail": "status=200 ready=true url=http://127.0.0.1:18960/",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:35.725Z"
+      },
+      {
+        "id": "D0.2",
+        "name": "本地服务 API 生效（/api/config + server=true）",
+        "pass": true,
+        "detail": "api={\"server\":true,\"asrBase\":\"/api/asr\",\"mic\":true}",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:35.725Z"
+      },
+      {
+        "id": "D0.3",
+        "name": "打包版 /api/config.dev === false（dev 模式反向检查）",
+        "pass": true,
+        "detail": "dev=false",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:35.731Z"
+      },
+      {
+        "id": "D0.4",
+        "name": "初始无课程 clip",
+        "pass": true,
+        "detail": "count=0",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:35.734Z"
+      },
+      {
+        "id": "D6.1",
+        "name": "拖拽 .shadowcourse 建课程 clip（kind=course/status=analyzed）",
+        "pass": true,
+        "detail": "created=true count=1 kind=course status=analyzed",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:36.106Z"
+      },
+      {
+        "id": "D6.2",
+        "name": "句子数与时间轴正确（4 句）",
+        "pass": true,
+        "detail": "count=4 diff=",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:36.106Z"
+      },
+      {
+        "id": "D6.3",
+        "name": "BYOM 向导弹出并提示选择本地媒体/仅文本",
+        "pass": true,
+        "detail": "visible=true title=课程包已导入 · QA 咖啡店点单",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:36.106Z"
+      },
+      {
+        "id": "D6.4",
+        "name": "课程元数据正确（id/version/title/license/byom）",
+        "pass": true,
+        "detail": "id=com.qa.course.basic ver=1.0.0 license=CC-BY-4.0",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:36.106Z"
+      },
+      {
+        "id": "D6.5",
+        "name": "导入后媒体缺失态（mediaMissing=true, duration=0）",
+        "pass": true,
+        "detail": "mediaMissing=true duration=0",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:36.106Z"
+      },
+      {
+        "id": "D6.6",
+        "name": "导入日志显式 asr:false（console.info [SHADOW] course imported）",
+        "pass": true,
+        "detail": "[SHADOW] course imported {id: com.qa.course.basic, version: 1.0.0, sentences: 4, asr: false}",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:36.106Z"
+      },
+      {
+        "id": "D6.7",
+        "name": "仅文本模式：textOnly=true 且播放禁用 + 提示",
+        "pass": true,
+        "detail": "textOnly=true playDisabled=true hookPlayDisabled=true hookTextOnly=true toast=已应用课程练习配置：语速 1x\n仅文本模式：句子 / 翻译 / 时间轴可用；按句播放前请点「选择本地媒体」绑定视频或音频",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:36.884Z"
+      },
+      {
+        "id": "D6.8",
+        "name": "仅文本模式点击播放不开始播放（无媒体）",
+        "pass": true,
+        "detail": "playing=false hasMedia=false",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:37.523Z"
+      },
+      {
+        "id": "D6.9",
+        "name": "使用「导入课程包」文件选择路径导入第二个包（句子=1）",
+        "pass": true,
+        "detail": "created=true count=2 sentences=1",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:37.544Z"
+      },
+      {
+        "id": "D6.10",
+        "name": "绑定本地媒体后时长显示（duration>0.5s）且 courseMediaBound=true",
+        "pass": true,
+        "detail": "duration=3 bound=true via=filechooser",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:38.280Z"
+      },
+      {
+        "id": "D6.11",
+        "name": "绑定后可按句播放（playing/currentTime 前进）",
+        "pass": true,
+        "detail": "playing=false paused=true t=0.97 dur=3",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:39.854Z"
+      },
+      {
+        "id": "D6.12",
+        "name": "非法包被拒（坏 JSON/end<start/含 script → E_JSON/E_SCHEMA，不建 clip）",
+        "pass": true,
+        "detail": "qa-bad-json.shadowcourse: clips 2->2, 期望E_JSON命中=true | qa-bad-endltstart.shadowcourse: clips 2->2, 期望E_SCHEMA命中=true | qa-bad-script.shadowcourse: clips 2->2, 期望E_SCHEMA命中=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:42.602Z"
+      },
+      {
+        "id": "D7.1",
+        "name": "?import=<包URL> 深链导入成功（本地静态服务 → 工具独立端口）",
+        "pass": true,
+        "detail": "status=200 created=true title=QA 咖啡店点单 fetches=1",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:44.641Z"
+      },
+      {
+        "id": "D7.2",
+        "name": "深链导入记录了来源 URL/文件名（可追溯）",
+        "pass": true,
+        "detail": "sourceUrl=http://127.0.0.1:18961/qa-course-basic.shadowcourse sourceName=qa-course-basic.shadowcourse",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:44.641Z"
+      },
+      {
+        "id": "D7.3",
+        "name": "深链只取这一个包文件（静态服务命中 1 次）",
+        "pass": true,
+        "detail": "hits=1",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:44.641Z"
+      },
+      {
+        "id": "D8.1",
+        "name": "保存工程 JSON 包含课程元数据（clip.course.id）与句子",
+        "pass": true,
+        "detail": "{\"id\":\"com.qa.course.basic\",\"title\":\"QA 咖啡店点单\",\"sentences\":4,\"courseMediaBound\":false}",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:44.816Z"
+      },
+      {
+        "id": "D8.2",
+        "name": "重开工程后课程元数据仍在（course.id/version/title/readme）",
+        "pass": true,
+        "detail": "title=QA 咖啡店点单 version=1.0.0 readmeLen=117",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:45.176Z"
+      },
+      {
+        "id": "D8.3",
+        "name": "重开后句子与时间轴完整",
+        "pass": true,
+        "detail": "sentences=4 diff=",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:45.176Z"
+      },
+      {
+        "id": "D8.4",
+        "name": "导入/播放/保存重开全程无 ASR 转写调用（无 /api/asr/transcribe|v2）",
+        "pass": true,
+        "detail": "asrUrls=1 transcribe=0 healthPolls=1",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:45.176Z"
+      },
+      {
+        "id": "D10.1",
+        "name": "/api/font/list 只读列出系统 CJK 字体（≥1，白名单）",
+        "pass": true,
+        "detail": "count=16 names=Microsoft YaHei,Microsoft YaHei Bold,Microsoft YaHei Light,Microsoft JhengHei Light",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:45.180Z"
+      },
+      {
+        "id": "D10.2",
+        "name": "字体项只含文件名/大小（白名单 basename，非任意路径）",
+        "pass": true,
+        "detail": "allWhitelist=true sample={\"name\":\"Microsoft YaHei\",\"file\":\"msyh.ttc\",\"family\":\"Microsoft YaHei\",\"cjk\":true,\"size\":19704352,\"ext\":\".ttc\",\"url\":\"/api/font/file?name=msyh.ttc\"}",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:45.181Z"
+      },
+      {
+        "id": "D10.3",
+        "name": "/api/font/file 返回字体字节（>50KB）",
+        "pass": true,
+        "detail": "status=200 bytes=19704352",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:45.340Z"
+      },
+      {
+        "id": "D10.4",
+        "name": "路径穿越被拒（name=../Windows/win.ini 不返回内容）",
+        "pass": true,
+        "detail": "backslash=400 slash=400",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:45.351Z"
+      },
+      {
+        "id": "D10.5",
+        "name": "页面选择系统字体成功并写入本地偏好（localStorage assFont.v1）",
+        "pass": true,
+        "detail": "via=hook:applyServerFontByFile bytes=19704352 hookLoaded=true localStorage={\"file\":\"msyh.ttc\",\"name\":\"Microsoft YaHei\",\"family\":\"Microsoft YaHei\",\"savedAt\":\"2026-10-25T15:36:45.443Z\"}",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:45.450Z"
+      },
+      {
+        "id": "D10.6",
+        "name": "字体偏好随 /api/settings 落盘（data/settings.json 含 shadowStudio.assFont.v1）",
+        "pass": true,
+        "detail": "serverPref=true disk=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:46.972Z"
+      },
+      {
+        "id": "D10.7",
+        "name": "重启工具后 ASS 中文字体自动恢复（/api/font/file 重新读取成功）",
+        "pass": true,
+        "detail": "bytes=19704352 name=Microsoft YaHei · msyh.ttc",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:49.338Z"
+      },
+      {
+        "id": "D10.8",
+        "name": "字体接口不写用户磁盘（只读；删除偏好后仍可渲染默认字体）",
+        "pass": true,
+        "detail": "/api/font/* 只读实现 + 本用例未修改 C:\\Windows\\Fonts",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:49.338Z"
+      },
+      {
+        "id": "D11.1",
+        "name": "每个内置插件都有只读 manifest（version/capabilities/permissions/settingsSchema）",
+        "pass": true,
+        "detail": "plugins=10 allManifest=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:49.343Z"
+      },
+      {
+        "id": "D11.2",
+        "name": "subtitle-overlay manifest 含 deepLink #plugin=subtitle-overlay 与字幕样式面板",
+        "pass": true,
+        "detail": "version=1.1.0 panel=subtitle-style deepLink=#plugin=subtitle-overlay",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:49.344Z"
+      },
+      {
+        "id": "D11.3",
+        "name": "Plugin Manager 可见（≥10 行 + 每行 manifest 摘要 + 设置入口）",
+        "pass": true,
+        "detail": "rows=10 settings=10 manifestText=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:50.310Z"
+      },
+      {
+        "id": "D11.4",
+        "name": "Plugin Manager「设置」→ 字幕插件设置深链生效（hash + 右栏字幕样式定位）",
+        "pass": true,
+        "detail": "click=true hash=#plugin=subtitle-overlay target=true tools=false enabled=true",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:51.232Z"
+      },
+      {
+        "id": "D11.5",
+        "name": "启动 URL #plugin=subtitle-overlay 深链直达字幕设置",
+        "pass": true,
+        "detail": "hash=#plugin=subtitle-overlay tab=sentence tools=false",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:51.530Z"
+      },
+      {
+        "id": "D11.6",
+        "name": "字幕插件开关行为不变（关→disabled，开→恢复）",
+        "pass": true,
+        "detail": "off={\"ok\":false,\"enabled\":false,\"subtitle\":false} on={\"ok\":true,\"enabled\":true}",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:52.541Z"
+      },
+      {
+        "id": "D12.1",
+        "name": "全程 0 console.error（探测噪声除外）",
+        "pass": true,
+        "detail": "raw=1 filtered=0 sample=",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:52.542Z"
+      },
+      {
+        "id": "D12.2",
+        "name": "全程 0 pageerror",
+        "pass": true,
+        "detail": "count=0 sample=",
+        "screenshot": null,
+        "at": "2026-10-25T15:36:52.542Z"
+      }
+    ]
+  },
+  "extra": {
+    "courseImportedConsole": {
+      "type": "info",
+      "text": "[SHADOW] course imported {id: com.qa.course.basic, version: 1.0.0, sentences: 4, asr: false}",
+      "location": "http://127.0.0.1:18960/:5095",
+      "at": "2026-10-25T15:36:35.814Z"
+    },
+    "saveVia": "Ctrl+S",
+    "asrHealthPolls": 1,
+    "consoleErrorRaw": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+        "location": "http://127.0.0.1:18960/api/asr/health:0",
+        "at": "2026-10-25T15:36:47.717Z"
+      }
+    ],
+    "consoleErrorFiltered": []
+  },
+  "console": [
+    {
+      "type": "info",
+      "text": "[SHADOW] settings restored from server {applied: 1, server: 2026-10-25T15:35:32.763Z, local: }",
+      "location": "http://127.0.0.1:18960/:5660",
+      "at": "2026-10-25T15:36:35.523Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] ASS font restored from server {file: msyh.ttc, bytes: 19704352}",
+      "location": "http://127.0.0.1:18960/:5457",
+      "at": "2026-10-25T15:36:35.709Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] course imported {id: com.qa.course.basic, version: 1.0.0, sentences: 4, asr: false}",
+      "location": "http://127.0.0.1:18960/:5095",
+      "at": "2026-10-25T15:36:35.814Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] course imported {id: com.qa.course.min, version: 0.0.1, sentences: 1, asr: false}",
+      "location": "http://127.0.0.1:18960/:5095",
+      "at": "2026-10-25T15:36:37.539Z"
+    },
+    {
+      "type": "warning",
+      "text": "[SHADOW] course rejected [Object]",
+      "location": "http://127.0.0.1:18960/:5082",
+      "at": "2026-10-25T15:36:39.864Z"
+    },
+    {
+      "type": "warning",
+      "text": "[SHADOW] course rejected [Object]",
+      "location": "http://127.0.0.1:18960/:5082",
+      "at": "2026-10-25T15:36:40.778Z"
+    },
+    {
+      "type": "warning",
+      "text": "[SHADOW] course rejected [Object]",
+      "location": "http://127.0.0.1:18960/:5082",
+      "at": "2026-10-25T15:36:41.693Z"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+      "location": "http://127.0.0.1:18960/api/asr/health:0",
+      "at": "2026-10-25T15:36:47.717Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] settings restored from server {applied: 1, server: 2026-10-25T15:36:35.606Z, local: }",
+      "location": "http://127.0.0.1:18960/?import=http%3A%2F%2F127.0.0.1%3A18961%2Fqa-course-basic.shadowcourse:5660",
+      "at": "2026-10-25T15:36:42.894Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] ASS font restored from server {file: msyh.ttc, bytes: 19704352}",
+      "location": "http://127.0.0.1:18960/?import=http%3A%2F%2F127.0.0.1%3A18961%2Fqa-course-basic.shadowcourse:5457",
+      "at": "2026-10-25T15:36:43.071Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] course imported {id: com.qa.course.basic, version: 1.0.0, sentences: 4, asr: false}",
+      "location": "http://127.0.0.1:18960/?import=http%3A%2F%2F127.0.0.1%3A18961%2Fqa-course-basic.shadowcourse:5095",
+      "at": "2026-10-25T15:36:43.750Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] ASS font restored from server {file: msyh.ttc, bytes: 19704352}",
+      "location": "http://127.0.0.1:18960/?import=http%3A%2F%2F127.0.0.1%3A18961%2Fqa-course-basic.shadowcourse:5457",
+      "at": "2026-10-25T15:36:45.056Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] course imported {id: com.qa.course.basic, version: 1.0.0, sentences: 4, asr: false}",
+      "location": "http://127.0.0.1:18960/?import=http%3A%2F%2F127.0.0.1%3A18961%2Fqa-course-basic.shadowcourse:5095",
+      "at": "2026-10-25T15:36:45.674Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] settings restored from server {applied: 1, server: 2026-10-25T15:36:45.947Z, local: }",
+      "location": "http://127.0.0.1:18960/:5660",
+      "at": "2026-10-25T15:36:48.852Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] ASS font restored from server {file: msyh.ttc, bytes: 19704352}",
+      "location": "http://127.0.0.1:18960/:5457",
+      "at": "2026-10-25T15:36:49.133Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] settings restored from server {applied: 1, server: 2026-10-25T15:36:48.949Z, local: }",
+      "location": "http://127.0.0.1:18960/:5660",
+      "at": "2026-10-25T15:36:51.534Z"
+    },
+    {
+      "type": "info",
+      "text": "[SHADOW] ASS font restored from server {file: msyh.ttc, bytes: 19704352}",
+      "location": "http://127.0.0.1:18960/:5457",
+      "at": "2026-10-25T15:36:51.747Z"
+    }
+  ],
+  "pageErrors": [],
+  "requestFailures": [],
+  "asrRequests": [
+    "http://127.0.0.1:18960/api/asr/health"
+  ],
+  "requests": [
+    "http://127.0.0.1:18960/",
+    "http://127.0.0.1:18960/api/config",
+    "http://127.0.0.1:18960/api/asr/health",
+    "http://127.0.0.1:18960/api/settings",
+    "http://127.0.0.1:18960/api/font/list",
+    "http://127.0.0.1:18960/api/font/file?name=msyh.ttc"
+  ],
+  "screenshots": [
+    "desktop-import-wizard.png",
+    "desktop-textonly.png",
+    "desktop-byom-bound.png",
+    "desktop-import-fail.png",
+    "desktop-deeplink.png",
+    "desktop-project-reopened.png",
+    "desktop-font-persist.png",
+    "desktop-plugin-manager.png",
+    "desktop-plugin-settings.png"
+  ],
+  "phases": {
+    "boot": {
+      "status": 200,
+      "url": "http://127.0.0.1:18960/",
+      "ready": true,
+      "version": "0.7.0",
+      "api": {
+        "server": true,
+        "asrBase": "/api/asr",
+        "mic": true
+      }
+    },
+    "dragImport": {
+      "dragInfo": {
+        "name": "qa-course-basic.shadowcourse",
+        "size": 2403
+      },
+      "created": true,
+      "clipCount": 1,
+      "wizardVisible": true,
+      "timeline": {
+        "ok": true,
+        "detail": ""
+      },
+      "courseTitle": "QA 咖啡店点单"
+    },
+    "textOnly": {
+      "clicked": true,
+      "clip": {
+        "id": "clip_f7tmr7",
+        "name": "QA 咖啡店点单",
+        "kind": "course",
+        "status": "analyzed",
+        "duration": 0,
+        "mediaMissing": true,
+        "courseMediaBound": false,
+        "textOnly": true,
+        "sentences": [
+          {
+            "start": 0.2,
+            "end": 1.5,
+            "en": "Hi, could I get a medium latte, please?",
+            "zh": "你好，我要一杯中杯拿铁。",
+            "tip": "连读 could I",
+            "courseSentenceId": "s_0001"
+          },
+          {
+            "start": 1.6,
+            "end": 3,
+            "en": "Sure. Would you like it hot or iced?",
+            "zh": "好的，你要热的还是冰的？",
+            "tip": "",
+            "courseSentenceId": "s_0002"
+          },
+          {
+            "start": 3.2,
+            "end": 4.8,
+            "en": "Iced, please. And a blueberry muffin.",
+            "zh": "冰的，谢谢。再来一个蓝莓松饼。",
+            "tip": "",
+            "courseSentenceId": "s_0003"
+          },
+          {
+            "start": 5,
+            "end": 7.5,
+            "en": "That will be eight fifty. Here is your receipt.",
+            "zh": "一共八块五。这是你的收据。",
+            "tip": "数字听力",
+            "courseSentenceId": "s_0004"
+          }
+        ],
+        "course": {
+          "id": "com.qa.course.basic",
+          "version": "1.0.0",
+          "title": "QA 咖啡店点单",
+          "license": "CC-BY-4.0",
+          "mediaPolicy": "byom",
+          "readme": "## QA 课程介绍\n\n这是 qa-verify 的独立测试课程包（非市场数据）。\n\n- 4 句，时间轴 0.2–7.5s\n- mediaPolicy: byom（不含任何媒体）\n- 用于验证拖拽导入、BYOM、保存重开、无 ASR\n",
+          "creator": {
+            "name": "QA Verify",
+            "handle": "qa-verify",
+            "url": ""
+          },
+          "tags": [
+            "B1",
+            "QA",
+            "fixture"
+          ],
+          "level": "B1",
+          "sourceUrl": ""
+        },
+        "wizardOpen": false
+      },
+      "playState": {
+        "playDisabled": true,
+        "playing": false,
+        "toastText": "已应用课程练习配置：语速 1x\n仅文本模式：句子 / 翻译 / 时间轴可用；按句播放前请点「选择本地媒体」绑定视频或音频",
+        "hook": {
+          "clipId": "clip_f7tmr7",
+          "hasCourse": true,
+          "id": "com.qa.course.basic",
+          "title": "QA 咖啡店点单",
+          "version": "1.0.0",
+          "license": "CC-BY-4.0",
+          "mediaPolicy": "byom",
+          "readme": true,
+          "tags": [
+            "B1",
+            "QA",
+            "fixture"
+          ],
+          "exercises": {
+            "spec": "shadow.exercises",
+            "schemaVersion": 1,
+            "default": {
+              "mode": "shadow",
+              "loopCount": 3,
+              "speed": 1,
+              "scoring": {
+                "enabled": true
+              },
+              "subtitle": {
+                "en": true,
+                "zh": true,
+                "position": "bottom"
+              }
+            }
+          },
+          "kind": "course",
+          "duration": 0,
+          "sentences": 4,
+          "firstStart": 0.2,
+          "lastEnd": 7.5,
+          "mediaMissing": true,
+          "mediaBound": false,
+          "textOnly": true,
+          "playDisabled": true,
+          "bindButtonVisible": true,
+          "viewerHint": "课程包不含媒体。点「选择本地媒体（BYOM）」绑定你自己的视频/音频后即可按句子时间轴播放；句子、翻译与时间轴现在就能用。",
+          "wizardOpen": false,
+          "clipIds": [
+            "clip_f7tmr7"
+          ],
+          "clipNames": [
+            "QA 咖啡店点单"
+          ]
+        }
+      }
+    },
+    "byomBind": {
+      "chooser": "filechooser",
+      "bound": {
+        "ok": true,
+        "duration": 3,
+        "bound": true
+      },
+      "clip": {
+        "id": "clip_nck2fz",
+        "name": "QA 最小包",
+        "kind": "audio",
+        "status": "analyzed",
+        "duration": 3,
+        "mediaMissing": false,
+        "courseMediaBound": true,
+        "textOnly": false,
+        "sentences": [
+          {
+            "start": 0,
+            "end": 1,
+            "en": "Hello there.",
+            "zh": "你好。",
+            "tip": "",
+            "courseSentenceId": "s_0001"
+          }
+        ],
+        "course": {
+          "id": "com.qa.course.min",
+          "version": "0.0.1",
+          "title": "QA 最小包",
+          "license": "CC-BY-4.0",
+          "mediaPolicy": "byom",
+          "readme": "## 最小包\n\n只有一句。",
+          "creator": {
+            "name": "QA Verify",
+            "handle": "qa-verify",
+            "url": ""
+          },
+          "tags": [],
+          "level": "A1",
+          "sourceUrl": ""
+        },
+        "wizardOpen": false
+      }
+    },
+    "playback": {
+      "playing": false,
+      "paused": true,
+      "currentTime": 0.97,
+      "duration": 3,
+      "clipDuration": 3
+    },
+    "badPackages": [
+      {
+        "case": "qa-bad-json.shadowcourse",
+        "expect": "E_JSON",
+        "clipsBefore": 2,
+        "clipsAfter": 2,
+        "toast": "请选择与课程对应的本地媒体（视频/音频）：只在本机读取，不会上传 媒体已绑定：qa-media-3s.wav · 「QA 最小包」现在可以按句播放/跟读了 课程包导入失败：[E_JSON] 不是合法 JSON：Unexpected end of JSON input"
+      },
+      {
+        "case": "qa-bad-endltstart.shadowcourse",
+        "expect": "E_SCHEMA",
+        "clipsBefore": 2,
+        "clipsAfter": 2,
+        "toast": "课程包导入失败：[E_JSON] 不是合法 JSON：Unexpected end of JSON input 课程包导入失败：[E_SCHEMA] end 必须大于 start（sentences[0]）"
+      },
+      {
+        "case": "qa-bad-script.shadowcourse",
+        "expect": "E_SCHEMA",
+        "clipsBefore": 2,
+        "clipsAfter": 2,
+        "toast": "课程包导入失败：[E_JSON] 不是合法 JSON：Unexpected end of JSON input 课程包导入失败：[E_SCHEMA] end 必须大于 start（sentences[0]） 课程包导入失败：[E_SCHEMA] 课程包必须是纯数据，不允许脚本/iframe/事件属性（$.readme）"
+      }
+    ],
+    "deepLink": {
+      "url": "http://127.0.0.1:18960/?import=http%3A%2F%2F127.0.0.1%3A18961%2Fqa-course-basic.shadowcourse",
+      "status": 200,
+      "created": true,
+      "clips": [
+        {
+          "id": "com.qa.course.basic",
+          "sentences": 4,
+          "title": "QA 咖啡店点单",
+          "sourceUrl": "http://127.0.0.1:18961/qa-course-basic.shadowcourse",
+          "sourceName": "qa-course-basic.shadowcourse"
+        }
+      ],
+      "fixtureHits": [
+        {
+          "at": "2026-10-25T15:36:43.678Z",
+          "method": "GET",
+          "path": "/qa-course-basic.shadowcourse"
+        }
+      ],
+      "sourceUrl": "http://127.0.0.1:18961/qa-course-basic.shadowcourse"
+    },
+    "savedProject": {
+      "file": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-verify-tmp\\desktop\\saved-project.shadow.json",
+      "saveVia": "Ctrl+S",
+      "hasCourse": true,
+      "savedCourse": {
+        "id": "com.qa.course.basic",
+        "title": "QA 咖啡店点单",
+        "sentences": 4,
+        "courseMediaBound": false
+      }
+    },
+    "reopened": {
+      "afterReloadCourses": 0,
+      "reopened": true,
+      "clip": {
+        "id": "com.qa.course.basic",
+        "title": "QA 咖啡店点单",
+        "version": "1.0.0",
+        "sentences": 4,
+        "courseMediaBound": false
+      }
+    },
+    "fontList": {
+      "status": 200,
+      "ok": true,
+      "count": 16,
+      "sample": [
+        {
+          "name": "Microsoft YaHei",
+          "file": "msyh.ttc",
+          "family": "Microsoft YaHei",
+          "cjk": true,
+          "size": 19704352,
+          "ext": ".ttc",
+          "url": "/api/font/file?name=msyh.ttc"
+        },
+        {
+          "name": "Microsoft YaHei Bold",
+          "file": "msyhbd.ttc",
+          "family": "Microsoft YaHei",
+          "cjk": true,
+          "size": 16883552,
+          "ext": ".ttc",
+          "url": "/api/font/file?name=msyhbd.ttc"
+        },
+        {
+          "name": "Microsoft YaHei Light",
+          "file": "msyhl.ttc",
+          "family": "Microsoft YaHei",
+          "cjk": true,
+          "size": 12189612,
+          "ext": ".ttc",
+          "url": "/api/font/file?name=msyhl.ttc"
+        },
+        {
+          "name": "Microsoft JhengHei Light",
+          "file": "msjhl.ttc",
+          "family": "Microsoft JhengHei",
+          "cjk": true,
+          "size": 12877764,
+          "ext": ".ttc",
+          "url": "/api/font/file?name=msjhl.ttc"
+        },
+        {
+          "name": "SimSun",
+          "file": "simsun.ttc",
+          "family": "SimSun",
+          "cjk": true,
+          "size": 18316748,
+          "ext": ".ttc",
+          "url": "/api/font/file?name=simsun.ttc"
+        }
+      ]
+    },
+    "fontFile": {
+      "name": "msyh.ttc",
+      "status": 200,
+      "bytes": 19704352,
+      "contentType": "font/collection"
+    },
+    "fontApply": {
+      "ok": true,
+      "via": "hook:applyServerFontByFile",
+      "file": "msyh.ttc",
+      "name": "Microsoft YaHei · msyh.ttc",
+      "bytes": 19704352,
+      "pref": {
+        "file": "msyh.ttc",
+        "name": "Microsoft YaHei",
+        "family": "Microsoft YaHei",
+        "savedAt": "2026-10-25T15:36:45.443Z"
+      },
+      "hookLoaded": true,
+      "localStorage": "{\"file\":\"msyh.ttc\",\"name\":\"Microsoft YaHei\",\"family\":\"Microsoft YaHei\",\"savedAt\":\"2026-10-25T15:36:45.443Z\"}"
+    },
+    "serverSettings": {
+      "status": 200,
+      "hasAssFont": true
+    },
+    "settingsFile": {
+      "file": "D:\\FOLLOWSPEAK\\tools\\qa\\v07\\.tmp\\r11-final-mirror\\data\\settings.json",
+      "exists": true,
+      "hasAssFont": true
+    },
+    "fontRestore": {
+      "restored": {
+        "ok": true,
+        "bytes": 19704352,
+        "name": "Microsoft YaHei · msyh.ttc",
+        "pref": {
+          "file": "msyh.ttc",
+          "name": "Microsoft YaHei",
+          "family": "Microsoft YaHei",
+          "savedAt": "2026-10-25T15:36:45.443Z"
+        }
+      },
+      "console": {
+        "type": "info",
+        "text": "[SHADOW] ASS font restored from server {file: msyh.ttc, bytes: 19704352}",
+        "location": "http://127.0.0.1:18960/:5457",
+        "at": "2026-10-25T15:36:49.133Z"
+      },
+      "apiServer": true
+    },
+    "manifests": {
+      "count": 10,
+      "subtitle": {
+        "id": "subtitle-overlay",
+        "enabled": true,
+        "manifest": {
+          "manifestVersion": 1,
+          "kind": "builtin-plugin",
+          "id": "subtitle-overlay",
+          "name": "Subtitle Overlay · 双语字幕",
+          "version": "1.1.0",
+          "type": "OVERLAY",
+          "builtin": true,
+          "capabilities": [
+            "SUBTITLE",
+            "OVERLAY",
+            "BILINGUAL",
+            "DEEP_LINK",
+            "PERSISTED_STYLE"
+          ],
+          "permissions": {
+            "network": false,
+            "filesystem": false,
+            "microphone": false
+          },
+          "settingsSchema": {
+            "type": "object",
+            "panel": "subtitle-style",
+            "properties": {
+              "fontFamily": {
+                "type": "string",
+                "enum": [
+                  "",
+                  "arial",
+                  "serif",
+                  "mono",
+                  "rounded"
+                ]
+              },
+              "colorEn": {
+                "type": "string",
+                "format": "color"
+              },
+              "colorZh": {
+                "type": "string",
+                "format": "color"
+              },
+              "strokeWidth": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 5
+              },
+              "x": {
+                "type": "number",
+                "minimum": 2,
+                "maximum": 98
+              },
+              "y": {
+                "type": "number",
+                "minimum": 2,
+                "maximum": 98
+              },
+              "w": {
+                "type": "number",
+                "minimum": 15,
+                "maximum": 100
+              },
+              "align": {
+                "type": "string",
+                "enum": [
+                  "left",
+                  "center",
+                  "right"
+                ]
+              },
+              "showZh": {
+                "type": "boolean"
+              },
+              "hidden": {
+                "type": "boolean"
+              }
+            }
+          },
+          "compat": {
+            "shadow": ">=0.7.0"
+          },
+          "deepLink": "#plugin=subtitle-overlay"
+        }
+      }
+    },
+    "pluginSettings": {
+      "clickSettings": true,
+      "tab": "sentence",
+      "hash": "#plugin=subtitle-overlay",
+      "target": true,
+      "subtitleTools": false,
+      "pluginEnabled": true
+    },
+    "pluginDeepLink": {
+      "hash": "#plugin=subtitle-overlay",
+      "tab": "sentence",
+      "enabled": true,
+      "tools": false
+    },
+    "pluginToggle": {
+      "off": {
+        "ok": false,
+        "enabled": false,
+        "subtitle": false
+      },
+      "on": {
+        "ok": true,
+        "enabled": true
+      }
+    }
+  },
+  "error": null,
+  "pass": true,
+  "summary": {
+    "total": 39,
+    "passed": 39,
+    "failed": 0
+  },
+  "finishedAt": "2026-10-25T15:36:53.017Z"
+}

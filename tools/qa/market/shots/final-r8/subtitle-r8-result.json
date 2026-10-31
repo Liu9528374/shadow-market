@@ -1,0 +1,131 @@
+{
+  "checks": [
+    {
+      "n": "click handle alone does not jump",
+      "ok": true,
+      "d": "x 50->50 y 84->84"
+    },
+    {
+      "n": "drag right moves subtitle right (no teleport)",
+      "ok": true,
+      "d": "x 50->58.2 y 84->77.2"
+    },
+    {
+      "n": "drag left works after right (no lock)",
+      "ok": true,
+      "d": "x 58.2->39.4"
+    },
+    {
+      "n": "subtitle plugin off hides subtitle + layer",
+      "ok": true,
+      "d": "{\"visible\":false}"
+    },
+    {
+      "n": "plugin off state reflected in UI",
+      "ok": true,
+      "d": "{\"visible\":false,\"layerHidden\":true,\"plugin\":false,\"banner\":true}"
+    },
+    {
+      "n": "plugin re-enable restores subtitle",
+      "ok": true,
+      "d": "{\"visible\":true,\"layerHidden\":false,\"plugin\":true}"
+    },
+    {
+      "n": "Plugin Manager lists subtitle plugin",
+      "ok": true,
+      "d": "ok"
+    },
+    {
+      "n": "Plugin Manager toggle turns subtitle plugin off",
+      "ok": true,
+      "d": "{\"plugin\":false,\"visible\":false}"
+    },
+    {
+      "n": "Plugin Manager toggle turns subtitle plugin back on",
+      "ok": true,
+      "d": "{\"plugin\":true,\"visible\":true}"
+    },
+    {
+      "n": "font family applied (serif/Georgia)",
+      "ok": true,
+      "d": "Georgia, \"Times New Roman\", \"Songti SC\", SimSun, serif"
+    },
+    {
+      "n": "english color applied",
+      "ok": true,
+      "d": "rgb(255, 136, 0)"
+    },
+    {
+      "n": "stroke width applied (text-shadow)",
+      "ok": true,
+      "d": "4px"
+    },
+    {
+      "n": "style prefs persisted in S.sub",
+      "ok": true,
+      "d": "{\"f\":\"serif\",\"en\":\"#ff8800\",\"zh\":\"#00e5ff\"}"
+    },
+    {
+      "n": "Alt+ArrowLeft moves subtitle left 1%",
+      "ok": true,
+      "d": "x 39.4->38.4"
+    },
+    {
+      "n": "Alt+ArrowDown moves subtitle down 1%",
+      "ok": true,
+      "d": "y 81.7->82.7"
+    },
+    {
+      "n": "Alt+Shift+ArrowRight widens fixed width by 2%",
+      "ok": true,
+      "d": "w 72->74"
+    },
+    {
+      "n": "second (video) clip imported",
+      "ok": true
+    },
+    {
+      "n": "switched to video clip",
+      "ok": true,
+      "d": "clip_twt5f2"
+    },
+    {
+      "n": "scope control exists",
+      "ok": true
+    },
+    {
+      "n": "video clip override changed",
+      "ok": true,
+      "d": "x 38.4->37.5"
+    },
+    {
+      "n": "switching back to first clip uses global layout (no override leak)",
+      "ok": true,
+      "d": "audio=38.4 video=37.5"
+    },
+    {
+      "n": "switching back to video restores its override",
+      "ok": true,
+      "d": "video 37.5 -> 37.5"
+    },
+    {
+      "n": "project JSON stores per-video subtitle override",
+      "ok": true,
+      "d": "clips with subtitle=1"
+    },
+    {
+      "n": "project JSON stores global subtitle",
+      "ok": true,
+      "d": "{\"x\":38.4}"
+    },
+    {
+      "n": "no console/page errors",
+      "ok": true,
+      "d": ""
+    }
+  ],
+  "errors": [],
+  "startedAt": "2026-10-25T15:38:29.483Z",
+  "finishedAt": "2026-10-25T15:38:56.392Z",
+  "pass": true
+}
