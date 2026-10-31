@@ -1,0 +1,63 @@
+{
+  "spec": "shadow.market.categories",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T15:30:00.000Z",
+  "items": [
+    {
+      "id": "daily",
+      "label": "日常会话",
+      "labelEn": "Daily",
+      "order": 1,
+      "description": "点单、问路、购物等日常场景口语",
+      "count": 1
+    },
+    {
+      "id": "travel",
+      "label": "出行旅行",
+      "labelEn": "Travel",
+      "order": 2,
+      "description": "问路、交通、住宿等旅行场景",
+      "count": 1
+    },
+    {
+      "id": "work",
+      "label": "职场工作",
+      "labelEn": "Work",
+      "order": 3,
+      "description": "面试、会议、邮件等职场场景",
+      "count": 1
+    },
+    {
+      "id": "podcast",
+      "label": "播客跟读",
+      "labelEn": "Podcast",
+      "order": 4,
+      "description": "播客 / 听力材料跟读练习",
+      "count": 1
+    },
+    {
+      "id": "movie",
+      "label": "影视跟读",
+      "labelEn": "Movies",
+      "order": 5,
+      "description": "自备影视片段（BYOM）的跟读练习",
+      "count": 1
+    },
+    {
+      "id": "listening",
+      "label": "听力字幕",
+      "labelEn": "Listening",
+      "order": 6,
+      "description": "成段的听力材料与字幕文本",
+      "count": 1
+    },
+    {
+      "id": "plugins",
+      "label": "工具与插件",
+      "labelEn": "Tools & Plugins",
+      "order": 7,
+      "description": "声明式插件白名单与说明（不含可执行代码）",
+      "count": 1
+    }
+  ]
+}

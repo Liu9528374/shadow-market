@@ -1,0 +1,130 @@
+{
+  "app": "SHADOW STUDIO",
+  "version": 1,
+  "savedAt": "2026-10-31T15:30:00.000Z",
+  "projectName": "面试开场自我介绍",
+  "clips": [
+    {
+      "id": "clip_com.shadow.course.interview-intro",
+      "name": "com.shadow.course.interview-intro.mp4",
+      "size": 0,
+      "type": "video/mp4",
+      "kind": "video",
+      "duration": 19,
+      "resolution": "—",
+      "segmentation": "subtitle",
+      "sentences": [
+        {
+          "start": 0.103,
+          "end": 2.664,
+          "en": "So, tell me a little about yourself.",
+          "zh": "那么，请简单介绍一下你自己。",
+          "words": [
+            "So,",
+            "tell",
+            "me",
+            "a",
+            "little",
+            "about",
+            "yourself."
+          ],
+          "linking": "",
+          "tip": "重音：tell · little · yourself\n连读：tell me → tel-me；about yourself → abou-chur-self\n提示：tell me 的 m 和 a 连读；yourself 重音在 self。",
+          "score": null
+        },
+        {
+          "start": 3.395,
+          "end": 6.864,
+          "en": "I've been working as a product designer for about three years.",
+          "zh": "我做产品设计师大约三年了。",
+          "words": [
+            "I've",
+            "been",
+            "working",
+            "as",
+            "a",
+            "product",
+            "designer",
+            "for",
+            "about",
+            "three",
+            "years."
+          ],
+          "linking": "",
+          "tip": "重音：working · product · designer · three · years\n连读：as a → a-za；for about → fo-ra-bout\n提示：I've been 弱读成 aiv-bin，重点信息放在 three years。",
+          "score": null
+        },
+        {
+          "start": 7.592,
+          "end": 9.759,
+          "en": "What made you want to apply for this role?",
+          "zh": "是什么让你想申请这个职位？",
+          "words": [
+            "What",
+            "made",
+            "you",
+            "want",
+            "to",
+            "apply",
+            "for",
+            "this",
+            "role?"
+          ],
+          "linking": "",
+          "tip": "重音：What · want · apply · role\n连读：want to → wanna；apply for → apply-fer\n提示：want to 口语里常说 wanna；apply 重音在第二音节。",
+          "score": null
+        },
+        {
+          "start": 10.487,
+          "end": 13.483,
+          "en": "I'm really drawn to your focus on accessibility.",
+          "zh": "我真的很被你们对无障碍设计的专注吸引。",
+          "words": [
+            "I'm",
+            "really",
+            "drawn",
+            "to",
+            "your",
+            "focus",
+            "on",
+            "accessibility."
+          ],
+          "linking": "",
+          "tip": "重音：really · drawn · focus · accessibility\n连读：drawn to → drawn-tuh；focus on → focu-son\n提示：drawn to 连读；accessibility 重音在 bil。",
+          "score": null
+        },
+        {
+          "start": 14.211,
+          "end": 17.496,
+          "en": "That's great to hear. When could you start?",
+          "zh": "很高兴听你这么说。你什么时候能入职？",
+          "words": [
+            "That's",
+            "great",
+            "to",
+            "hear.",
+            "When",
+            "could",
+            "you",
+            "start?"
+          ],
+          "linking": "",
+          "tip": "重音：great · hear · When · start\n连读：could you → coul-joo\n提示：could you 连读成 coul-joo，句尾 start 降调。",
+          "score": null
+        }
+      ],
+      "units": [],
+      "peaks": [],
+      "thumb": null,
+      "subtitle": null,
+      "assSubtitle": null,
+      "asrSegments": [],
+      "asrSentences": [],
+      "asrMeta": null,
+      "asrTranscribedAt": 0,
+      "asrStale": false
+    }
+  ],
+  "scores": {},
+  "recordings": {}
+}

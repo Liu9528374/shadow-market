@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:03,400
+The library opens at nine on weekdays.
+
+2
+00:00:03,800 --> 00:00:07,600
+You can borrow up to five books at a time.
+
+3
+00:00:08,000 --> 00:00:11,500
+Please keep your voice down in the reading room.
+
+4
+00:00:12,000 --> 00:00:16,400
+There is a quiet desk by the window on the second floor.
+
+5
+00:00:16,800 --> 00:00:21,000
+If you need help, ask the librarian at the front desk.
+
+6
+00:00:21,500 --> 00:00:25,400
+Books can be returned in the box outside the door.
+
+7
+00:00:25,900 --> 00:00:29,700
+You can use the computers for one hour each day.
+
+8
+00:00:30,200 --> 00:00:33,900
+The study group meets every Thursday afternoon.
+
+9
+00:00:34,400 --> 00:00:38,200
+Remember to bring your card when you visit next time.

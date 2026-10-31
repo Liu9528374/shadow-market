@@ -1,0 +1,519 @@
+{
+  "spec": "shadow.market.resources",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T15:30:00.000Z",
+  "items": [
+    {
+      "id": "com.shadow.course.cafe-order",
+      "type": "course",
+      "title": "在咖啡店点单",
+      "subtitle": "Ordering at a Café · B1",
+      "description": "咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。",
+      "category": "daily",
+      "level": "B1",
+      "tags": [
+        "B1",
+        "日常",
+        "连读",
+        "美音"
+      ],
+      "author": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "rights": {
+        "basis": "own",
+        "evidenceUrl": "",
+        "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。"
+      },
+      "mediaMode": "byom",
+      "language": [
+        "en",
+        "zh"
+      ],
+      "points": 0,
+      "free": true,
+      "platforms": [
+        "windows",
+        "web"
+      ],
+      "requires": {
+        "shadow": ">=0.7.0"
+      },
+      "cover": {
+        "color1": "#1B4D3E",
+        "color2": "#2EE6A8"
+      },
+      "mediaName": "com.shadow.course.cafe-order.mp4",
+      "stats": {
+        "sentences": 5,
+        "durationSec": 21.6,
+        "words": 40,
+        "sizeBytes": 6256,
+        "sha256": "b1f7d8750c7a5afc11087ebb08295615d6711f6b178c6626ff2cfa39dc446890"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "packageUrl": "data/packages/com.shadow.course.cafe-order.shadowcourse",
+          "sha256": "b1f7d8750c7a5afc11087ebb08295615d6711f6b178c6626ff2cfa39dc446890",
+          "sizeBytes": 6256,
+          "compat": {
+            "shadow": ">=0.7.0",
+            "schemaVersion": 1
+          },
+          "changelog": [
+            "1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。"
+          ],
+          "publishedAt": "2026-10-25T00:00:00.000Z",
+          "downloads": 0,
+          "importFiles": {
+            "shadowJson": "data/import/com.shadow.course.cafe-order.shadow.json",
+            "srt": "data/import/com.shadow.course.cafe-order.srt",
+            "readme": "data/import/README-com.shadow.course.cafe-order.txt"
+          }
+        }
+      ],
+      "readme": "## 在咖啡店点单\n\n咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。\n\n**适合人群**：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者\n\n- **5 句** · 时长约 **21.6 秒** · 难度 B1 · 分类「日常会话（Daily）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n- 推荐导入：下载 `.shadow.json` 后用 SHADOW STUDIO 打开，媒体需重命名为 `com.shadow.course.cafe-order.mp4`\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；下载区同时提供 `.srt`（备选）与 `.shadowcourse`（规范，课程）。\n",
+      "createdAt": "2026-10-25T00:00:00.000Z",
+      "updatedAt": "2026-10-31T15:30:00.000Z"
+    },
+    {
+      "id": "com.shadow.course.asking-directions",
+      "type": "course",
+      "title": "问路去火车站",
+      "subtitle": "Asking for Directions · A2",
+      "description": "问路去火车站的 5 句旅行英语：怎么问路、直走几个街区、左转、确认距离、道谢。逐句中文翻译与英音连读提示，导入免 ASR，自备音频即可跟读。",
+      "category": "travel",
+      "level": "A2",
+      "tags": [
+        "A2",
+        "旅行",
+        "问路",
+        "英音"
+      ],
+      "author": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "rights": {
+        "basis": "own",
+        "evidenceUrl": "",
+        "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。"
+      },
+      "mediaMode": "byom",
+      "language": [
+        "en",
+        "zh"
+      ],
+      "points": 0,
+      "free": true,
+      "platforms": [
+        "windows",
+        "web"
+      ],
+      "requires": {
+        "shadow": ">=0.7.0"
+      },
+      "cover": {
+        "color1": "#3D2B4D",
+        "color2": "#C77DFF"
+      },
+      "mediaName": "com.shadow.course.asking-directions.mp4",
+      "stats": {
+        "sentences": 5,
+        "durationSec": 13.5,
+        "words": 33,
+        "sizeBytes": 6163,
+        "sha256": "186526d200c33b9555c16406cd190a2a3dbed679bc11e72dcf9ebbe0c531afa6"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "packageUrl": "data/packages/com.shadow.course.asking-directions.shadowcourse",
+          "sha256": "186526d200c33b9555c16406cd190a2a3dbed679bc11e72dcf9ebbe0c531afa6",
+          "sizeBytes": 6163,
+          "compat": {
+            "shadow": ">=0.7.0",
+            "schemaVersion": 1
+          },
+          "changelog": [
+            "1.0.0（2026-10-25）：首个版本，5 句问路旅行对话，含英音连读提示；BYOM 纯数据包。"
+          ],
+          "publishedAt": "2026-10-25T00:00:00.000Z",
+          "downloads": 0,
+          "importFiles": {
+            "shadowJson": "data/import/com.shadow.course.asking-directions.shadow.json",
+            "srt": "data/import/com.shadow.course.asking-directions.srt",
+            "readme": "data/import/README-com.shadow.course.asking-directions.txt"
+          }
+        }
+      ],
+      "readme": "## 问路去火车站\n\n问路去火车站的 5 句旅行英语：怎么问路、直走几个街区、左转、确认距离、道谢。逐句中文翻译与英音连读提示，导入免 ASR，自备音频即可跟读。\n\n**适合人群**：A2 左右、准备出国旅行或想巩固问路口语的学习者\n\n- **5 句** · 时长约 **13.5 秒** · 难度 A2 · 分类「出行旅行（Travel）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n- 推荐导入：下载 `.shadow.json` 后用 SHADOW STUDIO 打开，媒体需重命名为 `com.shadow.course.asking-directions.mp4`\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；下载区同时提供 `.srt`（备选）与 `.shadowcourse`（规范，课程）。\n",
+      "createdAt": "2026-10-25T00:00:00.000Z",
+      "updatedAt": "2026-10-31T15:30:00.000Z"
+    },
+    {
+      "id": "com.shadow.course.interview-intro",
+      "type": "course",
+      "title": "面试开场自我介绍",
+      "subtitle": "Interview: Tell Me About Yourself · B2",
+      "description": "面试开场自我介绍的 5 句职场英语：自我介绍、工作经历、申请动机、对岗位的兴趣、入职时间。含中文翻译与重音、连读提示，BYOM 纯数据包。",
+      "category": "work",
+      "level": "B2",
+      "tags": [
+        "B2",
+        "职场",
+        "面试",
+        "连读"
+      ],
+      "author": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "rights": {
+        "basis": "own",
+        "evidenceUrl": "",
+        "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。"
+      },
+      "mediaMode": "byom",
+      "language": [
+        "en",
+        "zh"
+      ],
+      "points": 0,
+      "free": true,
+      "platforms": [
+        "windows",
+        "web"
+      ],
+      "requires": {
+        "shadow": ">=0.7.0"
+      },
+      "cover": {
+        "color1": "#182B4D",
+        "color2": "#5B8CFF"
+      },
+      "mediaName": "com.shadow.course.interview-intro.mp4",
+      "stats": {
+        "sentences": 5,
+        "durationSec": 17.5,
+        "words": 43,
+        "sizeBytes": 6654,
+        "sha256": "f57307414aa23dc1cb7f59e8d5388e7801b6e3c4824d956c81fc41e93235d628"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "packageUrl": "data/packages/com.shadow.course.interview-intro.shadowcourse",
+          "sha256": "f57307414aa23dc1cb7f59e8d5388e7801b6e3c4824d956c81fc41e93235d628",
+          "sizeBytes": 6654,
+          "compat": {
+            "shadow": ">=0.7.0",
+            "schemaVersion": 1
+          },
+          "changelog": [
+            "1.0.0（2026-10-25）：首个版本，5 句面试开场英语，含重音 / 连读提示；BYOM 纯数据包。"
+          ],
+          "publishedAt": "2026-10-25T00:00:00.000Z",
+          "downloads": 0,
+          "importFiles": {
+            "shadowJson": "data/import/com.shadow.course.interview-intro.shadow.json",
+            "srt": "data/import/com.shadow.course.interview-intro.srt",
+            "readme": "data/import/README-com.shadow.course.interview-intro.txt"
+          }
+        }
+      ],
+      "readme": "## 面试开场自我介绍\n\n面试开场自我介绍的 5 句职场英语：自我介绍、工作经历、申请动机、对岗位的兴趣、入职时间。含中文翻译与重音、连读提示，BYOM 纯数据包。\n\n**适合人群**：B2 左右、准备英文面试或想练职场自我介绍的学习者\n\n- **5 句** · 时长约 **17.5 秒** · 难度 B2 · 分类「职场工作（Work）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n- 推荐导入：下载 `.shadow.json` 后用 SHADOW STUDIO 打开，媒体需重命名为 `com.shadow.course.interview-intro.mp4`\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；下载区同时提供 `.srt`（备选）与 `.shadowcourse`（规范，课程）。\n",
+      "createdAt": "2026-10-25T00:00:00.000Z",
+      "updatedAt": "2026-10-31T15:30:00.000Z"
+    },
+    {
+      "id": "com.shadow.course.podcast-shadow-daily",
+      "type": "course",
+      "title": "每日英语播客跟读 · 演示",
+      "subtitle": "Daily Podcast Shadowing · B1",
+      "description": "5 句原创播客风格开场白，演示「播客跟读」类课程包形态：句级时间轴、中文翻译、连读提示齐备，导入免 ASR。文本为原创占位内容，不对应任何真实节目。",
+      "category": "podcast",
+      "level": "B1",
+      "tags": [
+        "B1",
+        "播客",
+        "听力",
+        "BYOM演示"
+      ],
+      "author": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "rights": {
+        "basis": "own",
+        "evidenceUrl": "",
+        "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体；不对应任何真实播客节目。"
+      },
+      "mediaMode": "byom",
+      "language": [
+        "en",
+        "zh"
+      ],
+      "points": 0,
+      "free": true,
+      "platforms": [
+        "windows",
+        "web"
+      ],
+      "requires": {
+        "shadow": ">=0.7.0"
+      },
+      "cover": {
+        "color1": "#33261B",
+        "color2": "#F0A35B"
+      },
+      "mediaName": "com.shadow.course.podcast-shadow-daily.mp4",
+      "stats": {
+        "sentences": 5,
+        "durationSec": 19.6,
+        "words": 43,
+        "sizeBytes": 6362,
+        "sha256": "bf5f79f40344b87b822074b03da746b8841419e0e0594f3b3551c2720c68bb29"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "packageUrl": "data/packages/com.shadow.course.podcast-shadow-daily.shadowcourse",
+          "sha256": "bf5f79f40344b87b822074b03da746b8841419e0e0594f3b3551c2720c68bb29",
+          "sizeBytes": 6362,
+          "compat": {
+            "shadow": ">=0.7.0",
+            "schemaVersion": 1
+          },
+          "changelog": [
+            "1.0.0（2026-10-25）：首个版本，5 句原创播客风格开场白（演示占位内容）；BYOM 纯数据包。"
+          ],
+          "publishedAt": "2026-10-25T00:00:00.000Z",
+          "downloads": 0,
+          "importFiles": {
+            "shadowJson": "data/import/com.shadow.course.podcast-shadow-daily.shadow.json",
+            "srt": "data/import/com.shadow.course.podcast-shadow-daily.srt",
+            "readme": "data/import/README-com.shadow.course.podcast-shadow-daily.txt"
+          }
+        }
+      ],
+      "readme": "## 每日英语播客跟读 · 演示\n\n5 句原创播客风格开场白，演示「播客跟读」类课程包形态：句级时间轴、中文翻译、连读提示齐备，导入免 ASR。文本为原创占位内容，不对应任何真实节目。\n\n**适合人群**：喜欢用播客 / 听力材料练跟读的学习者（本包为形态演示）\n\n- **5 句** · 时长约 **19.6 秒** · 难度 B1 · 分类「播客跟读（Podcast）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n- 推荐导入：下载 `.shadow.json` 后用 SHADOW STUDIO 打开，媒体需重命名为 `com.shadow.course.podcast-shadow-daily.mp4`\n\n> 本包是 SHADOW Studio 原创的**演示占位内容**：句子文本与时间轴均为自编，不对应任何真实播客节目；用于展示 BYOM 播客跟读类课程包的字段形态与导入流程。\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；下载区同时提供 `.srt`（备选）与 `.shadowcourse`（规范，课程）。\n",
+      "createdAt": "2026-10-25T00:00:00.000Z",
+      "updatedAt": "2026-10-31T15:30:00.000Z"
+    },
+    {
+      "id": "com.shadow.course.movie-scene-byom",
+      "type": "course",
+      "title": "影视片段跟读 · BYOM 演示",
+      "subtitle": "Shadowing a Movie Scene · A2（BYOM Demo）",
+      "description": "5 句原创双人对话，演示「影视片段跟读」的 BYOM 形态：包内只有文本与时间轴，媒体由你自备任意本地片段。不含任何影视作品台词、画面或音频。",
+      "category": "movie",
+      "level": "A2",
+      "tags": [
+        "A2",
+        "影视",
+        "对话",
+        "BYOM演示"
+      ],
+      "author": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "rights": {
+        "basis": "own",
+        "evidenceUrl": "",
+        "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体；不包含也不影射任何具体影视作品。"
+      },
+      "mediaMode": "byom",
+      "language": [
+        "en",
+        "zh"
+      ],
+      "points": 0,
+      "free": true,
+      "platforms": [
+        "windows",
+        "web"
+      ],
+      "requires": {
+        "shadow": ">=0.7.0"
+      },
+      "cover": {
+        "color1": "#2B1B33",
+        "color2": "#B388EB"
+      },
+      "mediaName": "com.shadow.course.movie-scene-byom.mp4",
+      "stats": {
+        "sentences": 5,
+        "durationSec": 15,
+        "words": 37,
+        "sizeBytes": 6191,
+        "sha256": "2722d6eab2f2cfe8c59481a71b8011c67d1ef1bb1edc22ae436b161f2f63e456"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "packageUrl": "data/packages/com.shadow.course.movie-scene-byom.shadowcourse",
+          "sha256": "2722d6eab2f2cfe8c59481a71b8011c67d1ef1bb1edc22ae436b161f2f63e456",
+          "sizeBytes": 6191,
+          "compat": {
+            "shadow": ">=0.7.0",
+            "schemaVersion": 1
+          },
+          "changelog": [
+            "1.0.0（2026-10-25）：首个版本，5 句原创双人对话（演示占位内容）；BYOM 纯数据包。"
+          ],
+          "publishedAt": "2026-10-25T00:00:00.000Z",
+          "downloads": 0,
+          "importFiles": {
+            "shadowJson": "data/import/com.shadow.course.movie-scene-byom.shadow.json",
+            "srt": "data/import/com.shadow.course.movie-scene-byom.srt",
+            "readme": "data/import/README-com.shadow.course.movie-scene-byom.txt"
+          }
+        }
+      ],
+      "readme": "## 影视片段跟读 · BYOM 演示\n\n5 句原创双人对话，演示「影视片段跟读」的 BYOM 形态：包内只有文本与时间轴，媒体由你自备任意本地片段。不含任何影视作品台词、画面或音频。\n\n**适合人群**：想用自己喜欢的影视片段练跟读的学习者（媒体自备）\n\n- **5 句** · 时长约 **15 秒** · 难度 A2 · 分类「影视跟读（Movies）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n- 推荐导入：下载 `.shadow.json` 后用 SHADOW STUDIO 打开，媒体需重命名为 `com.shadow.course.movie-scene-byom.mp4`\n\n> 本包是 SHADOW Studio 原创的**演示占位对白**：不包含、也不影射任何具体影视作品的台词、画面或音频；仅用于展示 BYOM 影视跟读类课程包的字段形态与导入流程。用户自备媒体的版权与授权由使用者自行负责。\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；下载区同时提供 `.srt`（备选）与 `.shadowcourse`（规范，课程）。\n",
+      "createdAt": "2026-10-25T00:00:00.000Z",
+      "updatedAt": "2026-10-31T15:30:00.000Z"
+    },
+    {
+      "id": "com.shadow.subtitle.daily-listening-b1",
+      "type": "subtitle",
+      "title": "社区图书馆的一天 · 听力字幕包",
+      "subtitle": "A Day at the Community Library · B1",
+      "description": "9 句原创听力字幕文本：社区图书馆的开放时间、借书规则、阅览室礼仪、还书箱与学习小组。每句带中文翻译与时间轴，可下载 .srt 备选导入，也可用 .shadow.json 一键打开；纯文本、无媒体（BYOM）。",
+      "category": "listening",
+      "level": "B1",
+      "tags": [
+        "B1",
+        "听力",
+        "字幕",
+        "连读"
+      ],
+      "author": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "rights": {
+        "basis": "own",
+        "evidenceUrl": "",
+        "note": "字幕文本、中文翻译与句级时间轴由 SHADOW Studio 原创；不含媒体、不涉及任何第三方影视 / 音频素材；媒体由用户自备（BYOM）。"
+      },
+      "mediaMode": "byom",
+      "language": [
+        "en",
+        "zh"
+      ],
+      "points": 0,
+      "free": true,
+      "platforms": [
+        "windows",
+        "web"
+      ],
+      "requires": {
+        "shadow": ">=0.7.0"
+      },
+      "cover": {
+        "color1": "#12283A",
+        "color2": "#38BDF8"
+      },
+      "mediaName": "com.shadow.subtitle.daily-listening-b1.mp4",
+      "stats": {
+        "sentences": 9,
+        "durationSec": 38.2,
+        "words": 86,
+        "sizeBytes": 8151,
+        "sha256": "4b569870bd656ef1fa5741551ebaeedde7f1521f6ad05bce1fa42a5bb74e4a55"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "packageUrl": "data/packages/com.shadow.subtitle.daily-listening-b1.shadowcourse",
+          "sha256": "4b569870bd656ef1fa5741551ebaeedde7f1521f6ad05bce1fa42a5bb74e4a55",
+          "sizeBytes": 8151,
+          "compat": {
+            "shadow": ">=0.7.0",
+            "schemaVersion": 1
+          },
+          "changelog": [
+            "1.0.0（2026-10-31）：首个版本，9 句原创听力字幕 + 中文翻译 + 句级时间轴；附带 SRT 与 .shadow.json 导入产物；BYOM 纯数据包。"
+          ],
+          "publishedAt": "2026-10-31T00:00:00.000Z",
+          "downloads": 0,
+          "importFiles": {
+            "shadowJson": "data/import/com.shadow.subtitle.daily-listening-b1.shadow.json",
+            "srt": "data/import/com.shadow.subtitle.daily-listening-b1.srt",
+            "readme": "data/import/README-com.shadow.subtitle.daily-listening-b1.txt"
+          }
+        }
+      ],
+      "readme": "## 社区图书馆的一天 · 听力字幕包\n\n9 句原创听力字幕文本：社区图书馆的开放时间、借书规则、阅览室礼仪、还书箱与学习小组。每句带中文翻译与时间轴，可下载 .srt 备选导入，也可用 .shadow.json 一键打开；纯文本、无媒体（BYOM）。\n\n**适合人群**：B1 左右、想用成段听力材料练听写 / 跟读 / 字幕对齐的学习者\n\n- **9 句** · 时长约 **38.2 秒** · 难度 B1 · 分类「听力字幕（Listening）」\n- 许可 **CC-BY-4.0** · **BYOM 纯数据包（不含媒体）** · 导入免 ASR\n- 逐句英文原文 / 中文翻译 / 教学提示齐备\n- 推荐导入：下载 `.shadow.json` 后用 SHADOW STUDIO 打开，媒体需重命名为 `com.shadow.subtitle.daily-listening-b1.mp4`\n\n> 本包是 SHADOW Studio 原创的**听力字幕示例**：9 句英文 + 中文翻译 + 句级时间轴均为自编，不对应任何真实音频节目；不含任何媒体文件。\n\n> 完整 README、逐句时间轴与包元数据在 `.shadowcourse` 包内；下载区同时提供 `.srt`（备选）与 `.shadowcourse`（规范，字幕包）。\n",
+      "createdAt": "2026-10-31T00:00:00.000Z",
+      "updatedAt": "2026-10-31T15:30:00.000Z"
+    },
+    {
+      "id": "com.shadow.plugin.builtin-whitelist",
+      "type": "plugin",
+      "title": "内置插件白名单 · 声明式说明",
+      "subtitle": "Builtin Plugin Whitelist · Declarative, No Executable Code",
+      "description": "声明式插件白名单 JSON：列出市场认可的资源类型与权限声明，权限全部为 false，明确不含任何可执行代码（无 JS / WASM / 二进制 / 脚本），市场只读声明、从不加载执行插件。",
+      "category": "plugins",
+      "level": "",
+      "tags": [
+        "插件",
+        "白名单",
+        "声明式",
+        "安全"
+      ],
+      "author": "shadow-studio",
+      "license": "CC-BY-4.0",
+      "rights": {
+        "basis": "own",
+        "evidenceUrl": "",
+        "note": "白名单 JSON 由 SHADOW Studio 编写；不含可执行代码与媒体；仅用于说明市场认可的资源类型与权限声明。"
+      },
+      "mediaMode": "byom",
+      "language": [
+        "zh",
+        "en"
+      ],
+      "points": 0,
+      "free": true,
+      "platforms": [
+        "windows",
+        "web"
+      ],
+      "requires": {
+        "shadow": ">=0.7.0"
+      },
+      "cover": {
+        "color1": "#2B2213",
+        "color2": "#E88A2E"
+      },
+      "mediaName": null,
+      "stats": {
+        "sentences": 0,
+        "durationSec": 0,
+        "words": 0,
+        "sizeBytes": 5041,
+        "sha256": "d496538736e2ec8cc298bc56cff838140d64bda8943b3e182ae157635acf2f0b"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "packageUrl": "data/plugins/builtin-whitelist.json",
+          "sha256": "d496538736e2ec8cc298bc56cff838140d64bda8943b3e182ae157635acf2f0b",
+          "sizeBytes": 5041,
+          "compat": {
+            "shadow": ">=0.7.0",
+            "schemaVersion": 1
+          },
+          "changelog": [
+            "1.0.0（2026-10-31）：首个版本，声明式内置插件白名单；权限全 false、无可执行代码、无媒体。",
+            "同版本补充 resource-type manifest 摘要与「不加载执行远程代码」边界说明。"
+          ],
+          "publishedAt": "2026-10-31T00:00:00.000Z",
+          "downloads": 0,
+          "importFiles": {
+            "shadowJson": null,
+            "srt": null,
+            "readme": "data/plugins/README-builtin-whitelist.txt"
+          }
+        }
+      ],
+      "readme": "## 内置插件白名单 · 声明式说明\n\n本资源是一份**纯声明式 JSON 白名单**，不是可执行插件包，**不包含任何可执行代码**：\n\n- 没有 JS / WASM / 二进制 / shell 脚本，也没有内联事件、iframe 或远程加载字段；\n- 不联网、不读写文件、不使用麦克风（`permissions` 全部为 `false`）；\n- SHADOW 市场只读取 manifest 声明来渲染卡片与详情，**从不加载、不执行**任何插件提供的代码。\n\n### 白名单里有什么\n\n- `types[]`：市场当前认可的资源类型（课程包 / 字幕包 / 插件说明），以及各自的 manifest 摘要；\n- `permissions`：网络、文件系统、麦克风等权限的声明，全部为 `false`；\n- `installPolicy`：只允许白名单内类型，**不提供任意 URL 安装或任意代码安装**入口；\n- `schemaVersion` / `manifestVersion`：清单格式版本，用于兼容提示。\n\n### 和 SHADOW Studio 内置插件的关系\n\n市场资源类型（`resource-type`）与 SHADOW Studio 的 `shadow-plugin/1` 是**两套独立注册表**，只共享命名习惯，互不加载对方代码。桌面端插件仍在本地工具内运行；本白名单只描述市场侧的类型声明。\n\n### 如何核验\n\n1. 下载 `builtin-whitelist.json`；2. 用文本编辑器或 JSON 查看器打开；3. 检查 `executable: false`、`permissions` 全为 false、`types[]` 与市场展示的类型一致；4. 检查没有任何脚本 / 远程 URL 字段；5. 与 `market/plugins/*/manifest.json` 对照，二者应完全一致。\n\n### 为什么只做声明式\n\nP0/P1 不引入可执行插件（沙箱 / 签名 / 审核未落地前不做），避免远程代码执行风险；新增一种资源类型只需改数据（manifest + catalog），不改核心渲染代码。\n\n> 本白名单 JSON 采用 CC-BY-4.0；不含媒体与第三方素材。",
+      "createdAt": "2026-10-31T00:00:00.000Z",
+      "updatedAt": "2026-10-31T15:30:00.000Z"
+    }
+  ]
+}

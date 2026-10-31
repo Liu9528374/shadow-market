@@ -1,0 +1,124 @@
+{
+  "app": "SHADOW STUDIO",
+  "version": 1,
+  "savedAt": "2026-10-31T15:30:00.000Z",
+  "projectName": "影视片段跟读 · BYOM 演示",
+  "clips": [
+    {
+      "id": "clip_com.shadow.course.movie-scene-byom",
+      "name": "com.shadow.course.movie-scene-byom.mp4",
+      "size": 0,
+      "type": "video/mp4",
+      "kind": "video",
+      "duration": 16.5,
+      "resolution": "—",
+      "segmentation": "subtitle",
+      "sentences": [
+        {
+          "start": 0,
+          "end": 2.2,
+          "en": "Hey, are you free this weekend?",
+          "zh": "嘿，你这周末有空吗？",
+          "words": [
+            "Hey,",
+            "are",
+            "you",
+            "free",
+            "this",
+            "weekend?"
+          ],
+          "linking": "",
+          "tip": "句尾升调；are you 连读成 are-you。",
+          "score": null
+        },
+        {
+          "start": 2.8,
+          "end": 5.4,
+          "en": "I think so. What did you have in mind?",
+          "zh": "应该有空。你有什么想法？",
+          "words": [
+            "I",
+            "think",
+            "so.",
+            "What",
+            "did",
+            "you",
+            "have",
+            "in",
+            "mind?"
+          ],
+          "linking": "",
+          "tip": "What did you 口语常说 whad-ya；in mind 连读。",
+          "score": null
+        },
+        {
+          "start": 6,
+          "end": 9.2,
+          "en": "There's a new market downtown. Want to check it out?",
+          "zh": "市中心新开了一个市集。想去看看吗？",
+          "words": [
+            "There's",
+            "a",
+            "new",
+            "market",
+            "downtown.",
+            "Want",
+            "to",
+            "check",
+            "it",
+            "out?"
+          ],
+          "linking": "",
+          "tip": "There's a 连读成 there-za；check it out 连读成 che-ki-tout。",
+          "score": null
+        },
+        {
+          "start": 9.8,
+          "end": 12,
+          "en": "Sounds fun. Let's meet at noon.",
+          "zh": "听起来不错。中午见吧。",
+          "words": [
+            "Sounds",
+            "fun.",
+            "Let's",
+            "meet",
+            "at",
+            "noon."
+          ],
+          "linking": "",
+          "tip": "Sounds fun 的 ds 轻读；meet at 连读成 mee-tat。",
+          "score": null
+        },
+        {
+          "start": 12.6,
+          "end": 15,
+          "en": "Perfect. See you by the entrance.",
+          "zh": "好极了。入口见。",
+          "words": [
+            "Perfect.",
+            "See",
+            "you",
+            "by",
+            "the",
+            "entrance."
+          ],
+          "linking": "",
+          "tip": "See you 连读成 see-ya；by the 弱读。",
+          "score": null
+        }
+      ],
+      "units": [],
+      "peaks": [],
+      "thumb": null,
+      "subtitle": null,
+      "assSubtitle": null,
+      "asrSegments": [],
+      "asrSentences": [],
+      "asrMeta": null,
+      "asrTranscribedAt": 0,
+      "asrStale": false
+    }
+  ],
+  "scores": {},
+  "recordings": {}
+}

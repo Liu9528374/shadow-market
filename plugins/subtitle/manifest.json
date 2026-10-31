@@ -4,14 +4,15 @@
   "id": "subtitle",
   "label": "字幕包",
   "labelEn": "Subtitle",
-  "description": "PRESET 字幕样式 / ASS、SRT 字幕文本包。纯文本资源，导入后由桌面端字幕插件读取，不联网、不含媒体。",
+  "description": "句级字幕文本包（英文原句 + 中文翻译 + 时间轴）：可下载 .srt 备选导入、或用 .shadow.json 带翻译打开；纯文本、不联网、不含媒体（BYOM）。",
   "icon": "captions",
   "color": "#C77DFF",
-  "fileExt": [".ass", ".ssa", ".srt", ".json"],
-  "detailTabs": ["readme", "files", "versions"],
-  "cardBadges": ["free"],
-  "statsFields": [],
+  "fileExt": [".srt", ".json"],
+  "detailTabs": ["readme", "sentences", "files", "versions"],
+  "cardBadges": ["free", "level"],
+  "statsFields": ["sentences", "durationSec"],
   "install": { "mode": "desktop-import", "deepLink": "shadow-import" },
   "permissions": { "network": false, "filesystem": false, "microphone": false },
-  "enabled": true
+  "enabled": true,
+  "notes": "声明式资源类型，不含可执行代码；字幕文本为自有内容，媒体由用户自备。"
 }

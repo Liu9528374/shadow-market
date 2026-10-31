@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:02,200
+Hey, are you free this weekend?
+
+2
+00:00:02,800 --> 00:00:05,400
+I think so. What did you have in mind?
+
+3
+00:00:06,000 --> 00:00:09,200
+There's a new market downtown. Want to check it out?
+
+4
+00:00:09,800 --> 00:00:12,000
+Sounds fun. Let's meet at noon.
+
+5
+00:00:12,600 --> 00:00:15,000
+Perfect. See you by the entrance.

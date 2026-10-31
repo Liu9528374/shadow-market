@@ -1,0 +1,120 @@
+{
+  "app": "SHADOW STUDIO",
+  "version": 1,
+  "savedAt": "2026-10-31T15:30:00.000Z",
+  "projectName": "问路去火车站",
+  "clips": [
+    {
+      "id": "clip_com.shadow.course.asking-directions",
+      "name": "com.shadow.course.asking-directions.mp4",
+      "size": 0,
+      "type": "video/mp4",
+      "kind": "video",
+      "duration": 15,
+      "resolution": "—",
+      "segmentation": "subtitle",
+      "sentences": [
+        {
+          "start": 0.133,
+          "end": 3.536,
+          "en": "Excuse me, how do I get to the train station?",
+          "zh": "打扰一下，请问火车站怎么走？",
+          "words": [
+            "Excuse",
+            "me,",
+            "how",
+            "do",
+            "I",
+            "get",
+            "to",
+            "the",
+            "train",
+            "station?"
+          ],
+          "linking": "",
+          "tip": "重音：Excuse · get · train · station\n连读：get to → ge-tuh\n提示：Excuse me 的 s 发 /z/；how do I 连读成 how-dai。",
+          "score": null
+        },
+        {
+          "start": 3.778,
+          "end": 7.041,
+          "en": "Go straight for two blocks, then turn left.",
+          "zh": "直走两个街区，然后左转。",
+          "words": [
+            "Go",
+            "straight",
+            "for",
+            "two",
+            "blocks,",
+            "then",
+            "turn",
+            "left."
+          ],
+          "linking": "",
+          "tip": "重音：straight · two · blocks · left\n连读：turn left → turn-left\n提示：straight 的 tr 不要读成“吹”；left 的 t 轻而短。",
+          "score": null
+        },
+        {
+          "start": 7.306,
+          "end": 8.861,
+          "en": "Is it far from here?",
+          "zh": "离这儿远吗？",
+          "words": [
+            "Is",
+            "it",
+            "far",
+            "from",
+            "here?"
+          ],
+          "linking": "",
+          "tip": "重音：far · here\n连读：Is it → i-zit；far from → far-frum\n提示：Is it 连读成 i-zit；句尾用升调。",
+          "score": null
+        },
+        {
+          "start": 9.111,
+          "end": 11.819,
+          "en": "No, it's about a ten-minute walk.",
+          "zh": "不远，走路大概十分钟。",
+          "words": [
+            "No,",
+            "it's",
+            "about",
+            "a",
+            "ten-minute",
+            "walk."
+          ],
+          "linking": "",
+          "tip": "重音：No · ten-minute · walk\n连读：about a → abou-da\n提示：ten-minute 的 t 可以浊化成 d 的音，但重音在 ten。",
+          "score": null
+        },
+        {
+          "start": 12.037,
+          "end": 13.509,
+          "en": "Thank you so much!",
+          "zh": "太感谢了！",
+          "words": [
+            "Thank",
+            "you",
+            "so",
+            "much!"
+          ],
+          "linking": "",
+          "tip": "重音：Thank · so · much\n连读：Thank you → than-kyoo\n提示：thank 的 th 咬舌；much 收尾干脆。",
+          "score": null
+        }
+      ],
+      "units": [],
+      "peaks": [],
+      "thumb": null,
+      "subtitle": null,
+      "assSubtitle": null,
+      "asrSegments": [],
+      "asrSentences": [],
+      "asrMeta": null,
+      "asrTranscribedAt": 0,
+      "asrStale": false
+    }
+  ],
+  "scores": {},
+  "recordings": {}
+}

@@ -1,0 +1,127 @@
+{
+  "app": "SHADOW STUDIO",
+  "version": 1,
+  "savedAt": "2026-10-31T15:30:00.000Z",
+  "projectName": "在咖啡店点单",
+  "clips": [
+    {
+      "id": "clip_com.shadow.course.cafe-order",
+      "name": "com.shadow.course.cafe-order.mp4",
+      "size": 0,
+      "type": "video/mp4",
+      "kind": "video",
+      "duration": 23.1,
+      "resolution": "—",
+      "segmentation": "subtitle",
+      "sentences": [
+        {
+          "start": 0.104,
+          "end": 3.667,
+          "en": "Hi, could I get a medium oat milk latte, please?",
+          "zh": "你好，我要一杯中杯燕麦拿铁。",
+          "words": [
+            "Hi,",
+            "could",
+            "I",
+            "get",
+            "a",
+            "medium",
+            "oat",
+            "milk",
+            "latte,",
+            "please?"
+          ],
+          "linking": "",
+          "tip": "重音：get · medium · oat · latte\n连读：could I → coul-dai\n提示：Could I get 连读成 coul-dai-get，语气上扬更礼貌。",
+          "score": null
+        },
+        {
+          "start": 4.429,
+          "end": 8.033,
+          "en": "Sure. Would you like it hot or iced?",
+          "zh": "好的。你要热的还是冰的？",
+          "words": [
+            "Sure.",
+            "Would",
+            "you",
+            "like",
+            "it",
+            "hot",
+            "or",
+            "iced?"
+          ],
+          "linking": "",
+          "tip": "重音：hot · iced\n连读：would you → woul-joo\n提示：hot or iced 三个词要连起来读，重音落在 hot 和 iced。",
+          "score": null
+        },
+        {
+          "start": 8.791,
+          "end": 13.02,
+          "en": "Iced, please. And can I get an extra shot?",
+          "zh": "冰的，谢谢。可以再加一份浓缩吗？",
+          "words": [
+            "Iced,",
+            "please.",
+            "And",
+            "can",
+            "I",
+            "get",
+            "an",
+            "extra",
+            "shot?"
+          ],
+          "linking": "",
+          "tip": "重音：Iced · extra · shot\n连读：get an → ge-da\n提示：extra 的重音在第一音节：EK-stra。",
+          "score": null
+        },
+        {
+          "start": 13.777,
+          "end": 17.245,
+          "en": "Of course. That'll be four fifty.",
+          "zh": "当然。一共四块五。",
+          "words": [
+            "Of",
+            "course.",
+            "That'll",
+            "be",
+            "four",
+            "fifty."
+          ],
+          "linking": "",
+          "tip": "重音：four · fifty\n连读：That'll → tha-dl\n提示：That'll be 缩读成 tha-dl-be，不要逐字念。",
+          "score": null
+        },
+        {
+          "start": 18.016,
+          "end": 21.634,
+          "en": "Great, thanks. Can I pay by card?",
+          "zh": "好的，谢谢。可以刷卡吗？",
+          "words": [
+            "Great,",
+            "thanks.",
+            "Can",
+            "I",
+            "pay",
+            "by",
+            "card?"
+          ],
+          "linking": "",
+          "tip": "重音：pay · card\n连读：pay by → pay-bai\n提示：pay by 连读，card 的 r 要卷舌但别太重。",
+          "score": null
+        }
+      ],
+      "units": [],
+      "peaks": [],
+      "thumb": null,
+      "subtitle": null,
+      "assSubtitle": null,
+      "asrSegments": [],
+      "asrSentences": [],
+      "asrMeta": null,
+      "asrTranscribedAt": 0,
+      "asrStale": false
+    }
+  ],
+  "scores": {},
+  "recordings": {}
+}
