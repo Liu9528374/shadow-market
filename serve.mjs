@@ -16,6 +16,7 @@ import http from 'node:http';
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
+import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -29,6 +30,7 @@ const MIME = new Map(Object.entries({
   '.js': 'text/javascript; charset=utf-8',
   '.mjs': 'text/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.webmanifest': 'application/manifest+json; charset=utf-8',
   '.shadowcourse': 'application/json; charset=utf-8',
   '.md': 'text/markdown; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
@@ -122,6 +124,27 @@ async function sendFile(req, res, filePath, stat) {
   }
 
   const range = req.headers.range;
+  // 文本类资源按 Accept-Encoding 做 gzip（本地 Lighthouse/弱网预览更接近生产 CDN；
+  // 生产宿主 GitHub Pages / Cloudflare 也会自动压缩）。
+  const compressible = /\.(html?|css|js|mjs|json|svg|txt|md|webmanifest|map)$/i.test(filePath);
+  const acceptEncoding = String(req.headers['accept-encoding'] || '');
+  if (!range && compressible && /\bgzip\b/i.test(acceptEncoding)) {
+    try {
+      const raw = await fsp.readFile(filePath);
+      const gz = zlib.gzipSync(raw, { level: 6 });
+      const headers = {
+        ...baseHeaders,
+        'Content-Encoding': 'gzip',
+        Vary: 'Accept-Encoding',
+        'Content-Length': String(gz.length),
+      };
+      res.writeHead(200, headers);
+      if (req.method === 'HEAD') { res.end(); return { status: 200, bytes: 0 }; }
+      res.end(gz);
+      return { status: 200, bytes: gz.length };
+    } catch { /* 压缩失败则回退到原始文件发送 */ }
+  }
+
   if (range) {
     const m = /^bytes=(\d*)-(\d*)$/.exec(String(range).trim());
     if (m && (m[1] || m[2])) {

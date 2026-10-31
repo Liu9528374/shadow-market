@@ -1,8 +1,8 @@
 /**
- * SHADOW 市场 · SPA 入口（原生 ES Modules，无构建、无第三方依赖）
+ * SHADOW 市场 · SPA 入口（原生 ES Modules，无构建、零第三方依赖）
  *
- * 职责：启动加载（插件清单 + 资源目录）→ hash 路由渲染 → 顶栏绑定（搜索 / 主题 / 命令面板 / 登录占位）
- *      → 数据缺失降级 → 全局错误兜底。页面视图在 views/ 下按路由拆分。
+ * 职责：语言/主题启动 → 插件清单 + 资源目录加载 → hash 路由渲染 → 顶栏交互（搜索 / 主题 / 语言 / 更多菜单）
+ *      → PWA 注册与更新提示 → 数据缺失降级 → 全局错误兜底。页面视图在 views/ 下按路由拆分。
  */
 
 import { $, el, clear, debounce } from './dom.js';
@@ -10,30 +10,76 @@ import { icon } from './icons.js';
 import {
   loadPlugins, loadCatalog, getState, DATA_HINT, DATA_URLS,
 } from './data.js';
-import { startRouter, onRouteChange, parseHash, navigate, replaceRoute, currentRoute } from './router.js';
-import { watchSystemTheme, toggleTheme, applyTheme, resolveTheme } from './theme.js';
+import { startRouter, onRouteChange, navigate, replaceRoute, currentRoute, scrollToY } from './router.js';
+import { watchSystemTheme, toggleTheme, resolveTheme } from './theme.js';
 import { MarketPoints } from './points.js';
 import { toast, pageHead, errorState, openModal, skeletonCards } from './components.js';
-import { openCommandPalette, closeCommandPalette } from './palette.js';
-import { renderExplore } from './views/home.js';
-import { renderResource } from './views/resource.js';
-import { renderCreator } from './views/creator.js';
-import { renderPoints } from './views/points.js';
-import { renderSettings } from './views/settings.js';
-import { renderImport } from './views/import.js';
-import { renderNotFound } from './views/notfound.js';
 import { getPrefs } from './prefs.js';
+import {
+  initI18n, applyStaticI18n, setLang, getLang, t, langButtonLabel, onLangChange, isEnglish,
+} from './i18n.js';
+import {
+  registerPWA, applyUpdate, watchInstallPrompt, onInstallAvailability, promptInstall, canInstall, isIosSafari,
+} from './pwa.js';
 
-const APP_VERSION = 'market-p0.1';
-const SITE_TITLE = 'SHADOW 市场';
+/* ---------------- 路由级懒加载（P0 性能：首屏只加载所需视图） ---------------- */
+const VIEW_LOADERS = {
+  home: () => import('./views/home.js'),
+  search: () => import('./views/home.js'),
+  category: () => import('./views/home.js'),
+  tag: () => import('./views/home.js'),
+  resource: () => import('./views/resource.js'),
+  license: () => import('./views/license.js'),
+  creator: () => import('./views/creator.js'),
+  favorites: () => import('./views/favorites.js'),
+  changelog: () => import('./views/changelog.js'),
+  contribute: () => import('./views/contribute.js'),
+  about: () => import('./views/about.js'),
+  privacy: () => import('./views/privacy.js'),
+  complaint: () => import('./views/complaint.js'),
+  import: () => import('./views/import.js'),
+  points: () => import('./views/points.js'),
+  settings: () => import('./views/settings.js'),
+  notFound: () => import('./views/notfound.js'),
+};
+const viewCache = new Map();
+function loadView(name) {
+  if (viewCache.has(name)) return viewCache.get(name);
+  const loader = VIEW_LOADERS[name] || VIEW_LOADERS.notFound;
+  const promise = loader().catch((err) => {
+    viewCache.delete(name);
+    throw err;
+  });
+  viewCache.set(name, promise);
+  return promise;
+}
+
+let palettePromise = null;
+function loadPalette() {
+  if (!palettePromise) palettePromise = import('./palette.js');
+  return palettePromise;
+}
+async function openCommandPalette() {
+  try { (await loadPalette()).openCommandPalette(); } catch (err) { console.warn('[market] 命令面板加载失败', err); }
+}
+async function closeCommandPalette() {
+  if (!palettePromise) return;
+  try { (await palettePromise).closeCommandPalette(); } catch { /* ignore */ }
+}
+
+const APP_VERSION = 'market-p0.2';
+const SITE_TITLE = () => t('SHADOW 市场');
 
 const viewEl = $('#view');
 const mainEl = $('#main');
 const searchInput = $('#global-search');
 const bannerEl = $('#global-banner');
+const pwaBannerEl = $('#pwa-banner');
+const statusEl = $('#view-status');
 
 let booted = false;
 let fixtureLoading = false;
+let moreMenuOpen = false;
 
 /* ---------------- 数据缺失 / 夹具降级 ---------------- */
 
@@ -44,11 +90,10 @@ function fixtureBanner() {
     bannerEl.hidden = false;
     clear(bannerEl);
     bannerEl.append(
-      el('span', {}, '当前为 ', el('strong', { text: '演示夹具' }), '（assets/dev-fixtures）：真实 data/catalog.json 未生成或未加载，页面内容是界面演示数据，不是线上资源。'),
+      el('span', {}, t('当前为'), ' ', el('strong', { text: t('演示夹具') }), `（assets/dev-fixtures）：${t('真实目录未生成或未加载，页面内容是界面演示数据，不是线上资源。')}`),
       el('button', {
         class: 'banner-action', type: 'button', 'data-testid': 'exit-fixture',
         onclick: async () => {
-          // 先去掉当前路由里的 fixture=1，避免退出后又被 router 重新拉回夹具模式
           const raw = (window.location.hash || '#/').replace(/^#/, '');
           const [pathPart, queryPart = ''] = raw.split('?');
           const params = new URLSearchParams(queryPart);
@@ -56,13 +101,13 @@ function fixtureBanner() {
           replaceRoute(pathPart.startsWith('/') ? pathPart : `/${pathPart}`, params.toString());
           try {
             await loadCatalog({ fixture: false });
-            toast('已切回真实数据（data/catalog.json）', { kind: 'success' });
+            toast(t('已切回真实数据'), { kind: 'success' });
           } catch (err) {
-            toast(`真实目录仍不可用：${err.message || err}`, { kind: 'error', timeout: 5200 });
+            toast(t('真实目录仍不可用：{message}', { message: err.message || err }), { kind: 'error', timeout: 5200 });
           }
           renderCurrent({ scroll: false });
         },
-      }, '退出夹具 · 重试真实数据'),
+      }, t('退出夹具 · 重试真实数据')),
     );
   } else {
     bannerEl.hidden = true;
@@ -74,12 +119,8 @@ function enterFixtureMode() {
   if (fixtureLoading) return;
   fixtureLoading = true;
   loadCatalog({ fixture: true })
-    .then(() => {
-      toast('已加载演示夹具（界面演示数据，非真实资源）', { kind: 'warn', timeout: 4800 });
-    })
-    .catch((err) => {
-      toast(`演示夹具也不可用：${err.message || err}`, { kind: 'error' });
-    })
+    .then(() => toast(t('已加载演示夹具（界面演示数据，非真实资源）'), { kind: 'warn', timeout: 4800 }))
+    .catch((err) => toast(t('演示夹具也不可用：{message}', { message: err.message || err }), { kind: 'error' }))
     .finally(() => {
       fixtureLoading = false;
       renderCurrent({ scroll: false });
@@ -88,22 +129,24 @@ function enterFixtureMode() {
 
 function showDataHelp() {
   openModal({
-    title: '生成市场数据（catalog + 课程包）',
+    title: t('生成市场数据（catalog + 课程包）'),
     body: el('div', {},
-      el('p', {}, '市场是纯静态站，只读 ', el('code', { text: 'market/data/catalog.json' }), ' 与 ', el('code', { text: 'market/data/packages/*.shadowcourse' }), '。数据由课程包工具链生成：'),
-      el('pre', { class: 'code-block' }, `# 1) 生成课程包与目录（仓库根目录执行）
+      el('p', {}, t('市场是纯静态站，只读 catalog/ 目录（schemaVersion 2）与 data/packages/*.shadowcourse。数据由构建流水线生成：')),
+      el('pre', { class: 'code-block' }, `# 1) 生成课程包与导入产物（仓库根目录执行）
 node tools/shadowcourse/build-packages.mjs
+node tools/import/build-shadow-json.mjs
 
-# 2) 校验全部课程包
-node tools/shadowcourse/validate.mjs --dir market/data/packages
+# 2) 生成 catalog/（site/categories/tags/authors/licenses/resources）
+node tools/catalog/build-catalog.mjs
+node tools/catalog/validate-catalog.mjs
 
 # 3) 本地预览市场
 node market/serve.mjs`),
-      el('p', { class: 'points-note', style: { marginTop: '10px' } }, '生成后可点「重试」重新加载；数据未生成时也可以用演示夹具浏览界面（会有明显「演示夹具」标记，不冒充真实数据）。'),
+      el('p', { class: 'points-note', style: { marginTop: '10px' } }, t('生成后可点「重试」重新加载；数据未生成时也可以用演示夹具浏览界面（页面会持续显示「演示夹具」标记）。')),
     ),
     actions: [
-      { label: '加载演示夹具', onClick: () => { setTimeout(enterFixtureMode, 0); } },
-      { label: '重试加载', kind: 'primary', onClick: () => { setTimeout(async () => { try { await loadCatalog(); } catch { /* 保持错误态 */ } renderCurrent({ scroll: false }); }, 0); } },
+      { label: t('加载演示夹具'), onClick: () => { setTimeout(enterFixtureMode, 0); } },
+      { label: t('重试加载'), kind: 'primary', onClick: () => { setTimeout(async () => { try { await loadCatalog(); } catch { /* 保持错误态 */ } renderCurrent({ scroll: false }); }, 0); } },
     ],
   });
 }
@@ -113,71 +156,93 @@ function renderDataMissing(view) {
   const err = state.catalogError;
   view.replaceChildren(
     pageHead({
-      title: '数据未生成',
-      sub: '市场是纯静态站：需要 data/catalog.json（资源目录）与 data/packages/（课程包）才能浏览资源。页面其余部分（搜索 / 设置 / 命令面板）仍可用。',
+      title: t('数据未生成'),
+      sub: t('市场是纯静态站：需要 catalog/resources.json（v2）或 data/catalog.json（兼容）才能浏览资源。搜索 / 设置 / 静态页仍可用。'),
     }),
     errorState({
-      title: '读不到资源目录 data/catalog.json',
-      desc: '可能数据还没生成，或静态托管的相对路径不对。可以重试，或先加载演示夹具查看/验收界面（夹具会一直显示「演示夹具」标记，不冒充真实数据）。',
-      detail: `${err?.url || DATA_URLS.catalog}${err?.message ? ` · ${err.message}` : ''}`,
+      title: t('读不到资源目录'),
+      desc: t('可能数据还没生成，或静态托管的相对路径不对。可以重试，或先加载演示夹具查看/验收界面（夹具会一直显示「演示夹具」标记，不冒充真实数据）。'),
+      detail: `${err?.url || DATA_URLS.resources}${err?.message ? ` · ${err.message}` : ''}`,
       actions: [
         {
-          label: '重试加载',
-          icon: 'refresh',
-          testid: 'retry-catalog',
+          label: t('重试加载'), icon: 'refresh', testid: 'retry-catalog',
           onClick: async () => {
-            try {
-              await loadCatalog();
-              toast('真实数据已加载', { kind: 'success' });
-            } catch (e) {
-              toast(`仍然失败：${e.message || e}`, { kind: 'error' });
-            }
+            try { await loadCatalog(); toast(t('真实数据已加载'), { kind: 'success' }); } catch (e) { toast(t('仍然失败：{message}', { message: e.message || e }), { kind: 'error' }); }
             renderCurrent({ scroll: false });
           },
         },
-        { label: '加载演示夹具（界面演示）', icon: 'layers', testid: 'load-fixture', onClick: enterFixtureMode },
-        { label: '查看数据生成命令', icon: 'terminal', onClick: showDataHelp },
+        { label: t('加载演示夹具（界面演示）'), icon: 'layers', testid: 'load-fixture', onClick: enterFixtureMode },
+        { label: t('查看数据生成命令'), icon: 'terminal', onClick: showDataHelp },
       ],
     }),
     el('p', { class: 'points-note', style: { marginTop: '16px' } },
-      '生成命令：', el('code', { text: DATA_HINT }),
-      ' · 详见 market/README.md 与 docs/52 §3。',
+      t('生成命令：'), el('code', { text: DATA_HINT }),
     ),
   );
 }
 
 /* ---------------- 路由渲染 ---------------- */
 
+function activeNavKey(route) {
+  if (['home', 'category', 'tag', 'search', 'resource', 'license', 'points', 'favorites', 'changelog', 'contribute', 'about', 'privacy', 'complaint', 'import', 'settings'].includes(route.name)) {
+    if (route.name === 'favorites') return 'favorites';
+    if (route.name === 'contribute') return 'contribute';
+    if (['about', 'privacy', 'complaint', 'changelog'].includes(route.name)) return 'about';
+    if (['points', 'settings', 'import', 'license'].includes(route.name)) return 'more';
+    return 'home';
+  }
+  return null;
+}
+
 function setActiveNav(route) {
-  const map = {
-    home: 'home', category: 'home', search: 'home', resource: 'home', creator: 'home',
-    points: 'points', settings: 'settings', import: 'import', notFound: null,
-  };
-  const current = map[route.name] || null;
-  for (const link of document.querySelectorAll('.header-nav-link[data-nav]')) {
-    if (link.dataset.nav === current) link.setAttribute('aria-current', 'page');
+  const currentKey = activeNavKey(route);
+  const moreActive = ['more'].includes(currentKey);
+  for (const link of document.querySelectorAll('.header-nav-link[data-nav], .bottom-nav-link[data-nav]')) {
+    const key = link.dataset.nav;
+    const active = key === currentKey;
+    if (active) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
+  }
+  const bottomMore = $('#bottom-more');
+  if (bottomMore) {
+    if (moreActive) bottomMore.setAttribute('aria-current', 'page');
+    else bottomMore.removeAttribute('aria-current');
+  }
+  const moreToggle = $('#more-toggle');
+  if (moreToggle) {
+    if (moreActive) moreToggle.setAttribute('data-active', 'true');
+    else moreToggle.removeAttribute('data-active');
   }
 }
 
 function setDocumentTitle(route) {
   const state = getState();
-  let title = `${SITE_TITLE} · 全免费课程资源站`;
-  if (route.name === 'home') title = `${SITE_TITLE} · 全免费课程资源站`;
-  else if (route.name === 'search') title = `搜索 ${route.query.get('q') || ''} · ${SITE_TITLE}`;
+  let title = `${SITE_TITLE()} · ${t('全免费影子跟读课程资源站')}`;
+  if (route.name === 'home') title = `${SITE_TITLE()} · ${t('全免费影子跟读课程资源站')}`;
+  else if (route.name === 'search') title = `${t('搜索')} ${route.query.get('q') || ''} · ${SITE_TITLE()}`;
   else if (route.name === 'category') {
     const category = state.catalog?.categoryMap.get(route.params.id);
-    title = `${category ? category.label : '分类'} · ${SITE_TITLE}`;
-  } else if (route.name === 'resource') {
+    title = `${category ? category.label : t('分类')} · ${SITE_TITLE()}`;
+  } else if (route.name === 'tag') title = `${t('标签：{tag}', { tag: route.params.tag || '' })} · ${SITE_TITLE()}`;
+  else if (route.name === 'resource') {
     const resource = state.catalog?.resources.find((r) => r.id === route.params.id);
-    title = resource ? `${resource.title} · ${SITE_TITLE}` : `资源不存在 · ${SITE_TITLE}`;
+    title = resource ? `${resource.title} · ${SITE_TITLE()}` : `${t('资源不存在')} · ${SITE_TITLE()}`;
+  } else if (route.name === 'license') {
+    const resource = state.catalog?.resources.find((r) => r.id === route.params.id);
+    title = `${t('许可证')}${resource ? ` · ${resource.title}` : ''} · ${SITE_TITLE()}`;
   } else if (route.name === 'creator') {
-    const creator = state.catalog?.creatorMap.get(route.params.handle);
-    title = creator ? `${creator.name} · ${SITE_TITLE}` : `作者不存在 · ${SITE_TITLE}`;
-  } else if (route.name === 'points') title = `积分（P1 本地演示） · ${SITE_TITLE}`;
-  else if (route.name === 'settings') title = `设置 · ${SITE_TITLE}`;
-  else if (route.name === 'import') title = `一键导入说明 · ${SITE_TITLE}`;
-  else if (route.name === 'notFound') title = `404 · ${SITE_TITLE}`;
+    const creator = state.catalog?.authorMap.get(route.params.handle);
+    title = creator ? `${creator.name} · ${SITE_TITLE()}` : `${t('作者不存在')} · ${SITE_TITLE()}`;
+  } else if (route.name === 'points') title = `${t('积分（P1 预览）')} · ${SITE_TITLE()}`;
+  else if (route.name === 'settings') title = `${t('设置')} · ${SITE_TITLE()}`;
+  else if (route.name === 'import') title = `${t('一键导入说明')} · ${SITE_TITLE()}`;
+  else if (route.name === 'favorites') title = `${t('我的收藏')} · ${SITE_TITLE()}`;
+  else if (route.name === 'changelog') title = `${t('更新日志')} · ${SITE_TITLE()}`;
+  else if (route.name === 'contribute') title = `${t('投稿指南')} · ${SITE_TITLE()}`;
+  else if (route.name === 'about') title = `${t('关于 SHADOW 市场')} · ${SITE_TITLE()}`;
+  else if (route.name === 'privacy') title = `${t('隐私说明')} · ${SITE_TITLE()}`;
+  else if (route.name === 'complaint') title = `${t('版权与投诉')} · ${SITE_TITLE()}`;
+  else if (route.name === 'notFound') title = `404 · ${SITE_TITLE()}`;
   document.title = title;
 }
 
@@ -192,76 +257,88 @@ function syncSearchInput(route) {
   }
 }
 
-function renderRoute(route, { reason = 'hashchange' } = {}) {
+function announceRoute(route) {
+  if (!statusEl) return;
+  statusEl.textContent = document.title;
+}
+
+let renderSeq = 0;
+const VIEW_RENDERERS = {
+  resource: 'renderResource',
+  license: 'renderLicense',
+  creator: 'renderCreator',
+  favorites: 'renderFavorites',
+  changelog: 'renderChangelog',
+  contribute: 'renderContribute',
+  about: 'renderAbout',
+  privacy: 'renderPrivacy',
+  complaint: 'renderComplaint',
+  import: 'renderImport',
+  points: 'renderPoints',
+  settings: 'renderSettings',
+  notFound: 'renderNotFound',
+};
+
+async function renderRoute(route, { reason = 'hashchange' } = {}) {
   if (!viewEl) return;
   const state = getState();
-  // 运行时支持 #/...?fixture=1（hash 内 query）：切到演示夹具后重渲染当前路由
   if (route.query.get('fixture') === '1' && !state.fixture && !state.loading && !fixtureLoading) {
     enterFixtureMode();
     return;
   }
+  const seq = ++renderSeq;
+  closeMoreMenu();
   setActiveNav(route);
   syncSearchInput(route);
   fixtureBanner();
   viewEl.setAttribute('aria-busy', 'true');
   try {
-    if (!getState().catalog) {
+    if (!state.catalog) {
       renderDataMissing(viewEl);
     } else {
-      switch (route.name) {
-        case 'home':
-          renderExplore(viewEl, { mode: 'home', queryParams: route.query });
-          break;
-        case 'search':
-          renderExplore(viewEl, { mode: 'search', query: route.query.get('q') || '', queryParams: route.query });
-          break;
-        case 'category':
-          renderExplore(viewEl, { mode: 'category', categoryId: route.params.id, queryParams: route.query });
-          break;
-        case 'resource':
-          renderResource(viewEl, route);
-          break;
-        case 'creator':
-          renderCreator(viewEl, route);
-          break;
-        case 'points':
-          renderPoints(viewEl);
-          break;
-        case 'settings':
-          renderSettings(viewEl, route);
-          break;
-        case 'import':
-          renderImport(viewEl);
-          break;
-        case 'notFound':
-        default:
-          renderNotFound(viewEl, route);
-          break;
+      // 路由级动态 import：首屏只加载当前路由的视图模块（性能优化）
+      const mod = await loadView(route.name);
+      if (seq !== renderSeq) return;
+      if (route.name === 'home') {
+        mod.renderExplore(viewEl, { mode: 'home', queryParams: route.query });
+      } else if (route.name === 'search') {
+        mod.renderExplore(viewEl, { mode: 'search', query: route.query.get('q') || '', queryParams: route.query });
+      } else if (route.name === 'category') {
+        mod.renderExplore(viewEl, { mode: 'category', categoryId: route.params.id, queryParams: route.query });
+      } else if (route.name === 'tag') {
+        mod.renderExplore(viewEl, { mode: 'tag', tag: route.params.tag, queryParams: route.query });
+      } else {
+        const renderName = VIEW_RENDERERS[route.name] || 'renderNotFound';
+        const renderFn = mod[renderName];
+        if (typeof renderFn !== 'function') throw new Error(`视图模块缺少 ${renderName}（${route.name}）`);
+        if (['resource', 'license', 'creator', 'settings', 'notFound'].includes(route.name)) await renderFn(viewEl, route);
+        else await renderFn(viewEl);
       }
     }
   } catch (err) {
     console.warn('[market] 页面渲染异常，已显示错误兜底：', err);
     viewEl.replaceChildren(errorState({
-      title: '页面渲染失败',
-      desc: '这是市场前端的兜底错误页（不会白屏）。可以回到首页重试，或在开发者设置里重新加载数据。',
+      title: t('页面渲染失败'),
+      desc: t('这是市场前端的兜底错误页（不会白屏）。可以回到首页重试，或在设置里重新加载数据。'),
       detail: err && err.message ? err.message : String(err),
       actions: [
-        { label: '回到首页', href: '#/', icon: 'compass', kind: 'primary' },
-        { label: '重新加载数据', icon: 'refresh', onClick: () => window.dispatchEvent(new CustomEvent('market:reload')) },
+        { label: t('回到首页'), href: '#/', icon: 'compass', kind: 'primary' },
+        { label: t('重新加载数据'), icon: 'refresh', onClick: () => window.dispatchEvent(new CustomEvent('market:reload')) },
       ],
     }));
   } finally {
+    if (seq !== renderSeq) return;
     viewEl.setAttribute('aria-busy', 'false');
+    document.body.dataset.route = route.name;
     setDocumentTitle(route);
-    if (reason !== 'replace') {
-      try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); } catch { window.scrollTo(0, 0); }
-    }
+    announceRoute(route);
+    if (reason !== 'replace') scrollToY(0, { behavior: 'auto' });
     document.body.dataset.appReady = 'true';
   }
 }
 
 function renderCurrent(opts = {}) {
-  renderRoute(currentRoute(), opts);
+  renderRoute(currentRoute(), opts).catch((err) => console.warn('[market] 渲染调度失败', err));
 }
 
 /* ---------------- 顶栏 / 全局交互 ---------------- */
@@ -271,9 +348,42 @@ function updateThemeButton() {
   if (!btn) return;
   const dark = resolveTheme() === 'dark';
   btn.replaceChildren(icon(dark ? 'sun' : 'moon', 16));
-  btn.setAttribute('title', dark ? '切换到浅色模式' : '切换到深色模式');
-  btn.setAttribute('aria-label', dark ? '切换到浅色模式' : '切换到深色模式');
+  const label = dark ? t('切换到浅色模式') : t('切换到深色模式');
+  btn.setAttribute('title', label);
+  btn.setAttribute('aria-label', label);
   btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+}
+
+function updateLangButton() {
+  const btn = $('#lang-toggle');
+  if (!btn) return;
+  const labelEl = $('#lang-toggle-label');
+  if (labelEl) labelEl.textContent = langButtonLabel();
+  btn.setAttribute('lang', isEnglish() ? 'zh-CN' : 'en');
+  // 可见文字（EN / 中文）必须包含在可访问名中（axe label-content-name-mismatch）
+  btn.setAttribute('aria-label', `${t('切换语言')} · ${langButtonLabel()}`);
+  btn.setAttribute('title', isEnglish() ? '切换为中文界面' : 'Switch to English');
+}
+
+function closeMoreMenu() {
+  const menu = $('#more-menu');
+  const toggle = $('#more-toggle');
+  const bottom = $('#bottom-more');
+  moreMenuOpen = false;
+  if (menu) menu.hidden = true;
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  if (bottom) bottom.setAttribute('aria-expanded', 'false');
+}
+
+function openMoreMenu() {
+  const menu = $('#more-menu');
+  const toggle = $('#more-toggle');
+  if (!menu) return;
+  moreMenuOpen = true;
+  menu.hidden = false;
+  if (toggle) toggle.setAttribute('aria-expanded', 'true');
+  const first = menu.querySelector('a');
+  if (first) first.focus({ preventScroll: true });
 }
 
 function bindHeader() {
@@ -282,11 +392,27 @@ function bindHeader() {
   themeBtn?.addEventListener('click', () => {
     toggleTheme();
     updateThemeButton();
-    toast(`已切换到${resolveTheme() === 'dark' ? '深色' : '浅色'}模式（保存在本机）`, { kind: 'success', timeout: 2200 });
+    toast(t('已切换到{mode}模式（保存在本机）', { mode: resolveTheme() === 'dark' ? t('深色') : t('浅色') }), { kind: 'success', timeout: 2200 });
   });
   window.addEventListener('market:themechange', updateThemeButton);
   updateThemeButton();
   watchSystemTheme();
+
+  // 语言（不刷新页面：更新静态文案 + 重渲染当前视图）
+  const langBtn = $('#lang-toggle');
+  langBtn?.addEventListener('click', () => {
+    setLang(getLang() === 'en' ? 'zh-CN' : 'en');
+  });
+  updateLangButton();
+  onLangChange(() => {
+    applyStaticI18n();
+    updateLangButton();
+    updateThemeButton();
+    renderCurrent({ scroll: false });
+  });
+  window.addEventListener('market:togglelang', () => {
+    setLang(getLang() === 'en' ? 'zh-CN' : 'en');
+  });
 
   // 搜索：输入实时过滤（replaceState，不污染后退栈）；回车跳转；Esc 清空
   const form = $('#header-search-form');
@@ -299,8 +425,6 @@ function bindHeader() {
       replaceRoute('/search', params.toString());
     } else if (q) {
       replaceRoute('/search', new URLSearchParams({ q }).toString());
-    } else if (route.name !== 'search') {
-      // 清空时留在原页面
     }
   }, 180);
 
@@ -324,7 +448,7 @@ function bindHeader() {
     navigate('/search', new URLSearchParams(q ? { q } : {}).toString());
   });
 
-  // 快捷键：/ 聚焦搜索；Ctrl+K / ⌘K 命令面板
+  // 快捷键：/ 聚焦搜索；Ctrl+K / ⌘K 命令面板；? 显示快捷键说明
   document.addEventListener('keydown', (e) => {
     const target = e.target;
     const typing = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable);
@@ -340,6 +464,10 @@ function bindHeader() {
       searchInput?.focus();
       searchInput?.select();
     }
+    if (e.key === '?' && !typing && !modalOpen) {
+      e.preventDefault();
+      openShortcutsModal();
+    }
   });
 
   // 命令面板按钮
@@ -347,9 +475,48 @@ function bindHeader() {
   window.addEventListener('market:openpalette', () => openCommandPalette());
   window.addEventListener('market:close-palette', () => closeCommandPalette());
 
-  // 登录占位
+  // 「更多」菜单（桌面 popover + 移动端底部导航按钮 → 弹层）
+  const moreToggle = $('#more-toggle');
+  moreToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (moreMenuOpen) closeMoreMenu();
+    else openMoreMenu();
+  });
+  $('#more-menu')?.addEventListener('click', () => closeMoreMenu());
+  document.addEventListener('click', (e) => {
+    if (!moreMenuOpen) return;
+    const menu = $('#more-menu');
+    if (menu && !menu.contains(e.target) && !moreToggle?.contains(e.target)) closeMoreMenu();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && moreMenuOpen) closeMoreMenu();
+  });
+  $('#bottom-more')?.addEventListener('click', () => {
+    const bottom = $('#bottom-more');
+    if (bottom) bottom.setAttribute('aria-expanded', 'true');
+    openMoreSheet(() => bottom?.setAttribute('aria-expanded', 'false'));
+  });
+
+  // 安装到主屏幕（PWA）
+  watchInstallPrompt();
+  const installBtn = $('#install-btn');
+  onInstallAvailability(({ available, installed }) => {
+    if (installBtn) installBtn.hidden = !available;
+    if (installed) toast(t('已安装到主屏幕'), { kind: 'success' });
+  });
+  installBtn?.addEventListener('click', async () => {
+    const result = await promptInstall();
+    if (result === 'accepted') toast(t('开始安装 SHADOW 市场…'), { kind: 'success' });
+    else if (result === 'unavailable') {
+      toast(isIosSafari()
+        ? t('iOS Safari：点「分享」按钮 →「添加到主屏幕」即可安装。')
+        : t('当前浏览器暂未提供安装入口：可用地址栏菜单「安装应用 / 添加到主屏幕」。'), { kind: 'warn', timeout: 5200 });
+    }
+  });
+
+  // 登录占位（P0 无账号）
   $('#login-btn')?.addEventListener('click', () => {
-    toast('P1 将支持可选账户（邮箱验证码 / 第三方登录）；P0 全免费，浏览 / 下载 / 导入都不需要登录。当前只有匿名设备本地演示。', { kind: 'warn', timeout: 5600 });
+    toast(t('P1 将支持可选账户（邮箱验证码）；P0 全免费，浏览 / 下载 / 导入都不需要登录。'), { kind: 'warn', timeout: 5600 });
   });
 
   // 重新加载数据（设置页 / 命令面板触发）
@@ -357,12 +524,70 @@ function bindHeader() {
     try {
       await loadPlugins();
       await loadCatalog();
-      toast('已重新加载插件清单与资源目录', { kind: 'success' });
+      toast(t('已重新加载插件清单与资源目录'), { kind: 'success' });
     } catch (err) {
-      toast(`重新加载失败：${err.message || err}`, { kind: 'error' });
+      toast(t('重新加载失败：{message}', { message: err.message || err }), { kind: 'error' });
     }
     renderCurrent({ scroll: false });
   });
+}
+
+function openMoreSheet(onClose) {
+  const links = [
+    { href: '#/import', label: t('一键导入说明'), icon: 'upload' },
+    { href: '#/changelog', label: t('更新日志'), icon: 'history' },
+    { href: '#/favorites', label: t('我的收藏'), icon: 'star' },
+    { href: '#/points', label: t('积分（P1 预览）'), icon: 'diamond' },
+    { href: '#/settings', label: t('设置'), icon: 'gear' },
+    { href: '#/about', label: t('关于'), icon: 'info' },
+    { href: '#/privacy', label: t('隐私说明'), icon: 'shield' },
+    { href: '#/complaint', label: t('版权与投诉'), icon: 'scale' },
+  ];
+  let handle = null;
+  handle = openModal({
+    title: t('更多'),
+    body: el('nav', { class: 'more-sheet', 'aria-label': t('更多菜单') },
+      links.map((link) => el('a', {
+        class: 'more-sheet-link',
+        href: link.href,
+        onclick: () => setTimeout(() => handle?.close(), 0),
+      }, icon(link.icon, 16), link.label)),
+    ),
+    onClose,
+    extraClass: 'modal-sheet',
+  });
+  if (handle) handle.element.style.width = 'min(420px, 100%)';
+}
+
+function openShortcutsModal() {
+  openModal({
+    title: t('键盘快捷键'),
+    body: el('div', {},
+      el('p', {}, t('市场支持键盘完成全部浏览操作：')),
+      el('ul', { class: 'points-rule-list' },
+        el('li', {}, el('kbd', { class: 'kbd' }, '/'), ` ${t('聚焦搜索框')}`),
+        el('li', {}, el('kbd', { class: 'kbd' }, 'Ctrl'), ' + ', el('kbd', { class: 'kbd' }, 'K'), ` ${t('打开命令面板')}`),
+        el('li', {}, el('kbd', { class: 'kbd' }, '?'), ` ${t('打开本说明')}`),
+        el('li', {}, el('kbd', { class: 'kbd' }, 'Tab'), ` ${t('在链接/按钮/Tabs 间移动')}`),
+        el('li', {}, el('kbd', { class: 'kbd' }, '←'), ' ', el('kbd', { class: 'kbd' }, '→'), ` ${t('详情页 Tabs 切换')}`),
+        el('li', {}, el('kbd', { class: 'kbd' }, 'Esc'), ` ${t('关闭弹层 / 菜单 / 清空搜索')}`),
+      ),
+    ),
+    actions: [{ label: t('关闭'), kind: 'primary' }],
+  });
+}
+
+/* ---------------- PWA 更新提示 ---------------- */
+
+function showUpdateBanner() {
+  if (!pwaBannerEl) return;
+  pwaBannerEl.hidden = false;
+  clear(pwaBannerEl);
+  pwaBannerEl.append(
+    el('span', { class: 'pwa-banner-text' }, icon('refresh', 14), ` ${t('新版本可用')}：${t('刷新后生效。')}`),
+    el('button', { class: 'btn btn-sm btn-primary', type: 'button', onclick: () => applyUpdate() }, t('立即更新')),
+    el('button', { class: 'btn btn-sm', type: 'button', onclick: () => { pwaBannerEl.hidden = true; } }, t('稍后')),
+  );
 }
 
 /* ---------------- 启动 ---------------- */
@@ -390,24 +615,50 @@ function isFixtureRequested() {
   } catch { return false; }
 }
 
+async function bootPWA() {
+  if (location.protocol === 'file:') return null;
+  const reg = await registerPWA({ onUpdate: () => showUpdateBanner() });
+  return reg;
+}
+
+/** PWA 延迟注册：等首屏/load 之后再注册 SW，避免 install 预缓存抢占首屏带宽（Lighthouse 指标） */
+function schedulePWA() {
+  const run = () => {
+    setTimeout(() => {
+      bootPWA().then(() => {
+        // 首屏渲染完成后再通知 SW 后台预取非关键资源（懒加载视图 / 数据 / 图标）
+        setTimeout(async () => {
+          try {
+            const ready = await navigator.serviceWorker.ready;
+            (ready.active || navigator.serviceWorker.controller)?.postMessage({ type: 'PREFETCH' });
+          } catch { /* ignore */ }
+        }, 2500);
+      });
+    }, 400);
+  };
+  if (document.readyState === 'complete') run();
+  else window.addEventListener('load', run, { once: true });
+}
+
 async function boot() {
   if (booted) return;
   booted = true;
+  await initI18n();
+  updateLangButton();
   if (viewEl) {
-    viewEl.replaceChildren(initialSkeleton());
+    // index.html 已内置静态首屏（LCP 早出现 + CLS 预留高度）；仅在缺失时用 JS 骨架兜底
+    if (!viewEl.firstElementChild) viewEl.replaceChildren(initialSkeleton());
     viewEl.setAttribute('aria-busy', 'true');
   }
   bindHeader();
 
   try {
-    // 插件清单与目录并行加载；插件失败不阻塞页面（内置降级渲染器）
     const pluginsPromise = loadPlugins();
     let catalogError = null;
     try {
       await loadCatalog({ fixture: isFixtureRequested() });
     } catch (err) {
       catalogError = err;
-      // 曾进过夹具模式（sessionStorage）则自动回退夹具，避免开发期每次刷新都白屏
       if (isFixtureRequested()) {
         try { await loadCatalog({ fixture: true }); catalogError = null; } catch { /* 保持错误态 */ }
       }
@@ -419,7 +670,7 @@ async function boot() {
   }
 
   startRouter();
-  onRouteChange((route, reason) => renderRoute(route, { reason }));
+  onRouteChange((route, reason) => { renderRoute(route, { reason }).catch((err) => console.warn('[market] 路由渲染失败', err)); });
   renderCurrent({ scroll: true });
 
   // 自测 / 调试入口（只读 + 适配器，不改变页面行为）
@@ -427,14 +678,19 @@ async function boot() {
     version: APP_VERSION,
     get ready() { return document.body.dataset.appReady === 'true'; },
     get state() { return getState(); },
+    get lang() { return getLang(); },
+    setLang,
     points: MarketPoints,
-    router: { parseHash, navigate, replaceRoute, currentRoute },
+    router: { navigate, replaceRoute, currentRoute },
     refresh: () => renderCurrent({ scroll: false }),
     openPalette: () => openCommandPalette(),
     closePalette: () => closeCommandPalette(),
     get prefs() { return getPrefs(); },
+    pwa: { applyUpdate, canInstall },
   };
   document.body.dataset.appReady = 'true';
+
+  schedulePWA();
 }
 
 boot();

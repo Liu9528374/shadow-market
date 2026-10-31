@@ -1,4 +1,5 @@
-/** Ctrl+K 命令面板：页面跳转 / 资源搜索 / 快捷操作（GitHub 式 command palette） */
+/** Ctrl+K 命令面板：页面跳转 / 资源搜索 / 快捷操作（GitHub 式 command palette）
+ *  a11y：combobox + aria-expanded / aria-controls / aria-activedescendant + ↑↓/Enter/Esc。 */
 
 import { el, debounce } from './dom.js';
 import { icon } from './icons.js';
@@ -7,44 +8,53 @@ import { MarketPoints } from './points.js';
 import { navigate } from './router.js';
 import { toast } from './components.js';
 import { toggleTheme, resolveTheme } from './theme.js';
+import { t, getLang } from './i18n.js';
 
 let openHandle = null;
 
 function pageActions() {
   return [
-    { group: '页面', label: '探索市场', hint: '#/', iconName: 'compass', run: () => navigate('/') },
-    { group: '页面', label: '积分（P1 本地演示）', hint: '#/points', iconName: 'diamond', run: () => navigate('/points') },
-    { group: '页面', label: '一键导入说明', hint: '#/import', iconName: 'upload', run: () => navigate('/import') },
-    { group: '页面', label: '设置', hint: '#/settings', iconName: 'gear', run: () => navigate('/settings') },
-    { group: '页面', label: '我的资源 / 我的收藏', hint: '#/points', iconName: 'book', run: () => navigate('/points') },
-    { group: '页面', label: '看不到的页面（404 示例）', hint: '#/404', iconName: 'alert', run: () => navigate('/404') },
+    { group: t('页面'), label: t('探索市场'), hint: '#/', iconName: 'compass', run: () => navigate('/') },
+    { group: t('页面'), label: t('我的收藏'), hint: '#/favorites', iconName: 'star', run: () => navigate('/favorites') },
+    { group: t('页面'), label: t('投稿指南'), hint: '#/contribute', iconName: 'book', run: () => navigate('/contribute') },
+    { group: t('页面'), label: t('一键导入说明'), hint: '#/import', iconName: 'upload', run: () => navigate('/import') },
+    { group: t('页面'), label: t('更新日志'), hint: '#/changelog', iconName: 'history', run: () => navigate('/changelog') },
+    { group: t('页面'), label: t('关于 SHADOW 市场'), hint: '#/about', iconName: 'info', run: () => navigate('/about') },
+    { group: t('页面'), label: t('隐私说明'), hint: '#/privacy', iconName: 'shield', run: () => navigate('/privacy') },
+    { group: t('页面'), label: t('版权与投诉'), hint: '#/complaint', iconName: 'scale', run: () => navigate('/complaint') },
+    { group: t('页面'), label: t('设置'), hint: '#/settings', iconName: 'gear', run: () => navigate('/settings') },
+    { group: t('页面'), label: t('积分（P1 预览）'), hint: '#/points', iconName: 'diamond', run: () => navigate('/points') },
   ];
 }
 
 function commandActions(repaint) {
   return [
     {
-      group: '操作', label: `切换深浅色（当前 ${resolveTheme() === 'dark' ? '深色' : '浅色'}）`, hint: '主题', iconName: 'sun',
-      run: () => { toggleTheme(); toast('已切换外观主题（保存在本机）', { kind: 'success' }); repaint(); },
+      group: t('操作'), label: `${t('切换深浅色')}（${resolveTheme() === 'dark' ? t('深色') : t('浅色')}）`, hint: t('主题'), iconName: 'sun',
+      run: () => { toggleTheme(); toast(t('已切换外观主题（保存在本机）'), { kind: 'success' }); repaint(); },
     },
     {
-      group: '操作', label: `每日签到 +${MarketPoints.ruleLabel.signIn}`, hint: 'P1 本地演示', iconName: 'check',
+      group: t('操作'), label: `${t('切换语言')}（${getLang() === 'en' ? 'English' : '中文'} → ${getLang() === 'en' ? '中文' : 'English'}）`, hint: '中 / EN', iconName: 'globe',
+      run: () => { window.dispatchEvent(new CustomEvent('market:togglelang')); },
+    },
+    {
+      group: t('操作'), label: `${t('每日签到')} +${MarketPoints.ruleLabel.signIn}`, hint: t('P1 本地演示'), iconName: 'check',
       run: () => {
         const result = MarketPoints.signIn();
-        if (result.ok) toast(`签到成功 +5 积分（本地演示）`, { kind: 'success' });
-        else toast('今天已经签到过了', { kind: 'warn' });
+        if (result.ok) toast(t('签到成功 +{n} 积分（本地演示）', { n: MarketPoints.ruleLabel.signIn }), { kind: 'success' });
+        else toast(t('今天已经签到过了'), { kind: 'warn' });
       },
     },
     {
-      group: '操作', label: '练习打卡 +10（P1 本地演示）', hint: '积分', iconName: 'play',
+      group: t('操作'), label: `${t('练习打卡')} +${MarketPoints.ruleLabel.practice}`, hint: t('P1 本地演示'), iconName: 'play',
       run: () => {
         const result = MarketPoints.practiceCheckIn();
-        if (result.ok) toast('打卡成功 +10 积分（本地演示）', { kind: 'success' });
-        else toast('今天已经打过卡了', { kind: 'warn' });
+        if (result.ok) toast(t('打卡成功 +{n} 积分（本地演示）', { n: MarketPoints.ruleLabel.practice }), { kind: 'success' });
+        else toast(t('今天已经打过卡了'), { kind: 'warn' });
       },
     },
     {
-      group: '操作', label: '重新加载目录数据（data/catalog.json）', hint: '开发者', iconName: 'refresh',
+      group: t('操作'), label: t('重新加载目录数据'), hint: t('开发者'), iconName: 'refresh',
       run: () => window.dispatchEvent(new CustomEvent('market:reload')),
     },
   ];
@@ -56,16 +66,14 @@ function buildItems(query, repaint) {
   const state = getState();
   const items = [];
 
-  const pages = pageActions().filter((a) => match(a.label) || match(a.hint));
-  items.push(...pages);
-  const commands = commandActions(repaint).filter((a) => match(a.label) || match(a.group));
-  items.push(...commands);
+  items.push(...pageActions().filter((a) => match(a.label) || match(a.hint)));
+  items.push(...commandActions(repaint).filter((a) => match(a.label) || match(a.group)));
 
   if (state.catalog) {
     const resources = (q ? searchResources(q) : state.catalog.resources).slice(0, 8);
     for (const resource of resources) {
       items.push({
-        group: '资源',
+        group: t('资源'),
         label: resource.title,
         hint: `${resource.categoryLabel || resource.category || ''} · ${resource.level || ''}`.replace(/^ · /, ''),
         iconName: 'book',
@@ -85,40 +93,67 @@ export function openCommandPalette({ onAfterAction = null } = {}) {
   let items = [];
   let activeIndex = 0;
   let closed = false;
+  const listId = 'palette-listbox';
 
   const backdrop = el('div', { class: 'palette-backdrop' });
-  const palette = el('div', { class: 'palette', role: 'dialog', 'aria-modal': 'true', 'aria-label': '命令面板', 'data-testid': 'command-palette' });
+  const palette = el('div', { class: 'palette', role: 'dialog', 'aria-modal': 'true', 'aria-label': t('命令面板'), 'data-testid': 'command-palette' });
   const input = el('input', {
-    class: 'palette-input', type: 'text', placeholder: '搜索资源或输入命令…', autocomplete: 'off', spellcheck: 'false',
-    'aria-label': '命令面板搜索', 'data-testid': 'palette-input',
+    class: 'palette-input', type: 'text', autocomplete: 'off', spellcheck: 'false',
+    role: 'combobox',
+    'aria-label': t('命令面板搜索'),
+    'aria-autocomplete': 'list',
+    'aria-expanded': 'true',
+    'aria-controls': listId,
+    'aria-activedescendant': '',
+    'data-testid': 'palette-input',
   });
+  input.placeholder = t('搜索资源或输入命令…');
   const inputRow = el('div', { class: 'palette-input-row' }, icon('search', 16), input, el('kbd', { class: 'kbd palette-esc' }, 'Esc'));
-  const list = el('div', { class: 'palette-list', role: 'listbox', 'aria-label': '命令与资源列表', 'data-testid': 'palette-list' });
+  const list = el('div', { class: 'palette-list', role: 'listbox', id: listId, 'aria-label': t('命令与资源列表'), 'data-testid': 'palette-list' });
   const foot = el('div', { class: 'palette-foot' },
-    el('span', {}, el('kbd', { class: 'kbd' }, '↑'), el('kbd', { class: 'kbd' }, '↓'), ' 选择'),
-    el('span', {}, el('kbd', { class: 'kbd' }, 'Enter'), ' 打开'),
-    el('span', {}, el('kbd', { class: 'kbd' }, 'Esc'), ' 关闭'),
+    el('span', {}, el('kbd', { class: 'kbd' }, '↑'), el('kbd', { class: 'kbd' }, '↓'), ` ${t('选择')}`),
+    el('span', {}, el('kbd', { class: 'kbd' }, 'Enter'), ` ${t('打开')}`),
+    el('span', {}, el('kbd', { class: 'kbd' }, 'Esc'), ` ${t('关闭')}`),
     el('span', { class: 'spacer' }),
-    el('span', { class: 'subtle', text: 'Ctrl+K 打开 · / 聚焦搜索' }),
+    el('span', { class: 'subtle', text: t('Ctrl+K 打开 · / 聚焦搜索') }),
   );
   palette.append(inputRow, list, foot);
+
+  const optionId = (idx) => `palette-option-${idx}`;
+
+  const updateActive = () => {
+    const nodes = list.querySelectorAll('.palette-item');
+    for (const node of nodes) {
+      const idx = Number(node.dataset.index);
+      const active = idx === activeIndex;
+      node.dataset.active = active ? 'true' : 'false';
+      node.setAttribute('aria-selected', active ? 'true' : 'false');
+      if (active) {
+        node.scrollIntoView({ block: 'nearest' });
+        input.setAttribute('aria-activedescendant', optionId(idx));
+      }
+    }
+    if (!nodes.length) input.setAttribute('aria-activedescendant', '');
+  };
 
   const repaint = () => {
     items = buildItems(input.value, repaint);
     if (activeIndex >= items.length) activeIndex = Math.max(0, items.length - 1);
     list.replaceChildren();
     if (items.length === 0) {
-      list.append(el('div', { class: 'palette-empty', text: '没有匹配的命令或资源。试试资源标题、分类或「设置」。' }));
+      list.append(el('div', { class: 'palette-empty', role: 'status', text: t('没有匹配的命令或资源。试试资源标题、分类或「设置」。') }));
+      input.setAttribute('aria-activedescendant', '');
       return;
     }
     let currentGroup = null;
     items.forEach((item, idx) => {
       if (item.group !== currentGroup) {
         currentGroup = item.group;
-        list.append(el('div', { class: 'palette-group-label', text: currentGroup }));
+        list.append(el('div', { class: 'palette-group-label', role: 'presentation', text: currentGroup }));
       }
       const btn = el('button', {
         class: 'palette-item', type: 'button', role: 'option',
+        id: optionId(idx),
         'aria-selected': idx === activeIndex ? 'true' : 'false',
         'data-active': idx === activeIndex ? 'true' : 'false',
         dataset: { index: String(idx) },
@@ -130,16 +165,6 @@ export function openCommandPalette({ onAfterAction = null } = {}) {
       list.append(btn);
     });
     updateActive();
-  };
-
-  const updateActive = () => {
-    for (const node of list.querySelectorAll('.palette-item')) {
-      const idx = Number(node.dataset.index);
-      const active = idx === activeIndex;
-      node.dataset.active = active ? 'true' : 'false';
-      node.setAttribute('aria-selected', active ? 'true' : 'false');
-      if (active) node.scrollIntoView({ block: 'nearest' });
-    }
   };
 
   const runItem = (idx) => {
@@ -155,6 +180,7 @@ export function openCommandPalette({ onAfterAction = null } = {}) {
     backdrop.remove();
     document.removeEventListener('keydown', onKeydown, true);
     openHandle = null;
+    input.setAttribute('aria-expanded', 'false');
     if (previousFocus && typeof previousFocus.focus === 'function') {
       try { previousFocus.focus({ preventScroll: true }); } catch { /* ignore */ }
     }

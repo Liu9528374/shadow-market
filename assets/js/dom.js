@@ -1,5 +1,7 @@
 /** DOM / 格式化小工具（无依赖） */
 
+import { t } from './i18n.js';
+
 export function $(sel, root = document) { return root.querySelector(sel); }
 export function $$(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
 
@@ -103,19 +105,19 @@ export function fmtDate(value) {
   return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
 }
 
-/** 相对时间：刚刚 / 12 分钟前 / 3 天前 / 2026-10-25（超过 30 天回退日期） */
+/** 相对时间：刚刚 / 12 分钟前 / 3 天前 / 2026-10-25（超过 30 天回退日期；随 i18n 语言切换） */
 export function fmtRelative(value) {
   const d = parseDate(value);
   if (!d) return '—';
   const diff = Date.now() - d.getTime();
   if (diff < 0) return fmtDate(value);
   const min = Math.floor(diff / 60000);
-  if (min < 1) return '刚刚';
-  if (min < 60) return `${min} 分钟前`;
+  if (min < 1) return t('刚刚');
+  if (min < 60) return t('{n} 分钟前', { n: min });
   const hours = Math.floor(min / 60);
-  if (hours < 24) return `${hours} 小时前`;
+  if (hours < 24) return t('{n} 小时前', { n: hours });
   const days = Math.floor(hours / 24);
-  if (days <= 30) return `${days} 天前`;
+  if (days <= 30) return t('{n} 天前', { n: days });
   return fmtDate(value);
 }
 
