@@ -1,0 +1,6 @@
+{
+  "spec": "shadow.market.plugins",
+  "schemaVersion": 1,
+  "comment": "资源类型插件登记表：市场启动时逐项读取 plugins/<type>/manifest.json 注册卡片/详情渲染器。市场只读声明、不执行插件代码。",
+  "plugins": ["course", "plugin", "subtitle"]
+}

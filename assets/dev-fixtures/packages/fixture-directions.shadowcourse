@@ -1,0 +1,27 @@
+{
+  "spec": "shadow.course",
+  "schemaVersion": 1,
+  "id": "com.shadow.course.fixture-directions",
+  "version": "0.0.1",
+  "title": "问路去火车站（夹具）",
+  "subtitle": "Asking for Directions · A2 · 演示夹具",
+  "description": "【演示夹具】问路场景的 2 句示例对话。",
+  "category": "travel",
+  "tags": ["A2", "旅行", "问路", "夹具"],
+  "level": "A2",
+  "language": ["en", "zh"],
+  "creator": { "name": "SHADOW Studio", "url": "", "handle": "shadow-studio" },
+  "license": "CC-BY-4.0",
+  "rights": { "basis": "own", "evidenceUrl": "", "note": "演示夹具。" },
+  "mediaPolicy": "byom",
+  "media": [{ "id": "m1", "kind": "audio", "duration": 0, "hint": "演示夹具：任意本地英语音频" }],
+  "sentences": [
+    { "sentenceId": "s_0001", "start": 0.133, "end": 3.536, "text": "Excuse me, how do I get to the train station?", "translation": "打扰一下，请问火车站怎么走？", "notes": "重音：Excuse · get · train · station" },
+    { "sentenceId": "s_0002", "start": 3.778, "end": 7.041, "text": "Go straight for two blocks, then turn left.", "translation": "直走两个街区，然后左转。", "notes": "连读：turn left → turn-left" }
+  ],
+  "exercises": { "spec": "shadow.exercises", "schemaVersion": 1, "default": { "mode": "shadow", "loopCount": 3, "speed": 1, "scoring": { "enabled": true }, "subtitle": { "en": true, "zh": true, "position": "bottom" } } },
+  "requires": { "shadow": ">=0.7.0" },
+  "createdAt": "2026-10-24T00:00:00.000Z",
+  "updatedAt": "2026-10-24T00:00:00.000Z",
+  "readme": "# 问路去火车站（演示夹具）\n\n演示夹具课程包，共 2 句示例。\n\n- 问路 / 左转两个场景句\n- 纯数据，不含媒体（BYOM）\n"
+}

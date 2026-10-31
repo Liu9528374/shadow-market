@@ -1,0 +1,17 @@
+{
+  "manifestVersion": 1,
+  "kind": "resource-type",
+  "id": "course",
+  "label": "课程包",
+  "labelEn": "Course",
+  "description": "BYOM 课程包（.shadowcourse 单文件 JSON）：句子时间轴 + 翻译 + 练习配置，一键导入 SHADOW Studio，不需要 ASR、不打包媒体。",
+  "icon": "book",
+  "color": "#2EE6A8",
+  "fileExt": [".shadowcourse", ".json"],
+  "detailTabs": ["readme", "sentences", "files", "versions"],
+  "cardBadges": ["free", "level"],
+  "statsFields": ["sentences", "durationSec", "words"],
+  "install": { "mode": "desktop-import", "deepLink": "shadow-import" },
+  "permissions": { "network": false, "filesystem": false, "microphone": false },
+  "enabled": true
+}
