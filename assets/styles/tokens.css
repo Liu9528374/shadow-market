@@ -1,21 +1,23 @@
 /* ==========================================================================
    SHADOW 市场 · Design Tokens
-   学习 GitHub 的网页设计逻辑（信息架构 / 中性色阶 / 边框分层 / 14px 基准），
-   品牌强调色延续 SHADOW 青绿（#2EE6A8），用 --brand 只在标识/高亮点缀出现，
-   正文链接与按钮用可读性更高的 --accent（浅色主题加深、深色主题提亮）。
+   学习 GitHub 的网页设计逻辑（信息架构 / 中性色阶 / 边框分层 / 14px 基准）。
+   品牌视觉来自 `C:\Users\A pig\OneDrive\桌面\APP` 的「声波 · Voice Wave」正式 App 图标：
+   深色底（#0C0C0E）+ 品牌橙（#E88A2E，渐变 #FFB55C → #E27418）。
+   → --brand 用于标识/图标/装饰光晕；--accent 用于可读性达标的文字链接与主按钮。
    ========================================================================== */
 
 :root {
   color-scheme: light;
 
-  /* 品牌 */
-  --brand: #2EE6A8;
-  --brand-deep: #17a97c;
-  --brand-soft: rgba(46, 230, 168, 0.14);
-  --accent: #0b6e4f;
-  --accent-strong: #08583f;
+  /* 品牌（来自 APP 图标包：深色底 + 品牌橙 #E88A2E / 渐变 #FFB55C→#E27418） */
+  --brand: #E88A2E;
+  --brand-deep: #C2410C;
+  --brand-soft: rgba(232, 138, 46, 0.14);
+  --brand-gradient: linear-gradient(180deg, #ffb55c 0%, #f29a3e 55%, #e27418 100%);
+  --accent: #C2410C;
+  --accent-strong: #9A3412;
   --accent-fg: #ffffff;
-  --accent-muted: rgba(11, 110, 79, 0.1);
+  --accent-muted: rgba(194, 65, 12, 0.1);
 
   /* 中性色阶（GitHub 式分层：canvas → subtle → surface → border） */
   --canvas: #ffffff;
@@ -29,11 +31,11 @@
   --border: #d0d7de;
   --border-muted: #d8dee4;
   --border-subtle: #eaeef2;
-  --border-strong: #afb8c1;
+  --border-strong: #8c959f; /* 非文本对比 ≥3:1（输入框/控件边框） */
 
   --fg: #1f2328;
   --fg-muted: #59636e;
-  --fg-subtle: #6e7781;
+  --fg-subtle: #57606a; /* 对比度 ≥4.5:1（含 --canvas-subtle 背景） */
   --fg-on-emphasis: #ffffff;
   --fg-inverse: #ffffff;
 
@@ -48,9 +50,9 @@
   --info: #0969da;
   --info-soft: rgba(9, 105, 218, 0.08);
 
-  /* 强调按钮（浅色主题用深绿底白字，保证 4.5:1 对比度） */
-  --btn-primary-bg: #117a58;
-  --btn-primary-bg-hover: #0b6347;
+  /* 强调按钮（浅色主题用深橙底白字，保证 4.5:1 对比度） */
+  --btn-primary-bg: #C2410C;
+  --btn-primary-bg-hover: #9A3412;
   --btn-primary-fg: #ffffff;
   --btn-bg: #f6f8fa;
   --btn-bg-hover: #eef1f4;
@@ -93,8 +95,8 @@
   --header-h: 62px;
   --sidebar-w: 272px;
   --aside-w: 296px;
-  --focus-ring: 0 0 0 3px rgba(46, 230, 168, 0.42);
-  --focus-ring-accent: 0 0 0 3px rgba(11, 110, 79, 0.25);
+  --focus-ring: 0 0 0 3px rgba(232, 138, 46, 0.5);
+  --focus-ring-accent: 0 0 0 3px rgba(194, 65, 12, 0.28);
   --transition: 120ms ease;
   --z-header: 30;
   --z-toast: 80;
@@ -105,13 +107,14 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --brand: #2EE6A8;
-  --brand-deep: #48f0b8;
-  --brand-soft: rgba(46, 230, 168, 0.16);
-  --accent: #2EE6A8;
-  --accent-strong: #7bf2ca;
-  --accent-fg: #06140d;
-  --accent-muted: rgba(46, 230, 168, 0.1);
+  --brand: #FFB55C;
+  --brand-deep: #FFD08A;
+  --brand-soft: rgba(255, 181, 92, 0.16);
+  --brand-gradient: linear-gradient(180deg, #ffb55c 0%, #f29a3e 55%, #e27418 100%);
+  --accent: #FFB55C;
+  --accent-strong: #FFD08A;
+  --accent-fg: #1a1208;
+  --accent-muted: rgba(255, 181, 92, 0.12);
 
   --canvas: #0d1117;
   --canvas-subtle: #010409;
@@ -141,9 +144,9 @@
   --info: #58a6ff;
   --info-soft: rgba(56, 139, 253, 0.12);
 
-  --btn-primary-bg: #2EE6A8;
-  --btn-primary-bg-hover: #6df0c6;
-  --btn-primary-fg: #06140d;
+  --btn-primary-bg: #E88A2E;
+  --btn-primary-bg-hover: #FFB55C;
+  --btn-primary-fg: #1a1208;
   --btn-bg: #21262d;
   --btn-bg-hover: #30363d;
   --btn-fg: #e6edf3;
@@ -154,8 +157,8 @@
   --shadow-card: 0 0 0 0 transparent;
   --shadow-pop: 0 8px 24px rgba(1, 4, 9, 0.7), 0 0 0 1px rgba(48, 54, 61, 0.6);
   --shadow-modal: 0 16px 56px rgba(1, 4, 9, 0.85), 0 0 0 1px #30363d;
-  --focus-ring: 0 0 0 3px rgba(46, 230, 168, 0.35);
-  --focus-ring-accent: 0 0 0 3px rgba(46, 230, 168, 0.3);
+  --focus-ring: 0 0 0 3px rgba(255, 181, 92, 0.4);
+  --focus-ring-accent: 0 0 0 3px rgba(255, 181, 92, 0.35);
 }
 
 @media (prefers-reduced-motion: reduce) {
