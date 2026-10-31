@@ -8,6 +8,7 @@
  * - 截图/报告落 tools/qa/market/shots 与 tools/qa/market/*.json。
  */
 import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import fs from 'node:fs';
@@ -264,6 +265,152 @@ export function isShadowProbeNoise(entry) {
   return /Failed to load resource: net::ERR_CONNECTION_REFUSED|net::ERR_CONNECTION_REFUSED|net::ERR_FAILED|net::ERR_ABORTED/i.test(s);
 }
 
+/* =====================================================================
+ * Phase 2（catalog v2 / 导入产物 / PWA / i18n）公共能力
+ * 契约来源：D:\FOLLOWSPEAK\docs\111-market-architecture.md §3/§5/§6.3
+ * ===================================================================== */
+
+/** catalog v2 的 6 个文件（market/catalog/*.json） */
+export const CATALOG_FILES = ['site', 'categories', 'tags', 'authors', 'licenses', 'resources'];
+/** 资源数组字段回退名（v2 用 items；兼容旧字段名，便于过渡期定位问题） */
+export const ITEMS_ALIAS = {
+  site: ['site', 'items'],
+  categories: ['items', 'categories'],
+  tags: ['items', 'tags'],
+  authors: ['items', 'authors', 'creators'],
+  licenses: ['items', 'licenses'],
+  resources: ['items', 'resources'],
+};
+
+/** 取 catalog 文件里的数组/对象（v2 = items；兼容旧字段名） */
+export function catalogItems(doc, key) {
+  if (!doc || typeof doc !== 'object') return [];
+  const aliases = ITEMS_ALIAS[key] || ['items', key];
+  for (const a of aliases) {
+    const v = doc[a];
+    if (Array.isArray(v)) return v;
+    if (v && typeof v === 'object' && key === 'site') return v;
+  }
+  return [];
+}
+
+/** 资源作者字段：v2 = author，旧 = creator */
+export function resourceAuthor(r) { return (r && (r.author || r.creator)) || ''; }
+
+/** 取最新版本（versions[0]；无则 null） */
+export function latestVersion(r) {
+  const vs = Array.isArray(r && r.versions) ? r.versions : [];
+  return vs[0] || null;
+}
+
+/** 从 importFiles/package 字段里取 URL 字符串。
+ *  兼容：字符串 / {url|href|path|packageUrl} / 数组第一项。 */
+export function urlOf(v) {
+  if (!v) return null;
+  if (typeof v === 'string') return v;
+  if (Array.isArray(v)) return urlOf(v[0]);
+  if (typeof v === 'object') return v.url || v.href || v.path || v.packageUrl || null;
+  return null;
+}
+
+/** 资源的三类下载产物（相对 market 根的 URL） */
+export function downloadArtifacts(r) {
+  const ver = latestVersion(r) || {};
+  const imp = ver.importFiles || r.importFiles || {};
+  return {
+    packageUrl: ver.packageUrl || r.packageUrl || null,
+    shadowJson: urlOf(imp.shadowJson) || urlOf(imp.shadowJSON),
+    srt: urlOf(imp.srt),
+    readme: urlOf(imp.readme),
+  };
+}
+
+/** sha256（hex） */
+export function sha256Hex(buf) {
+  return createHash('sha256').update(buf).digest('hex');
+}
+
+/** SRT 时间戳 `HH:MM:SS,mmm` / `HH:MM:SS.mmm` -> 秒 */
+export function srtTimeToSec(t) {
+  const m = String(t || '').trim().match(/^(\d{1,2}):(\d{2}):(\d{2})[,.](\d{1,3})$/);
+  if (!m) return null;
+  return (+m[1]) * 3600 + (+m[2]) * 60 + (+m[3]) + (+m[4].padEnd(3, '0')) / 1000;
+}
+
+/** 解析 SRT；返回 {ok, count, cues:[{index,start,end,text}], errors} */
+export function parseSrt(text) {
+  const errors = [];
+  const cues = [];
+  const blocks = String(text || '').replace(/\r\n?/g, '\n').trim().split(/\n{2,}/);
+  for (const block of blocks) {
+    const lines = block.split('\n');
+    const timeIdx = lines.findIndex((l) => /-->/.test(l));
+    if (timeIdx < 0) continue;
+    const tm = lines[timeIdx].match(/(\d{1,2}:\d{2}:\d{2}[,.]\d{1,3})\s*-->\s*(\d{1,2}:\d{2}:\d{2}[,.]\d{1,3})/);
+    if (!tm) { errors.push('时间轴不可解析: ' + lines[timeIdx].slice(0, 60)); continue; }
+    const start = srtTimeToSec(tm[1]); const end = srtTimeToSec(tm[2]);
+    if (start === null || end === null || !(end > start)) errors.push('时间轴非法: ' + lines[timeIdx].slice(0, 60));
+    const body = lines.slice(timeIdx + 1).join('\n').trim();
+    if (!body) errors.push('cue 无文本');
+    const index = /^\d+$/.test((lines[0] || '').trim()) ? Number(lines[0].trim()) : cues.length + 1;
+    cues.push({ index, start, end, text: body });
+  }
+  return { ok: cues.length > 0 && errors.length === 0, count: cues.length, cues, errors };
+}
+
+/** 失败/拒连类网络噪声（仅用于「离线阶段」这类必然断网的上下文） */
+export function isOfflineNoise(entry) {
+  const s = `${entry.text || ''} ${entry.location || ''}`;
+  return /ERR_INTERNET_DISCONNECTED|ERR_NETWORK_CHANGED|ERR_NAME_NOT_RESOLVED|ERR_CONNECTION_REFUSED|ERR_FAILED|ERR_ABORTED|Failed to fetch|Load failed/i.test(s);
+}
+
+/** 从 baseUrl 逐个 fetch catalog v2 六文件。不抛异常，返回结构化结果供断言。 */
+export async function loadCatalogV2(baseUrl) {
+  const root = String(baseUrl || '').replace(/\/$/, '');
+  const out = {
+    baseUrl: root, files: {}, missing: [], resources: [], categories: [], tags: [],
+    authors: [], licenses: [], site: null, generatedAt: null, schemaVersion: null,
+    allOk: false, dataSource: null,
+  };
+  for (const name of CATALOG_FILES) {
+    const url = `${root}/catalog/${name}.json`;
+    try {
+      const resp = await httpRequest(url, { timeoutMs: 8000 });
+      let json = resp.json;
+      out.files[name] = { url, status: resp.status, bytes: resp.body.length, json, ok: resp.status === 200 && !!json };
+      if (resp.status === 200 && json) {
+        if (name === 'site') out.site = json;
+        else out[name] = catalogItems(json, name);
+        if (json.schemaVersion != null && out.schemaVersion == null) out.schemaVersion = json.schemaVersion;
+        if (json.generatedAt && !out.generatedAt) out.generatedAt = json.generatedAt;
+      } else out.missing.push(`${name}.json(status=${resp.status})`);
+    } catch (e) {
+      out.files[name] = { url, status: 0, error: String(e && (e.message || e)), ok: false };
+      out.missing.push(`${name}.json(${e && e.message})`);
+    }
+  }
+  out.allOk = out.missing.length === 0;
+  out.dataSource = out.allOk ? 'catalog-v2' : null;
+  if (out.allOk && !out.resources.length) out.resources = [];
+  return out;
+}
+
+/** 资源卡稳定选择器（[data-testid=resource-card]，兼容 data-resource-id 在子节点） */
+export async function cardIdsOf(page) {
+  return await page.evaluate(() => {
+    const vis = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; };
+    const ids = [];
+    for (const c of document.querySelectorAll('[data-testid="resource-card"]')) {
+      if (!vis(c)) continue;
+      const id = c.getAttribute('data-resource-id') || c.getAttribute('data-id')
+        || (c.querySelector('[data-resource-id]') || {}).getAttribute?.('data-resource-id')
+        || ((c.querySelector('a[href*="#/resource/"]') || {}).getAttribute?.('href') || '').match(/#\/resource\/([^/?#]+)/)?.[1];
+      if (id) ids.push(id);
+    }
+    return [...new Set(ids)];
+  }).catch(() => []);
+}
+
 /* ---------- 页面小工具 ---------- */
 /** 依次尝试多个选择器，返回第一个匹配元素数量 */
 export async function countAny(page, selectors) {
@@ -324,20 +471,31 @@ export async function resourceCardLinks(page) {
   });
 }
 
-/** 是否有横向溢出；返回 {overflow, offenders:[{tag,cls,right,width}]} */
+/** 是否有页面级横向溢出；返回 {overflow, docOverflow, offenders:[{tag,cls,right,width}]}
+ *  说明：按 docs/111 §7.3「表格/代码块/操作条内部可横滚并可聚焦」，
+ *  处于 overflow-x: auto/scroll/hidden/clip 祖先容器内的越界元素不算页面级溢出。 */
 export async function horizontalOverflow(page) {
   return await page.evaluate(() => {
     const vw = window.innerWidth;
     const de = document.documentElement;
     const docOverflow = Math.max(de.scrollWidth, document.body ? document.body.scrollWidth : 0) > vw + 1;
+    const clippedByAncestor = (el) => {
+      let n = el.parentElement;
+      while (n && n !== document.body && n !== document.documentElement) {
+        const cs = getComputedStyle(n);
+        if (/(auto|scroll|hidden|clip)/.test(cs.overflowX)) return true;
+        n = n.parentElement;
+      }
+      return false;
+    };
     const offenders = [];
-    const all = document.querySelectorAll('body *');
-    for (const el of all) {
+    for (const el of document.querySelectorAll('body *')) {
       const cs = getComputedStyle(el);
       if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
       const r = el.getBoundingClientRect();
       if (r.width === 0 || r.height === 0) continue;
       if (r.right > vw + 1 || r.left < -1) {
+        if (clippedByAncestor(el)) continue; // 内部可横滚容器（表格/代码块/移动操作条）不算页面级溢出
         offenders.push({ tag: el.tagName.toLowerCase(), cls: String(el.className || '').slice(0, 80), left: +r.left.toFixed(1), right: +r.right.toFixed(1) });
         if (offenders.length >= 10) break;
       }

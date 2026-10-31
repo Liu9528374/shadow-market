@@ -1,0 +1,32 @@
+# Cloudflare Pages _headers 模板（SHADOW 市场 P0）
+# 用法：发布前复制为 market/_headers（发布根）。契约：docs/111 §6.4 / §8.4。
+# 说明：P0 无第三方脚本/字体/分析；CSP 保留内联主题脚本（首屏防闪），故 script-src 含 'unsafe-inline'。
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: microphone=(), camera=(), geolocation=(), payment=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' http://127.0.0.1:*; manifest-src 'self'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
+
+# 静态资源长缓存（P0 无指纹，发版靠 SW 版本化 cache；如未来加 ?v= 可更细分）
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# catalog 数据短缓存（docs/111 §6.4）
+/catalog/*.json
+  Cache-Control: public, max-age=60
+
+# Service Worker 不缓存（保证更新探测）
+/sw.js
+  Cache-Control: no-cache
+
+# PWA 清单短缓存
+/manifest.webmanifest
+  Cache-Control: public, max-age=300
+
+# 课程包：纯数据 BYOM 包，允许跨域读取（未来工具 ?import=；不含用户媒体）
+/data/packages/*.shadowcourse
+  Access-Control-Allow-Origin: *
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600

@@ -1,103 +1,344 @@
 {
   "test": "market-data-contract",
-  "round": "r11",
-  "startedAt": "2026-10-25T15:26:08.534Z",
-  "marketDir": "D:\\FOLLOWSPEAK\\market",
+  "round": "phase2",
+  "startedAt": "2026-10-31T16:54:52.673Z",
+  "marketDir": "D:\\SHADOW-MARKET\\market",
+  "catalogDir": "D:\\SHADOW-MARKET\\market\\catalog",
+  "files": {
+    "site": {
+      "file": "catalog/site.json",
+      "bytes": 2665,
+      "sha256": "e45aca74c3ac8e29cf4f17623793a213eb3ebb8c1f65fe2c95778e9f851c549d"
+    },
+    "categories": {
+      "file": "catalog/categories.json",
+      "bytes": 1505,
+      "sha256": "a0453332e17a50f6ef393e2e107728a8d162523afa84773f84423d93cefd6a37"
+    },
+    "tags": {
+      "file": "catalog/tags.json",
+      "bytes": 3497,
+      "sha256": "a206053c52b1d5bc22d42a02fc84df3731f972b7b4f8d5014bdbedc5786eba74"
+    },
+    "authors": {
+      "file": "catalog/authors.json",
+      "bytes": 587,
+      "sha256": "b2215d7a779f05a3de7d7e8e2818f3f1b9b915b87aa03afc8ebe40992dfbae07"
+    },
+    "licenses": {
+      "file": "catalog/licenses.json",
+      "bytes": 1084,
+      "sha256": "979cb32729a23c7ee9bfb614cd42ccac6e2f1062c7eae70a18eb7a71eb9e10a6"
+    },
+    "resources": {
+      "file": "catalog/resources.json",
+      "bytes": 25450,
+      "sha256": "f1fc47e98b0db6ba17f506fe44e2fcaec7246c73fff7cb1954341506ad17f9e0"
+    }
+  },
   "checks": [
     {
-      "id": "DC1",
-      "name": "data/catalog.json 存在",
+      "id": "DC1.site",
+      "name": "catalog/site.json 存在",
       "pass": true,
-      "detail": "D:\\FOLLOWSPEAK\\market\\data\\catalog.json",
-      "at": "2026-10-25T15:26:08.535Z"
+      "detail": "catalog/site.json",
+      "at": "2026-10-31T16:54:52.674Z"
     },
     {
-      "id": "DC2",
-      "name": "catalog.spec === \"shadow.market.catalog\"",
+      "id": "DC2.site",
+      "name": "catalog/site.json 可解析 + spec 属于 shadow.market.*",
       "pass": true,
-      "detail": "spec=shadow.market.catalog",
-      "at": "2026-10-25T15:26:08.537Z"
+      "detail": "spec=shadow.market.site",
+      "at": "2026-10-31T16:54:52.676Z"
     },
     {
-      "id": "DC3",
-      "name": "catalog.schemaVersion === 1",
+      "id": "DC3.site",
+      "name": "catalog/site.json schemaVersion === 2",
       "pass": true,
-      "detail": "schemaVersion=1",
-      "at": "2026-10-25T15:26:08.537Z"
+      "detail": "schemaVersion=2",
+      "at": "2026-10-31T16:54:52.676Z"
     },
     {
-      "id": "DC4",
-      "name": "resources ≥ 3",
+      "id": "DC4.site",
+      "name": "catalog/site.json generatedAt 可解析",
       "pass": true,
-      "detail": "count=5",
-      "at": "2026-10-25T15:26:08.537Z"
+      "detail": "generatedAt=2026-10-31T15:30:00.000Z",
+      "at": "2026-10-31T16:54:52.676Z"
+    },
+    {
+      "id": "DC1.categories",
+      "name": "catalog/categories.json 存在",
+      "pass": true,
+      "detail": "catalog/categories.json",
+      "at": "2026-10-31T16:54:52.676Z"
+    },
+    {
+      "id": "DC2.categories",
+      "name": "catalog/categories.json 可解析 + spec 属于 shadow.market.*",
+      "pass": true,
+      "detail": "spec=shadow.market.categories",
+      "at": "2026-10-31T16:54:52.676Z"
+    },
+    {
+      "id": "DC3.categories",
+      "name": "catalog/categories.json schemaVersion === 2",
+      "pass": true,
+      "detail": "schemaVersion=2",
+      "at": "2026-10-31T16:54:52.676Z"
+    },
+    {
+      "id": "DC4.categories",
+      "name": "catalog/categories.json generatedAt 可解析",
+      "pass": true,
+      "detail": "generatedAt=2026-10-31T15:30:00.000Z",
+      "at": "2026-10-31T16:54:52.676Z"
+    },
+    {
+      "id": "DC1.tags",
+      "name": "catalog/tags.json 存在",
+      "pass": true,
+      "detail": "catalog/tags.json",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC2.tags",
+      "name": "catalog/tags.json 可解析 + spec 属于 shadow.market.*",
+      "pass": true,
+      "detail": "spec=shadow.market.tags",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC3.tags",
+      "name": "catalog/tags.json schemaVersion === 2",
+      "pass": true,
+      "detail": "schemaVersion=2",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC4.tags",
+      "name": "catalog/tags.json generatedAt 可解析",
+      "pass": true,
+      "detail": "generatedAt=2026-10-31T15:30:00.000Z",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC1.authors",
+      "name": "catalog/authors.json 存在",
+      "pass": true,
+      "detail": "catalog/authors.json",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC2.authors",
+      "name": "catalog/authors.json 可解析 + spec 属于 shadow.market.*",
+      "pass": true,
+      "detail": "spec=shadow.market.authors",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC3.authors",
+      "name": "catalog/authors.json schemaVersion === 2",
+      "pass": true,
+      "detail": "schemaVersion=2",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC4.authors",
+      "name": "catalog/authors.json generatedAt 可解析",
+      "pass": true,
+      "detail": "generatedAt=2026-10-31T15:30:00.000Z",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC1.licenses",
+      "name": "catalog/licenses.json 存在",
+      "pass": true,
+      "detail": "catalog/licenses.json",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC2.licenses",
+      "name": "catalog/licenses.json 可解析 + spec 属于 shadow.market.*",
+      "pass": true,
+      "detail": "spec=shadow.market.licenses",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC3.licenses",
+      "name": "catalog/licenses.json schemaVersion === 2",
+      "pass": true,
+      "detail": "schemaVersion=2",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC4.licenses",
+      "name": "catalog/licenses.json generatedAt 可解析",
+      "pass": true,
+      "detail": "generatedAt=2026-10-31T15:30:00.000Z",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC1.resources",
+      "name": "catalog/resources.json 存在",
+      "pass": true,
+      "detail": "catalog/resources.json",
+      "at": "2026-10-31T16:54:52.677Z"
+    },
+    {
+      "id": "DC2.resources",
+      "name": "catalog/resources.json 可解析 + spec 属于 shadow.market.*",
+      "pass": true,
+      "detail": "spec=shadow.market.resources",
+      "at": "2026-10-31T16:54:52.678Z"
+    },
+    {
+      "id": "DC3.resources",
+      "name": "catalog/resources.json schemaVersion === 2",
+      "pass": true,
+      "detail": "schemaVersion=2",
+      "at": "2026-10-31T16:54:52.678Z"
+    },
+    {
+      "id": "DC4.resources",
+      "name": "catalog/resources.json generatedAt 可解析",
+      "pass": true,
+      "detail": "generatedAt=2026-10-31T15:30:00.000Z",
+      "at": "2026-10-31T16:54:52.678Z"
     },
     {
       "id": "DC5",
-      "name": "categories ≥ 1 且每个含 id/label",
+      "name": "site.json 有站点名/版本信息",
       "pass": true,
-      "detail": "categories=daily,travel,work,podcast,movie",
-      "at": "2026-10-25T15:26:08.537Z"
+      "detail": "keys=id,name,nameEn,tagline,taglineEn,description,descriptionEn,baseUrl,startUrl,version",
+      "at": "2026-10-31T16:54:52.678Z"
     },
     {
       "id": "DC6",
-      "name": "creators ≥ 1 且 handle/name 齐全",
+      "name": "categories ≥1 且 id/label 齐全",
       "pass": true,
-      "detail": "creators=shadow-studio",
-      "at": "2026-10-25T15:26:08.537Z"
+      "detail": "7 → daily,travel,work,podcast,movie,listening,plugins",
+      "at": "2026-10-31T16:54:52.678Z"
     },
     {
       "id": "DC7",
-      "name": "resources 字段/包引用一致（id/category/creator/version/free/purge 下载量）",
+      "name": "authors ≥1 且 handle/name 齐全",
       "pass": true,
-      "detail": "all ok",
-      "at": "2026-10-25T15:26:08.539Z"
+      "detail": "1 → shadow-studio",
+      "at": "2026-10-31T16:54:52.678Z"
     },
     {
       "id": "DC8",
-      "name": "全部包：schemaVersion=1 / byom / CC-BY-4.0 / ≤2MB / 纯数据（无脚本 iframe 事件属性）",
+      "name": "licenses ≥1 且 id/name 齐全 + 有 url 或 fullText",
       "pass": true,
-      "detail": "5 packages ok",
-      "at": "2026-10-25T15:26:08.539Z"
+      "detail": "1 → CC-BY-4.0",
+      "at": "2026-10-31T16:54:52.678Z"
     },
     {
       "id": "DC9",
-      "name": "plugins/index.json 声明 ≥1 资源类型",
+      "name": "tags ≥1 且每项含 tag（或 id/label）",
       "pass": true,
-      "detail": "{\"spec\":\"shadow.market.plugins\",\"schemaVersion\":1,\"comment\":\"资源类型插件登记表：市场启动时逐项读取 plugins/<type>/manifest.json 注册卡片/详情渲染器。市场只读声明、不执行插件代码。\",\"plugins\":[\"course\",\"plugin\",\"subtitle\"]}",
-      "at": "2026-10-25T15:26:08.540Z"
+      "detail": "21",
+      "at": "2026-10-31T16:54:52.678Z"
     },
     {
       "id": "DC10",
-      "name": "每类 manifest 字段齐全（manifestVersion/kind/id/label/fileExt/detailTabs/permissions/enabled）",
+      "name": "resources ≥7（5 课程 + 字幕 + 插件类）",
       "pass": true,
-      "detail": "3 manifests ok",
-      "at": "2026-10-25T15:26:08.540Z"
+      "detail": "count=7",
+      "at": "2026-10-31T16:54:52.678Z"
     },
     {
       "id": "DC11",
-      "name": "catalog 使用的每种资源类型都有 manifest 声明（一切即插件）",
+      "name": "plugins/index.json 存在",
       "pass": true,
-      "detail": "used=course declared=course,plugin,subtitle missing=",
-      "at": "2026-10-25T15:26:08.540Z"
+      "detail": "plugins/index.json",
+      "at": "2026-10-31T16:54:52.678Z"
     },
     {
       "id": "DC12",
-      "name": "每个包都有 readme（详情页 README Tab 数据来源）",
+      "name": "plugins/index.json spec/schemaVersion + types ≥3（course/subtitle/plugin）",
       "pass": true,
-      "detail": "5/5",
-      "at": "2026-10-25T15:26:08.540Z"
+      "detail": "spec=shadow.market.plugins types=course,subtitle,plugin",
+      "at": "2026-10-31T16:54:52.678Z"
+    },
+    {
+      "id": "DC13",
+      "name": "每类 manifest 字段齐全（manifestVersion/kind/id/label/labelEn/icon/fileExt/detailTabs/install/permissions 全 false/enabled）",
+      "pass": true,
+      "detail": "3 manifests ok",
+      "at": "2026-10-31T16:54:52.679Z"
+    },
+    {
+      "id": "DC14",
+      "name": "catalog 使用的每种资源类型都有 manifest（一切即插件，声明式）",
+      "pass": true,
+      "detail": "used=course,subtitle,plugin declared=course,subtitle,plugin",
+      "at": "2026-10-31T16:54:52.679Z"
+    },
+    {
+      "id": "DC15",
+      "name": "resources 字段/引用/版本完整（id/type/category/author/license/rights/byom/points/free/stats/versions）",
+      "pass": true,
+      "detail": "7 resources ok",
+      "at": "2026-10-31T16:54:52.681Z"
+    },
+    {
+      "id": "DC16",
+      "name": "资源 tags 均在 tags.json 声明（level 标签 A1–C2 例外）",
+      "pass": true,
+      "detail": "tags.json=56；资源标签全部可解析",
+      "at": "2026-10-31T16:54:52.681Z"
+    },
+    {
+      "id": "DC17",
+      "name": "tags.json 至少 60% 标签被资源使用（避免空标签表）",
+      "pass": true,
+      "detail": "orphan=0/21",
+      "at": "2026-10-31T16:54:52.682Z"
+    },
+    {
+      "id": "DC18",
+      "name": "包内容：course/subtitle 为 shadow.course+byom+时间轴升序+stats 一致；plugin 为纯声明 JSON",
+      "pass": true,
+      "detail": "7 packages ok",
+      "at": "2026-10-31T16:54:52.682Z"
+    },
+    {
+      "id": "DC19",
+      "name": "course 资源派生导入产物齐全（.shadow.json/.srt/readme）且与包一致",
+      "pass": true,
+      "detail": "import files ok（5 门课程）",
+      "at": "2026-10-31T16:54:52.686Z"
+    },
+    {
+      "id": "DC20",
+      "name": ".shadow.json 工程 lint（clips/name ASCII/时长/句子/无绝对路径/wavPath/base64）+ SRT 可解析",
+      "pass": true,
+      "detail": "6 srt files ok",
+      "at": "2026-10-31T16:54:52.686Z"
     }
   ],
-  "pass": true,
   "summary": {
-    "total": 12,
-    "passed": 12,
+    "total": 40,
+    "passed": 40,
     "failed": 0,
-    "resources": 5,
-    "packages": 5,
-    "categories": 5,
-    "manifests": 3
+    "resources": 7,
+    "packages": 7,
+    "categories": 7,
+    "tags": 21,
+    "authors": 1,
+    "licenses": 1,
+    "manifests": 3,
+    "importFiles": 19
   },
-  "finishedAt": "2026-10-25T15:26:08.540Z"
+  "pass": true,
+  "fatal": null,
+  "counts": {
+    "resources": 7,
+    "categories": 7,
+    "tags": 21,
+    "authors": 1,
+    "licenses": 1
+  },
+  "finishedAt": "2026-10-31T16:54:52.686Z"
 }

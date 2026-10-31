@@ -1,0 +1,170 @@
+# SHADOW 市场 Phase 2 · 被测工作区快照（由 QA 只读生成，无 git 写操作）
+generatedAt=2026-10-31T16:56:53.501Z
+被测对象=D:\SHADOW-MARKET
+git branch: main
+HEAD: 213ba282dd948c72087c8d58ac337a6d17aa11e6
+HEAD short: 213ba28
+HEAD commit date: 2026-11-01T00:00:20+08:00
+
+## git status --porcelain=v1
+M CHANGELOG.md
+ M README.md
+ M market/assets/js/app.js
+ M market/assets/js/components.js
+ M market/assets/js/data.js
+ M market/assets/js/dom.js
+ M market/assets/js/icons.js
+ M market/assets/js/importer.js
+ M market/assets/js/palette.js
+ M market/assets/js/router.js
+ M market/assets/js/theme.js
+ M market/assets/js/views/creator.js
+ M market/assets/js/views/home.js
+ M market/assets/js/views/import.js
+ M market/assets/js/views/notfound.js
+ M market/assets/js/views/resource.js
+ M market/assets/js/views/settings.js
+ M market/assets/styles/app.css
+ M market/data/packages/com.shadow.course.asking-directions.shadowcourse
+ M market/data/packages/com.shadow.course.cafe-order.shadowcourse
+ M market/data/packages/com.shadow.course.interview-intro.shadowcourse
+ M market/data/packages/com.shadow.course.movie-scene-byom.shadowcourse
+ M market/data/packages/com.shadow.course.podcast-shadow-daily.shadowcourse
+ M market/index.html
+ M market/plugins/course/manifest.json
+ M market/plugins/index.json
+ M market/plugins/plugin/manifest.json
+ M market/plugins/subtitle/manifest.json
+ M market/serve.mjs
+ M tools/qa/market/common.mjs
+ M tools/qa/market/data-contract-check.mjs
+ M tools/qa/market/market-e2e.mjs
+ M tools/qa/market/report-data-contract.json
+ M tools/qa/market/report-market.json
+ M tools/qa/market/report-static-audit.json
+ M tools/qa/market/shots/market-404.png
+ M tools/qa/market/shots/market-category-daily.png
+ M tools/qa/market/shots/market-creator-shadow-studio.png
+ M tools/qa/market/shots/market-ctrlk-palette.png
+ M tools/qa/market/shots/market-detail-1440.png
+ M tools/qa/market/shots/market-detail-sentences.png
+ M tools/qa/market/shots/market-empty-search.png
+ M tools/qa/market/shots/market-home-1440.png
+ M tools/qa/market/shots/market-home-dark.png
+ M tools/qa/market/shots/market-import-degraded.png
+ M tools/qa/market/shots/market-import-success.png
+ M tools/qa/market/shots/market-mobile-390.png
+ M tools/qa/market/shots/market-mobile-detail-390.png
+ M tools/qa/market/shots/market-settings-dark.png
+ M tools/qa/market/static-audit.mjs
+ M tools/shadowcourse/README.md
+ M tools/shadowcourse/build-packages.mjs
+ M tools/shadowcourse/sources/courses.json
+?? .github/
+?? content/
+?? deploy/
+?? market/assets/brand/logo-128.png
+?? market/assets/brand/logo-64.png
+?? market/assets/js/i18n-en.js
+?? market/assets/js/i18n.js
+?? market/assets/js/pwa.js
+?? market/assets/js/views/about.js
+?? market/assets/js/views/changelog.js
+?? market/assets/js/views/complaint.js
+?? market/assets/js/views/contribute.js
+?? market/assets/js/views/favorites.js
+?? market/assets/js/views/license.js
+?? market/assets/js/views/privacy.js
+?? market/catalog/
+?? market/data/import/
+?? market/data/packages/com.shadow.subtitle.daily-listening-b1.shadowcourse
+?? market/data/plugins/
+?? market/manifest.webmanifest
+?? market/offline.html
+?? market/sw.js
+?? release/
+?? tools/catalog/
+?? tools/import/
+?? tools/qa/market/README.md
+?? tools/qa/market/collect-evidence.mjs
+?? tools/qa/market/lighthouse-run.ps1
+?? tools/qa/market/run-phase2.ps1
+?? tools/qa/market/shots/market-about.png
+?? tools/qa/market/shots/market-changelog.png
+?? tools/qa/market/shots/market-complaint.png
+?? tools/qa/market/shots/market-contribute.png
+?? tools/qa/market/shots/market-fatal.png
+?? tools/qa/market/shots/market-favorites.png
+?? tools/qa/market/shots/market-i18n-en.png
+?? tools/qa/market/shots/market-license.png
+?? tools/qa/market/shots/market-mobile-bottom-nav.png
+?? tools/qa/market/shots/market-mobile-detail-actionbar.png
+?? tools/qa/market/shots/market-privacy.png
+?? tools/qa/market/shots/market-pwa-offline.png
+?? tools/qa/market/shots/market-tag.png
+?? tools/qa/market/shots/overflow-360x740-detail.png
+?? tools/qa/market/shots/overflow-360x740-privacy.png
+?? tools/qa/market/shots/overflow-375x812-detail.png
+?? tools/qa/market/shots/overflow-375x812-privacy.png
+?? tools/qa/market/shots/overflow-390x844-detail.png
+?? tools/qa/market/shots/overflow-390x844-privacy.png
+
+## git diff --stat（工作区 vs HEAD：本轮未提交改动摘要）
+CHANGELOG.md                                       |   26 +-
+ README.md                                          |   85 +-
+ market/assets/js/app.js                            |  508 +++-
+ market/assets/js/components.js                     |  210 +-
+ market/assets/js/data.js                           |  659 ++++-
+ market/assets/js/dom.js                            |   12 +-
+ market/assets/js/icons.js                          |    8 +
+ market/assets/js/importer.js                       |  146 +-
+ market/assets/js/palette.js                        |  108 +-
+ market/assets/js/router.js                         |   94 +-
+ market/assets/js/theme.js                          |    3 +-
+ market/assets/js/views/creator.js                  |   79 +-
+ market/assets/js/views/home.js                     |  270 +-
+ market/assets/js/views/import.js                   |  134 +-
+ market/assets/js/views/notfound.js                 |   26 +-
+ market/assets/js/views/resource.js                 |  943 ++++---
+ market/assets/js/views/settings.js                 |  280 +-
+ market/assets/styles/app.css                       |  475 ++++
+ ...om.shadow.course.asking-directions.shadowcourse |    4 +-
+ .../com.shadow.course.cafe-order.shadowcourse      |    4 +-
+ .../com.shadow.course.interview-intro.shadowcourse |    4 +-
+ ...com.shadow.course.movie-scene-byom.shadowcourse |    4 +-
+ ...shadow.course.podcast-shadow-daily.shadowcourse |    4 +-
+ market/index.html                                  |  239 +-
+ market/plugins/course/manifest.json                |    3 +-
+ market/plugins/index.json                          |    9 +-
+ market/plugins/plugin/manifest.json                |   15 +-
+ market/plugins/subtitle/manifest.json              |   13 +-
+ market/serve.mjs                                   |   23 +
+ tools/qa/market/common.mjs                         |  164 +-
+ tools/qa/market/data-contract-check.mjs            |  543 +++-
+ tools/qa/market/market-e2e.mjs                     | 1790 ++++++++-----
+ tools/qa/market/report-data-contract.json          |  343 ++-
+ tools/qa/market/report-market.json                 | 2685 ++++++++++++++++----
+ tools/qa/market/report-static-audit.json           |  272 +-
+ tools/qa/market/shots/market-404.png               |  Bin 88073 -> 64096 bytes
+ tools/qa/market/shots/market-category-daily.png    |  Bin 117022 -> 109574 bytes
+ .../market/shots/market-creator-shadow-studio.png  |  Bin 151371 -> 158337 bytes
+ tools/qa/market/shots/market-ctrlk-palette.png     |  Bin 130752 -> 191526 bytes
+ tools/qa/market/shots/market-detail-1440.png       |  Bin 160273 -> 168843 bytes
+ tools/qa/market/shots/market-detail-sentences.png  |  Bin 178616 -> 183042 bytes
+ tools/qa/market/shots/market-empty-search.png      |  Bin 116797 -> 118547 bytes
+ tools/qa/market/shots/market-home-1440.png         |  Bin 193480 -> 193608 bytes
+ tools/qa/market/shots/market-home-dark.png         |  Bin 200926 -> 200223 bytes
+ tools/qa/market/shots/market-import-degraded.png   |  Bin 228481 -> 225020 bytes
+ tools/qa/market/shots/market-import-success.png    |  Bin 230670 -> 213618 bytes
+ tools/qa/market/shots/market-mobile-390.png        |  Bin 98968 -> 88740 bytes
+ tools/qa/market/shots/market-mobile-detail-390.png |  Bin 90228 -> 84865 bytes
+ tools/qa/market/shots/market-settings-dark.png     |  Bin 125676 -> 150539 bytes
+ tools/qa/market/static-audit.mjs                   |  474 +++-
+ tools/shadowcourse/README.md                       |   56 +-
+ tools/shadowcourse/build-packages.mjs              |  296 +--
+ tools/shadowcourse/sources/courses.json            |   18 +-
+ 53 files changed, 8303 insertions(+), 2726 deletions(-)
+
+## git diff --stat --cached（暂存区 vs HEAD）
+
+

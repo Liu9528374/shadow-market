@@ -1,0 +1,12 @@
+# Cloudflare Pages _redirects 模板（SHADOW 市场 P0）
+# 用法：发布前复制为 market/_redirects（发布根）。
+#
+# 关键决策（docs/111 §2.4）：P0 使用 hash 路由（#/…），静态托管零配置：
+#   - /#/resource/<id> 的 hash 部分不会发送给服务器，Cloudflare Pages 对 / 自动返回 index.html；
+#   - 因此**不需要** SPA fallback / 404 rewrite，也无需 GitHub Pages 的 404.html。
+#
+# 仅保留根路径显式 200（可选，等价于默认行为，便于审查者确认）：
+/  /index.html  200
+
+# ---- P1 迁移 history 路由后才启用（P0 请保持注释） ----
+# /*  /index.html  200

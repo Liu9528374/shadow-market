@@ -1,110 +1,294 @@
 {
   "test": "static-audit",
-  "round": "r11",
-  "startedAt": "2026-10-25T15:27:40.576Z",
+  "round": "phase2",
+  "startedAt": "2026-10-31T16:54:52.758Z",
+  "marketDir": "D:\\SHADOW-MARKET\\market",
   "checks": [
     {
       "id": "SA1",
-      "name": "market/ 不引用桌面端代码（两个产品分开）",
+      "name": "market/ 站点代码不引用桌面端代码/路径（两个产品分开）",
       "pass": true,
-      "detail": ""
+      "skipped": false,
+      "detail": "",
+      "at": "2026-10-31T16:54:52.760Z"
     },
     {
       "id": "SA2",
-      "name": "prototype/ 不嵌入市场商店 UI/路由（桌面只保留导入薄接口）",
+      "name": "品牌资产齐全（assets/brand/：8 个文件且非空）",
       "pass": true,
-      "detail": ""
+      "skipped": false,
+      "detail": "all present",
+      "at": "2026-10-31T16:54:52.762Z"
     },
     {
-      "id": "SA3a",
-      "name": "market/ 无第三方支付/计费 SDK 集成",
+      "id": "SA3",
+      "name": "index.html 引用品牌图标（header logo 图片 / favicon / apple-touch / manifest）",
       "pass": true,
-      "detail": ""
-    },
-    {
-      "id": "SA3b",
-      "name": "market/ 关于支付/抽成/DRM 的提及均带否定（不做实现，只是边界说明）",
-      "pass": true,
-      "detail": "negative mentions=6"
+      "skipped": false,
+      "detail": "refs=assets/brand/favicon.ico,assets/brand/favicon-32.png,assets/brand/favicon-16.png,assets/brand/apple-touch-icon-180.png,assets/brand/logo-64.png,assets/brand/icon-192.png headerImg=true",
+      "at": "2026-10-31T16:54:52.762Z"
     },
     {
       "id": "SA4",
-      "name": "目录资源全部 points=0 / free=true（P0 全免费）",
+      "name": "PWA manifest 合法（name/short_name/start_url#/display/theme/bg/icons 192+512 maskable/lang）",
       "pass": true,
-      "detail": "5 个资源全免费"
+      "skipped": false,
+      "detail": "manifest ok",
+      "at": "2026-10-31T16:54:52.763Z"
     },
     {
       "id": "SA5",
-      "name": "market/ 页面无媒体上传控件（BYOM：不接收用户媒体）",
+      "name": "Service Worker（预缓存 shell/assets/catalog/plugins + 离线回退 + SKIP_WAITING）",
       "pass": true,
-      "detail": ""
+      "skipped": false,
+      "detail": "8036B",
+      "at": "2026-10-31T16:54:52.763Z"
     },
     {
       "id": "SA6",
-      "name": "market/ 无 POST 上传/提交请求（纯静态站，无后端）",
+      "name": "前端注册 Service Worker（app.js / index.html）",
       "pass": true,
-      "detail": ""
+      "skipped": false,
+      "detail": "market/assets/js/app.js:632: const ready = await navigator.serviceWorker.ready; | market/assets/js/app.js:633: (ready.active || navigator.serviceWorker.controller)?.postMessage({ type: 'PREFETCH' });",
+      "at": "2026-10-31T16:54:52.764Z"
     },
     {
       "id": "SA7",
-      "name": "market/ 无第三方 CDN/分析 SDK 外链（本地优先，可离线）",
+      "name": "离线兜底页 offline.html 存在且给出离线提示/重试入口",
       "pass": true,
-      "detail": ""
+      "skipped": false,
+      "detail": "4080B",
+      "at": "2026-10-31T16:54:52.765Z"
     },
     {
       "id": "SA8",
-      "name": "market/ 无统计/分析埋点",
+      "name": "PWA 图标/清单文件在 index.html 中可被发现（manifest + apple-touch-icon）",
       "pass": true,
-      "detail": ""
+      "skipped": false,
+      "detail": "index.html head",
+      "at": "2026-10-31T16:54:52.765Z"
     },
     {
       "id": "SA9",
-      "name": "market/ 资源类型插件清单存在（一切即插件）",
+      "name": "无媒体上传控件/上传端点请求（BYOM：市场不接收用户媒体）",
       "pass": true,
-      "detail": "course,plugin,subtitle"
+      "skipped": false,
+      "detail": "none",
+      "at": "2026-10-31T16:54:52.766Z"
     },
     {
       "id": "SA10",
-      "name": "market 前端启动时读取插件清单并注册类型渲染器",
+      "name": "无向外部提交的表单 action",
       "pass": true,
-      "detail": "app.js/data.js 引用 plugins/index.json"
+      "skipped": false,
+      "detail": "none",
+      "at": "2026-10-31T16:54:52.767Z"
     },
     {
       "id": "SA11",
-      "name": "桌面端内置插件 manifest + #plugin= 设置深链（一切即插件继续深化）",
+      "name": "本地静态服务 serve.mjs 只读（无上传/无写盘，部署说明关闭目录列表）",
       "pass": true,
-      "detail": "manifest=true deepLink=true"
+      "skipped": false,
+      "detail": "12250B 只读",
+      "at": "2026-10-31T16:54:52.768Z"
     },
     {
       "id": "SA12",
-      "name": "桌面导入路径代码不调用 ASR 转写（静态证据）",
+      "name": "market/plugins/ 只有声明式文件（JSON/MD/TXT，无可执行 JS/WASM/HTML）",
       "pass": true,
-      "detail": "ingestCourseText 段内 asrCall=false"
+      "skipped": false,
+      "detail": "6 个声明文件",
+      "at": "2026-10-31T16:54:52.768Z"
     },
     {
       "id": "SA13",
-      "name": "shadow-server.py 提供只读 /api/font/list + /api/font/file（GET-only，非 GET→405）",
+      "name": "插件清单声明式且 icon 仅用内置图标名（不加载/执行插件代码）",
       "pass": true,
-      "detail": "list=true file=true getOnly=true"
+      "skipped": false,
+      "detail": "3 types [course,subtitle,plugin]",
+      "at": "2026-10-31T16:54:52.769Z"
     },
     {
       "id": "SA14",
-      "name": "字体接口白名单限定系统字体目录 + 处理函数无磁盘写入",
+      "name": "market/ 源码无 eval / new Function / document.write 动态执行",
       "pass": true,
-      "detail": "whitelist=true diskWrites=false fontSeg=1866B"
+      "skipped": false,
+      "detail": "none",
+      "at": "2026-10-31T16:54:52.770Z"
     },
     {
       "id": "SA15",
-      "name": "字体文件名走白名单/ basename 解析（路径穿越防护静态证据）",
+      "name": "无第三方 CDN / 远程字体 / 外链脚本样式（本地优先，可离线）",
       "pass": true,
-      "detail": "basenameOrWhitelist=true"
+      "skipped": false,
+      "detail": "all self-hosted",
+      "at": "2026-10-31T16:54:52.771Z"
+    },
+    {
+      "id": "SA16",
+      "name": "无统计/分析埋点（P0 不采集用户行为）",
+      "pass": true,
+      "skipped": false,
+      "detail": "none",
+      "at": "2026-10-31T16:54:52.774Z"
+    },
+    {
+      "id": "SA17",
+      "name": "无第三方支付/计费 SDK",
+      "pass": true,
+      "skipped": false,
+      "detail": "none",
+      "at": "2026-10-31T16:54:52.775Z"
+    },
+    {
+      "id": "SA18",
+      "name": "支付/抽成/DRM 提及均带否定语义（仅边界说明，不做实现）",
+      "pass": true,
+      "skipped": false,
+      "detail": "negative mentions=13",
+      "at": "2026-10-31T16:54:52.776Z"
+    },
+    {
+      "id": "SA19",
+      "name": "catalog v2 全部资源 points=0 / free=true（P0 全免费，不虚报下载量）",
+      "pass": true,
+      "skipped": false,
+      "detail": "7 资源全免费",
+      "at": "2026-10-31T16:54:52.777Z"
+    },
+    {
+      "id": "SA20",
+      "name": "合约页面齐全：favorites/changelog/contribute/about/privacy/complaint/license/tag（路由+视图+文案）",
+      "pass": true,
+      "skipped": false,
+      "detail": "all pages present",
+      "at": "2026-10-31T16:54:52.777Z"
+    },
+    {
+      "id": "SA21",
+      "name": "隐私页/localStorage 键清单（≥3 个 shadow.market.* 键，本机存储可清除）",
+      "pass": true,
+      "skipped": false,
+      "detail": "14 keys: shadow.market.catalog,shadow.market.fixture.v1,shadow.market.resources,shadow.market.lang.v1,shadow.market.points.v1,shadow.market.prefs.v1",
+      "at": "2026-10-31T16:54:52.777Z"
+    },
+    {
+      "id": "SA22",
+      "name": "版权与投诉：通知→下架→复核流程 + 联系邮箱/入口",
+      "pass": true,
+      "skipped": false,
+      "detail": "{\"topic\":true,\"process\":true,\"contact\":true}",
+      "at": "2026-10-31T16:54:52.778Z"
+    },
+    {
+      "id": "SA23",
+      "name": "许可体系：licenses ≥1 且每项有 url/fullText；页面展示许可与免责",
+      "pass": true,
+      "skipped": false,
+      "detail": "licenses=CC-BY-4.0",
+      "at": "2026-10-31T16:54:52.778Z"
+    },
+    {
+      "id": "SA24",
+      "name": "catalog v2 六文件存在且 schemaVersion=2（site/categories/tags/authors/licenses/resources）",
+      "pass": true,
+      "skipped": false,
+      "detail": "resources=7 categories=7 authors=1 tags=21 licenses=1",
+      "at": "2026-10-31T16:54:52.778Z"
+    },
+    {
+      "id": "SA25",
+      "name": "资源版本记录 SHA256/sizeBytes 与派生导入产物（importFiles）",
+      "pass": true,
+      "skipped": false,
+      "detail": "7 versions ok",
+      "at": "2026-10-31T16:54:52.778Z"
+    },
+    {
+      "id": "SA26",
+      "name": "plugins 注册表声明 ≥3 类（course/subtitle/plugin）且类型清单可静态校验",
+      "pass": true,
+      "skipped": false,
+      "detail": "course,subtitle,plugin",
+      "at": "2026-10-31T16:54:52.778Z"
+    },
+    {
+      "id": "SA27",
+      "name": "部署配置齐全（deploy/README + gh-pages 脚本 + Cloudflare 说明 + Pages workflow 校验后发布）",
+      "pass": true,
+      "skipped": false,
+      "detail": "ok",
+      "at": "2026-10-31T16:54:52.778Z"
+    },
+    {
+      "id": "SA28",
+      "name": "gh-pages 发布脚本参数化（Remote/Branch/DryRun）且不产生站点内容改动",
+      "pass": true,
+      "skipped": false,
+      "detail": "8195B",
+      "at": "2026-10-31T16:54:52.779Z"
+    },
+    {
+      "id": "SA29",
+      "name": "Cloudflare Pages 文档含 _redirects/_headers 示例，并说明 hash 路由无需 404 回退",
+      "pass": true,
+      "skipped": false,
+      "detail": "3579B",
+      "at": "2026-10-31T16:54:52.779Z"
+    },
+    {
+      "id": "SA30",
+      "name": "hash 路由实现（location.hash/hashchange，静态托管零配置、无需服务端 404 回退）",
+      "pass": true,
+      "skipped": false,
+      "detail": "router.js hash-based",
+      "at": "2026-10-31T16:54:52.779Z"
+    },
+    {
+      "id": "SA31",
+      "name": "无障碍静态基础（lang/skip-link/viewport/焦点环/降低动效/aria-live 收敛）",
+      "pass": true,
+      "skipped": false,
+      "detail": "ok",
+      "at": "2026-10-31T16:54:52.780Z"
+    },
+    {
+      "id": "SA32",
+      "name": "证据目录 release/evidence-market/ 存在",
+      "pass": true,
+      "skipped": false,
+      "detail": "Phase 2 证据落盘位置",
+      "at": "2026-10-31T16:54:52.780Z"
+    },
+    {
+      "id": "SA33",
+      "name": "桌面端不嵌入市场 UI（prototype/ 不在本仓库，跳过）",
+      "pass": true,
+      "skipped": true,
+      "detail": "本仓库无该子系统（非市场仓库范围）",
+      "at": "2026-10-31T16:54:52.780Z"
+    },
+    {
+      "id": "SA34",
+      "name": "桌面导入路径不调用 ASR（prototype/ 不在本仓库，跳过）",
+      "pass": true,
+      "skipped": true,
+      "detail": "本仓库无该子系统（非市场仓库范围）",
+      "at": "2026-10-31T16:54:52.780Z"
     }
   ],
-  "pass": true,
   "summary": {
-    "total": 16,
-    "passed": 16,
-    "failed": 0
+    "total": 34,
+    "passed": 32,
+    "failed": 0,
+    "skipped": 2,
+    "resources": 7,
+    "categories": 7,
+    "authors": 1,
+    "tags": 21,
+    "licenses": 1,
+    "pluginTypes": 3
   },
-  "finishedAt": "2026-10-25T15:27:40.592Z"
+  "pass": true,
+  "finishedAt": "2026-10-31T16:54:52.780Z"
 }
