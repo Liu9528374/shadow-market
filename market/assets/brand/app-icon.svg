@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Voice Wave app icon">
+  <title>Voice Wave — App Icon</title>
+  <desc>Orange voice waveform on a warm near-black stage. Full-bleed 1024×1024 master for iOS and stores.</desc>
+  <defs>
+    <radialGradient id="bg" cx="512" cy="430" r="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1f1a16"/>
+      <stop offset="0.56" stop-color="#161311"/>
+      <stop offset="1" stop-color="#0d0d0f"/>
+    </radialGradient>
+    <radialGradient id="bloom" cx="512" cy="500" r="310" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a2e" stop-opacity="0.14"/>
+      <stop offset="0.55" stop-color="#ff8a2e" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#ff8a2e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="orange" x1="512" y1="182" x2="512" y2="842" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffb55c"/>
+      <stop offset="0.55" stop-color="#f29a3e"/>
+      <stop offset="1" stop-color="#e27418"/>
+    </linearGradient>
+    <filter id="bloomBlur" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+    <filter id="haloBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <rect width="1024" height="1024" fill="url(#bloom)"/>
+
+  <!-- soft bloom behind the waveform -->
+  <g fill="#ff8c30" opacity="0.30" filter="url(#bloomBlur)">
+    <rect x="172" y="480" width="150" height="64" rx="32"/>
+    <rect x="369" y="297" width="64" height="430" rx="32"/>
+    <rect x="480" y="182" width="64" height="660" rx="32"/>
+    <rect x="591" y="337" width="64" height="350" rx="32"/>
+    <rect x="702" y="480" width="150" height="64" rx="32"/>
+  </g>
+
+  <!-- waveform -->
+  <g fill="url(#orange)">
+    <rect x="172" y="480" width="150" height="64" rx="32"/>
+    <rect x="369" y="297" width="64" height="430" rx="32"/>
+    <rect x="480" y="182" width="64" height="660" rx="32"/>
+    <rect x="591" y="337" width="64" height="350" rx="32"/>
+    <rect x="702" y="480" width="150" height="64" rx="32"/>
+  </g>
+</svg>
