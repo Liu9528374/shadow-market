@@ -1,0 +1,105 @@
+{
+  "spec": "shadow.market.catalog-sources",
+  "schemaVersion": 2,
+  "site": {
+    "id": "shadow-market",
+    "name": "SHADOW 市场",
+    "nameEn": "SHADOW MARKET",
+    "tagline": "全免费 · BYOM · 本地优先",
+    "taglineEn": "Free for all · BYOM · Local-first",
+    "description": "SHADOW 市场是 SHADOW Studio 的配套资源站：全免费、无需账号，资源为纯数据包（句子时间轴 + 中英翻译 + 练习配置），不含任何媒体；媒体由使用者自备（BYOM）。",
+    "descriptionEn": "The companion resource site for SHADOW Studio: completely free, no account needed. Resources are data-only packages (sentence timeline + bilingual translation + practice presets) with no media; you bring your own media (BYOM).",
+    "baseUrl": "",
+    "startUrl": "./#/",
+    "version": "2.0.0",
+    "locale": "zh-CN",
+    "languages": ["zh-CN", "en"],
+    "themeColor": "#E88A2E",
+    "backgroundTheme": "#0C0C0E",
+    "licenseDefault": "CC-BY-4.0",
+    "mediaModeDefault": "byom",
+    "nav": [
+      { "id": "explore", "label": "探索", "labelEn": "Explore", "href": "#/" },
+      { "id": "categories", "label": "分类", "labelEn": "Categories", "href": "#/categories" },
+      { "id": "favorites", "label": "收藏", "labelEn": "Favorites", "href": "#/favorites" },
+      { "id": "contribute", "label": "投稿", "labelEn": "Contribute", "href": "#/contribute" },
+      { "id": "import", "label": "导入说明", "labelEn": "Import guide", "href": "#/import" },
+      { "id": "about", "label": "关于", "labelEn": "About", "href": "#/about" }
+    ],
+    "footer": {
+      "statement": "SHADOW 市场 · 全免费 · 无强制登录 · 不托管、不分发任何影视媒体 · 资源仅含自有 / 授权 / 公版 / CC 内容（BYOM）。",
+      "statementEn": "SHADOW MARKET · free for all · no forced login · no hosted or distributed media · resources contain only own / licensed / public-domain / CC content (BYOM)."
+    }
+  },
+  "categories": [
+    { "id": "daily", "label": "日常会话", "labelEn": "Daily", "order": 1, "description": "点单、问路、购物等日常场景口语" },
+    { "id": "travel", "label": "出行旅行", "labelEn": "Travel", "order": 2, "description": "问路、交通、住宿等旅行场景" },
+    { "id": "work", "label": "职场工作", "labelEn": "Work", "order": 3, "description": "面试、会议、邮件等职场场景" },
+    { "id": "podcast", "label": "播客跟读", "labelEn": "Podcast", "order": 4, "description": "播客 / 听力材料跟读练习" },
+    { "id": "movie", "label": "影视跟读", "labelEn": "Movies", "order": 5, "description": "自备影视片段（BYOM）的跟读练习" },
+    { "id": "listening", "label": "听力字幕", "labelEn": "Listening", "order": 6, "description": "成段的听力材料与字幕文本" },
+    { "id": "plugins", "label": "工具与插件", "labelEn": "Tools & Plugins", "order": 7, "description": "声明式插件白名单与说明（不含可执行代码）" }
+  ],
+  "authors": [
+    {
+      "handle": "shadow-studio",
+      "name": "SHADOW Studio",
+      "nameEn": "SHADOW Studio",
+      "bio": "SHADOW 官方示例内容团队：只发布自有 / 授权内容，全部 BYOM 纯数据包，不含任何影视媒体。",
+      "bioEn": "The official SHADOW sample-content team. Own/licensed content only, always BYOM data-only packages with no media.",
+      "url": "",
+      "licenseDefault": "CC-BY-4.0",
+      "avatarColor": "#E88A2E"
+    }
+  ],
+  "licenses": [
+    {
+      "id": "CC-BY-4.0",
+      "name": "知识共享 署名 4.0 国际（CC BY 4.0）",
+      "nameEn": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "fullText": "本资源的文本、翻译与句级时间轴由 SHADOW Studio 创作，采用 CC BY 4.0 许可发布。你可以自由复制、分发、改编本资源（包括商用），但必须：①署名——注明作者 SHADOW Studio、资源标题与来源链接；②标注修改——如修改过本资源，须说明修改内容；③不加限制——不得以法律条款或技术措施限制他人做许可允许的事。本资源不含媒体；使用者自备媒体的版权与授权由使用者自行负责。完整法律文本以 https://creativecommons.org/licenses/by/4.0/ 官方版本为准。",
+      "rightsNotes": "仅含自有文本 / 翻译 / 时间轴；无媒体、无第三方影视素材；BYOM。"
+    }
+  ],
+  "tags": [
+    { "tag": "B1", "label": "B1", "labelEn": "B1", "aliases": ["b1"] },
+    { "tag": "A2", "label": "A2", "labelEn": "A2", "aliases": ["a2"] },
+    { "tag": "B2", "label": "B2", "labelEn": "B2", "aliases": ["b2"] },
+    { "tag": "日常", "label": "日常", "labelEn": "Daily", "aliases": ["daily"] },
+    { "tag": "连读", "label": "连读", "labelEn": "Linking", "aliases": ["linking"] },
+    { "tag": "美音", "label": "美音", "labelEn": "American English", "aliases": ["american", "us"] },
+    { "tag": "英音", "label": "英音", "labelEn": "British English", "aliases": ["british", "uk"] },
+    { "tag": "旅行", "label": "旅行", "labelEn": "Travel", "aliases": ["travel", "trip"] },
+    { "tag": "问路", "label": "问路", "labelEn": "Directions", "aliases": ["directions", "way"] },
+    { "tag": "职场", "label": "职场", "labelEn": "Work", "aliases": ["work", "job"] },
+    { "tag": "面试", "label": "面试", "labelEn": "Interview", "aliases": ["interview"] },
+    { "tag": "播客", "label": "播客", "labelEn": "Podcast", "aliases": ["podcast"] },
+    { "tag": "听力", "label": "听力", "labelEn": "Listening", "aliases": ["listening"] },
+    { "tag": "影视", "label": "影视", "labelEn": "Movies", "aliases": ["movie", "film"] },
+    { "tag": "对话", "label": "对话", "labelEn": "Dialogue", "aliases": ["dialogue", "conversation"] },
+    { "tag": "字幕", "label": "字幕", "labelEn": "Subtitles", "aliases": ["subtitle", "captions"] },
+    { "tag": "BYOM演示", "label": "BYOM 演示", "labelEn": "BYOM Demo", "aliases": ["byom", "demo"] },
+    { "tag": "插件", "label": "插件", "labelEn": "Plugins", "aliases": ["plugin", "plugins"] },
+    { "tag": "白名单", "label": "白名单", "labelEn": "Whitelist", "aliases": ["whitelist"] },
+    { "tag": "声明式", "label": "声明式", "labelEn": "Declarative", "aliases": ["declarative"] },
+    { "tag": "安全", "label": "安全", "labelEn": "Security", "aliases": ["security", "safe"] }
+  ],
+  "resourceOrder": [
+    "com.shadow.course.cafe-order",
+    "com.shadow.course.asking-directions",
+    "com.shadow.course.interview-intro",
+    "com.shadow.course.podcast-shadow-daily",
+    "com.shadow.course.movie-scene-byom",
+    "com.shadow.subtitle.daily-listening-b1",
+    "com.shadow.plugin.builtin-whitelist"
+  ],
+  "build": {
+    "schemaVersion": 2,
+    "generator": "tools/catalog/build-catalog.mjs",
+    "packageSpec": "shadow.course",
+    "packageSchemaVersion": 1,
+    "packageMaxBytes": 2097152,
+    "importMaxBytes": 2097152
+  }
+}

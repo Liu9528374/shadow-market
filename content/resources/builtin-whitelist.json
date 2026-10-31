@@ -1,0 +1,66 @@
+{
+  "spec": "shadow.market.resource-source",
+  "schemaVersion": 2,
+  "id": "com.shadow.plugin.builtin-whitelist",
+  "type": "plugin",
+  "package": {
+    "kind": "plugin-whitelist",
+    "file": "data/plugins/builtin-whitelist.json",
+    "version": "1.0.0"
+  },
+  "title": "内置插件白名单 · 声明式说明",
+  "subtitle": "Builtin Plugin Whitelist · Declarative, No Executable Code",
+  "description": "声明式插件白名单 JSON：列出市场认可的资源类型与权限声明，权限全部为 false，明确不含任何可执行代码（无 JS / WASM / 二进制 / 脚本），市场只读声明、从不加载执行插件。",
+  "category": "plugins",
+  "level": "",
+  "tags": ["插件", "白名单", "声明式", "安全"],
+  "author": "shadow-studio",
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "白名单 JSON 由 SHADOW Studio 编写；不含可执行代码与媒体；仅用于说明市场认可的资源类型与权限声明。"
+  },
+  "mediaMode": "byom",
+  "language": ["zh", "en"],
+  "points": 0,
+  "free": true,
+  "platforms": ["windows", "web"],
+  "requires": { "shadow": ">=0.7.0" },
+  "cover": { "color1": "#2B2213", "color2": "#E88A2E" },
+  "audience": "想了解「一切即插件」声明式边界、或想核验市场插件权限的访客与创作者",
+  "readmeNote": "",
+  "changelog": ["1.0.0（2026-10-31）：首个版本，声明式内置插件白名单；权限全 false、无可执行代码、无媒体。", "同版本补充 resource-type manifest 摘要与「不加载执行远程代码」边界说明。"],
+  "publishedAt": "2026-10-31T00:00:00Z",
+  "createdAt": "2026-10-31T00:00:00Z",
+  "readme": "## 内置插件白名单 · 声明式说明\n\n本资源是一份**纯声明式 JSON 白名单**，不是可执行插件包，**不包含任何可执行代码**：\n\n- 没有 JS / WASM / 二进制 / shell 脚本，也没有内联事件、iframe 或远程加载字段；\n- 不联网、不读写文件、不使用麦克风（`permissions` 全部为 `false`）；\n- SHADOW 市场只读取 manifest 声明来渲染卡片与详情，**从不加载、不执行**任何插件提供的代码。\n\n### 白名单里有什么\n\n- `types[]`：市场当前认可的资源类型（课程包 / 字幕包 / 插件说明），以及各自的 manifest 摘要；\n- `permissions`：网络、文件系统、麦克风等权限的声明，全部为 `false`；\n- `installPolicy`：只允许白名单内类型，**不提供任意 URL 安装或任意代码安装**入口；\n- `schemaVersion` / `manifestVersion`：清单格式版本，用于兼容提示。\n\n### 和 SHADOW Studio 内置插件的关系\n\n市场资源类型（`resource-type`）与 SHADOW Studio 的 `shadow-plugin/1` 是**两套独立注册表**，只共享命名习惯，互不加载对方代码。桌面端插件仍在本地工具内运行；本白名单只描述市场侧的类型声明。\n\n### 如何核验\n\n1. 下载 `builtin-whitelist.json`；2. 用文本编辑器或 JSON 查看器打开；3. 检查 `executable: false`、`permissions` 全为 false、`types[]` 与市场展示的类型一致；4. 检查没有任何脚本 / 远程 URL 字段；5. 与 `market/plugins/*/manifest.json` 对照，二者应完全一致。\n\n### 为什么只做声明式\n\nP0/P1 不引入可执行插件（沙箱 / 签名 / 审核未落地前不做），避免远程代码执行风险；新增一种资源类型只需改数据（manifest + catalog），不改核心渲染代码。\n\n> 本白名单 JSON 采用 CC-BY-4.0；不含媒体与第三方素材。",
+  "pluginWhitelist": {
+    "title": "SHADOW 市场内置插件白名单",
+    "titleEn": "SHADOW Market Builtin Plugin Whitelist",
+    "statement": "本文件是纯声明白名单：不含任何可执行代码（无 JavaScript / WebAssembly / 二进制 / 脚本字段），市场只读声明、不加载执行；permissions 全部为 false。",
+    "statementEn": "This file is a declarative whitelist only. It contains no executable code (no JavaScript, WebAssembly, binaries or script fields). The market never loads or executes plugin code; all permissions are false.",
+    "executable": false,
+    "permissions": {
+      "network": false,
+      "filesystem": false,
+      "microphone": false,
+      "clipboard": false,
+      "notifications": false,
+      "location": false,
+      "camera": false
+    },
+    "installPolicy": {
+      "mode": "whitelist-only",
+      "arbitraryUrlInstall": false,
+      "arbitraryCodeInstall": false,
+      "executesRemoteCode": false,
+      "note": "只允许 market/plugins/index.json + manifest 白名单内的声明式资源类型；不提供任意 URL 安装或任意代码安装入口。"
+    },
+    "boundary": {
+      "layer": "declarative-resource-type",
+      "marketSandbox": false,
+      "reason": "P0/P1 不做可执行插件（沙箱 / 签名 / 审核未落地前不做）；市场只读 manifest 声明渲染类型。",
+      "unrelatedTo": "SHADOW Studio shadow-plugin/1（桌面端插件注册表，独立演进）"
+    }
+  }
+}

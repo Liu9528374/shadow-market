@@ -1,0 +1,154 @@
+{
+  "spec": "shadow.market.builtin-plugin-whitelist",
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-31T15:30:00.000Z",
+  "title": "SHADOW 市场内置插件白名单",
+  "titleEn": "SHADOW Market Builtin Plugin Whitelist",
+  "statement": "本文件是纯声明白名单：不含任何可执行代码（无 JavaScript / WebAssembly / 二进制 / 脚本字段），市场只读声明、不加载执行；permissions 全部为 false。",
+  "statementEn": "This file is a declarative whitelist only. It contains no executable code (no JavaScript, WebAssembly, binaries or script fields). The market never loads or executes plugin code; all permissions are false.",
+  "executable": false,
+  "permissions": {
+    "network": false,
+    "filesystem": false,
+    "microphone": false,
+    "clipboard": false,
+    "notifications": false,
+    "location": false,
+    "camera": false
+  },
+  "installPolicy": {
+    "mode": "whitelist-only",
+    "arbitraryUrlInstall": false,
+    "arbitraryCodeInstall": false,
+    "executesRemoteCode": false,
+    "note": "只允许 market/plugins/index.json + manifest 白名单内的声明式资源类型；不提供任意 URL 安装或任意代码安装入口。"
+  },
+  "boundary": {
+    "layer": "declarative-resource-type",
+    "marketSandbox": false,
+    "reason": "P0/P1 不做可执行插件（沙箱 / 签名 / 审核未落地前不做）；市场只读 manifest 声明渲染类型。",
+    "unrelatedTo": "SHADOW Studio shadow-plugin/1（桌面端插件注册表，独立演进）"
+  },
+  "resource": {
+    "id": "com.shadow.plugin.builtin-whitelist",
+    "version": "1.0.0",
+    "license": "CC-BY-4.0",
+    "rights": {
+      "basis": "own",
+      "evidenceUrl": "",
+      "note": "白名单 JSON 由 SHADOW Studio 编写；不含可执行代码与媒体；仅用于说明市场认可的资源类型与权限声明。"
+    }
+  },
+  "types": [
+    {
+      "id": "course",
+      "label": "课程包",
+      "labelEn": "Course",
+      "description": "BYOM 课程包（.shadowcourse 单文件 JSON）：句子时间轴 + 翻译 + 练习配置，一键导入 SHADOW Studio，不需要 ASR、不打包媒体。",
+      "manifestVersion": 1,
+      "manifest": "plugins/course/manifest.json",
+      "enabled": true,
+      "executable": false,
+      "permissions": {
+        "network": false,
+        "filesystem": false,
+        "microphone": false
+      },
+      "fileExt": [
+        ".shadowcourse",
+        ".json"
+      ],
+      "detailTabs": [
+        "readme",
+        "sentences",
+        "files",
+        "versions"
+      ],
+      "cardBadges": [
+        "free",
+        "level"
+      ],
+      "statsFields": [
+        "sentences",
+        "durationSec",
+        "words"
+      ],
+      "install": {
+        "mode": "desktop-import",
+        "deepLink": "shadow-import"
+      },
+      "notes": "声明式资源类型，不含可执行代码；导入产物为 .shadow.json（推荐）/ .srt（备选）/ .shadowcourse（规范）。"
+    },
+    {
+      "id": "subtitle",
+      "label": "字幕包",
+      "labelEn": "Subtitle",
+      "description": "句级字幕文本包（英文原句 + 中文翻译 + 时间轴）：可下载 .srt 备选导入、或用 .shadow.json 带翻译打开；纯文本、不联网、不含媒体（BYOM）。",
+      "manifestVersion": 1,
+      "manifest": "plugins/subtitle/manifest.json",
+      "enabled": true,
+      "executable": false,
+      "permissions": {
+        "network": false,
+        "filesystem": false,
+        "microphone": false
+      },
+      "fileExt": [
+        ".srt",
+        ".json"
+      ],
+      "detailTabs": [
+        "readme",
+        "sentences",
+        "files",
+        "versions"
+      ],
+      "cardBadges": [
+        "free",
+        "level"
+      ],
+      "statsFields": [
+        "sentences",
+        "durationSec"
+      ],
+      "install": {
+        "mode": "desktop-import",
+        "deepLink": "shadow-import"
+      },
+      "notes": "声明式资源类型，不含可执行代码；字幕文本为自有内容，媒体由用户自备。"
+    },
+    {
+      "id": "plugin",
+      "label": "插件说明",
+      "labelEn": "Plugin",
+      "description": "声明式插件白名单说明（纯 JSON 清单）：列出市场认可的资源类型与权限声明，权限全为 false，明确不含可执行代码；市场只读声明、不加载执行。",
+      "manifestVersion": 1,
+      "manifest": "plugins/plugin/manifest.json",
+      "enabled": true,
+      "executable": false,
+      "permissions": {
+        "network": false,
+        "filesystem": false,
+        "microphone": false
+      },
+      "fileExt": [
+        ".json"
+      ],
+      "detailTabs": [
+        "readme",
+        "files",
+        "versions"
+      ],
+      "cardBadges": [
+        "free",
+        "type"
+      ],
+      "statsFields": [],
+      "install": {
+        "mode": "download",
+        "deepLink": ""
+      },
+      "notes": "声明式资源类型，不含可执行代码；下载物为白名单 JSON（可执行代码：无；权限：全 false）。"
+    }
+  ]
+}

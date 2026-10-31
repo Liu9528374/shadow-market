@@ -17,7 +17,9 @@
     { "id": "travel", "label": "出行旅行", "labelEn": "Travel" },
     { "id": "work", "label": "职场工作", "labelEn": "Work" },
     { "id": "podcast", "label": "播客跟读", "labelEn": "Podcast" },
-    { "id": "movie", "label": "影视跟读", "labelEn": "Movies" }
+    { "id": "movie", "label": "影视跟读", "labelEn": "Movies" },
+    { "id": "listening", "label": "听力字幕", "labelEn": "Listening" },
+    { "id": "plugins", "label": "工具与插件", "labelEn": "Tools & Plugins" }
   ],
   "courses": [
     {
@@ -170,6 +172,20 @@
           "notes": "See you 连读成 see-ya；by the 弱读。"
         }
       ]
+    },
+    {
+      "kind": "lesson",
+      "lesson": "content/subtitles/daily-listening-b1.json",
+      "packageId": "com.shadow.subtitle.daily-listening-b1",
+      "version": "1.0.0",
+      "category": "listening",
+      "tags": ["B1", "听力", "字幕", "连读"],
+      "description": "9 句原创听力字幕文本：社区图书馆的开放时间、借书规则、阅览室礼仪、还书箱与学习小组。每句带中文翻译与时间轴，可下载 .srt 备选导入，也可用 .shadow.json 一键打开；纯文本、无媒体（BYOM）。",
+      "audience": "B1 左右、想用成段听力材料练听写 / 跟读 / 字幕对齐的学习者",
+      "mediaKind": "video",
+      "mediaHint": "自备任意英语听力音频 / 视频；句级时间轴按秒对齐（本字幕包时间轴约 38.2 秒）",
+      "readmeNote": "本包是 SHADOW Studio 原创的**听力字幕示例**：9 句英文 + 中文翻译 + 句级时间轴均为自编，不对应任何真实音频节目；不含任何媒体文件。",
+      "createdAt": "2026-10-31T00:00:00Z"
     }
   ]
 }

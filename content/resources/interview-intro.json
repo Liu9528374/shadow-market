@@ -1,0 +1,36 @@
+{
+  "spec": "shadow.market.resource-source",
+  "schemaVersion": 2,
+  "id": "com.shadow.course.interview-intro",
+  "type": "course",
+  "package": {
+    "kind": "shadowcourse",
+    "file": "data/packages/com.shadow.course.interview-intro.shadowcourse",
+    "version": "1.0.0"
+  },
+  "title": "面试开场自我介绍",
+  "subtitle": "Interview: Tell Me About Yourself · B2",
+  "description": "面试开场自我介绍的 5 句职场英语：自我介绍、工作经历、申请动机、对岗位的兴趣、入职时间。含中文翻译与重音、连读提示，BYOM 纯数据包。",
+  "category": "work",
+  "level": "B2",
+  "tags": ["B2", "职场", "面试", "连读"],
+  "author": "shadow-studio",
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。"
+  },
+  "mediaMode": "byom",
+  "language": ["en", "zh"],
+  "points": 0,
+  "free": true,
+  "platforms": ["windows", "web"],
+  "requires": { "shadow": ">=0.7.0" },
+  "cover": { "color1": "#182B4D", "color2": "#5B8CFF" },
+  "audience": "B2 左右、准备英文面试或想练职场自我介绍的学习者",
+  "readmeNote": "",
+  "changelog": ["1.0.0（2026-10-25）：首个版本，5 句面试开场英语，含重音 / 连读提示；BYOM 纯数据包。"],
+  "publishedAt": "2026-10-25T00:00:00Z",
+  "createdAt": "2026-10-25T00:00:00Z"
+}

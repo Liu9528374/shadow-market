@@ -1,0 +1,19 @@
+1
+00:00:00,133 --> 00:00:03,536
+Excuse me, how do I get to the train station?
+
+2
+00:00:03,778 --> 00:00:07,041
+Go straight for two blocks, then turn left.
+
+3
+00:00:07,306 --> 00:00:08,861
+Is it far from here?
+
+4
+00:00:09,111 --> 00:00:11,819
+No, it's about a ten-minute walk.
+
+5
+00:00:12,037 --> 00:00:13,509
+Thank you so much!

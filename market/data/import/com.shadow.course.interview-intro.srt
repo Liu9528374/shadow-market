@@ -1,0 +1,19 @@
+1
+00:00:00,103 --> 00:00:02,664
+So, tell me a little about yourself.
+
+2
+00:00:03,395 --> 00:00:06,864
+I've been working as a product designer for about three years.
+
+3
+00:00:07,592 --> 00:00:09,759
+What made you want to apply for this role?
+
+4
+00:00:10,487 --> 00:00:13,483
+I'm really drawn to your focus on accessibility.
+
+5
+00:00:14,211 --> 00:00:17,496
+That's great to hear. When could you start?

@@ -1,0 +1,17 @@
+{
+  "spec": "shadow.market.authors",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T15:30:00.000Z",
+  "items": [
+    {
+      "handle": "shadow-studio",
+      "name": "SHADOW Studio",
+      "nameEn": "SHADOW Studio",
+      "bio": "SHADOW 官方示例内容团队：只发布自有 / 授权内容，全部 BYOM 纯数据包，不含任何影视媒体。",
+      "bioEn": "The official SHADOW sample-content team. Own/licensed content only, always BYOM data-only packages with no media.",
+      "url": "",
+      "licenseDefault": "CC-BY-4.0",
+      "avatarColor": "#E88A2E"
+    }
+  ]
+}

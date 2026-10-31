@@ -1,0 +1,108 @@
+{
+  "id": "interview-intro",
+  "title": "面试开场自我介绍",
+  "title_en": "Interview: Tell Me About Yourself",
+  "level": "B2",
+  "scene": "work",
+  "accent": "US",
+  "voice": "en-US-ChristopherNeural",
+  "rate": "-5%",
+  "cover": [
+    "#182B4D",
+    "#5B8CFF"
+  ],
+  "expressions": [
+    "be drawn to",
+    "focus on",
+    "a little about yourself"
+  ],
+  "sentences": [
+    {
+      "text": "So, tell me a little about yourself.",
+      "translation": "那么，请简单介绍一下你自己。",
+      "stress": [
+        "tell",
+        "little",
+        "yourself"
+      ],
+      "linking": [
+        "tell me → tel-me",
+        "about yourself → abou-chur-self"
+      ],
+      "tip": "tell me 的 m 和 a 连读；yourself 重音在 self。",
+      "start": 0.103,
+      "end": 2.664
+    },
+    {
+      "text": "I've been working as a product designer for about three years.",
+      "translation": "我做产品设计师大约三年了。",
+      "stress": [
+        "working",
+        "product",
+        "designer",
+        "three",
+        "years"
+      ],
+      "linking": [
+        "as a → a-za",
+        "for about → fo-ra-bout"
+      ],
+      "tip": "I've been 弱读成 aiv-bin，重点信息放在 three years。",
+      "start": 3.395,
+      "end": 6.864
+    },
+    {
+      "text": "What made you want to apply for this role?",
+      "translation": "是什么让你想申请这个职位？",
+      "stress": [
+        "What",
+        "want",
+        "apply",
+        "role"
+      ],
+      "linking": [
+        "want to → wanna",
+        "apply for → apply-fer"
+      ],
+      "tip": "want to 口语里常说 wanna；apply 重音在第二音节。",
+      "start": 7.592,
+      "end": 9.759
+    },
+    {
+      "text": "I'm really drawn to your focus on accessibility.",
+      "translation": "我真的很被你们对无障碍设计的专注吸引。",
+      "stress": [
+        "really",
+        "drawn",
+        "focus",
+        "accessibility"
+      ],
+      "linking": [
+        "drawn to → drawn-tuh",
+        "focus on → focu-son"
+      ],
+      "tip": "drawn to 连读；accessibility 重音在 bil。",
+      "start": 10.487,
+      "end": 13.483
+    },
+    {
+      "text": "That's great to hear. When could you start?",
+      "translation": "很高兴听你这么说。你什么时候能入职？",
+      "stress": [
+        "great",
+        "hear",
+        "When",
+        "start"
+      ],
+      "linking": [
+        "could you → coul-joo"
+      ],
+      "tip": "could you 连读成 coul-joo，句尾 start 降调。",
+      "start": 14.211,
+      "end": 17.496
+    }
+  ],
+  "audio": "audio/interview-intro.mp3",
+  "duration": 17.5,
+  "source": "edge-tts demo (production: licensed voice actor)"
+}

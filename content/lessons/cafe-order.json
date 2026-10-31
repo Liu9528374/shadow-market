@@ -1,0 +1,97 @@
+{
+  "id": "cafe-order",
+  "title": "在咖啡店点单",
+  "title_en": "Ordering at a Café",
+  "level": "B1",
+  "scene": "daily",
+  "accent": "US",
+  "voice": "en-US-AriaNeural",
+  "rate": "-8%",
+  "cover": [
+    "#1B4D3E",
+    "#2EE6A8"
+  ],
+  "expressions": [
+    "Could I get ...?",
+    "oat milk",
+    "extra shot"
+  ],
+  "sentences": [
+    {
+      "text": "Hi, could I get a medium oat milk latte, please?",
+      "translation": "你好，我要一杯中杯燕麦拿铁。",
+      "stress": [
+        "get",
+        "medium",
+        "oat",
+        "latte"
+      ],
+      "linking": [
+        "could I → coul-dai"
+      ],
+      "tip": "Could I get 连读成 coul-dai-get，语气上扬更礼貌。",
+      "start": 0.104,
+      "end": 3.667
+    },
+    {
+      "text": "Sure. Would you like it hot or iced?",
+      "translation": "好的。你要热的还是冰的？",
+      "stress": [
+        "hot",
+        "iced"
+      ],
+      "linking": [
+        "would you → woul-joo"
+      ],
+      "tip": "hot or iced 三个词要连起来读，重音落在 hot 和 iced。",
+      "start": 4.429,
+      "end": 8.033
+    },
+    {
+      "text": "Iced, please. And can I get an extra shot?",
+      "translation": "冰的，谢谢。可以再加一份浓缩吗？",
+      "stress": [
+        "Iced",
+        "extra",
+        "shot"
+      ],
+      "linking": [
+        "get an → ge-da"
+      ],
+      "tip": "extra 的重音在第一音节：EK-stra。",
+      "start": 8.791,
+      "end": 13.02
+    },
+    {
+      "text": "Of course. That'll be four fifty.",
+      "translation": "当然。一共四块五。",
+      "stress": [
+        "four",
+        "fifty"
+      ],
+      "linking": [
+        "That'll → tha-dl"
+      ],
+      "tip": "That'll be 缩读成 tha-dl-be，不要逐字念。",
+      "start": 13.777,
+      "end": 17.245
+    },
+    {
+      "text": "Great, thanks. Can I pay by card?",
+      "translation": "好的，谢谢。可以刷卡吗？",
+      "stress": [
+        "pay",
+        "card"
+      ],
+      "linking": [
+        "pay by → pay-bai"
+      ],
+      "tip": "pay by 连读，card 的 r 要卷舌但别太重。",
+      "start": 18.016,
+      "end": 21.634
+    }
+  ],
+  "audio": "audio/cafe-order.mp3",
+  "duration": 21.63,
+  "source": "edge-tts demo (production: licensed voice actor)"
+}

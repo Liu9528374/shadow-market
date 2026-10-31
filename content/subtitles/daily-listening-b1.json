@@ -1,0 +1,84 @@
+{
+  "id": "daily-listening-b1",
+  "title": "社区图书馆的一天 · 听力字幕包",
+  "title_en": "A Day at the Community Library",
+  "level": "B1",
+  "scene": "listening",
+  "accent": "US",
+  "cover": [
+    "#12283A",
+    "#38BDF8"
+  ],
+  "expressions": [
+    "borrow up to ...",
+    "keep your voice down",
+    "at the front desk",
+    "bring your card"
+  ],
+  "sentences": [
+    {
+      "text": "The library opens at nine on weekdays.",
+      "translation": "图书馆工作日九点开门。",
+      "notes": "重音：opens · nine · weekdays；weekdays 的 day 弱读。",
+      "start": 0.0,
+      "end": 3.4
+    },
+    {
+      "text": "You can borrow up to five books at a time.",
+      "translation": "一次最多可以借五本书。",
+      "notes": "重音：borrow · five · time；up to 连读成 up-tuh。",
+      "start": 3.8,
+      "end": 7.6
+    },
+    {
+      "text": "Please keep your voice down in the reading room.",
+      "translation": "在阅览室请保持安静。",
+      "notes": "重音：voice · reading；keep your 连读成 kee-pyer。",
+      "start": 8.0,
+      "end": 11.5
+    },
+    {
+      "text": "There is a quiet desk by the window on the second floor.",
+      "translation": "二楼靠窗有一张安静的书桌。",
+      "notes": "重音：quiet · desk · window；There is a 连读成 there-za。",
+      "start": 12.0,
+      "end": 16.4
+    },
+    {
+      "text": "If you need help, ask the librarian at the front desk.",
+      "translation": "如果需要帮助，可以问前台的图书管理员。",
+      "notes": "重音：help · librarian · front；ask the 连读成 as-ka。",
+      "start": 16.8,
+      "end": 21.0
+    },
+    {
+      "text": "Books can be returned in the box outside the door.",
+      "translation": "书可以还到门外的还书箱里。",
+      "notes": "重音：returned · box · outside；can be 弱读成 kn-be。",
+      "start": 21.5,
+      "end": 25.4
+    },
+    {
+      "text": "You can use the computers for one hour each day.",
+      "translation": "每天可以使用电脑一小时。",
+      "notes": "重音：computers · one hour · day；one hour 连读成 one-our。",
+      "start": 25.9,
+      "end": 29.7
+    },
+    {
+      "text": "The study group meets every Thursday afternoon.",
+      "translation": "学习小组每周四下午聚会。",
+      "notes": "重音：study · Thursday · afternoon；Thursday 的 th 咬舌。",
+      "start": 30.2,
+      "end": 33.9
+    },
+    {
+      "text": "Remember to bring your card when you visit next time.",
+      "translation": "下次来的时候记得带上你的借书卡。",
+      "notes": "重音：Remember · card · next；visit next 连读成 visi-next。",
+      "start": 34.4,
+      "end": 38.2
+    }
+  ],
+  "source": "SHADOW Studio 原创示例字幕文本（CC-BY-4.0，无媒体、无第三方素材）"
+}

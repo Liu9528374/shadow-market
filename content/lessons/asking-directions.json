@@ -1,0 +1,101 @@
+{
+  "id": "asking-directions",
+  "title": "问路去火车站",
+  "title_en": "Asking for Directions",
+  "level": "A2",
+  "scene": "travel",
+  "accent": "UK",
+  "voice": "en-GB-SoniaNeural",
+  "rate": "-10%",
+  "cover": [
+    "#3D2B4D",
+    "#C77DFF"
+  ],
+  "expressions": [
+    "How do I get to ...?",
+    "go straight",
+    "ten-minute walk"
+  ],
+  "sentences": [
+    {
+      "text": "Excuse me, how do I get to the train station?",
+      "translation": "打扰一下，请问火车站怎么走？",
+      "stress": [
+        "Excuse",
+        "get",
+        "train",
+        "station"
+      ],
+      "linking": [
+        "get to → ge-tuh"
+      ],
+      "tip": "Excuse me 的 s 发 /z/；how do I 连读成 how-dai。",
+      "start": 0.133,
+      "end": 3.536
+    },
+    {
+      "text": "Go straight for two blocks, then turn left.",
+      "translation": "直走两个街区，然后左转。",
+      "stress": [
+        "straight",
+        "two",
+        "blocks",
+        "left"
+      ],
+      "linking": [
+        "turn left → turn-left"
+      ],
+      "tip": "straight 的 tr 不要读成“吹”；left 的 t 轻而短。",
+      "start": 3.778,
+      "end": 7.041
+    },
+    {
+      "text": "Is it far from here?",
+      "translation": "离这儿远吗？",
+      "stress": [
+        "far",
+        "here"
+      ],
+      "linking": [
+        "Is it → i-zit",
+        "far from → far-frum"
+      ],
+      "tip": "Is it 连读成 i-zit；句尾用升调。",
+      "start": 7.306,
+      "end": 8.861
+    },
+    {
+      "text": "No, it's about a ten-minute walk.",
+      "translation": "不远，走路大概十分钟。",
+      "stress": [
+        "No",
+        "ten-minute",
+        "walk"
+      ],
+      "linking": [
+        "about a → abou-da"
+      ],
+      "tip": "ten-minute 的 t 可以浊化成 d 的音，但重音在 ten。",
+      "start": 9.111,
+      "end": 11.819
+    },
+    {
+      "text": "Thank you so much!",
+      "translation": "太感谢了！",
+      "stress": [
+        "Thank",
+        "so",
+        "much"
+      ],
+      "linking": [
+        "Thank you → than-kyoo"
+      ],
+      "tip": "thank 的 th 咬舌；much 收尾干脆。",
+      "start": 12.037,
+      "end": 13.509
+    }
+  ],
+  "audio": "audio/asking-directions.mp3",
+  "duration": 13.51,
+  "source": "edge-tts demo (production: licensed voice actor)"
+}

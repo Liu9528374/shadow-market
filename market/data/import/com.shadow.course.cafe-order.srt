@@ -1,0 +1,19 @@
+1
+00:00:00,104 --> 00:00:03,667
+Hi, could I get a medium oat milk latte, please?
+
+2
+00:00:04,429 --> 00:00:08,033
+Sure. Would you like it hot or iced?
+
+3
+00:00:08,791 --> 00:00:13,020
+Iced, please. And can I get an extra shot?
+
+4
+00:00:13,777 --> 00:00:17,245
+Of course. That'll be four fifty.
+
+5
+00:00:18,016 --> 00:00:21,634
+Great, thanks. Can I pay by card?

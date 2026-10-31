@@ -1,0 +1,207 @@
+{
+  "spec": "shadow.market.tags",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T15:30:00.000Z",
+  "items": [
+    {
+      "tag": "B1",
+      "label": "B1",
+      "labelEn": "B1",
+      "aliases": [
+        "b1"
+      ],
+      "count": 3
+    },
+    {
+      "tag": "A2",
+      "label": "A2",
+      "labelEn": "A2",
+      "aliases": [
+        "a2"
+      ],
+      "count": 2
+    },
+    {
+      "tag": "B2",
+      "label": "B2",
+      "labelEn": "B2",
+      "aliases": [
+        "b2"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "日常",
+      "label": "日常",
+      "labelEn": "Daily",
+      "aliases": [
+        "daily"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "连读",
+      "label": "连读",
+      "labelEn": "Linking",
+      "aliases": [
+        "linking"
+      ],
+      "count": 3
+    },
+    {
+      "tag": "美音",
+      "label": "美音",
+      "labelEn": "American English",
+      "aliases": [
+        "american",
+        "us"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "英音",
+      "label": "英音",
+      "labelEn": "British English",
+      "aliases": [
+        "british",
+        "uk"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "旅行",
+      "label": "旅行",
+      "labelEn": "Travel",
+      "aliases": [
+        "travel",
+        "trip"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "问路",
+      "label": "问路",
+      "labelEn": "Directions",
+      "aliases": [
+        "directions",
+        "way"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "职场",
+      "label": "职场",
+      "labelEn": "Work",
+      "aliases": [
+        "work",
+        "job"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "面试",
+      "label": "面试",
+      "labelEn": "Interview",
+      "aliases": [
+        "interview"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "播客",
+      "label": "播客",
+      "labelEn": "Podcast",
+      "aliases": [
+        "podcast"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "听力",
+      "label": "听力",
+      "labelEn": "Listening",
+      "aliases": [
+        "listening"
+      ],
+      "count": 2
+    },
+    {
+      "tag": "影视",
+      "label": "影视",
+      "labelEn": "Movies",
+      "aliases": [
+        "movie",
+        "film"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "对话",
+      "label": "对话",
+      "labelEn": "Dialogue",
+      "aliases": [
+        "dialogue",
+        "conversation"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "字幕",
+      "label": "字幕",
+      "labelEn": "Subtitles",
+      "aliases": [
+        "subtitle",
+        "captions"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "BYOM演示",
+      "label": "BYOM 演示",
+      "labelEn": "BYOM Demo",
+      "aliases": [
+        "byom",
+        "demo"
+      ],
+      "count": 2
+    },
+    {
+      "tag": "插件",
+      "label": "插件",
+      "labelEn": "Plugins",
+      "aliases": [
+        "plugin",
+        "plugins"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "白名单",
+      "label": "白名单",
+      "labelEn": "Whitelist",
+      "aliases": [
+        "whitelist"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "声明式",
+      "label": "声明式",
+      "labelEn": "Declarative",
+      "aliases": [
+        "declarative"
+      ],
+      "count": 1
+    },
+    {
+      "tag": "安全",
+      "label": "安全",
+      "labelEn": "Security",
+      "aliases": [
+        "security",
+        "safe"
+      ],
+      "count": 1
+    }
+  ]
+}

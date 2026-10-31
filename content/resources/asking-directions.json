@@ -1,0 +1,36 @@
+{
+  "spec": "shadow.market.resource-source",
+  "schemaVersion": 2,
+  "id": "com.shadow.course.asking-directions",
+  "type": "course",
+  "package": {
+    "kind": "shadowcourse",
+    "file": "data/packages/com.shadow.course.asking-directions.shadowcourse",
+    "version": "1.0.0"
+  },
+  "title": "问路去火车站",
+  "subtitle": "Asking for Directions · A2",
+  "description": "问路去火车站的 5 句旅行英语：怎么问路、直走几个街区、左转、确认距离、道谢。逐句中文翻译与英音连读提示，导入免 ASR，自备音频即可跟读。",
+  "category": "travel",
+  "level": "A2",
+  "tags": ["A2", "旅行", "问路", "英音"],
+  "author": "shadow-studio",
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。"
+  },
+  "mediaMode": "byom",
+  "language": ["en", "zh"],
+  "points": 0,
+  "free": true,
+  "platforms": ["windows", "web"],
+  "requires": { "shadow": ">=0.7.0" },
+  "cover": { "color1": "#3D2B4D", "color2": "#C77DFF" },
+  "audience": "A2 左右、准备出国旅行或想巩固问路口语的学习者",
+  "readmeNote": "",
+  "changelog": ["1.0.0（2026-10-25）：首个版本，5 句问路旅行对话，含英音连读提示；BYOM 纯数据包。"],
+  "publishedAt": "2026-10-25T00:00:00Z",
+  "createdAt": "2026-10-25T00:00:00Z"
+}

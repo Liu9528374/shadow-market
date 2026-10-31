@@ -1,0 +1,138 @@
+{
+  "spec": "shadow.course",
+  "schemaVersion": 1,
+  "id": "com.shadow.subtitle.daily-listening-b1",
+  "version": "1.0.0",
+  "title": "社区图书馆的一天 · 听力字幕包",
+  "subtitle": "A Day at the Community Library · B1",
+  "description": "9 句原创听力字幕文本：社区图书馆的开放时间、借书规则、阅览室礼仪、还书箱与学习小组。每句带中文翻译与时间轴，可下载 .srt 备选导入，也可用 .shadow.json 一键打开；纯文本、无媒体（BYOM）。",
+  "category": "listening",
+  "tags": [
+    "B1",
+    "听力",
+    "字幕",
+    "连读"
+  ],
+  "level": "B1",
+  "language": [
+    "en",
+    "zh"
+  ],
+  "creator": {
+    "name": "SHADOW Studio",
+    "url": "",
+    "handle": "shadow-studio"
+  },
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。"
+  },
+  "mediaPolicy": "byom",
+  "media": [
+    {
+      "id": "m1",
+      "kind": "video",
+      "duration": 0,
+      "hint": "自备任意英语听力音频 / 视频；句级时间轴按秒对齐（本字幕包时间轴约 38.2 秒）"
+    }
+  ],
+  "sentences": [
+    {
+      "sentenceId": "s_0001",
+      "start": 0,
+      "end": 3.4,
+      "text": "The library opens at nine on weekdays.",
+      "translation": "图书馆工作日九点开门。",
+      "notes": "重音：opens · nine · weekdays；weekdays 的 day 弱读。"
+    },
+    {
+      "sentenceId": "s_0002",
+      "start": 3.8,
+      "end": 7.6,
+      "text": "You can borrow up to five books at a time.",
+      "translation": "一次最多可以借五本书。",
+      "notes": "重音：borrow · five · time；up to 连读成 up-tuh。"
+    },
+    {
+      "sentenceId": "s_0003",
+      "start": 8,
+      "end": 11.5,
+      "text": "Please keep your voice down in the reading room.",
+      "translation": "在阅览室请保持安静。",
+      "notes": "重音：voice · reading；keep your 连读成 kee-pyer。"
+    },
+    {
+      "sentenceId": "s_0004",
+      "start": 12,
+      "end": 16.4,
+      "text": "There is a quiet desk by the window on the second floor.",
+      "translation": "二楼靠窗有一张安静的书桌。",
+      "notes": "重音：quiet · desk · window；There is a 连读成 there-za。"
+    },
+    {
+      "sentenceId": "s_0005",
+      "start": 16.8,
+      "end": 21,
+      "text": "If you need help, ask the librarian at the front desk.",
+      "translation": "如果需要帮助，可以问前台的图书管理员。",
+      "notes": "重音：help · librarian · front；ask the 连读成 as-ka。"
+    },
+    {
+      "sentenceId": "s_0006",
+      "start": 21.5,
+      "end": 25.4,
+      "text": "Books can be returned in the box outside the door.",
+      "translation": "书可以还到门外的还书箱里。",
+      "notes": "重音：returned · box · outside；can be 弱读成 kn-be。"
+    },
+    {
+      "sentenceId": "s_0007",
+      "start": 25.9,
+      "end": 29.7,
+      "text": "You can use the computers for one hour each day.",
+      "translation": "每天可以使用电脑一小时。",
+      "notes": "重音：computers · one hour · day；one hour 连读成 one-our。"
+    },
+    {
+      "sentenceId": "s_0008",
+      "start": 30.2,
+      "end": 33.9,
+      "text": "The study group meets every Thursday afternoon.",
+      "translation": "学习小组每周四下午聚会。",
+      "notes": "重音：study · Thursday · afternoon；Thursday 的 th 咬舌。"
+    },
+    {
+      "sentenceId": "s_0009",
+      "start": 34.4,
+      "end": 38.2,
+      "text": "Remember to bring your card when you visit next time.",
+      "translation": "下次来的时候记得带上你的借书卡。",
+      "notes": "重音：Remember · card · next；visit next 连读成 visi-next。"
+    }
+  ],
+  "exercises": {
+    "spec": "shadow.exercises",
+    "schemaVersion": 1,
+    "default": {
+      "mode": "shadow",
+      "loopCount": 3,
+      "speed": 1,
+      "scoring": {
+        "enabled": true
+      },
+      "subtitle": {
+        "en": true,
+        "zh": true,
+        "position": "bottom"
+      }
+    }
+  },
+  "requires": {
+    "shadow": ">=0.7.0"
+  },
+  "createdAt": "2026-10-31T00:00:00.000Z",
+  "updatedAt": "2026-10-31T15:30:00.000Z",
+  "readme": "# 社区图书馆的一天 · 听力字幕包\n\n> A Day at the Community Library · B1 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0\n\n## 课程介绍\n\n9 句原创听力字幕文本：社区图书馆的开放时间、借书规则、阅览室礼仪、还书箱与学习小组。每句带中文翻译与时间轴，可下载 .srt 备选导入，也可用 .shadow.json 一键打开；纯文本、无媒体（BYOM）。\n\n**适合人群**：B1 左右、想用成段听力材料练听写 / 跟读 / 字幕对齐的学习者\n\n## 你会练到\n\n- `borrow up to ...`\n- `keep your voice down`\n- `at the front desk`\n- `bring your card`\n\n## 演示说明\n\n本包是 SHADOW Studio 原创的**听力字幕示例**：9 句英文 + 中文翻译 + 句级时间轴均为自编，不对应任何真实音频节目；不含任何媒体文件。\n\n## 内容结构\n\n- 句子数量：**9 句**\n- 时间轴：第 1 句 0s → 最后一句 38.2s（时长约 **38.2 秒**）\n- 英文词数：约 **86 词**\n- 每句包含：英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点）\n- 词级时间：本包未提供（评分退化为整句参考）\n- 媒体：BYOM，包内不含音频 / 视频（media[].duration = 0 表示未知）\n- 分类：听力字幕（Listening）\n\n## 逐句预览\n\n| # | 时间（秒） | 英文 | 中文 |\n|---|---|---|---|\n| 1 | 0–3.4 | The library opens at nine on weekdays. | 图书馆工作日九点开门。 |\n| 2 | 3.8–7.6 | You can borrow up to five books at a time. | 一次最多可以借五本书。 |\n| 3 | 8–11.5 | Please keep your voice down in the reading room. | 在阅览室请保持安静。 |\n| 4 | 12–16.4 | There is a quiet desk by the window on the second floor. | 二楼靠窗有一张安静的书桌。 |\n| 5 | 16.8–21 | If you need help, ask the librarian at the front desk. | 如果需要帮助，可以问前台的图书管理员。 |\n| 6 | 21.5–25.4 | Books can be returned in the box outside the door. | 书可以还到门外的还书箱里。 |\n| 7 | 25.9–29.7 | You can use the computers for one hour each day. | 每天可以使用电脑一小时。 |\n| 8 | 30.2–33.9 | The study group meets every Thursday afternoon. | 学习小组每周四下午聚会。 |\n| 9 | 34.4–38.2 | Remember to bring your card when you visit next time. | 下次来的时候记得带上你的借书卡。 |\n\n## 如何使用（BYOM · 自带媒体）\n\n本资源包是**纯数据包，不含任何音频 / 视频文件**。导入 SHADOW Studio 后：\n\n1. 把 `.shadowcourse` 拖入 SHADOW Studio 窗口（或在市场详情页点「一键导入」）；\n2. 按提示选择**你本地**的英语音频 / 视频作为练习媒体；\n3. 句子时间轴已随包提供，导入**不跑 ASR**，直接开始跟读；\n4. 暂时没有合适媒体时，可用「仅文本模式」查看句子、翻译与时间轴。\n\n> **BYOM（Bring Your Own Media）**：市场不托管影视媒体、不上传用户媒体。媒体版权由使用者自行负责；本包不含任何第三方影视 / 音乐素材。\n\n## 授权与素材说明\n\n- 包内文本、翻译、句级时间轴：由 SHADOW Studio 创作，许可 **CC-BY-4.0**。\n- 包内**不含媒体**；媒体由用户自备（BYOM），其版权与授权由用户自行负责。\n- 本包不包含任何第三方影视作品台词、画面或音频。\n- 权利依据：`rights.basis = own`。如需商用或再分发，请遵循 CC-BY-4.0 并署名 SHADOW Studio。\n\n## 版本\n\n- 包 id：`com.shadow.subtitle.daily-listening-b1`\n- 版本：`1.0.0`（创建 2026-10-31T00:00:00.000Z，更新 2026-10-31T15:30:00.000Z）\n- 格式：`.shadowcourse` 单文件 JSON（`schemaVersion: 1`）\n- 校验：`node tools/shadowcourse/validate.mjs <file>`\n"
+}

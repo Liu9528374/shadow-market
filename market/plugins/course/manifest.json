@@ -13,5 +13,6 @@
   "statsFields": ["sentences", "durationSec", "words"],
   "install": { "mode": "desktop-import", "deepLink": "shadow-import" },
   "permissions": { "network": false, "filesystem": false, "microphone": false },
-  "enabled": true
+  "enabled": true,
+  "notes": "声明式资源类型，不含可执行代码；导入产物为 .shadow.json（推荐）/ .srt（备选）/ .shadowcourse（规范）。"
 }

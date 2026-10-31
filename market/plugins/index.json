@@ -2,5 +2,12 @@
   "spec": "shadow.market.plugins",
   "schemaVersion": 1,
   "comment": "资源类型插件登记表：市场启动时逐项读取 plugins/<type>/manifest.json 注册卡片/详情渲染器。市场只读声明、不执行插件代码。",
-  "plugins": ["course", "plugin", "subtitle"]
+  "plugins": ["course", "subtitle", "plugin"],
+  "types": [
+    { "id": "course", "manifest": "plugins/course/manifest.json", "enabled": true },
+    { "id": "subtitle", "manifest": "plugins/subtitle/manifest.json", "enabled": true },
+    { "id": "plugin", "manifest": "plugins/plugin/manifest.json", "enabled": true }
+  ],
+  "whitelistDownload": "data/plugins/builtin-whitelist.json",
+  "boundary": "声明式资源类型（manifestVersion 1）：不加载、不执行任何插件 JS/WASM/iframe；未知类型降级通用渲染。"
 }

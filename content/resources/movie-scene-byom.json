@@ -1,0 +1,36 @@
+{
+  "spec": "shadow.market.resource-source",
+  "schemaVersion": 2,
+  "id": "com.shadow.course.movie-scene-byom",
+  "type": "course",
+  "package": {
+    "kind": "shadowcourse",
+    "file": "data/packages/com.shadow.course.movie-scene-byom.shadowcourse",
+    "version": "1.0.0"
+  },
+  "title": "影视片段跟读 · BYOM 演示",
+  "subtitle": "Shadowing a Movie Scene · A2（BYOM Demo）",
+  "description": "5 句原创双人对话，演示「影视片段跟读」的 BYOM 形态：包内只有文本与时间轴，媒体由你自备任意本地片段。不含任何影视作品台词、画面或音频。",
+  "category": "movie",
+  "level": "A2",
+  "tags": ["A2", "影视", "对话", "BYOM演示"],
+  "author": "shadow-studio",
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体；不包含也不影射任何具体影视作品。"
+  },
+  "mediaMode": "byom",
+  "language": ["en", "zh"],
+  "points": 0,
+  "free": true,
+  "platforms": ["windows", "web"],
+  "requires": { "shadow": ">=0.7.0" },
+  "cover": { "color1": "#2B1B33", "color2": "#B388EB" },
+  "audience": "想用自己喜欢的影视片段练跟读的学习者（媒体自备）",
+  "readmeNote": "本包是 SHADOW Studio 原创的**演示占位对白**：不包含、也不影射任何具体影视作品的台词、画面或音频；仅用于展示 BYOM 影视跟读类课程包的字段形态与导入流程。用户自备媒体的版权与授权由使用者自行负责。",
+  "changelog": ["1.0.0（2026-10-25）：首个版本，5 句原创双人对话（演示占位内容）；BYOM 纯数据包。"],
+  "publishedAt": "2026-10-25T00:00:00Z",
+  "createdAt": "2026-10-25T00:00:00Z"
+}

@@ -1,0 +1,130 @@
+{
+  "app": "SHADOW STUDIO",
+  "version": 1,
+  "savedAt": "2026-10-31T15:30:00.000Z",
+  "projectName": "每日英语播客跟读 · 演示",
+  "clips": [
+    {
+      "id": "clip_com.shadow.course.podcast-shadow-daily",
+      "name": "com.shadow.course.podcast-shadow-daily.mp4",
+      "size": 0,
+      "type": "video/mp4",
+      "kind": "video",
+      "duration": 21.1,
+      "resolution": "—",
+      "segmentation": "subtitle",
+      "sentences": [
+        {
+          "start": 0,
+          "end": 4.2,
+          "en": "Welcome back to the show. Today we're talking about small habits.",
+          "zh": "欢迎回来。今天我们聊聊小习惯。",
+          "words": [
+            "Welcome",
+            "back",
+            "to",
+            "the",
+            "show.",
+            "Today",
+            "we're",
+            "talking",
+            "about",
+            "small",
+            "habits."
+          ],
+          "linking": "",
+          "tip": "重音：back · habits；语速平稳，句尾降调。",
+          "score": null
+        },
+        {
+          "start": 5,
+          "end": 8,
+          "en": "A small habit can change your whole day.",
+          "zh": "一个小习惯能改变你的一整天。",
+          "words": [
+            "A",
+            "small",
+            "habit",
+            "can",
+            "change",
+            "your",
+            "whole",
+            "day."
+          ],
+          "linking": "",
+          "tip": "重音：small · change · whole；change 的 ay 音要饱满。",
+          "score": null
+        },
+        {
+          "start": 8.8,
+          "end": 12.2,
+          "en": "Start with one thing you can do in two minutes.",
+          "zh": "从一件两分钟就能做到的小事开始。",
+          "words": [
+            "Start",
+            "with",
+            "one",
+            "thing",
+            "you",
+            "can",
+            "do",
+            "in",
+            "two",
+            "minutes."
+          ],
+          "linking": "",
+          "tip": "重音：Start · one · two；two minutes 连读成 two-minutes。",
+          "score": null
+        },
+        {
+          "start": 13,
+          "end": 16,
+          "en": "Then repeat it at the same time every day.",
+          "zh": "然后在每天同一时间重复它。",
+          "words": [
+            "Then",
+            "repeat",
+            "it",
+            "at",
+            "the",
+            "same",
+            "time",
+            "every",
+            "day."
+          ],
+          "linking": "",
+          "tip": "重音：repeat · same · every；at the 弱读成 at-thuh。",
+          "score": null
+        },
+        {
+          "start": 16.8,
+          "end": 19.6,
+          "en": "That's how progress becomes automatic.",
+          "zh": "进步就是这样变成自动的。",
+          "words": [
+            "That's",
+            "how",
+            "progress",
+            "becomes",
+            "automatic."
+          ],
+          "linking": "",
+          "tip": "重音：progress · automatic；automatic 重音在 ma。",
+          "score": null
+        }
+      ],
+      "units": [],
+      "peaks": [],
+      "thumb": null,
+      "subtitle": null,
+      "assSubtitle": null,
+      "asrSegments": [],
+      "asrSentences": [],
+      "asrMeta": null,
+      "asrTranscribedAt": 0,
+      "asrStale": false
+    }
+  ],
+  "scores": {},
+  "recordings": {}
+}

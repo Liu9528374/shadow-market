@@ -1,0 +1,36 @@
+{
+  "spec": "shadow.market.resource-source",
+  "schemaVersion": 2,
+  "id": "com.shadow.subtitle.daily-listening-b1",
+  "type": "subtitle",
+  "package": {
+    "kind": "shadowcourse",
+    "file": "data/packages/com.shadow.subtitle.daily-listening-b1.shadowcourse",
+    "version": "1.0.0"
+  },
+  "title": "社区图书馆的一天 · 听力字幕包",
+  "subtitle": "A Day at the Community Library · B1",
+  "description": "9 句原创听力字幕文本：社区图书馆的开放时间、借书规则、阅览室礼仪、还书箱与学习小组。每句带中文翻译与时间轴，可下载 .srt 备选导入，也可用 .shadow.json 一键打开；纯文本、无媒体（BYOM）。",
+  "category": "listening",
+  "level": "B1",
+  "tags": ["B1", "听力", "字幕", "连读"],
+  "author": "shadow-studio",
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "字幕文本、中文翻译与句级时间轴由 SHADOW Studio 原创；不含媒体、不涉及任何第三方影视 / 音频素材；媒体由用户自备（BYOM）。"
+  },
+  "mediaMode": "byom",
+  "language": ["en", "zh"],
+  "points": 0,
+  "free": true,
+  "platforms": ["windows", "web"],
+  "requires": { "shadow": ">=0.7.0" },
+  "cover": { "color1": "#12283A", "color2": "#38BDF8" },
+  "audience": "B1 左右、想用成段听力材料练听写 / 跟读 / 字幕对齐的学习者",
+  "readmeNote": "本包是 SHADOW Studio 原创的**听力字幕示例**：9 句英文 + 中文翻译 + 句级时间轴均为自编，不对应任何真实音频节目；不含任何媒体文件。",
+  "changelog": ["1.0.0（2026-10-31）：首个版本，9 句原创听力字幕 + 中文翻译 + 句级时间轴；附带 SRT 与 .shadow.json 导入产物；BYOM 纯数据包。"],
+  "publishedAt": "2026-10-31T00:00:00Z",
+  "createdAt": "2026-10-31T00:00:00Z"
+}

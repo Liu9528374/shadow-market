@@ -1,0 +1,81 @@
+{
+  "spec": "shadow.market.site",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T15:30:00.000Z",
+  "items": [
+    {
+      "id": "shadow-market",
+      "name": "SHADOW 市场",
+      "nameEn": "SHADOW MARKET",
+      "tagline": "全免费 · BYOM · 本地优先",
+      "taglineEn": "Free for all · BYOM · Local-first",
+      "description": "SHADOW 市场是 SHADOW Studio 的配套资源站：全免费、无需账号，资源为纯数据包（句子时间轴 + 中英翻译 + 练习配置），不含任何媒体；媒体由使用者自备（BYOM）。",
+      "descriptionEn": "The companion resource site for SHADOW Studio: completely free, no account needed. Resources are data-only packages (sentence timeline + bilingual translation + practice presets) with no media; you bring your own media (BYOM).",
+      "baseUrl": "",
+      "startUrl": "./#/",
+      "version": "2.0.0",
+      "locale": "zh-CN",
+      "languages": [
+        "zh-CN",
+        "en"
+      ],
+      "themeColor": "#E88A2E",
+      "backgroundTheme": "#0C0C0E",
+      "licenseDefault": "CC-BY-4.0",
+      "mediaModeDefault": "byom",
+      "nav": [
+        {
+          "id": "explore",
+          "label": "探索",
+          "labelEn": "Explore",
+          "href": "#/"
+        },
+        {
+          "id": "categories",
+          "label": "分类",
+          "labelEn": "Categories",
+          "href": "#/categories"
+        },
+        {
+          "id": "favorites",
+          "label": "收藏",
+          "labelEn": "Favorites",
+          "href": "#/favorites"
+        },
+        {
+          "id": "contribute",
+          "label": "投稿",
+          "labelEn": "Contribute",
+          "href": "#/contribute"
+        },
+        {
+          "id": "import",
+          "label": "导入说明",
+          "labelEn": "Import guide",
+          "href": "#/import"
+        },
+        {
+          "id": "about",
+          "label": "关于",
+          "labelEn": "About",
+          "href": "#/about"
+        }
+      ],
+      "footer": {
+        "statement": "SHADOW 市场 · 全免费 · 无强制登录 · 不托管、不分发任何影视媒体 · 资源仅含自有 / 授权 / 公版 / CC 内容（BYOM）。",
+        "statementEn": "SHADOW MARKET · free for all · no forced login · no hosted or distributed media · resources contain only own / licensed / public-domain / CC content (BYOM)."
+      },
+      "build": {
+        "schemaVersion": 2,
+        "generator": "tools/catalog/build-catalog.mjs",
+        "generatedAt": "2026-10-31T15:30:00.000Z",
+        "resources": 7,
+        "types": [
+          "course",
+          "subtitle",
+          "plugin"
+        ]
+      }
+    }
+  ]
+}

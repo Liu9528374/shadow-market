@@ -1,0 +1,217 @@
+{
+  "app": "SHADOW STUDIO",
+  "version": 1,
+  "savedAt": "2026-10-31T15:30:00.000Z",
+  "projectName": "社区图书馆的一天 · 听力字幕包",
+  "clips": [
+    {
+      "id": "clip_com.shadow.subtitle.daily-listening-b1",
+      "name": "com.shadow.subtitle.daily-listening-b1.mp4",
+      "size": 0,
+      "type": "video/mp4",
+      "kind": "video",
+      "duration": 39.7,
+      "resolution": "—",
+      "segmentation": "subtitle",
+      "sentences": [
+        {
+          "start": 0,
+          "end": 3.4,
+          "en": "The library opens at nine on weekdays.",
+          "zh": "图书馆工作日九点开门。",
+          "words": [
+            "The",
+            "library",
+            "opens",
+            "at",
+            "nine",
+            "on",
+            "weekdays."
+          ],
+          "linking": "",
+          "tip": "重音：opens · nine · weekdays；weekdays 的 day 弱读。",
+          "score": null
+        },
+        {
+          "start": 3.8,
+          "end": 7.6,
+          "en": "You can borrow up to five books at a time.",
+          "zh": "一次最多可以借五本书。",
+          "words": [
+            "You",
+            "can",
+            "borrow",
+            "up",
+            "to",
+            "five",
+            "books",
+            "at",
+            "a",
+            "time."
+          ],
+          "linking": "",
+          "tip": "重音：borrow · five · time；up to 连读成 up-tuh。",
+          "score": null
+        },
+        {
+          "start": 8,
+          "end": 11.5,
+          "en": "Please keep your voice down in the reading room.",
+          "zh": "在阅览室请保持安静。",
+          "words": [
+            "Please",
+            "keep",
+            "your",
+            "voice",
+            "down",
+            "in",
+            "the",
+            "reading",
+            "room."
+          ],
+          "linking": "",
+          "tip": "重音：voice · reading；keep your 连读成 kee-pyer。",
+          "score": null
+        },
+        {
+          "start": 12,
+          "end": 16.4,
+          "en": "There is a quiet desk by the window on the second floor.",
+          "zh": "二楼靠窗有一张安静的书桌。",
+          "words": [
+            "There",
+            "is",
+            "a",
+            "quiet",
+            "desk",
+            "by",
+            "the",
+            "window",
+            "on",
+            "the",
+            "second",
+            "floor."
+          ],
+          "linking": "",
+          "tip": "重音：quiet · desk · window；There is a 连读成 there-za。",
+          "score": null
+        },
+        {
+          "start": 16.8,
+          "end": 21,
+          "en": "If you need help, ask the librarian at the front desk.",
+          "zh": "如果需要帮助，可以问前台的图书管理员。",
+          "words": [
+            "If",
+            "you",
+            "need",
+            "help,",
+            "ask",
+            "the",
+            "librarian",
+            "at",
+            "the",
+            "front",
+            "desk."
+          ],
+          "linking": "",
+          "tip": "重音：help · librarian · front；ask the 连读成 as-ka。",
+          "score": null
+        },
+        {
+          "start": 21.5,
+          "end": 25.4,
+          "en": "Books can be returned in the box outside the door.",
+          "zh": "书可以还到门外的还书箱里。",
+          "words": [
+            "Books",
+            "can",
+            "be",
+            "returned",
+            "in",
+            "the",
+            "box",
+            "outside",
+            "the",
+            "door."
+          ],
+          "linking": "",
+          "tip": "重音：returned · box · outside；can be 弱读成 kn-be。",
+          "score": null
+        },
+        {
+          "start": 25.9,
+          "end": 29.7,
+          "en": "You can use the computers for one hour each day.",
+          "zh": "每天可以使用电脑一小时。",
+          "words": [
+            "You",
+            "can",
+            "use",
+            "the",
+            "computers",
+            "for",
+            "one",
+            "hour",
+            "each",
+            "day."
+          ],
+          "linking": "",
+          "tip": "重音：computers · one hour · day；one hour 连读成 one-our。",
+          "score": null
+        },
+        {
+          "start": 30.2,
+          "end": 33.9,
+          "en": "The study group meets every Thursday afternoon.",
+          "zh": "学习小组每周四下午聚会。",
+          "words": [
+            "The",
+            "study",
+            "group",
+            "meets",
+            "every",
+            "Thursday",
+            "afternoon."
+          ],
+          "linking": "",
+          "tip": "重音：study · Thursday · afternoon；Thursday 的 th 咬舌。",
+          "score": null
+        },
+        {
+          "start": 34.4,
+          "end": 38.2,
+          "en": "Remember to bring your card when you visit next time.",
+          "zh": "下次来的时候记得带上你的借书卡。",
+          "words": [
+            "Remember",
+            "to",
+            "bring",
+            "your",
+            "card",
+            "when",
+            "you",
+            "visit",
+            "next",
+            "time."
+          ],
+          "linking": "",
+          "tip": "重音：Remember · card · next；visit next 连读成 visi-next。",
+          "score": null
+        }
+      ],
+      "units": [],
+      "peaks": [],
+      "thumb": null,
+      "subtitle": null,
+      "assSubtitle": null,
+      "asrSegments": [],
+      "asrSentences": [],
+      "asrMeta": null,
+      "asrTranscribedAt": 0,
+      "asrStale": false
+    }
+  ],
+  "scores": {},
+  "recordings": {}
+}

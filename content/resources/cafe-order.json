@@ -1,0 +1,36 @@
+{
+  "spec": "shadow.market.resource-source",
+  "schemaVersion": 2,
+  "id": "com.shadow.course.cafe-order",
+  "type": "course",
+  "package": {
+    "kind": "shadowcourse",
+    "file": "data/packages/com.shadow.course.cafe-order.shadowcourse",
+    "version": "1.0.0"
+  },
+  "title": "在咖啡店点单",
+  "subtitle": "Ordering at a Café · B1",
+  "description": "咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。",
+  "category": "daily",
+  "level": "B1",
+  "tags": ["B1", "日常", "连读", "美音"],
+  "author": "shadow-studio",
+  "license": "CC-BY-4.0",
+  "rights": {
+    "basis": "own",
+    "evidenceUrl": "",
+    "note": "文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。"
+  },
+  "mediaMode": "byom",
+  "language": ["en", "zh"],
+  "points": 0,
+  "free": true,
+  "platforms": ["windows", "web"],
+  "requires": { "shadow": ">=0.7.0" },
+  "cover": { "color1": "#1B4D3E", "color2": "#2EE6A8" },
+  "audience": "有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者",
+  "readmeNote": "",
+  "changelog": ["1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。"],
+  "publishedAt": "2026-10-25T00:00:00Z",
+  "createdAt": "2026-10-25T00:00:00Z"
+}

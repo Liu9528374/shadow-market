@@ -1,0 +1,15 @@
+{
+  "spec": "shadow.market.licenses",
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-31T15:30:00.000Z",
+  "items": [
+    {
+      "id": "CC-BY-4.0",
+      "name": "知识共享 署名 4.0 国际（CC BY 4.0）",
+      "nameEn": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "fullText": "本资源的文本、翻译与句级时间轴由 SHADOW Studio 创作，采用 CC BY 4.0 许可发布。你可以自由复制、分发、改编本资源（包括商用），但必须：①署名——注明作者 SHADOW Studio、资源标题与来源链接；②标注修改——如修改过本资源，须说明修改内容；③不加限制——不得以法律条款或技术措施限制他人做许可允许的事。本资源不含媒体；使用者自备媒体的版权与授权由使用者自行负责。完整法律文本以 https://creativecommons.org/licenses/by/4.0/ 官方版本为准。",
+      "rightsNotes": "仅含自有文本 / 翻译 / 时间轴；无媒体、无第三方影视素材；BYOM。"
+    }
+  ]
+}
