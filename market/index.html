@@ -1,128 +1,237 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="light" data-theme-pref="system">
+<html lang="zh-CN" data-theme="light" data-theme-pref="system" data-lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SHADOW 市场 · 全免费课程资源站</title>
-  <meta name="description" content="SHADOW 市场 P0：全免费的影子跟读课程包 / 插件 / 字幕包资源站。浏览、搜索、下载 .shadowcourse，一键导入 SHADOW Studio；BYOM 不含媒体；积分仅作兑换凭证，不可购买。" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>SHADOW 市场 · 全免费影子跟读课程资源站</title>
+  <meta name="description" content="SHADOW 市场 P0：全免费的影子跟读课程包 / 插件 / 字幕包资源站。移动优先、中英双语、可安装离线；BYOM 不含媒体，浏览器 + 桌面端薄接口导入 SHADOW Studio。" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="theme-color" content="#2EE6A8" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d1117'/%3E%3Cpath d='M22 10.4a6 6 0 0 0-4.7-2.2c-2.6 0-4.5 1.4-4.5 3.4 0 2 1.5 2.8 4.2 3.6 3.3.9 5.6 2.1 5.6 5 0 3.2-2.7 5.3-6.4 5.3-2.6 0-4.8-1-6.2-2.6' stroke='%232EE6A8' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#E88A2E" />
+  <meta name="application-name" content="SHADOW 市场" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="SHADOW 市场" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <!-- 主题在首屏绘制前应用，避免闪烁（localStorage 无账号、仅本机） -->
+  <!-- 品牌图标包（用户提供的「声波 / Voice Wave」APP 图标，已由 Lead 放入 assets/brand/） -->
+  <link rel="icon" href="assets/brand/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon-180.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- 主题 + 语言在首屏绘制前应用，避免闪烁（localStorage 无账号、仅本机） -->
   <script>
     (function () {
-      var KEY = 'shadow.market.theme.v1';
+      var themeKey = 'shadow.market.theme.v1';
       var pref = 'system';
-      try { pref = localStorage.getItem(KEY) || 'system'; } catch (e) { /* 隐私模式忽略 */ }
+      try { pref = localStorage.getItem(themeKey) || 'system'; } catch (e) { /* 隐私模式忽略 */ }
       if (pref !== 'light' && pref !== 'dark' && pref !== 'system') pref = 'system';
       var dark = pref === 'dark' || (pref === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
       document.documentElement.dataset.theme = dark ? 'dark' : 'light';
       document.documentElement.dataset.themePref = pref;
+      var lang = 'zh-CN';
+      try { lang = localStorage.getItem('shadow.market.lang.v1') === 'en' ? 'en' : 'zh-CN'; } catch (e) { /* ignore */ }
+      document.documentElement.lang = lang;
+      document.documentElement.dataset.lang = lang;
+      // 首屏路由（供 CSS 决定是否展示 home 静态骨架；非 home 路由隐藏，避免替换首屏造成 CLS）
+      try {
+        var raw = String(location.hash || '#/').replace(/^#/, '').replace(/^\/+/, '');
+        var parts = raw.split(/[/?]/);
+        var seg = parts[0] || 'home';
+        document.documentElement.dataset.route = seg;
+        // 路由感知预加载：把该路由的视图模块（及其依赖）与详情页课程包提前拉取，减少 LCP 前的请求链
+        var VIEW_FILE = {
+          resource: 'resource', license: 'license', creator: 'creator', favorites: 'favorites',
+          changelog: 'changelog', contribute: 'contribute', about: 'about', privacy: 'privacy',
+          complaint: 'complaint', import: 'import', points: 'points', settings: 'settings',
+          search: 'home', category: 'home', tag: 'home',
+        };
+        function preloadLink(href, isModule) {
+          try {
+            var l = document.createElement('link');
+            if (isModule) { l.rel = 'modulepreload'; }
+            else { l.rel = 'preload'; l.as = 'fetch'; l.type = 'application/json'; l.crossOrigin = 'anonymous'; }
+            l.href = href;
+            document.head.appendChild(l);
+          } catch (e) { /* ignore */ }
+        }
+        if (seg === 'resource') {
+          preloadLink('assets/js/views/resource.js', true);
+          preloadLink('assets/js/markdown.js', true);
+          var rid = parts[1] ? decodeURIComponent(parts[1]) : '';
+          if (rid) preloadLink('data/packages/' + encodeURIComponent(rid) + '.shadowcourse', false);
+        } else if (seg === 'license') {
+          preloadLink('assets/js/views/resource.js', true);
+          preloadLink('assets/js/views/license.js', true);
+        } else if (VIEW_FILE[seg] && seg !== 'home') {
+          preloadLink('assets/js/views/' + VIEW_FILE[seg] + '.js', true);
+        }
+      } catch (e) { document.documentElement.dataset.route = 'home'; }
     })();
   </script>
 
   <link rel="stylesheet" href="assets/styles/tokens.css" />
   <link rel="stylesheet" href="assets/styles/app.css" />
+
+  <!-- 性能：首屏关键数据与核心模块预加载（减少关键请求链瀑布；只保留首屏真正需要的少数请求） -->
+  <link rel="preload" href="catalog/resources.json" as="fetch" type="application/json" crossorigin="anonymous" />
+  <link rel="modulepreload" href="assets/js/i18n.js" />
+  <link rel="modulepreload" href="assets/js/data.js" />
+  <link rel="modulepreload" href="assets/js/components.js" />
+  <link rel="modulepreload" href="assets/js/views/home.js" />
 </head>
 <body>
-  <a class="skip-link" href="#main">跳到主内容</a>
+  <a class="skip-link" href="#main" data-i18n="跳到主内容">跳到主内容</a>
 
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#/" aria-label="SHADOW 市场首页">
-        <svg class="brand-mark" width="30" height="30" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <defs>
-            <linearGradient id="brand-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#2EE6A8" />
-              <stop offset="1" stop-color="#1BA8FF" />
-            </linearGradient>
-          </defs>
-          <rect width="32" height="32" rx="8" fill="url(#brand-grad)" />
-          <path d="M22 10.4a6 6 0 0 0-4.7-2.2c-2.6 0-4.5 1.4-4.5 3.4 0 2 1.5 2.8 4.2 3.6 3.3.9 5.6 2.1 5.6 5 0 3.2-2.7 5.3-6.4 5.3-2.6 0-4.8-1-6.2-2.6"
-                stroke="#06140D" stroke-width="3" fill="none" stroke-linecap="round" />
-        </svg>
+        <img class="brand-logo" src="assets/brand/logo-64.png" width="32" height="32" alt="" aria-hidden="true" decoding="async" fetchpriority="high" />
         <span class="brand-word">SHADOW</span>
-        <span class="brand-sub">市场</span>
-        <span class="brand-chip">P0 · 全免费</span>
+        <span class="brand-sub" data-i18n="市场">市场</span>
+        <span class="brand-chip">P0 · FREE</span>
       </a>
+
+      <nav class="header-nav" aria-label="主导航" data-i18n-aria-label="主导航">
+        <a class="header-nav-link" href="#/" data-nav="home" data-i18n="探索">探索</a>
+        <a class="header-nav-link" href="#/favorites" data-nav="favorites" data-i18n="收藏">收藏</a>
+        <a class="header-nav-link" href="#/contribute" data-nav="contribute" data-i18n="投稿">投稿</a>
+        <a class="header-nav-link" href="#/about" data-nav="about" data-i18n="关于">关于</a>
+      </nav>
 
       <form class="header-search" id="header-search-form" role="search" novalidate>
         <svg class="header-search-icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           <path fill="currentColor" d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
         </svg>
-        <label class="visually-hidden" for="global-search">搜索资源</label>
-        <input id="global-search" class="header-search-input" type="search" name="q" placeholder="搜索课程 / 插件 / 字幕包，按 / 聚焦" autocomplete="off" spellcheck="false" data-testid="search-input" aria-describedby="search-kbd-hint" />
-        <kbd class="header-search-kbd" id="search-kbd-hint">/</kbd>
+        <label class="visually-hidden" for="global-search" data-i18n="搜索资源">搜索资源</label>
+        <input id="global-search" class="header-search-input" type="search" name="q" autocomplete="off" spellcheck="false" data-testid="search-input"
+               data-i18n-placeholder="搜索课程 / 插件 / 字幕包，按 / 聚焦"
+               data-i18n-aria-label="全局搜索" aria-describedby="search-kbd-hint" />
+        <kbd class="header-search-kbd" id="search-kbd-hint" aria-hidden="true">/</kbd>
       </form>
 
-      <nav class="header-nav" aria-label="主导航">
-        <a class="header-nav-link" href="#/" data-nav="home">探索</a>
-        <a class="header-nav-link" href="#/points" data-nav="points">积分</a>
-        <a class="header-nav-link" href="#/import" data-nav="import">导入</a>
-        <a class="header-nav-link" href="#/settings" data-nav="settings">设置</a>
-      </nav>
-
       <div class="header-actions">
-        <button class="icon-btn" id="theme-toggle" type="button" title="切换深浅色外观" aria-label="切换深浅色外观" data-testid="theme-toggle"></button>
-        <button class="btn btn-sm btn-command" id="open-palette" type="button" title="命令面板 (Ctrl+K)" aria-label="打开命令面板">
+        <button class="icon-btn header-lang" id="lang-toggle" type="button" aria-label="切换语言" data-i18n-aria-label="切换语言" title="切换语言 / Switch language" data-testid="lang-toggle"><span id="lang-toggle-label">EN</span></button>
+        <button class="icon-btn" id="theme-toggle" type="button" title="切换深浅色外观" data-i18n-title="切换深浅色外观" aria-label="切换深浅色外观" data-testid="theme-toggle"></button>
+        <button class="icon-btn header-install" id="install-btn" type="button" hidden data-i18n-aria-label="安装到主屏幕" title="安装到主屏幕" data-i18n-title="安装到主屏幕"></button>
+        <button class="btn btn-sm btn-command" id="open-palette" type="button" title="命令面板 (Ctrl+K)" data-i18n-title="命令面板" aria-label="打开命令面板" data-i18n-aria-label="打开命令面板" data-testid="open-palette">
           <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.5 0a1.5 1.5 0 0 1 1.5 1.5v4h1v-4A1.5 1.5 0 0 1 10.5 0 1.5 1.5 0 0 1 12 1.5v4h1.5a1.5 1.5 0 0 1 0 3H12v4a1.5 1.5 0 0 1-3 0v-4H8v4a1.5 1.5 0 0 1-3 0v-4H3.5a1.5 1.5 0 0 1 0-3H5v-4A1.5 1.5 0 0 1 6.5 0Z"/></svg>
-          <span class="btn-command-label">命令</span>
+          <span class="btn-command-label" data-i18n="命令">命令</span>
           <kbd class="btn-kbd">Ctrl K</kbd>
         </button>
-        <button class="btn btn-sm btn-login" id="login-btn" type="button" title="P1 将支持账户；当前为匿名设备本地演示">登录</button>
+        <button class="icon-btn header-more" id="more-toggle" type="button" aria-expanded="false" aria-controls="more-menu" aria-label="更多菜单" data-i18n-aria-label="更多菜单" title="更多" data-i18n-title="更多" data-testid="more-toggle">
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1 3.75A.75.75 0 0 1 1.75 3h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 3.75Zm0 4.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 8Zm0 4.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1-.75-.75Z"/></svg>
+        </button>
+        <nav class="more-menu" id="more-menu" aria-label="更多菜单" data-i18n-aria-label="更多菜单" hidden>
+          <a href="#/import" role="menuitem" data-i18n="一键导入说明">一键导入说明</a>
+          <a href="#/changelog" role="menuitem" data-i18n="更新日志">更新日志</a>
+          <a href="#/points" role="menuitem" data-i18n="积分（P1 预览）">积分（P1 预览）</a>
+          <a href="#/settings" role="menuitem" data-i18n="设置">设置</a>
+          <a href="#/privacy" role="menuitem" data-i18n="隐私说明">隐私说明</a>
+          <a href="#/complaint" role="menuitem" data-i18n="版权与投诉">版权与投诉</a>
+        </nav>
       </div>
     </div>
   </header>
 
   <div class="global-banner" id="global-banner" role="status" hidden></div>
+  <div class="pwa-banner" id="pwa-banner" role="region" aria-label="应用更新" hidden></div>
 
   <main class="main" id="main" tabindex="-1">
-    <div class="view" id="view" aria-live="polite" aria-busy="false"></div>
+    <!-- 静态首屏（LCP 在 HTML 解析阶段即可出现；JS 渲染后由真实内容替换；高度预留避免 CLS） -->
+    <div class="view view-first-paint" id="view" aria-busy="false">
+      <div class="first-paint" data-first-paint="1">
+        <div class="page-head">
+          <div class="page-head-text">
+            <h1 class="page-title" data-i18n="探索市场">探索市场</h1>
+            <p class="page-sub" data-i18n="全免费课程资源 · 一键导入 SHADOW Studio · 可安装离线">全免费课程资源 · 一键导入 SHADOW Studio · 可安装离线</p>
+          </div>
+          <div class="page-head-actions">
+            <a class="btn" href="#/import" data-i18n="一键导入说明">一键导入说明</a>
+            <a class="btn" href="#/contribute" data-i18n="投稿指南">投稿指南</a>
+          </div>
+        </div>
+        <div class="notice first-paint-notice">
+          <div>
+            <strong data-i18n="P0 全免费">P0 全免费</strong> · <span data-i18n="积分只是兑换凭证（免费获取，不可购买 / 提现 / 转让）">积分只是兑换凭证（免费获取，不可购买 / 提现 / 转让）</span> · <strong>BYOM</strong>：<span data-i18n="市场不托管影视媒体、不上传用户媒体">市场不托管影视媒体、不上传用户媒体</span> · <a href="#/import" data-i18n="如何一键导入 →">如何一键导入 →</a>
+          </div>
+        </div>
+        <div class="res-list first-paint-list" aria-hidden="true">
+          <div class="sk-card fp-card"><div class="row"><div class="sk sk-icon"></div><div class="fp-lines"><div class="sk sk-line sk-title"></div><div class="sk sk-line sk-sub"></div></div></div><div class="sk sk-line sk-text"></div><div class="sk sk-line sk-text short"></div><div class="sk sk-line sk-meta"></div></div>
+          <div class="sk-card fp-card"><div class="row"><div class="sk sk-icon"></div><div class="fp-lines"><div class="sk sk-line sk-title"></div><div class="sk sk-line sk-sub"></div></div></div><div class="sk sk-line sk-text"></div><div class="sk sk-line sk-text short"></div><div class="sk sk-line sk-meta"></div></div>
+          <div class="sk-card fp-card"><div class="row"><div class="sk sk-icon"></div><div class="fp-lines"><div class="sk sk-line sk-title"></div><div class="sk sk-line sk-sub"></div></div></div><div class="sk sk-line sk-text"></div><div class="sk sk-line sk-text short"></div><div class="sk sk-line sk-meta"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="visually-hidden" id="view-status" role="status" aria-live="polite" aria-atomic="true"></div>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <a class="footer-brandline" href="#/">
-          <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-            <rect width="32" height="32" rx="8" fill="#2EE6A8" />
-            <path d="M22 10.4a6 6 0 0 0-4.7-2.2c-2.6 0-4.5 1.4-4.5 3.4 0 2 1.5 2.8 4.2 3.6 3.3.9 5.6 2.1 5.6 5 0 3.2-2.7 5.3-6.4 5.3-2.6 0-4.8-1-6.2-2.6" stroke="#06140D" stroke-width="3" fill="none" stroke-linecap="round" />
-          </svg>
-          <span>SHADOW 市场</span>
+          <img src="assets/brand/icon-192.png" width="22" height="22" alt="" aria-hidden="true" loading="lazy" decoding="async" style="border-radius:6px" />
+          <span>SHADOW <span data-i18n="市场">市场</span></span>
         </a>
-        <p class="footer-note">全免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。</p>
-        <p class="footer-note footer-note-dim">市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。</p>
+        <p class="footer-note" data-i18n="全免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。">全免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。</p>
+        <p class="footer-note footer-note-dim" data-i18n="市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。">市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。</p>
       </div>
-      <nav class="footer-col" aria-label="站内链接">
-        <h2 class="footer-title">浏览</h2>
-        <a href="#/">探索资源</a>
-        <a href="#/search?q=">搜索</a>
-        <a href="#/points">积分（P1 本地演示）</a>
-        <a href="#/import">一键导入说明</a>
-        <a href="#/settings">设置</a>
+      <nav class="footer-col" aria-label="站内链接" data-i18n-aria-label="站内链接">
+        <h2 class="footer-title" data-i18n="浏览">浏览</h2>
+        <a href="#/" data-i18n="探索">探索</a>
+        <a href="#/favorites" data-i18n="我的收藏">我的收藏</a>
+        <a href="#/search?q=" data-i18n="搜索">搜索</a>
+        <a href="#/changelog" data-i18n="更新日志">更新日志</a>
+      </nav>
+      <nav class="footer-col" aria-label="参与与边界">
+        <h2 class="footer-title" data-i18n="参与">参与</h2>
+        <a href="#/contribute" data-i18n="投稿指南">投稿指南</a>
+        <a href="#/import" data-i18n="导入说明">导入说明</a>
+        <a href="#/about" data-i18n="关于">关于</a>
+        <a href="#/privacy" data-i18n="隐私">隐私</a>
+        <a href="#/complaint" data-i18n="版权投诉">版权投诉</a>
       </nav>
       <div class="footer-col">
-        <h2 class="footer-title">P0 边界</h2>
-        <span>全免费 · 积分只是兑换凭证</span>
-        <span>BYOM：不托管影视媒体</span>
-        <span>不收集账号 · 无支付/抽成/DRM</span>
-        <span>一切即插件：声明式资源类型</span>
+        <h2 class="footer-title" data-i18n="P0 边界">P0 边界</h2>
+        <span data-i18n="全免费 · 积分只是兑换凭证">全免费 · 积分只是兑换凭证</span>
+        <span data-i18n="BYOM：不托管影视媒体">BYOM：不托管影视媒体</span>
+        <span data-i18n="不收集账号 · 无支付/抽成/DRM">不收集账号 · 无支付/抽成/DRM</span>
+        <span data-i18n="一切即插件：声明式资源类型">一切即插件：声明式资源类型</span>
       </div>
       <div class="footer-col">
-        <h2 class="footer-title">技术</h2>
-        <span>纯静态 · 无构建 · 无 CDN</span>
-        <span>hash 路由 · 原生 ES Modules</span>
-        <a href="plugins/index.json">插件清单（JSON）</a>
-        <a href="data/catalog.json">资源目录（JSON）</a>
+        <h2 class="footer-title" data-i18n="技术">技术</h2>
+        <span data-i18n="纯静态 · 无构建 · 无 CDN">纯静态 · 无构建 · 无 CDN</span>
+        <span data-i18n="hash 路由 · 原生 ES Modules">hash 路由 · 原生 ES Modules</span>
+        <a href="plugins/index.json">plugin index.json</a>
+        <a href="data/catalog.json">catalog.json</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>SHADOW 市场 · P0 本地演示版（无后端账号）</span>
-      <span class="footer-sep">·</span>
-      <span>统计数字为示例数据，P0 不采集用户行为</span>
+      <span data-i18n="SHADOW 市场 · P0 本地演示版（无后端账号）">SHADOW 市场 · P0 本地演示版（无后端账号）</span>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span data-i18n="统计数字为示例数据，P0 不采集用户行为">统计数字为示例数据，P0 不采集用户行为</span>
     </div>
   </footer>
+
+  <!-- 移动端底部导航（≤820px 显示）：探索 / 收藏 / 投稿 / 更多 -->
+  <nav class="bottom-nav" aria-label="移动端导航" data-i18n-aria-label="移动端导航" data-testid="bottom-nav">
+    <a class="bottom-nav-link" href="#/" data-nav="home" data-testid="bottom-nav-home">
+      <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm3.146-3.354 1.83 3.254a1 1 0 0 0 .464.404l3.254 1.83a.5.5 0 0 0 .708-.708l-1.83-3.254a1 1 0 0 0-.464-.404L5.354 3.938a.5.5 0 0 0-.708.708Z"/></svg>
+      <span data-i18n="探索">探索</span>
+    </a>
+    <a class="bottom-nav-link" href="#/favorites" data-nav="favorites" data-testid="bottom-nav-favorites">
+      <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>
+      <span data-i18n="收藏">收藏</span>
+    </a>
+    <a class="bottom-nav-link" href="#/contribute" data-nav="contribute" data-testid="bottom-nav-contribute">
+      <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14ZM7.25 4.06 4.53 6.78a.75.75 0 0 1-1.06-1.06l3.75-3.75a.75.75 0 0 1 1.06 0l3.75 3.75a.75.75 0 0 1-1.06 1.06L8.75 4.06V11a.75.75 0 0 1-1.5 0Z"/></svg>
+      <span data-i18n="投稿">投稿</span>
+    </a>
+    <button class="bottom-nav-link" id="bottom-more" type="button" aria-expanded="false" aria-controls="more-menu" data-testid="bottom-nav-more">
+      <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1 3.75A.75.75 0 0 1 1.75 3h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 3.75Zm0 4.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 8Zm0 4.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1-.75-.75Z"/></svg>
+      <span data-i18n="更多">更多</span>
+    </button>
+  </nav>
 
   <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="false"></div>
   <div id="palette-root"></div>

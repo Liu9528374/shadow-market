@@ -27,8 +27,9 @@ export function applyTheme(pref = getThemePref(), { persist = false } = {}) {
   const theme = resolveTheme(normalized);
   document.documentElement.dataset.theme = theme;
   document.documentElement.dataset.themePref = normalized;
+  // theme-color 与品牌一致：浅色用品牌橙，深色用品牌深色底（APP 图标 #0C0C0E）
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', theme === 'dark' ? '#0d1117' : '#ffffff');
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#0C0C0E' : '#E88A2E');
   window.dispatchEvent(new CustomEvent('market:themechange', { detail: { pref: normalized, theme } }));
   return theme;
 }

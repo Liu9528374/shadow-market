@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>离线 · SHADOW 市场</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0C0C0E" />
+  <link rel="icon" href="assets/brand/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon-180.png" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c0c0e;
+      --surface: #17171b;
+      --border: #2a2a31;
+      --fg: #f2f2f4;
+      --muted: #a8a8b3;
+      --brand: #e88a2e;
+      --brand-2: #ffb55c;
+      --focus: #ffb55c;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background:
+        radial-gradient(900px 420px at 50% -10%, rgba(232, 138, 46, 0.22), transparent 62%),
+        var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    main {
+      width: min(520px, 100%);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 26px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    }
+    img.logo { width: 64px; height: 64px; border-radius: 16px; display: block; margin: 0 auto 16px; }
+    h1 { font-size: 22px; margin: 0 0 6px; letter-spacing: 0.02em; }
+    h1 .en { display: block; font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0.14em; margin-top: 4px; }
+    p { margin: 10px 0; color: var(--muted); font-size: 14px; }
+    .brandline { color: var(--brand-2); font-weight: 600; letter-spacing: 0.12em; font-size: 12px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
+    a.btn, button.btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: #202027;
+      color: var(--fg);
+      border-radius: 10px;
+      padding: 11px 18px;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    a.btn.primary, button.btn.primary { background: var(--brand); border-color: var(--brand); color: #1a1208; font-weight: 600; }
+    a.btn:hover, button.btn:hover { filter: brightness(1.08); }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .links { margin-top: 18px; font-size: 12.5px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .links a { color: var(--brand-2); text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+    .tip { font-size: 12px; color: var(--muted); margin-top: 16px; border-top: 1px solid var(--border); padding-top: 14px; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="logo" src="assets/brand/icon-192.png" width="64" height="64" alt="" aria-hidden="true" />
+    <div class="brandline">SHADOW MARKET</div>
+    <h1>当前离线<span class="en">YOU ARE OFFLINE</span></h1>
+    <p lang="zh-CN">网络不可用，这个页面还没有被离线缓存。已经访问过的页面（首页 / 资源详情 / 已读列表）仍然可以离线浏览。</p>
+    <p lang="en">The network is unavailable and this page is not cached yet. Pages you have already visited can still be browsed offline.</p>
+    <div class="actions">
+      <button class="btn primary" type="button" onclick="location.reload()">重试连接 · Retry</button>
+      <a class="btn" href="./#/">回到探索 · Explore</a>
+    </div>
+    <div class="links">
+      <a href="./#/favorites">收藏 · Favorites</a>
+      <a href="./#/import">导入说明 · Import</a>
+      <a href="./#/settings">设置 · Settings</a>
+    </div>
+    <p class="tip">市场是纯静态 PWA：只缓存站点自身资源，不缓存任何用户媒体；浏览 / 下载 / 导入都不需要登录。</p>
+  </main>
+</body>
+</html>
