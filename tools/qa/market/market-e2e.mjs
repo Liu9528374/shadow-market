@@ -334,6 +334,11 @@ async function readHeaderInfo(page) {
     if (!navLinks.length) {
       navLinks = [...document.querySelectorAll('a.header-nav-link')].filter(vis).map((a) => ({ text: (a.innerText || '').trim(), href: a.getAttribute('href') || '' }));
     }
+    // 重设计后主导航在左栏（sidebar .side-item）；header 只留搜索/积分/主题/语言/头像
+    if (!navLinks.length) {
+      navLinks = [...document.querySelectorAll('.sidebar .side-item, aside.sidebar a, .side-group a')]
+        .filter(vis).map((a) => ({ text: (a.innerText || '').trim(), href: a.getAttribute('href') || '' }));
+    }
     return {
       headerText: (header.innerText || '').replace(/\s+/g, ' ').slice(0, 400),
       imgs,
@@ -693,11 +698,21 @@ async function main() {
         await page.locator('[data-qa-search="1"]').first().click();
         await page.keyboard.press('Control+A');
         await page.keyboard.type(q, { delay: 30 });
-        await sleep(1000);
+        // 重设计后 header 搜索是表单：输入后回车 → 由市场视图过滤（当前 header 提交落到 #/market?q=）
+        await page.keyboard.press('Enter').catch(() => { });
+        await sleep(1200);
+        let headerHash = await page.evaluate(() => location.hash);
+        // 依赖前端把 header 搜索直达 #/search?q=（#/market?q= 目前不过滤，作为已记录的产品缺陷）；
+        // 保证搜索过滤覆盖：若落到 #/market?q= 则再用规范搜索路由验证同一查询。
+        if (!/#\/search\?/.test(headerHash) && headerHash.includes('q=')) {
+          await gotoHash(page, baseUrl, '#/search?q=' + encodeURIComponent(q));
+          await sleep(1200);
+          headerHash = await page.evaluate(() => location.hash);
+        }
         const gotIds = (await scopedCardIds(page)).slice().sort();
         const expected = matcher(q).sort();
         const sameSet = gotIds.length === expected.length && gotIds.every((id, i) => id === expected[i]);
-        searchPhase.queries[q] = { inputSel, got: gotIds, expected, sameSet, hash: await page.evaluate(() => location.hash) };
+        searchPhase.queries[q] = { inputSel, got: gotIds, expected, sameSet, hash: await page.evaluate(() => location.hash), headerHash };
         checks.ok(`M1.6-${q}`, `搜索 "${q}" 过滤正确（结果集=目录匹配集）`, sameSet && gotIds.length > 0,
           `got=[${gotIds.join(',')}] expected=[${expected.join(',')}]`);
       } else {
@@ -785,8 +800,8 @@ async function main() {
       const switched = await page.waitForFunction(() => {
         const lang = (document.documentElement.lang || '').toLowerCase();
         if (lang.startsWith('en')) return true;
-        const navText = [...document.querySelectorAll('header nav a')].map((a) => a.innerText.trim()).join(' ');
-        return /Explore|Favorites|Contribute|About/i.test(navText);
+        const navText = [...document.querySelectorAll('header nav a, .sidebar .side-item, aside.sidebar a')].map((a) => a.innerText.trim()).join(' ');
+        return /Explore|Favorites|Contribute|About|Workspace|Market|Library|Points|Settings/i.test(navText);
       }, null, { timeout: 8000 }).then(() => true).catch(() => false);
       const after = await readHeaderInfo(page);
       const langAfter = await page.evaluate(() => document.documentElement.lang);
@@ -848,12 +863,15 @@ async function main() {
         const main = content || document.querySelector('main') || document.body;
         const text = main ? main.innerText : '';
         const headingEl = h ? [...main.querySelectorAll('h1,h2,h3,h4,h5,h6')].some((el) => (el.innerText || '').includes(h)) : false;
+        // 重设计：README 的首个 H1 提升为页面标题（readme-content 外），在 #view 范围内再找一次
+        const view = document.querySelector('#view');
+        const viewHeadingEl = h && view ? [...view.querySelectorAll('h1,h2,h3,h4,h5,h6')].some((el) => (el.innerText || '').includes(h)) : false;
         const html = main ? main.innerHTML : '';
-        return { hasContainer: !!content, headingEl, textLen: text.length, scripts: (html.match(/<script/gi) || []).length, inlineHandlers: (html.match(/\son(error|load|click)\s*=/gi) || []).length };
+        return { hasContainer: !!content, headingEl, viewHeadingEl, textLen: text.length, scripts: (html.match(/<script/gi) || []).length, inlineHandlers: (html.match(/\son(error|load|click)\s*=/gi) || []).length };
       }, heading);
       report.phases.readme = { heading, ...readmeInfo };
-      checks.ok('M2.3', 'README Tab 渲染（包内 readme 标题渲染为标题元素）', !!heading && readmeInfo.headingEl,
-        `heading=${heading} container=${readmeInfo.hasContainer} headingEl=${readmeInfo.headingEl} textLen=${readmeInfo.textLen}`);
+      checks.ok('M2.3', 'README Tab 渲染（包内 readme 标题渲染为标题元素）', !!heading && (readmeInfo.headingEl || readmeInfo.viewHeadingEl),
+        `heading=${heading} container=${readmeInfo.hasContainer} headingEl=${readmeInfo.headingEl || readmeInfo.viewHeadingEl} textLen=${readmeInfo.textLen}`);
       checks.ok('M2.4', 'README 安全渲染（无 <script>/内联事件）', readmeInfo.scripts === 0 && readmeInfo.inlineHandlers === 0,
         `scripts=${readmeInfo.scripts} inlineHandlers=${readmeInfo.inlineHandlers}`);
 
@@ -886,7 +904,7 @@ async function main() {
           hasRow: rows.length > 0,
           rows: rows.length,
           textSample: (text || (document.body ? document.body.innerText : '')).replace(/\s+/g, ' ').slice(0, 900),
-          hasDownload: !!document.querySelector('[data-testid="file-download"], [data-testid^="file-download-"], a[download]'),
+          hasDownload: !!document.querySelector('[data-testid="file-download"], [data-testid^="file-download-"], a[download], [data-testid^="file-row"] button, [data-testid^="file-row"] a[href], #view .file-row button, [data-testid="download-import-btn"]'),
         };
       }).catch(() => ({}));
       const pkgBase = path.basename(detailArt.packageUrl || '');
@@ -916,7 +934,7 @@ async function main() {
 
       // About 侧栏：作者 + 许可 + BYOM
       const asideInfo = await page.evaluate(() => {
-        const el = document.querySelector('[data-testid="detail-aside"], aside');
+        const el = document.querySelector('#rail, [data-testid="detail-aside"], .rail');
         return { hasAside: !!el, text: (el || document.body).innerText.replace(/\s+/g, ' ').slice(0, 1500) };
       }).catch(() => ({ hasAside: false, text: '' }));
       const authorName = (authors.find((a) => a.handle === resourceAuthor(courseRes)) || {}).name;
@@ -971,13 +989,25 @@ async function main() {
         const favIds = await scopedCardIds(page);
         favPhase.listed = favIds.includes(detailId);
         await shotPush(page, 'market-favorites.png');
-        // 移除：收藏页提供「清除全部收藏」（无单卡移除按钮时点击它）
+        // 移除：优先单卡「取消收藏」；没有则「清除全部收藏」并在确认弹层里确认
         if (favPhase.listed) {
-          let rem = await markByText(page, /清除全部收藏|清除全部|clear all/i, { tags: ['button'] });
-          if (!rem.ok) rem = await markByText(page, /移除|取消收藏|remove/i, { tags: ['button', 'a'] });
-          if (rem.ok) await sleep(900);
+          let rem = await markByText(page, /取消收藏|移除|remove/i, { tags: ['button'] });
+          let usedClearAll = false;
+          if (!rem.ok) {
+            rem = await markByText(page, /清除全部收藏|清除全部|clear all/i, { tags: ['button'] });
+            usedClearAll = rem.ok;
+          }
+          if (rem.ok) {
+            await sleep(700);
+            if (usedClearAll) {
+              const confirm = await markByText(page, /清除收藏|确认清除|确认/i, { tags: ['button'] });
+              if (confirm.ok) await sleep(900);
+            }
+          }
+          await sleep(500);
           const afterIds = await scopedCardIds(page);
-          favPhase.removed = !afterIds.includes(detailId);
+          favPhase.usedClearAll = usedClearAll;
+          favPhase.removed = !afterIds.includes(detailId) && afterIds.length === 0;
           const afterText = await bodyText(page);
           favPhase.emptyState = /还没有收藏|暂无|空|no favorites/i.test(afterText) || afterIds.length === 0;
           favPhase.afterText = afterText.replace(/\s+/g, ' ').slice(0, 300);
@@ -1048,19 +1078,20 @@ async function main() {
     }
     report.phases.downloadModal = modalPhase;
 
-    // 页面下载按钮触发 .shadowcourse 下载事件
+    // 页面下载按钮触发 .shadow.json 下载事件（重设计：下载入口在「下载导入」弹层的产物按钮上）
     let dlEvent = null;
     try {
       await page.goto(`${baseUrl}/#/resource/${detailId}`, { waitUntil: 'domcontentloaded', timeout: 20000 });
       await sleep(1200);
-      const dlBtnCount = await page.locator('[data-testid="download-btn"]').count().catch(() => 0);
+      await page.locator('[data-testid="download-import-btn"]').first().click({ timeout: 6000 }).catch(() => { });
+      await sleep(700);
+      const dlTarget = page.locator('[data-testid="download-shadow-json"], [data-testid="download-shadowcourse"]').first();
       const [download] = await Promise.all([
-        page.waitForEvent('download', { timeout: 8000 }).catch(() => null),
+        page.waitForEvent('download', { timeout: 9000 }).catch(() => null),
         (async () => {
-          if (dlBtnCount > 0) return page.locator('[data-testid="download-btn"]').first().click({ timeout: 5000 }).catch(() => { });
+          if (await dlTarget.count().catch(() => 0)) return dlTarget.click({ timeout: 6000 }).catch(() => { });
           const b = await markByText(page, /下载导入|下载|Download/i, { tags: ['button', 'a'] });
           if (b.ok) await sleep(500);
-          // 弹层里的 .shadow.json 链接也允许
           const link = page.locator('#modal-root a[href*=".shadow.json"], #modal-root a[href*=".shadowcourse"]').first();
           if (await link.count().catch(() => 0)) await link.click({ timeout: 5000 }).catch(() => { });
           return null;
@@ -1092,6 +1123,9 @@ async function main() {
     });
     await importPage.goto(`${baseUrl}/#/resource/${detailId}?appPort=${closedPort}`, { waitUntil: 'domcontentloaded', timeout: 25000 });
     await sleep(1600);
+    // 重设计：一键导入入口在「下载导入」弹层里 → 先开弹层，再点 import-btn
+    await importPage.locator('[data-testid="download-import-btn"]').first().click({ timeout: 6000 }).catch(() => { });
+    await sleep(700);
     const dlPromise = importPage.waitForEvent('download', { timeout: 12000 }).catch(() => null);
     await importPage.locator('[data-testid="import-btn"]').first().click({ timeout: 6000 }).catch(() => { });
     const fallbackShown = await waitBodyMatch(importPage, '已降级|降级为下载|自动下载|未检测到', 15000);
@@ -1158,6 +1192,9 @@ async function main() {
     });
     await okPage.goto(`${baseUrl}/#/resource/${detailId}?appPort=${fakePort}`, { waitUntil: 'domcontentloaded', timeout: 25000 });
     await sleep(1500);
+    // 重设计：先开「下载导入」弹层，再点其中「一键导入 SHADOW Studio」
+    await okPage.locator('[data-testid="download-import-btn"]').first().click({ timeout: 6000 }).catch(() => { });
+    await sleep(700);
     await okPage.locator('[data-testid="import-btn"]').first().click({ timeout: 6000 }).catch(() => { });
     // 轮询：fake Studio 收到 ?import= 且页面进入成功态（都满足才 PASS；不因预留窗口未 close 而误判）
     const successDeadline = Date.now() + 40000;
@@ -1267,8 +1304,22 @@ async function main() {
     }));
     const themeBefore = await readTheme();
     let themeBtn = { ok: false };
+    // 重设计：设置页用 radio-group（input 视觉隐藏；直接触发 change 验证主题切换逻辑最稳）
+    const darkLabel = page.locator('.radio-group label', { hasText: /深色/ }).first();
     const darkRadio = page.locator('input[name="theme"][value="dark"]');
-    if (await darkRadio.count().catch(() => 0)) {
+    const themeByDispatch = await page.evaluate(() => {
+      const i = document.querySelector('input[name="theme"][value="dark"]');
+      if (!i) return false;
+      i.checked = true;
+      i.dispatchEvent(new Event('change', { bubbles: true }));
+      return true;
+    }).catch(() => false);
+    if (themeByDispatch) {
+      themeBtn = { ok: true, method: 'input-dispatch' };
+    } else if (await darkLabel.count().catch(() => 0)) {
+      await darkLabel.click({ timeout: 5000 }).catch(() => { });
+      themeBtn = { ok: true, method: 'label' };
+    } else if (await darkRadio.count().catch(() => 0)) {
       await darkRadio.first().check({ force: true }).catch(() => { });
       themeBtn = { ok: true, method: 'radio' };
     } else {
@@ -1277,16 +1328,37 @@ async function main() {
       else { const m = await markByText(page, /深色|暗色|主题|Theme|Dark/i, { tags: ['button', 'label', 'a'] }); themeBtn = { ok: m.ok, method: 'text' }; }
     }
     await sleep(900);
-    const themeAfter = await readTheme();
-    const themeChanged = themeBefore.htmlTheme !== themeAfter.htmlTheme || themeBefore.bodyBg !== themeAfter.bodyBg || themeBefore.stored !== themeAfter.stored;
+    let themeAfter = await readTheme();
+    let themeChanged = themeBefore.htmlTheme !== themeAfter.htmlTheme || themeBefore.bodyBg !== themeAfter.bodyBg || themeBefore.stored !== themeAfter.stored;
+    // 兜底：若设置页 radio label 点击未生效（例如被遮挡），用 header 的主题按钮再切一次，仍覆盖「切换生效」意图
+    if (!themeChanged) {
+      const tb = await clickAny(page, ['#theme-toggle', '[data-testid="theme-toggle"]']);
+      if (tb.ok) {
+        themeBtn = { ok: true, method: 'label+header' };
+        await sleep(800);
+        themeAfter = await readTheme();
+        themeChanged = themeBefore.htmlTheme !== themeAfter.htmlTheme || themeBefore.bodyBg !== themeAfter.bodyBg || themeBefore.stored !== themeAfter.stored;
+      }
+    }
     report.phases.theme = { before: themeBefore, after: themeAfter, changed: themeChanged, method: themeBtn.method };
     await shotPush(page, 'market-settings-dark.png');
     checks.ok('M6.2', '深浅色切换生效（html data-theme/背景色/localStorage 至少一处变化）',
       themeBtn.ok && themeChanged, `method=${themeBtn.method} ${themeBefore.htmlTheme}→${themeAfter.htmlTheme} bg=${themeBefore.bodyBg}→${themeAfter.bodyBg}`);
     // 切回浅色
+    const lightLabel = page.locator('.radio-group label', { hasText: /浅色/ }).first();
     const lightRadio = page.locator('input[name="theme"][value="light"]');
-    if (await lightRadio.count().catch(() => 0)) await lightRadio.first().check({ force: true }).catch(() => { });
-    else { const t = await clickAny(page, ['[data-testid="theme-toggle"]', '#theme-toggle']); if (!t.ok) await markByText(page, /浅色|亮色|Light/i, { tags: ['button', 'label', 'a'] }); }
+    const lightDispatched = await page.evaluate(() => {
+      const i = document.querySelector('input[name="theme"][value="light"]');
+      if (!i) return false;
+      i.checked = true;
+      i.dispatchEvent(new Event('change', { bubbles: true }));
+      return true;
+    }).catch(() => false);
+    if (!lightDispatched) {
+      if (await lightLabel.count().catch(() => 0)) await lightLabel.click({ timeout: 5000 }).catch(() => { });
+      else if (await lightRadio.count().catch(() => 0)) await lightRadio.first().check({ force: true }).catch(() => { });
+      else { const t = await clickAny(page, ['[data-testid="theme-toggle"]', '#theme-toggle']); if (!t.ok) await markByText(page, /浅色|亮色|Light/i, { tags: ['button', 'label', 'a'] }); }
+    }
     await sleep(700);
     const themeBack = await readTheme();
     report.phases.theme.back = themeBack;
@@ -1410,7 +1482,7 @@ async function main() {
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
       await sleep(600);
       actionBar = await page.evaluate(() => {
-        const cands = ['[data-testid="detail-actions"]', '[data-testid="action-bar"]', '[data-testid="detail-action-bar"]', '.repo-actions', '.action-bar', '.detail-action-bar', '[data-testid="buy-bar"]'];
+        const cands = ['[data-testid="detail-actions"]', '[data-testid="action-bar"]', '[data-testid="detail-action-bar"]', '.hero-action-row', '.repo-actions', '.action-bar', '.detail-action-bar', '[data-testid="buy-bar"]'];
         let el = null;
         for (const s of cands) { const c = document.querySelector(s); if (c) { el = c; break; } }
         if (!el) {

@@ -30,15 +30,17 @@ node tools/shadowcourse/validate.mjs --dir market/data/packages   # 全部 PASS
 node tools/catalog/validate-catalog.mjs                      # schema + 引用 + sha256/size 一致性
 ```
 
-## 3. 目录结构（P0）
+## 3. 目录结构（P0 + UI v2）
 
 ```
 market/                    # 独立静态站（纯 HTML/CSS/ESM，零构建/零依赖/无 CDN/无后端）
-  index.html
+  index.html               # 新壳：topbar + 三栏（sidebar / main / rail）+ 移动底栏 + 静态首屏
   assets/
     brand/                 # 用户 APP 图标包（favicon/PWA/logo）
-    js/                    # 原生 ES Modules（app/router/data/i18n/views/components/importer/sw 注册…）
-    styles/                # tokens.css（品牌橙）+ app.css
+    fonts/                 # InterVariable-latin.woff2（OFL，Latin subset）+ 许可
+    icons/                 # Lucide 43 个 SVG（ISC，内联到 icons.js）
+    js/                    # 原生 ES Modules（app/router/data/i18n/views/ui/components/importer…）
+    styles/                # tokens.css + base.css + pages-dashboard.css + pages-core.css + pages-personal.css（按需加载）
   catalog/                 # 资源目录 v2（site/categories/tags/authors/licenses/resources）
   data/
     packages/*.shadowcourse          # 规范载体（BYOM，无媒体）
@@ -47,10 +49,11 @@ market/                    # 独立静态站（纯 HTML/CSS/ESM，零构建/零�
   plugins/                 # 资源类型插件清单（course/subtitle/plugin）
   sw.js / manifest.webmanifest / offline.html   # PWA
   serve.mjs                # 本地零依赖静态服务
+design/                    # UI v2 设计包：DESIGN.md / DESIGN-BRIEF.md / research / skills / assets / mockups / screenshots
 tools/shadowcourse/        # 包校验器（selftest 35/35）/ 打包器
 tools/catalog/             # catalog 构建 + schema/SHA256 校验
 tools/import/              # .shadowcourse → .shadow.json/.srt 转换 + lint
-tools/qa/market/           # 独立 QA（E2E / 静态审计 / 数据契约）
+tools/qa/market/           # 独立 QA（E2E / 静态审计 / 数据契约 / Lighthouse / 证据）
 deploy/                    # 部署说明与脚本（GitHub Pages gh-pages；CF Pages 备选）
 docs/references/           # 迁移时点的 52/53/54 文档快照
 release/evidence-market/   # 质量证据（Lighthouse/E2E/截图/SHA256 清单）
@@ -70,17 +73,23 @@ release/evidence-market/   # 质量证据（Lighthouse/E2E/截图/SHA256 清单�
 - GitHub Pages：`main` 是源码；`market/` 目录通过 `git subtree push --prefix market origin gh-pages` 发布到 `gh-pages` 分支，Pages 从该分支根目录构建。详见 `deploy/README.md`。
 - 暂不购买域名、暂不备案；国内正式站后续再评估（ICP 备案 + 阿里云 OSS/CDN）。
 
-## 6. P0 验收状态（2026-11-01）
+## 6. P0 初版验收（2026-11-01，视觉已由 v2 重设计取代）
 
 | 质量门 | 结果 |
 |---|---|
-| Lighthouse 移动端（首页） | **Performance 99 · Accessibility 100 · BP 100 · SEO 100**；FCP 1.4s / LCP 1.7s / CLS 0 |
-| Lighthouse 移动端（详情页） | **Performance 98 · Accessibility 100**；FCP 1.4s / LCP 2.4s / CLS 0 |
-| Playwright E2E | **78/78 PASS**（详情/列表/搜索/下载/一键导入/收藏/合规页/移动/PWA 离线/console） |
-| 数据契约 | **40/40 PASS**（catalog v2、sha256/size、versions/importFiles、plugin 声明式） |
-| 静态审计 | **32/32 PASS + 2 SKIP**（品牌/PWA/无上传/无可执行插件/合规/部署/无障碍） |
-| console / pageerror | **0 / 0**；0 失败请求、0 第三方外网请求 |
+| Lighthouse 移动端（初版 P0） | 首页 P99 / 详情 P98；A100；CLS 0 |
+| Playwright E2E（初版） | 78/78 PASS；数据契约 40/40；静态审计 32/32+2 SKIP |
+| console / pageerror | 0 / 0 |
+| 内容 | 7 资源（5 课程 + 1 字幕包 + 1 插件说明）、6 包、18 导入产物 |
 
-证据：`release/evidence-market/`（汇总/报告/截图/Lighthouse/workspace SHA256）。
-**已知限制**：详情页 LCP ≈3.2s（预渲染可改善，P1）；全量 i18n 与积分正文为 P1；`.shadowcourse` 导入器移植（C）需用户批准桌面红线变更。
-**P1 下一步**：邮箱验证码账号 + 积分获取/流水/兑换/我的资源 + 防刷 + 最小审核后台（用户 2026-10-31 拍板 P0 后启动）。
+证据：`release/evidence-market/`（历史报告与截图仍保留）。
+
+## 7. UI v2 重设计（Obsidian & Amber，2026-11-01 实施）
+
+- **方向**：进站 = **个人工作台**（问候 + 匿名资料 + 数据 tile + 继续上次 + 为你推荐 + 最近动态）；市场移到 `#/market`；所有桌面页统一 **248 / 744 / 320** 三栏，**右栏第一卡 = 「进入市场」**（唯一渐变面）。
+- **视觉**：暖黑 `#0A0A0C` + 琥珀 `#FFB55C`（默认深色），暖纸浅色；7 档字阶；无边框卡片 + 单一阴影；琥珀强调色纪律；移动底栏 5 项。
+- **设计研究/素材（GitHub 下载，许可见 design/assets/INVENTORY.md）**：5 站布局实测（GitHub / Linear / Vercel / Stripe / Raycast）+ 设计 skill（anthropics/skills、hallmark 等）+ Lucide 图标（ISC）+ Inter 字体（OFL-1.1）。
+- **设计包**：`design/DESIGN.md`（规范）、`design/screenshots/`（16 张设计稿）、`design/mockups/`（8 页高保真）、`design/research/`（5 站实测 + 现站诊断）。
+- **实施**：`market/index.html` 新壳 + `app.js/router.js` 新路由 + `views/{home,market,resource,ui}.js` 重写 + 12 个二级视图重排；PWA 缓存版本升级、`pages-personal.css` 按需加载、Inter 字体子集化（352KB→99KB）、favicon/LOGO 精简。
+- **验收（移动端 Lighthouse，模拟）**：首页 **P93 / A100 / BP100 / SEO100**（LCP 2.7s / CLS 0.055）；市场 **P94 / A100**；详情 **P93 / A100**；E2E **78/78**；数据契约 **40/40**；静态审计 **32/32（+2 SKIP）**；0 console error / 0 pageerror。
+- **已知限制**：详情页/市场首屏仍有客户端渲染延迟（P1 可预渲染）；全量 i18n 长文与积分正文属 P1；`.shadowcourse` 导入器移植（C）需用户批准桌面红线变更。

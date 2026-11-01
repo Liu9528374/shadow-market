@@ -1,95 +1,26 @@
-/** 资源详情页：标题区 + 下载导入弹层 + Tabs（README / 句子预览 / 文件 / 版本与变更）+ About 侧栏 */
+/**
+ * 资源详情页（#/resource/:id）
+ * 设计依据：design/mockups/resource.html（Hero 徽标≤3 + 3 操作 + 4 Tabs + 右栏 3 块）。
+ * 数据：catalog resource + versions[0]（.shadowcourse 包在首屏前 fetch，README/句子以包为准）；
+ *      plugin 声明式资源不 fetch 包，README 用目录摘要，文件只给 README + 声明 JSON。
+ */
 
-import { el, fmtDuration, fmtBytes, fmtDate, fmtRelative, baseName, fmtNum, copyText } from '../dom.js';
+import { el, elFromHtml, fmtDuration, fmtBytes, fmtDate, baseName, copyText } from '../dom.js';
+import { nextPaint } from './ui.js';
 import { icon } from '../icons.js';
+import { t, pickLang } from '../i18n.js';
 import {
-  getState, resourceById, pluginFor, loadPackage, loadReadmeText, creatorByHandle, categoryById,
-  licenseById, isDeclarativeResource, isCoursePackage,
+  getState, resourceById, pluginFor, loadPackage, creatorByHandle, categoryById, licenseById,
+  isDeclarativeResource,
 } from '../data.js';
-import {
-  breadcrumb, coverIcon, freeBadge, fixtureBadge, unknownTypeBadge, favoriteButton, tagLinks,
-  asideCard, asideRow, inlineError, openModal, toast, metaItem, createTabs,
-} from '../components.js';
-import { importToStudio, downloadPackage, downloadImportFile, importFileEntries, getAppPortOverride } from '../importer.js';
 import { MarketPoints } from '../points.js';
 import { renderMarkdownInto } from '../markdown.js';
-import { replaceRoute, buildHash } from '../router.js';
-import { t, pickLang } from '../i18n.js';
+import { toast, openModal } from '../components.js';
+import {
+  importToStudio, downloadPackage, downloadImportFile, importFileEntries,
+} from '../importer.js';
 
 const CONTACT_EMAIL = 'market@shadowmarket.app';
-const TAB_META = {
-  readme: { label: 'README', icon: 'book' },
-  sentences: { label: '句子预览', icon: 'message' },
-  files: { label: '文件', icon: 'file' },
-  versions: { label: '版本与变更', icon: 'versions' },
-  license: { label: '许可', icon: 'scale' },
-};
-
-function timeRange(start, end) {
-  const n = (v) => (Number.isFinite(Number(v)) ? Number(v).toFixed(1) : '?');
-  return `${n(start)}–${n(end)}s`;
-}
-
-function tabIcon(tab) { return TAB_META[tab]?.icon || 'file'; }
-
-function tabLabel(tab) { return t(TAB_META[tab]?.label || tab); }
-
-function statsFrom(resource, pkgEntry) {
-  if (pkgEntry?.status === 'ok' && pkgEntry.stats) return { ...pkgEntry.stats, source: 'package' };
-  return { ...resource.stats, source: 'catalog' };
-}
-
-function currentVersion(resource) {
-  return (Array.isArray(resource.versions) && resource.versions[0]) || {};
-}
-
-/* ---------------- 积分演示（P1 预览） ---------------- */
-
-function recordImportReward(resource) {
-  const status = MarketPoints.importRewardStatus(resource.id);
-  if (status.done) {
-    toast(t('本次导入已记录过 +20 积分（每个资源一次）'), { kind: 'warn' });
-    return;
-  }
-  const result = MarketPoints.rewardImport(resource.id, resource.title);
-  if (result.ok) {
-    MarketPoints.addMyResource(resource, 'import');
-    toast(t('已记录导入成功 +20 积分（P1 本地演示，当前 {n} 分）', { n: result.balance }), { kind: 'success', timeout: 4200 });
-  } else {
-    toast(t('记录失败：{reason}', { reason: result.reason === 'E_DUPLICATE' ? t('已记录过') : t('未知原因') }), { kind: 'error' });
-  }
-}
-
-function makeRewardButton(resource) {
-  const done = MarketPoints.importRewardStatus(resource.id).done;
-  return el('button', {
-    class: 'btn', type: 'button', disabled: done ? true : null,
-    'data-testid': 'record-import-reward',
-    onclick: () => recordImportReward(resource),
-  }, icon(done ? 'check' : 'diamond', 14), done ? t('导入积分已记录（每资源一次）') : t('记录导入成功 +20 积分（本地演示）'));
-}
-
-function trackDownload(resource) {
-  const added = MarketPoints.addMyResource(resource, 'download');
-  toast(added.ok ? t('已开始下载，并加入「我的资源」（本地演示）') : t('已开始下载'), {
-    kind: 'success', timeout: 3000,
-  });
-}
-
-function copyField(text, label = t('复制深链')) {
-  return el('div', { class: 'copy-field' },
-    el('code', { text }),
-    el('button', {
-      class: 'btn btn-sm', type: 'button',
-      onclick: async () => {
-        const ok = await copyText(text);
-        toast(ok ? t('深链已复制') : t('复制失败，请手动选择文本'), { kind: ok ? 'success' : 'error' });
-      },
-    }, icon('copy', 13), label),
-  );
-}
-
-/* ---------------- 下载导入弹层 ---------------- */
 
 const IMPORT_STEPS = [
   '第 1 步：下载 .shadow.json',
@@ -99,10 +30,10 @@ const IMPORT_STEPS = [
   '第 5 步：播放 / 影子跟读练习',
 ];
 const IMPORT_STEP_DESCS = [
-  '带翻译的工程文件（含句子时间轴 / 翻译 / 练习配置），是本页推荐主路径。',
+  '.shadow.json 是带翻译的工程文件：句子时间轴 + 中文翻译 + 练习配置。',
   '市场与 SHADOW Studio 是两个产品：市场只负责浏览与下载，桌面端负责导入与练习。',
   '在桌面端菜单选择 File → Open Project…，选中刚下载的 .shadow.json。',
-  '桌面端会提示「把同名媒体拖进窗口」；把自备媒体重命名为指定名后拖入。没有媒体时可选「仅文本模式」先看句子与翻译。',
+  '桌面端会提示「把同名媒体拖进窗口」；把自备媒体重命名后拖入。没有媒体时可用「仅文本模式」。',
   '播放时按句子高亮与翻译做影子跟读练习；录音/评分以桌面端版本能力为准。',
 ];
 const IMPORT_PITFALLS = [
@@ -111,843 +42,587 @@ const IMPORT_PITFALLS = [
   '③ 媒体必须与句子时间轴同源（同一版本视频/音频），否则对不上口型。',
 ];
 
-function importOptionCard({ kind, title, desc, badge, filename, disabled }) {
-  const testidMap = {
-    shadowJson: 'download-shadow-json',
-    srt: 'download-srt',
-    shadowcourse: 'download-shadowcourse',
-    readme: 'download-readme',
-    declaration: 'download-declaration',
-  };
-  const testid = testidMap[kind] || `download-${kind}`;
-  return el('div', { class: 'import-option', dataset: { kind } },
-    el('div', { class: 'import-option-head' },
-      el('div', { class: 'import-option-title' }, title, badge ? el('span', { class: `badge ${kind === 'shadowJson' || kind === 'declaration' ? 'badge-free' : 'badge-type'}` }, badge) : null),
-      el('div', { class: 'import-option-file mono', text: filename || '—' }),
+function escapeH1(md) {
+  return String(md || '').replace(/^\s*#\s+[^\n]*\n+/, '');
+}
+
+function timeRange(start, end) {
+  const n = (v) => (Number.isFinite(Number(v)) ? Number(v).toFixed(1) : '?');
+  return `${n(start)}–${n(end)}s`;
+}
+
+function statsOf(resource, pkgEntry) {
+  if (pkgEntry?.status === 'ok' && pkgEntry.stats) return { ...pkgEntry.stats, source: 'package' };
+  return { ...resource.stats, source: 'catalog' };
+}
+
+function versionOf(resource) {
+  return (Array.isArray(resource.versions) && resource.versions[0]) || {};
+}
+
+function typeLabelOf(resource) {
+  const plugin = pluginFor(resource.type);
+  return pickLang(plugin.label, plugin.labelEn);
+}
+
+/* ---------------- 收藏 / 分享 ---------------- */
+
+function favoriteToggle(resource) {
+  const on = MarketPoints.isFavorite(resource.id);
+  const btn = el('button', {
+    class: 'btn btn-ghost', type: 'button', 'aria-pressed': on ? 'true' : 'false',
+    'data-testid': 'favorite-btn',
+    onclick: () => {
+      const result = MarketPoints.toggleFavorite(resource.id);
+      const now = Boolean(result.favorite);
+      btn.setAttribute('aria-pressed', now ? 'true' : 'false');
+      btn.replaceChildren(icon('star', 16), now ? t('已收藏') : t('收藏'));
+      toast(now ? t('已收藏（仅保存在本机浏览器）') : t('已取消收藏'), { kind: 'success', timeout: 2200 });
+    },
+  }, icon('star', 16), on ? t('已收藏') : t('收藏'));
+  return btn;
+}
+
+async function shareResource() {
+  const ok = await copyText(window.location.href);
+  toast(ok ? t('链接已复制') : t('复制失败，请手动选择地址栏'), { kind: ok ? 'success' : 'error' });
+}
+
+/* ---------------- 下载导入弹层 ---------------- */
+
+let modalResourceRef = null;
+
+function artifactCard({ kind, title, desc, size, primary, disabled, filename }) {
+  const testids = { shadowJson: 'download-shadow-json', srt: 'download-srt', shadowcourse: 'download-shadowcourse', readme: 'download-readme', declaration: 'download-declaration' };
+  return el('div', { class: 'artifact' + (primary ? ' is-primary' : ''), dataset: { kind } },
+    el('span', { class: 'artifact-icon' }, icon(kind === 'shadowcourse' ? 'layers' : 'file-text', 16)),
+    el('div', { class: 'artifact-body' },
+      el('span', { class: 'artifact-name' }, title, primary ? el('span', { class: 'badge badge-soft', text: t('推荐') }) : null),
+      el('span', { class: 'artifact-desc', text: desc }),
     ),
-    el('p', { class: 'import-option-desc', text: desc }),
+    el('span', { class: 'artifact-size', text: size || '—' }),
     el('button', {
-      class: `btn ${kind === 'shadowJson' || kind === 'declaration' ? 'btn-primary' : ''}`, type: 'button',
-      'data-testid': testid,
+      class: 'icon-btn', type: 'button', 'data-testid': testids[kind] || `download-${kind}`,
       disabled: disabled ? true : null,
+      'aria-label': `${t('下载')} ${filename || title}`,
       onclick: () => {
-        if (disabled) return;
-        const result = downloadImportFile(resourceRef, kind);
-        if (result.ok) trackDownload(resourceRef);
+        if (disabled || !modalResourceRef) return;
+        const result = downloadImportFile(modalResourceRef, kind);
+        if (result.ok) toast(t('已开始下载，并加入「我的资源」（本地演示）'), { kind: 'success' });
         else toast(t('该资源暂未提供这个文件'), { kind: 'warn' });
       },
-    }, icon('download', 14), disabled ? t('暂不可用') : t('下载')),
+    }, icon('download', 16)),
   );
 }
 
-let resourceRef = null;
-
-/** 声明式资源（plugin / JSON 白名单）的下载弹层：只给 README + 声明 JSON，不展示 .shadow.json/.srt */
-function declarativeDownloadModal(resource, entries) {
-  const byKind = new Map(entries.map((e) => [e.kind, e]));
-  const fileNote = (kind) => {
-    const entry = byKind.get(kind);
-    return { filename: entry?.filename || '', disabled: !entry };
-  };
-  const body = el('div', { class: 'import-modal' },
-    el('div', { class: 'notice' },
-      icon('puzzle', 16, 'notice-icon'),
-      el('div', {},
-        el('strong', { text: t('声明式插件资源') }),
-        ' ',
-        t('这是纯 JSON 声明清单：不含可执行代码、不联网、权限声明全为 false；市场只读声明，不加载也不执行任何插件代码。'),
-      ),
-    ),
-    el('div', { class: 'import-options' },
-      importOptionCard({
-        kind: 'readme', title: t('下载白名单说明（README）'), badge: 'README',
-        desc: t('声明式插件白名单的说明文档：资源类型、权限、边界与审核规则（纯文本）。'),
-        ...fileNote('readme'),
-      }),
-      importOptionCard({
-        kind: 'declaration', title: t('下载声明式 JSON'), badge: t('规范 / 归档'),
-        desc: t('builtin-whitelist.json：市场认可的资源类型与权限声明，纯数据、不可执行。'),
-        ...fileNote('declaration'),
-      }),
-    ),
-    el('p', { class: 'points-note' }, t('插件类资源不需要 .shadow.json / .srt 导入流程：它描述的是资源类型与权限，而不是课程包。')),
-    el('a', { class: 'aside-link', href: '#/about' }, t('市场与 SHADOW Studio 的产品边界 →')),
-  );
-  const modal = openModal({ title: t('下载插件声明文件'), body, actions: [] });
-  const foot = modal?.element.querySelector('.modal-foot') || el('div', { class: 'modal-foot' });
-  foot.append(el('button', { class: 'btn', type: 'button', onclick: () => modal?.close() }, t('关闭')));
-  modal?.element.append(foot);
-  return modal;
-}
-
-function downloadImportModal(resource) {
-  resourceRef = resource;
+function importModal(resource) {
+  modalResourceRef = resource;
+  const version = versionOf(resource);
   const entries = importFileEntries(resource);
   const byKind = new Map(entries.map((e) => [e.kind, e]));
   const fileNote = (kind) => {
     const entry = byKind.get(kind);
-    if (!entry) return { url: '', filename: '', disabled: true };
-    return { url: entry.url, filename: entry.filename, disabled: false };
+    return { filename: entry?.filename || '', disabled: !entry, size: kind === 'shadowcourse' && version.sizeBytes ? fmtBytes(version.sizeBytes) : '' };
   };
-  if (isDeclarativeResource(resource)) return declarativeDownloadModal(resource, entries);
+  const declarative = isDeclarativeResource(resource);
+  const body = el('div', { class: 'import-modal', style: { display: 'flex', flexDirection: 'column', gap: '16px' } });
 
-  const body = el('div', { class: 'import-modal' },
-    el('div', { class: 'notice' },
-      icon('shield', 16, 'notice-icon'),
+  if (declarative) {
+    body.append(el('div', { class: 'notice' }, el('span', { class: 'dot' }),
+      el('span', {}, el('b', { text: t('声明式插件资源') }), ' ', t('纯 JSON 声明清单：不含可执行代码，市场只读声明、不加载执行。'))));
+    body.append(el('div', { class: 'artifact-list' },
+      artifactCard({ kind: 'readme', title: t('下载白名单说明（README）'), desc: t('声明式插件白名单的说明文档：资源类型、权限、边界与审核规则。'), ...fileNote('readme') }),
+      artifactCard({ kind: 'declaration', title: t('下载声明式 JSON'), desc: t('builtin-whitelist.json：市场认可的资源类型与权限声明，纯数据、不可执行。'), primary: true, ...fileNote('declaration') }),
+    ));
+  } else {
+    body.append(el('div', { class: 'notice' }, el('span', { class: 'dot' }),
+      el('span', {}, el('b', { text: t('BYOM：媒体需自备') }), ' ', t('课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。'),
+        resource.mediaName ? el('span', { class: 'media-name', style: { marginLeft: '8px' } }, resource.mediaName) : null)));
+    body.append(el('div', { class: 'artifact-list' },
+      artifactCard({ kind: 'shadowJson', title: t('下载 .shadow.json'), desc: t('带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与时间轴。'), primary: true, ...fileNote('shadowJson') }),
+      artifactCard({ kind: 'srt', title: t('下载 .srt'), desc: t('无翻译的通用字幕，任何播放器/工具都能用；先导入媒体，再 Import Subtitle。'), ...fileNote('srt') }),
+      artifactCard({ kind: 'shadowcourse', title: t('下载 .shadowcourse'), desc: t('规范载体与归档格式（当前桌面端 r19 不直接识别），用于校验、存档与未来版本。'), ...fileNote('shadowcourse') }),
+    ));
+    body.append(el('div', { class: 'import-guide', style: { display: 'grid', gap: '18px' } },
       el('div', {},
-        el('strong', { text: t('BYOM：媒体需自备') }),
-        ' ',
-        t('课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。'),
-        resource.mediaName
-          ? el('div', { class: 'media-name-note' }, icon('tag', 12), ` ${t('请把媒体重命名为：')}`, el('code', { text: resource.mediaName }))
-          : null,
+        el('h3', { class: 'h3', style: { marginBottom: '10px' } }, icon('upload', 16), ` ${t('5 步导入')}`),
+        el('ol', { class: 'steps' }, IMPORT_STEPS.map((title, idx) => el('li', {}, el('div', {},
+          el('div', { class: 'step-title', text: t(title) }),
+          el('div', { class: 'step-desc', text: t(IMPORT_STEP_DESCS[idx]) }),
+        )))),
       ),
-    ),
-    el('div', { class: 'import-options' },
-      importOptionCard({
-        kind: 'shadowJson', title: t('下载 .shadow.json'), badge: t('推荐'),
-        desc: t('带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与句子时间轴。'),
-        ...fileNote('shadowJson'),
-      }),
-      importOptionCard({
-        kind: 'srt', title: t('下载 .srt'), badge: t('备选'),
-        desc: t('无翻译的通用字幕，任何播放器/工具都能用；先导入媒体，再 Import Subtitle。'),
-        ...fileNote('srt'),
-      }),
-      importOptionCard({
-        kind: 'shadowcourse', title: t('下载 .shadowcourse'), badge: t('规范 / 归档'),
-        desc: t('规范载体与归档格式（当前桌面端 r19 不直接识别），用于校验、存档与未来版本。'),
-        ...fileNote('shadowcourse'),
-      }),
-    ),
-    el('div', { class: 'import-guide' },
-      el('div', { class: 'import-guide-col' },
-        el('h3', { class: 'import-guide-title' }, icon('upload', 14), t('5 步导入')),
-        el('ol', { class: 'steps' }, IMPORT_STEPS.map((title, idx) => el('li', {},
-          el('div', {},
-            el('div', { class: 'step-title', text: t(title) }),
-            el('div', { class: 'step-desc', text: t(IMPORT_STEP_DESCS[idx]) }),
-          ),
-        ))),
-      ),
-      el('div', { class: 'import-guide-col' },
-        el('h3', { class: 'import-guide-title' }, icon('alert', 14), t('3 个坑')),
+      el('div', {},
+        el('h3', { class: 'h3', style: { marginBottom: '10px' } }, icon('help-circle', 16), ` ${t('3 个坑')}`),
         el('ul', { class: 'pitfalls' }, IMPORT_PITFALLS.map((text) => el('li', { text: t(text) }))),
-        el('p', { class: 'points-note' }, t('没有媒体时可以先看句子与翻译；录音/评分是否可用取决于桌面端版本，市场不作承诺。')),
-        el('a', { class: 'aside-link', href: '#/import' }, t('导入原理与降级说明 →')),
       ),
-    ),
-  );
+    ));
+  }
 
-  const modal = openModal({ title: t('下载导入文件'), body, actions: [] });
-  const foot = modal?.element.querySelector('.modal-foot') || el('div', { class: 'modal-foot' });
-  foot.append(el('button', { class: 'btn', type: 'button', onclick: () => modal?.close() }, t('关闭')));
-  modal?.element.append(foot);
-  return modal;
-}
-
-/* ---------------- 一键导入（M3.8 修复路径） ---------------- */
-
-function fallbackReasonText(result) {
-  if (result.reason === 'E_POPUP') return t('检测到了 SHADOW Studio，但浏览器拦截了自动打开的新窗口。');
-  if (result.reason === 'E_OVERRIDE_NOT_FOUND') return t('指定端口 {port} 上没有检测到 SHADOW Studio（未扫描默认端口区间）。', { port: result.probe?.override });
-  if (result.probe?.mixedContent) return t('页面在 https 下无法探测本机 http 服务（浏览器混合内容限制）。');
-  return t('没有在本机检测到 SHADOW Studio 的本地服务（已扫描 127.0.0.1:18765–18775）。');
-}
-
-function fallbackDownloadModal(resource, result) {
-  const downloadHref = currentVersion(resource).packageUrl || resource.packageUrl;
-  const body = el('div', {},
-    el('p', { text: fallbackReasonText(result) }),
-    el('p', { style: { marginTop: '10px' } },
-      el('strong', { text: t('已自动降级为下载 + 手动导入：') }),
-      t('课程包是纯数据 JSON，不跑 ASR、不含媒体。'),
-    ),
-    el('ol', { class: 'steps', style: { marginTop: '12px' } },
-      el('li', {}, el('div', {},
-        el('div', { class: 'step-title', text: t('下载课程包') }),
-        el('div', { class: 'step-desc' }, t('点击下方「下载 .shadowcourse」，文件会保存到本机（约几十 KB）。')),
-      )),
-      el('li', {}, el('div', {},
-        el('div', { class: 'step-title', text: t('打开 SHADOW Studio 桌面应用') }),
-        el('div', { class: 'step-desc' }, t('市场与 SHADOW Studio 是两个产品：市场只负责浏览与下载，桌面端只保留「导入课程包」这一个薄接口。')),
-      )),
-      el('li', {}, el('div', {},
-        el('div', { class: 'step-title', text: t('把文件拖进窗口（或菜单导入）') }),
-        el('div', { class: 'step-desc' }, t('拖入后选一句课程包，工具会提示你选择本地媒体（BYOM）；没有媒体也可以先用「仅文本模式」。')),
-      )),
-    ),
-    result.deepLink ? el('div', {},
-      el('p', { style: { marginTop: '12px' } }, el('strong', { text: t('手动打开深链：') })),
-      copyField(result.deepLink),
-    ) : null,
-    el('p', { class: 'points-note', style: { marginTop: '12px' } },
-      t('高级用法：如果 SHADOW Studio 监听在自定义端口，可在市场地址后加 ?appPort=<端口> 后重试一键导入；默认仍扫描 18765–18775。'),
-    ),
-  );
-
-  const modal = openModal({ title: t('一键导入：已降级为下载'), body, actions: [] });
+  const modal = openModal({ title: t('下载导入'), body, actions: [] });
   const foot = modal.element.querySelector('.modal-foot') || el('div', { class: 'modal-foot' });
-  foot.append(
-    el('a', {
-      class: 'btn btn-primary', href: downloadHref, download: baseName(downloadHref),
-      'data-testid': 'fallback-download', onclick: () => { trackDownload(resource); },
-    }, icon('download', 14), t('下载 .shadowcourse')),
-    makeRewardButton(resource),
-    el('button', { class: 'btn', type: 'button', onclick: () => modal.close() }, t('关闭')),
-  );
+  if (!declarative) {
+    foot.append(el('button', {
+      class: 'btn btn-secondary', type: 'button', 'data-testid': 'import-btn',
+      onclick: () => oneClickImport(resource),
+    }, icon('upload', 16), t('一键导入 SHADOW Studio')));
+  }
+  foot.append(el('a', { class: 'btn btn-ghost', href: '#/import' }, t('导入原理与降级说明')));
+  foot.append(el('button', { class: 'btn btn-primary', type: 'button', onclick: () => modal.close() }, t('完成')));
   modal.element.append(foot);
   return modal;
 }
 
-function successModal(resource, result) {
-  const viaLabel = result.openedVia === 'reserved' ? t('新标签页（预留窗口）') : t('新标签页');
+function fallbackDownloadModal(resource, result) {
+  const packageUrl = versionOf(resource).packageUrl || resource.packageUrl;
+  const reason = (() => {
+    if (result.reason === 'E_POPUP') return t('检测到了 SHADOW Studio，但浏览器拦截了自动打开的新窗口。');
+    if (result.reason === 'E_OVERRIDE_NOT_FOUND') return t('指定端口 {port} 上没有检测到 SHADOW Studio（未扫描默认端口区间）。', { port: result.probe?.override });
+    if (result.probe?.mixedContent) return t('页面在 https 下无法探测本机 http 服务（浏览器混合内容限制）。');
+    return t('没有在本机检测到 SHADOW Studio 的本地服务（已扫描 127.0.0.1:18765–18775）。');
+  })();
   const body = el('div', {},
-    el('p', {},
-      t('已在 {addr} 打开导入深链，SHADOW Studio 会接收课程包并提示你选择本地媒体（BYOM）。', { addr: `127.0.0.1:${result.port}` }),
+    el('p', { text: reason }),
+    el('p', { style: { marginTop: '8px' } }, el('strong', { text: t('已自动降级为下载 + 手动导入：') }), t('课程包是纯数据 JSON，不跑 ASR、不含媒体。')),
+    el('ol', { class: 'steps', style: { marginTop: '12px' } },
+      el('li', {}, el('div', {}, el('div', { class: 'step-title', text: t('下载课程包') }), el('div', { class: 'step-desc', text: t('点击下方「下载 .shadowcourse」，文件会保存到本机。') }))),
+      el('li', {}, el('div', {}, el('div', { class: 'step-title', text: t('打开 SHADOW Studio 桌面应用') }), el('div', { class: 'step-desc', text: t('市场只负责浏览与下载，桌面端只保留「导入课程包」薄接口。') }))),
+      el('li', {}, el('div', {}, el('div', { class: 'step-title', text: t('把文件拖进窗口（或菜单导入）') }), el('div', { class: 'step-desc', text: t('拖入后按提示选择本地媒体（BYOM）；没有媒体可先用「仅文本模式」。') }))),
     ),
-    el('p', { class: 'subtle', style: { marginTop: '6px' }, text: t('打开方式：{via}', { via: viaLabel }) }),
-    el('p', { style: { marginTop: '8px' } }, t('导入不跑 ASR、不联网（仅取包）、不上传任何数据；没有合适媒体时可选「仅文本模式」。')),
-    result.deepLink ? copyField(result.deepLink) : null,
-    el('p', { class: 'points-note', style: { marginTop: '12px' } }, t('如果工具里导入成功，可点下方按钮记录 +20 积分（P1 本地演示，每个资源一次）。')),
   );
-  const modal = openModal({ title: t('已发送到 SHADOW Studio'), body, actions: [] });
-  let foot = modal.element.querySelector('.modal-foot');
-  if (!foot) { foot = el('div', { class: 'modal-foot' }); modal.element.append(foot); }
-  foot.append(
-    makeRewardButton(resource),
-    el('button', { class: 'btn btn-primary', type: 'button', onclick: () => modal.close() }, t('完成')),
-  );
-  return modal;
+  const modal = openModal({ title: t('一键导入：已降级为下载'), body, actions: [] });
+  const foot = modal.element.querySelector('.modal-foot') || el('div', { class: 'modal-foot' });
+  if (packageUrl) {
+    foot.append(el('a', { class: 'btn btn-primary', href: packageUrl, download: baseName(packageUrl), 'data-testid': 'fallback-download', onclick: () => MarketPoints.addMyResource(resource, 'download') }, icon('download', 16), t('下载 .shadowcourse')));
+  }
+  foot.append(el('button', { class: 'btn btn-ghost', type: 'button', onclick: () => modal.close() }, t('关闭')));
+  modal.element.append(foot);
 }
 
-async function runImport(resource, button) {
-  const setBusy = (busy) => {
-    if (!button) return;
-    button.disabled = busy;
-    button.setAttribute('aria-busy', busy ? 'true' : 'false');
-    button.replaceChildren(
-      busy ? el('span', { class: 'spinner' }) : icon('upload', 14),
-      busy ? t('正在探测…') : t('一键导入到 SHADOW Studio'),
-    );
-  };
-  setBusy(true);
-  let result;
-  try {
-    // M3.8：不预开 about:blank 预留窗口（否则弹窗事件抓到的是 about:blank），
-    // 直接在用户激活窗口内（探测约 300ms）window.open 深链；只有真正 blocked 才降级下载。
-    result = await importToStudio(resource, null);
-  } catch (err) {
-    setBusy(false);
-    toast(t('导入失败：{message}', { message: err && err.message ? err.message : String(err) }), { kind: 'error' });
-    return;
-  }
-  setBusy(false);
-
+async function oneClickImport(resource) {
+  const result = await importToStudio(resource, null).catch((err) => ({ mode: 'error', message: String(err?.message || err) }));
   if (result.mode === 'desktop') {
-    // 成功路径：不降级下载、不误报拦截；openedVia 记录在结果里（reserved / new-tab）
-    MarketPoints.addMyResource(resource, 'import');
-    toast(t('已检测到 SHADOW Studio（127.0.0.1:{port}），正在打开导入深链…', { port: result.port }), { kind: 'success', timeout: 4200 });
-    successModal(resource, result);
-    return;
+    return openModal({
+      title: t('已发送到 SHADOW Studio'),
+      body: el('div', {},
+        el('p', { text: t('已在 {addr} 打开导入深链，桌面端会接收课程包并提示你选择本地媒体（BYOM）。', { addr: `127.0.0.1:${result.port}` }) }),
+        el('p', { class: 'small muted', style: { marginTop: '6px' }, text: t('打开方式：{via}', { via: result.openedVia === 'reserved' ? t('新标签页（预留窗口）') : t('新标签页') }) }),
+        el('p', { class: 'small muted', style: { marginTop: '6px' }, text: t('不会重复下载，也不会误报拦截。') }),
+      ),
+      actions: [{ label: t('完成'), kind: 'primary' }],
+    });
   }
   if (result.mode === 'download-fallback') {
-    downloadPackage(resource); // 仅真正 blocked / 未探测到时降级一次
-    trackDownload(resource);
+    downloadPackage(resource);
+    MarketPoints.addMyResource(resource, 'download');
     fallbackDownloadModal(resource, result);
-    return;
+    return null;
   }
   toast(result.message || t('该资源没有可导入的包文件'), { kind: 'error' });
+  return null;
 }
 
-/* ---------------- 各 Tab 面板 ---------------- */
+/* ---------------- 各 Tab 内容 ---------------- */
 
-function readmePanel(resource, pkgEntry, { reload, onFallbackReadme }) {
-  const panel = el('div', { class: 'panel-inner' });
-  const declarative = isDeclarativeResource(resource);
-  const head = el('div', { class: 'readme-head' },
-    icon('book', 14),
-    el('span', { class: 'mono', text: 'README.md' }),
-    el('span', { class: 'subtle', text: declarative
-      ? `· ${t('来自目录（声明式资源，README 为完整说明）')}`
-      : pkgEntry?.status === 'ok' ? `· ${t('来自课程包（包内 readme 为准）')}` : `· ${t('来自资源目录摘要')}` }),
-  );
-  panel.append(head);
-
-  if (declarative) {
-    const body = el('div', { class: 'md', 'data-testid': 'readme-content' });
-    renderMarkdownInto(body, resource.readme || '', { emptyText: t('该资源没有提供 README。') });
-    panel.append(body);
-    return panel;
-  }
-
-  if (pkgEntry?.status === 'ok') {
-    const body = el('div', { class: 'md', 'data-testid': 'readme-content' });
-    renderMarkdownInto(body, pkgEntry.pkg.readme || '', { emptyText: t('课程包没有提供 README。') });
-    panel.append(body);
-    return panel;
-  }
-  if (pkgEntry?.status === 'loading') {
-    panel.append(el('div', { class: 'readme-loading' },
-      el('div', { class: 'sk sk-line', style: { width: '38%', height: '22px', marginBottom: '16px' } }),
-      ...Array.from({ length: 6 }, (_, i) => el('div', { class: 'sk sk-line', style: { width: `${[96, 88, 92, 60, 94, 72][i]}%` } })),
-    ));
-    return panel;
-  }
-
-  if (pkgEntry?.status === 'error') {
-    panel.append(inlineError({
-      title: t('课程包加载失败，以下为目录摘要（非完整 README）'),
-      message: `${pkgEntry.error?.message || t('未知错误')} · ${pkgEntry.url || resource.packageUrl}`,
-      retry: () => reload(),
-    }));
-  }
-  if (resource.readme) {
-    const body = el('div', { class: 'md', style: { marginTop: '16px' }, 'data-testid': 'readme-content' });
-    renderMarkdownInto(body, resource.readme);
-    panel.append(body);
-  } else if (pkgEntry?.status !== 'loading') {
-    if (resource.importFiles?.readme) {
-      panel.append(el('p', { class: 'muted', 'data-testid': 'readme-loading-note', text: t('正在读取导入说明 README…') }));
-      onFallbackReadme?.(resource);
-    } else {
-      panel.append(el('p', { class: 'muted', style: { marginTop: '16px' }, text: t('这个资源没有提供 README。') }));
-    }
-  }
-  return panel;
+function readmePanel(resource, pkgEntry) {
+  const md = pkgEntry?.status === 'ok' ? String(pkgEntry.pkg.readme || '') : String(resource.readme || '');
+  const body = el('div', { class: 'md', 'data-testid': 'readme-content' });
+  if (md.trim()) renderMarkdownInto(body, escapeH1(md));
+  else body.append(el('p', { class: 'muted', text: t('这个资源没有提供 README。') }));
+  return el('div', { class: 'readme' }, body);
 }
 
-function sentenceNotes(notes) {
-  const text = String(notes || '').trim();
-  if (!text) return null;
-  const node = el('div', { class: 'sent-note' });
-  text.split('\n').filter(Boolean).slice(0, 6).forEach((line, idx) => {
-    if (idx > 0) node.append(el('br'));
-    const match = /^([^：:]{1,8})[：:]\s*(.*)$/.exec(line);
-    if (match) node.append(el('b', { text: `${match[1]}：` }), match[2]);
-    else node.append(document.createTextNode(line));
-  });
-  return node;
-}
-
-function sentencesPanel(resource, pkgEntry, { reload }) {
-  const panel = el('div', { class: 'panel-inner' });
-
-  if (pkgEntry?.status === 'loading') {
-    panel.append(el('div', { class: 'sk sk-line', style: { width: '36%', height: '16px', marginBottom: '12px' } }));
-    for (let i = 0; i < 3; i += 1) {
-      panel.append(el('div', { class: 'sk-card', style: { marginTop: '8px' } },
-        el('div', { class: 'sk sk-line', style: { width: '70%', height: '16px' } }),
-        el('div', { class: 'sk sk-line', style: { width: '45%' } })));
-    }
-    return panel;
+function sentencesPanel(resource, pkgEntry) {
+  if (pkgEntry?.status !== 'ok') {
+    return el('div', {},
+      el('p', { class: 'muted', text: t('句子预览不可用（课程包未加载）') }),
+      resource.stats?.sentences ? el('p', { class: 'muted', style: { marginTop: '8px' }, text: t('目录统计：{n} 句 · 时长约 {time}（以包为准）', { n: resource.stats.sentences, time: fmtDuration(resource.stats.durationSec) }) }) : null,
+    );
   }
-
-  if (pkgEntry?.status === 'error' || pkgEntry?.status === 'missing') {
-    panel.append(inlineError({
-      title: t('句子预览不可用（课程包未加载）'),
-      message: pkgEntry.status === 'missing' ? (pkgEntry.error || t('该资源没有 packageUrl')) : (pkgEntry.error?.message || t('未知错误')),
-      retry: pkgEntry.status === 'error' ? () => reload() : null,
-      actions: [{ label: t('查看文件 / 下载包'), href: resource.packageUrl ? `#/resource/${encodeURIComponent(resource.id)}?tab=files` : undefined }],
-    }));
-    if (resource.stats?.sentences) {
-      panel.append(el('p', { class: 'muted', style: { marginTop: '12px' } },
-        t('目录统计：{n} 句 · 时长约 {time}（详情页以包为准，包未加载）', { n: resource.stats.sentences, time: fmtDuration(resource.stats.durationSec) })));
-    }
-    return panel;
-  }
-
   const pkg = pkgEntry.pkg;
   const stats = pkgEntry.stats;
-  const summaries = el('div', { class: 'sent-summary' },
-    el('span', {}, t('共 {n} 句', { n: stats.sentences })),
-    el('span', {}, t('时间轴 {time}', { time: fmtDuration(stats.durationSec) })),
-    el('span', {}, t('约 {n} 词', { n: stats.words })),
-    el('span', {}, `${t('词级时间：')}${stats.hasWords ? t('有') : t('无（整句评分）')}`),
-    el('span', {}, `${t('媒体：')}${pkg.mediaPolicy === 'byom' ? t('BYOM（包内不含媒体）') : String(pkg.mediaPolicy || '—')}`),
+  const summary = el('div', { class: 'sent-summary' },
+    el('span', { class: 'badge badge-neutral', text: t('{n} 句', { n: stats.sentences }) }),
+    el('span', { class: 'badge badge-neutral', text: fmtDuration(stats.durationSec) }),
+    el('span', { class: 'badge badge-neutral', text: t('{n} 词', { n: stats.words }) }),
+    el('span', { text: t('词级时间：无（整句评分）') }),
+    el('span', { text: '·' }),
+    el('span', { text: `${t('媒体：')}${pkg.mediaPolicy === 'byom' ? t('BYOM（包内不含媒体）') : String(pkg.mediaPolicy || '—')}` }),
   );
-  const filter = el('input', {
-    class: 'panel-filter', type: 'search', 'aria-label': t('过滤句子'), 'data-testid': 'sentence-filter',
-  });
-  filter.placeholder = t('过滤句子（英文 / 中文）');
   const list = el('div', { class: 'sent-list', 'data-testid': 'sentence-list' });
-
-  const rows = pkg.sentences.map((sentence, idx) => {
-    const row = el('div', {
-      class: 'sent-item', 'data-testid': 'sentence-row', dataset: { index: String(idx + 1) },
-    },
-      el('div', { class: 'sent-index' },
-        el('span', { class: 'sent-time', title: `start ${sentence.start}s → end ${sentence.end}s`, text: timeRange(sentence.start, sentence.end) }),
-        el('span', { class: 'sent-num', text: `#${String(idx + 1).padStart(2, '0')}` })),
+  (pkg.sentences || []).forEach((sentence, idx) => {
+    const notes = String(sentence.notes || '').split('\n').map((x) => x.trim()).filter(Boolean);
+    const chips = notes.filter((line) => /^(重音|连读|发音|提示|stress|linking)/i.test(line)).slice(0, 3).map((line) => {
+      const m = /^([^：:]{1,6})[：:]\s*(.*)$/.exec(line);
+      return el('span', { class: 'note-chip' }, m ? el('b', { text: `${m[1]}：${m[2]}` }) : line);
+    });
+    list.append(el('div', { class: 'sent-row', 'data-testid': 'sentence-row' },
+      el('div', { class: 'sent-time' },
+        el('span', { class: 't', text: timeRange(sentence.start, sentence.end) }),
+        el('span', { class: 'n', text: `#${String(idx + 1).padStart(2, '0')}` }),
+      ),
       el('div', { class: 'sent-body' },
-        el('div', { class: 'sent-en', lang: 'en', text: sentence.text || '' }),
-        sentence.translation ? el('div', { class: 'sent-zh', text: sentence.translation }) : null,
-        sentenceNotes(sentence.notes)),
-    );
-    row.__search = `${sentence.text || ''} ${sentence.translation || ''} ${sentence.notes || ''}`.toLowerCase();
-    return row;
+        el('p', { class: 'sent-en', lang: 'en', text: sentence.text || '' }),
+        sentence.translation ? el('p', { class: 'sent-zh', text: sentence.translation }) : null,
+        chips.length ? el('div', { class: 'sent-notes' }, chips) : null,
+      ),
+    ));
   });
-
-  const emptyHint = el('p', { class: 'muted', hidden: true, style: { marginTop: '12px' }, text: t('没有匹配的句子，换个关键词试试。') });
-  const applyFilter = () => {
-    const q = filter.value.trim().toLowerCase();
-    let shown = 0;
-    for (const row of rows) {
-      const visible = !q || row.__search.includes(q);
-      row.style.display = visible ? '' : 'none';
-      if (visible) shown += 1;
-    }
-    emptyHint.hidden = shown !== 0;
-  };
-  filter.addEventListener('input', applyFilter);
-
-  rows.forEach((row) => list.append(row));
-  panel.append(summaries, el('div', { class: 'panel-toolbar' }, filter, el('span', { class: 'panel-toolbar-title', text: t('过滤只影响显示，不改变课程包内容') })), list, emptyHint);
-  return panel;
+  return el('div', { style: { display: 'flex', flexDirection: 'column', gap: '16px' } }, summary, list);
 }
 
-function filesPanel(resource, pkgEntry, { reload }) {
-  const panel = el('div', { class: 'panel-inner' });
-  const version = currentVersion(resource);
-  const declarative = isDeclarativeResource(resource);
-  panel.append(el('div', { class: 'notice', style: { marginBottom: '14px' } },
-    icon(declarative ? 'puzzle' : 'shield', 16, 'notice-icon'),
-    el('div', {}, declarative
-      ? `${t('声明式资源')}：${t('纯 JSON 白名单 / README，不含可执行代码；市场只读声明，不加载也不执行。')}`
-      : el('span', {}, el('strong', { text: `${t('BYOM')} · ${t('包内不含媒体')}。` }), t('P0 的 .shadowcourse 是单文件 JSON（句子时间轴 + 翻译 + 练习配置），媒体由用户在桌面端自备；市场不托管也不上传任何媒体。'))),
-  ));
-
+function filesPanel(resource) {
+  const version = versionOf(resource);
   const entries = importFileEntries(resource);
-  if (!entries.length) {
-    panel.append(el('div', { class: 'file-empty', text: t('该资源没有可下载的文件（可能不是课程包类型，或由未知类型插件降级展示）。') }));
-    return panel;
-  }
-
-  const hash = version.sha256 || resource.stats?.sha256 || '';
-  const bytes = version.sizeBytes || resource.stats?.sizeBytes || (pkgEntry?.status === 'ok' ? pkgEntry.bytes : 0);
-  const kindLabel = (kind) => {
-    if (kind === 'shadowcourse') return t('课程包 · 单文件 JSON（UTF-8）');
-    if (kind === 'shadowJson') return t('导入工程 · 带翻译（推荐）');
-    if (kind === 'srt') return t('备选字幕 · 无翻译');
-    if (kind === 'readme') return t('导入 / 白名单说明（纯文本）');
-    if (kind === 'declaration') return t('声明式白名单 JSON（纯数据，不可执行）');
-    return kind;
+  const rows = el('div', { class: 'file-list' });
+  const descMap = {
+    shadowJson: t('带翻译的导入工程文件 · 桌面端 File → Open Project… 打开（推荐）'),
+    srt: t('无翻译的通用字幕 · 先导入媒体，再 Import Subtitle（备选）'),
+    shadowcourse: t('规范载体 / 归档格式 · 单文件 JSON，含完整句子、翻译与练习配置'),
+    readme: t('导入说明 · 5 步 + 3 个坑 + 失败排查（纯文本，可离线保存）'),
+    declaration: t('声明式白名单 JSON（纯数据，不可执行）'),
   };
-  const tbody = el('tbody');
   for (const entry of entries) {
     const isPackage = entry.kind === 'shadowcourse';
-    const hasBytes = isPackage || entry.kind === 'declaration';
-    const tr = el('tr', { 'data-testid': isPackage ? 'file-row' : `file-row-${entry.kind}` },
-      el('td', {},
-        el('span', { class: 'file-name' },
-          icon('file', 15, 'file-icon'),
-          el('code', { text: entry.filename }),
-        ),
-        el('div', { class: 'subtle', style: { fontSize: '11px', marginLeft: '23px' } }, kindLabel(entry.kind)),
+    const sizeNode = el('span', { class: 'file-size', text: isPackage && version.sizeBytes ? fmtBytes(version.sizeBytes) : '…' });
+    if (!isPackage) {
+      fetch(entry.url, { method: 'HEAD', cache: 'no-cache' }).then((res) => {
+        const len = Number(res.headers.get('content-length'));
+        if (Number.isFinite(len) && len > 0) sizeNode.textContent = fmtBytes(len);
+        else sizeNode.textContent = '—';
+      }).catch(() => { sizeNode.textContent = '—'; });
+    }
+    rows.append(el('div', { class: 'file-row', 'data-testid': isPackage ? 'file-row' : `file-row-${entry.kind}` },
+      el('span', { class: 'file-icon' }, icon(isPackage ? 'layers' : 'file-text', 17)),
+      el('div', { class: 'file-body' },
+        el('span', { class: 'file-name', text: entry.filename }),
+        el('span', { class: 'file-desc', text: descMap[entry.kind] || '' }),
       ),
-      el('td', {}, el('span', { class: 'file-size', text: hasBytes && bytes ? fmtBytes(bytes) : '—' })),
-      el('td', { class: 'file-hash-cell' }, hasBytes && hash ? el('code', { class: 'hash', title: hash, text: `${hash.slice(0, 10)}…` }) : el('span', { class: 'subtle', text: '—' })),
-      el('td', { style: { textAlign: 'right' } },
-        el('a', {
-          class: 'btn btn-sm', href: entry.url, download: entry.filename,
-          'data-testid': isPackage ? 'file-download' : `file-download-${entry.kind}`,
-          onclick: () => trackDownload(resource),
-        }, icon('download', 13), t('下载')),
-      ),
-    );
-    tbody.append(tr);
+      el('div', { class: 'file-side' }, sizeNode, el('span', { class: 'badge badge-neutral' }, isPackage ? t('规范') : entry.kind === 'shadowJson' ? t('推荐') : t('文件'))),
+    ));
   }
-  panel.append(el('div', { class: 'file-table-wrap', tabindex: '0', role: 'region', 'aria-label': t('资源文件列表') },
-    el('table', { class: 'file-table' },
-      el('thead', {}, el('tr', {},
-        el('th', { text: t('文件') }), el('th', { text: t('大小') }), el('th', { text: t('校验（SHA256）') }), el('th', { text: t('操作') }))),
-      tbody,
-    ),
-  ));
-
-  const meta = el('dl', { class: 'file-meta' });
-  const pushMeta = (k, v) => { meta.append(el('dt', { class: 'subtle', text: k }), el('dd', { class: 'mono', text: v })); };
-  pushMeta('packageUrl', version.packageUrl || resource.packageUrl || '—');
-  pushMeta(t('文件后缀'), pluginFor(resource.type).fileExt.join(' · ') || '—');
-  pushMeta('SHA256', hash || '—');
-  pushMeta(t('大小'), bytes ? fmtBytes(bytes) : '—');
-  if (resource.mediaName) pushMeta(t('媒体命名'), resource.mediaName);
-  if (pkgEntry?.status === 'ok') {
-    const pkg = pkgEntry.pkg;
-    pushMeta('spec', String(pkg.spec || '—'));
-    pushMeta('schemaVersion', String(pkg.schemaVersion ?? '—'));
-    pushMeta('mediaPolicy', String(pkg.mediaPolicy || '—'));
-    pushMeta('sentences', String((pkg.sentences || []).length));
-  }
-  panel.append(meta);
-
-  if (pkgEntry?.status === 'error') {
-    panel.append(el('div', { style: { marginTop: '14px' } }, inlineError({
-      title: t('课程包文件读取失败（下载仍可用）'),
-      message: pkgEntry.error?.message || t('未知错误'),
-      retry: () => reload(),
-    })));
-  }
-  return panel;
+  return el('div', { style: { display: 'flex', flexDirection: 'column', gap: '14px' } }, rows,
+    el('div', { class: 'notice' }, el('span', { class: 'dot' }),
+      el('span', { text: t('下载入口统一在右侧「下载导入」卡；这里用于核对文件名与大小。SHA256 与目录记录一致。') })),
+  );
 }
 
 function versionsPanel(resource) {
-  const panel = el('div', { class: 'panel-inner' });
-  const versions = Array.isArray(resource.versions) && resource.versions.length ? resource.versions : [currentVersion(resource)];
-  if (!versions.length || !versions[0].version) {
-    panel.append(el('p', { class: 'muted', text: t('暂无版本信息。') }));
-  }
-  for (let idx = 0; idx < versions.length; idx += 1) {
-    const v = versions[idx];
-    const compat = v.compat || {};
-    const compatText = [
-      compat.shadow ? `SHADOW ${compat.shadow}` : '',
-      compat.schemaVersion ? `schemaVersion ${compat.schemaVersion}` : '',
-    ].filter(Boolean).join(' · ');
-    const row = el('div', { class: 'version-row', 'data-testid': 'version-row' },
-      el('span', { class: 'version-tag' }, icon('tag', 11), `v${v.version || '—'}`),
-      el('div', { class: 'version-meta' },
-        el('div', {},
-          el('b', { text: idx === 0 ? t('当前发布版本') : t('历史版本') }),
-          ' · ',
-          t('更新于 {date}（{rel}）', { date: fmtDate(v.publishedAt), rel: fmtRelative(v.publishedAt) }),
-        ),
-        compatText ? el('div', { class: 'subtle', style: { fontSize: '11.5px', marginTop: '2px' } }, `${t('兼容')}：${compatText}`) : null,
-        v.sha256 ? el('div', { class: 'subtle mono', style: { fontSize: '11px', marginTop: '2px', overflowWrap: 'anywhere' } }, `SHA256 ${v.sha256}`) : null,
-        Array.isArray(v.changelog) && v.changelog.length
-          ? el('ul', { class: 'version-changes' }, v.changelog.map((line) => el('li', { text: line })))
-          : null,
-      ),
-      el('span', { class: 'version-date', text: fmtDate(v.publishedAt) }),
-    );
-    panel.append(row);
-  }
+  const version = versionOf(resource);
+  const compat = version.compat || {};
+  const compatText = [compat.shadow ? `SHADOW ${compat.shadow}` : '', compat.schemaVersion ? `schemaVersion ${compat.schemaVersion}` : ''].filter(Boolean).join(' · ');
+  const list = el('ul', { class: 'version-changes', style: { display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '12px' } });
+  (version.changelog?.length ? version.changelog : [t('首个发布版本')]).forEach((line) => {
+    list.append(el('li', {},
+      el('span', { style: { display: 'inline-block', width: '5px', height: '5px', borderRadius: '50%', background: 'var(--amber)', marginRight: '9px', verticalAlign: 'middle' } }),
+      line,
+    ));
+  });
+  return el('div', { class: 'card version-card' },
+    el('div', { class: 'version-head' },
+      el('span', { class: 'version-num', text: `v${version.version || '—'}` }),
+      el('span', { class: 'badge badge-soft', text: t('当前发布版本') }),
+      el('span', { class: 'version-date', text: t('发布于 {date}', { date: fmtDate(version.publishedAt) }) }),
+    ),
+    list,
+    el('div', { class: 'version-meta', style: { marginTop: '14px' } },
+      compatText ? el('span', { class: 'badge badge-neutral mono', text: compatText }) : null,
+      version.sha256 ? el('span', { class: 'badge badge-neutral mono', text: `SHA256 ${String(version.sha256).slice(0, 12)}…` }) : null,
+      version.sizeBytes ? el('span', { class: 'badge badge-neutral mono', text: fmtBytes(version.sizeBytes) }) : null,
+    ),
+  );
+}
 
-  panel.append(el('div', { class: 'notice', style: { marginTop: '14px' } },
-    icon('info', 16, 'notice-icon'),
-    el('div', {},
-      'id：', el('code', { text: resource.id }),
-      ' · ',
-      t('版本号遵循 semver；发布后包 id 不变。'),
-      ' ',
-      t('P0 静态目录每个资源只发布 1 个版本'),
-      `（${t('目录当前版本数')}：${versions.length}）。`,
+/* ---------------- 右栏 3 块 ---------------- */
+
+export function renderRail(route) {
+  const resource = resourceById(route.params.id);
+  if (!resource) return document.createDocumentFragment();
+  const version = versionOf(resource);
+  const stats = resource.stats || {};
+  const declarative = isDeclarativeResource(resource);
+  const entries = importFileEntries(resource);
+  const frag = document.createDocumentFragment();
+
+  const download = el('div', { class: 'rail-card rail-card--emphasis', id: 'rail-download' },
+    el('div', { class: 'rail-card-head' },
+      el('div', {},
+        el('h2', { class: 'rail-card-title' }, icon('download', 18), t('下载导入')),
+        el('p', { class: 'rail-card-sub', text: declarative ? t('声明式 JSON · 不含可执行代码') : t('纯数据包 · 不含媒体 · 3 个导入产物') }),
+      ),
+      el('span', { class: 'badge badge-neutral', text: declarative ? t('声明式') : 'BYOM' }),
+    ),
+  );
+  const artifacts = el('div', { class: 'artifact-list' });
+  const shortName = { shadowJson: '.shadow.json', srt: '.srt', shadowcourse: '.shadowcourse', readme: 'README', declaration: 'JSON 声明' };
+  const descMap = {
+    shadowJson: t('带翻译的工程文件，打开即可练习'),
+    srt: t('无翻译的通用字幕，任何播放器都能用'),
+    shadowcourse: t('规范载体 / 归档格式（含完整配置）'),
+    readme: t('导入 / 白名单说明（纯文本）'),
+    declaration: t('声明式白名单 JSON（纯数据，不可执行）'),
+  };
+  for (const entry of entries) {
+    const primary = entry.kind === 'shadowJson' || entry.kind === 'declaration';
+    artifacts.append(el('div', { class: `artifact${primary ? ' is-primary' : ''}` },
+      el('span', { class: 'artifact-icon' }, icon(entry.kind === 'shadowcourse' ? 'layers' : 'file-text', 16)),
+      el('div', { class: 'artifact-body' },
+        el('span', { class: 'artifact-name' }, shortName[entry.kind] || entry.filename, primary ? el('span', { class: 'badge badge-soft', text: t('推荐') }) : null),
+        el('span', { class: 'artifact-desc', text: descMap[entry.kind] || '' }),
+      ),
+      el('button', {
+        class: 'icon-btn', type: 'button',
+        'data-testid': `rail-download-${entry.kind}`,
+        'aria-label': `${t('下载')} ${entry.filename}`,
+        onclick: () => {
+          const result = downloadImportFile(resource, entry.kind);
+          if (result.ok) toast(t('已开始下载，并加入「我的资源」（本地演示）'), { kind: 'success' });
+          else toast(t('下载失败'), { kind: 'error' });
+        },
+      }, icon('download', 16)),
+    ));
+  }
+  download.append(artifacts);
+  if (!declarative) {
+    download.append(el('div', { class: 'media-note' }, icon('help-circle', 16),
+      el('div', {}, t('媒体需自备，并逐字重命名为课程页公示的文件名：'),
+        resource.mediaName ? el('span', { class: 'media-name' }, resource.mediaName) : null)));
+  }
+  download.append(el('details', { class: 'import-details' },
+    el('summary', {}, icon('file-text', 16), t('查看导入步骤（5 步 · 3 个坑）'), icon('chevron-down', 16, 'chev')),
+    el('div', { class: 'import-body' },
+      el('ol', { class: 'steps' }, IMPORT_STEPS.map((title) => el('li', { text: t(title) }))),
+      el('ul', { class: 'pitfalls' }, IMPORT_PITFALLS.map((text) => el('li', {}, icon('help-circle', 14), t(text)))),
     ),
   ));
-  return panel;
+  download.append(el('a', { class: 'rail-link', href: '#', onclick: (e) => { e.preventDefault(); importModal(resource); } }, t('打开下载导入说明'), icon('arrow-right', 16)));
+  frag.append(download);
+
+  const hash = version.sha256 || stats.sha256 || '';
+  const stat = (value, unit, label) => el('div', { class: 'rail-stat' },
+    el('div', { class: 'v' }, value, unit ? el('span', { class: 'unit' }, unit) : null),
+    el('div', { class: 'k', text: label }),
+  );
+  frag.append(el('div', { class: 'rail-card' },
+    el('p', { class: 'rail-title', text: t('统计') }),
+    el('div', { class: 'rail-stats' },
+      stat(String(stats.sentences || 0), t('句'), t('句子')),
+      stat(fmtDuration(stats.durationSec), '', t('时间轴')),
+      stat(String(stats.words || 0), t('词'), t('词数')),
+      stat(fmtBytes(stats.sizeBytes || 0), '', t('包大小')),
+    ),
+    el('div', { class: 'rail-hash' },
+      el('span', {}, 'SHA256 ', el('span', { class: 'mono', text: hash ? `${hash.slice(0, 12)}…` : '—' })),
+      el('button', {
+        class: 'icon-btn', type: 'button', 'aria-label': t('复制 SHA256'),
+        onclick: async () => { const ok = await copyText(hash); toast(ok ? t('已复制 SHA256') : t('复制失败'), { kind: ok ? 'success' : 'error' }); },
+      }, icon('copy', 14)),
+    ),
+    el('div', { class: 'rail-info-row' }, el('span', { class: 'k', text: t('格式') }), el('span', { class: 'v mono', text: declarative ? '.json' : '.shadowcourse · schemaVersion 1' })),
+    el('div', { class: 'rail-info-row' }, el('span', { class: 'k', text: t('文件') }), el('span', { class: 'v', text: t('{n} 个', { n: entries.length }) })),
+  ));
+
+  const license = licenseById(resource.license);
+  const author = creatorByHandle(resource.author);
+  const category = categoryById(resource.category);
+  frag.append(el('div', { class: 'rail-card' },
+    el('p', { class: 'rail-title', text: t('许可与资源信息') }),
+    el('div', { class: 'license-badge-row' },
+      el('span', { class: 'badge badge-soft', text: license?.name || resource.license || t('未声明') }),
+      el('a', { class: 'text-link tiny', href: `#/resource/${encodeURIComponent(resource.id)}/license`, text: t('查看许可全文') }),
+    ),
+    el('div', { class: 'rail-info-row' }, el('span', { class: 'k', text: t('类型') }), el('span', { class: 'v', text: `${typeLabelOf(resource)}${resource.level ? ` · ${resource.level}` : ''}${stats.sentences ? ` · ${t('{n} 句', { n: stats.sentences })}` : ''}` })),
+    el('div', { class: 'rail-info-row' }, el('span', { class: 'k', text: t('分类') }), el('span', { class: 'v', text: category ? pickLang(category.label, category.labelEn) : (resource.category || '—') })),
+    el('div', { class: 'rail-info-row' }, el('span', { class: 'k', text: t('作者') }), el('span', { class: 'v', text: author ? author.name : (resource.author || '—') })),
+    el('div', { class: 'rail-info-row' }, el('span', { class: 'k', text: t('更新') }), el('span', { class: 'v', text: fmtDate(resource.updatedAt) })),
+    el('div', { class: 'rail-info-row' }, el('span', { class: 'k', text: t('权利依据') }), el('span', { class: 'v' }, el('b', { text: resource.rights?.basis || '—' }))),
+    el('div', { class: 'rail-info-row' }, el('span', { class: 'k', text: t('媒体') }), el('span', { class: 'v', text: declarative ? t('不适用（声明式资源）') : t('用户自备（BYOM），版权自负') })),
+    el('div', { class: 'rail-divider' }),
+    el('div', { class: 'feedback-links' },
+      el('a', { class: 'feedback-link', href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`[SHADOW 市场] 资源反馈：${resource.id}`)}` }, icon('mail', 16), t('资源失效 / 内容问题反馈'), el('span', { class: 'ext', text: '↗' })),
+      el('a', { class: 'feedback-link', href: '#/complaint' }, icon('shield', 16), t('版权投诉与下架流程'), el('span', { class: 'ext', text: '↗' })),
+    ),
+    el('div', { class: 'rail-foot-links' },
+      el('a', { href: '#/' }, `← ${t('回到工作台')}`),
+      el('span', { class: 'sep', text: '·' }),
+      el('a', { href: '#/market' }, `${t('继续逛市场')} →`),
+    ),
+  ));
+  return frag;
 }
 
 /* ---------------- 页面 ---------------- */
 
-function notFoundResource(view, id) {
-  view.replaceChildren(el('div', { class: 'notfound', 'data-testid': 'not-found' },
-    el('div', { class: 'notfound-code', 'aria-hidden': 'true', text: '404' }),
-    el('h1', { class: 'notfound-title', text: t('找不到这个资源') }),
-    el('p', { class: 'notfound-desc' }, t('资源 id {id} 不在当前目录中。可能已被下架，或链接来自其它版本的市场。', { id: String(id || '') })),
-    el('div', { class: 'notfound-actions' },
-      el('a', { class: 'btn btn-primary', href: '#/' }, icon('compass', 14), t('回到探索')),
-      el('a', { class: 'btn', href: '#/search?q=' }, icon('search', 14), t('搜索资源')),
+function notFound(view) {
+  view.replaceChildren(el('section', { class: 'page-head' },
+    el('div', { class: 'profile-name' },
+      el('h1', { class: 'name', text: t('找不到这个资源') }),
+      el('span', { class: 'meta', text: t('资源可能已下架，或链接来自其它版本的市场。') }),
     ),
+  ), el('div', { class: 'card', style: { textAlign: 'center', padding: '40px' } },
+    el('a', { class: 'btn btn-primary', href: '#/market' }, icon('compass', 16), t('去市场逛逛')),
   ));
 }
 
 export async function renderResource(view, route) {
-  const state = getState();
-  const id = route.params.id;
-  const resource = resourceById(id);
+  const resource = resourceById(route.params.id);
   view.replaceChildren();
-  if (!resource) { notFoundResource(view, id); return; }
+  if (!resource) { notFound(view); return; }
 
   const plugin = pluginFor(resource.type);
-  const knownTabs = (plugin.detailTabs.length ? plugin.detailTabs : ['readme', 'sentences', 'files', 'versions']).filter((x) => TAB_META[x]);
-  const tabs = knownTabs.length ? knownTabs : ['readme', 'files', 'versions'];
-  if (!tabs.includes('sentences') && resource.type === 'course') tabs.splice(Math.min(1, tabs.length), 0, 'sentences');
-  let activeTab = tabs.includes(route.query.get('tab')) ? route.query.get('tab') : tabs[0];
+  const declarative = isDeclarativeResource(resource);
+  const version = versionOf(resource);
   const author = creatorByHandle(resource.author);
   const category = categoryById(resource.category);
-  const license = licenseById(resource.license);
-  const version = currentVersion(resource);
-  const declarative = isDeclarativeResource(resource);
-  const coursePackage = isCoursePackage(resource);
 
-  // plugin / 声明式 JSON：不是 .shadowcourse，跳过包 fetch（否则会误报「包格式不识别」）
-  // 课程包：首屏渲染前先取包（最多等 2.5s），一次渲染到位 → 避免包到达后重排导致 CLS；
-  // 超时则先渲染骨架，包到达后再增量刷新（慢网兜底，CLS 风险可接受）。
-  let initialEntry = declarative
+  let pkgEntry = declarative
     ? { status: 'declarative' }
     : (resource.packageUrl ? { status: 'loading' } : { status: 'missing', error: t('该资源没有 packageUrl') });
-  if (!declarative && resource.packageUrl) {
-    const loaded = await Promise.race([
-      loadPackage(resource.packageUrl),
-      new Promise((resolve) => { setTimeout(() => resolve(null), 2500); }),
-    ]);
-    if (loaded) initialEntry = loaded;
-  }
-  const pkgState = { entry: initialEntry };
-  let readmeFallback = null;
+  // 首屏不等待课程包：先渲染 Hero/Tabs（目录数据），包到达后再刷新 README/句子面板（LCP 优化）
+  const pkgPromise = (!declarative && resource.packageUrl)
+    ? loadPackage(resource.packageUrl).catch((err) => ({ status: 'error', error: String(err?.message || err) }))
+    : null;
+  const stats = statsOf(resource, pkgEntry);
 
-  const titleBadges = el('span', { class: 'repo-title-badges' },
-    freeBadge(resource),
-    plugin.fallback ? unknownTypeBadge() : el('span', { class: 'badge badge-type', title: `${t('资源类型')}：${plugin.id}` }, pickLang(plugin.label, plugin.labelEn)),
-    (state.fixture || resource.fixture) ? fixtureBadge() : null,
-    resource.level ? el('span', { class: 'badge badge-level', title: t('难度') }, resource.level) : null,
-    declarative
-      ? el('span', { class: 'badge badge-bym', title: t('声明式资源：纯 JSON 声明，不含可执行代码') }, icon('puzzle', 11), t('声明式'))
-      : el('span', { class: 'badge badge-bym', title: t('BYOM：媒体需自备') }, icon('shield', 11), 'BYOM'),
-    version.version ? el('span', { class: 'badge badge-version mono', title: t('当前发布版本') }, `v${version.version}`) : null,
+  const heroBadges = el('div', { class: 'hero-title-row' },
+    resource.free !== false ? el('span', { class: 'badge badge-soft', text: 'Free' }) : null,
+    declarative ? el('span', { class: 'badge badge-neutral', text: t('声明式') }) : el('span', { class: 'badge badge-neutral', text: 'BYOM' }),
+    version.version ? el('span', { class: 'badge badge-neutral mono', text: `v${version.version}` }) : null,
   );
 
-  const actions = el('div', { class: 'repo-actions', 'data-testid': 'detail-actions' });
-  const downloadImportBtn = el('button', {
-    class: 'btn btn-primary btn-lg', type: 'button', 'data-testid': 'download-import-btn',
-    onclick: () => downloadImportModal(resource),
-  }, icon('download', 15), declarative ? t('下载文件') : t('下载导入'));
-  actions.append(downloadImportBtn);
+  const heroMeta = [
+    typeLabelOf(resource), resource.level,
+    stats.sentences ? t('{n} 句', { n: stats.sentences }) : null,
+    stats.durationSec ? fmtDuration(stats.durationSec) : null,
+    stats.words ? t('{n} 词', { n: stats.words }) : null,
+  ].filter(Boolean).map((text) => el('span', { text }));
+  heroMeta.push(el('span', { class: 'hero-sep' }), el('span', { class: 'hero-author' },
+    el('img', { src: 'assets/brand/logo-128.png', width: '18', height: '18', alt: '' }),
+    el('b', { text: author ? author.name : resource.author }),
+  ));
+  heroMeta.push(el('span', { class: 'hero-sep' }), el('span', { text: t('更新于 {date}', { date: fmtDate(resource.updatedAt) }) }));
+  if (resource.license) heroMeta.push(el('span', { class: 'hero-sep' }), el('span', {}, el('a', { class: 'text-link', href: `#/resource/${encodeURIComponent(resource.id)}/license`, text: resource.license })));
 
-  let importBtn = null;
-  if (!declarative) {
-    importBtn = el('button', {
-      class: 'btn btn-lg', type: 'button', 'data-testid': 'import-btn',
-      onclick: () => runImport(resource, importBtn),
-    }, icon('upload', 15), t('一键导入到 SHADOW Studio'));
-    actions.append(importBtn);
-  }
+  const waveBg = elFromHtml('<svg class="hero-wave-bg" viewBox="0 0 320 160" aria-hidden="true"><g fill="currentColor"><rect x="4" y="64" width="44" height="22" rx="11"/><rect x="72" y="38" width="18" height="74" rx="9"/><rect x="110" y="10" width="18" height="130" rx="9"/><rect x="148" y="44" width="18" height="62" rx="9"/><rect x="186" y="62" width="44" height="26" rx="13"/></g></svg>');
 
-  const pkgUrl = version.packageUrl || resource.packageUrl;
-  if (pkgUrl && coursePackage) {
-    actions.append(el('a', {
-      class: 'btn btn-lg', href: pkgUrl, download: baseName(pkgUrl),
-      'data-testid': 'download-btn', onclick: () => trackDownload(resource),
-    }, icon('download', 15), t('下载 .shadowcourse')));
-  } else if (pkgUrl && declarative) {
-    actions.append(el('a', {
-      class: 'btn btn-lg', href: pkgUrl, download: baseName(pkgUrl),
-      'data-testid': 'download-declaration-btn', onclick: () => trackDownload(resource),
-    }, icon('download', 15), t('下载声明式 JSON')));
-  }
-  actions.append(favoriteButton(resource, { className: 'btn-lg' }));
-  actions.append(el('button', {
-    class: 'btn btn-lg', type: 'button', 'data-testid': 'share-btn',
-    onclick: async () => {
-      const ok = await copyText(window.location.href);
-      toast(ok ? t('链接已复制') : t('复制失败，请手动选择地址栏'), { kind: ok ? 'success' : 'error' });
-    },
-  }, icon('link', 15), t('分享')));
-  if (resource.points > 0) {
-    actions.append(el('button', {
-      class: 'btn btn-lg', type: 'button', 'data-testid': 'redeem-btn',
-      onclick: () => {
-        const result = MarketPoints.redeem(resource);
-        if (result.ok) toast(t('兑换成功，扣除 {n} 积分（P1 本地演示，余额 {balance}）', { n: resource.points, balance: result.balance }), { kind: 'success' });
-        else if (result.reason === 'E_INSUFFICIENT') toast(t('积分不足：需要 {n} 分，当前 {balance} 分。', { n: resource.points, balance: MarketPoints.getPoints() }), { kind: 'warn', timeout: 4800 });
-        else if (result.reason === 'E_DUPLICATE') toast(t('这个资源已经兑换过了（P1 本地演示）'), { kind: 'warn' });
-        else toast(t('兑换失败：{reason}', { reason: result.reason }), { kind: 'error' });
-      },
-    }, icon('diamond', 15), t('兑换（{n} 积分）', { n: resource.points })));
-  }
-
-  const appPortOverride = getAppPortOverride();
-  const advancedHint = el('div', { class: 'repo-actions-note' },
-    declarative
-      ? t('声明式资源：纯 JSON 声明（资源类型 / 权限），不含可执行代码，没有课程包导入流程。')
-      : pkgUrl
-        ? t('会先探测本机 SHADOW Studio（127.0.0.1:18765–18775，单端口 300ms 超时）；未检测到会自动降级为下载 + 3 步说明。高级：')
-        : t('该资源没有可导入的包文件。'),
-    !declarative && pkgUrl ? el('a', { href: '#/import' }, t('导入原理')) : null,
-    declarative ? el('a', { href: '#/about' }, t('产品边界')) : null,
-    !declarative && pkgUrl ? el('span', { class: 'subtle', text: appPortOverride ? ` · ?appPort=${appPortOverride}` : ` · ${t('可用 ?appPort=<端口> 指定自定义端口')}` }) : null,
-  );
-
-  const tabHost = el('div', { class: 'tab-host' });
-  const detailMain = el('div', { class: 'detail-main' });
-  const aside = el('div', { class: 'detail-aside', 'data-testid': 'detail-aside' });
-  let tabsCtl = null;
-  let tabsReady = false;
-
-  const tabCounts = () => ({
-    readme: null,
-    sentences: pkgState.entry?.status === 'ok' ? pkgState.entry.stats.sentences : (resource.stats?.sentences || null),
-    files: importFileEntries(resource).length || null,
-    versions: resource.versions?.length || 1,
-    license: null,
-  });
-
-  const updateHashTab = (key) => {
-    // 只替换地址栏 hash，不触发 router 重渲染：键盘切换 Tabs 时保持焦点不变（a11y）
-    const params = new URLSearchParams(route.query.toString());
-    params.set('tab', key);
-    const target = buildHash(`/resource/${encodeURIComponent(resource.id)}`, params.toString());
-    try { history.replaceState(null, '', target); } catch { /* 忽略 */ }
-  };
-
-  const reload = async () => {
-    if (declarative) return;
-    pkgState.entry = { status: 'loading' };
-    renderTabs();
-    renderAside();
-    pkgState.entry = await loadPackage(resource.packageUrl, { force: true });
-    renderTabs();
-    renderAside();
-  };
-
-  const fallbackReadme = async (res) => {
-    const text = await loadReadmeText(res);
-    if (!text) return;
-    readmeFallback = text;
-    if (!view.isConnected) return;
-    const panel = tabHost.querySelector('#panel-panel-readme .panel-inner');
-    if (!panel) return;
-    panel.querySelector('[data-testid="readme-loading-note"]')?.remove();
-    const body = el('div', { class: 'md', style: { marginTop: '12px' }, 'data-testid': 'readme-content' });
-    renderMarkdownInto(body, text);
-    panel.append(body);
-  };
-
-  function renderTabs() {
-    const counts = tabCounts();
-    tabHost.replaceChildren();
-    const items = tabs.map((key) => ({ key, label: tabLabel(key), icon: tabIcon(key), count: counts[key] }));
-    tabsReady = false;
-    tabsCtl = createTabs({
-      idPrefix: 'panel',
-      items,
-      active: activeTab,
-      label: t('资源详情分区'),
-      onSelect: (key) => {
-        activeTab = key;
-        if (tabsReady) updateHashTab(key);
-      },
-    });
-    tabsHostAppend();
-    tabsReady = true;
-  }
-
-  function tabsHostAppend() {
-    tabHost.append(tabsCtl.tablist, tabsCtl.panelHost);
-    for (const key of tabs) {
-      const panel = tabsCtl.panelHost.querySelector(`#panel-panel-${key}`);
-      if (!panel) continue;
-      const content = key === 'readme' ? readmePanel(resource, pkgState.entry, { reload, onFallbackReadme: fallbackReadme })
-        : key === 'sentences' ? sentencesPanel(resource, pkgState.entry, { reload })
-          : key === 'files' ? filesPanel(resource, pkgState.entry, { reload })
-            : key === 'versions' ? versionsPanel(resource)
-              : readmePanel(resource, pkgState.entry, { reload });
-      panel.append(content);
-    }
-  }
-
-  function renderAside() {
-    aside.replaceChildren();
-    const pkgEntry = pkgState.entry;
-    const stats = statsFrom(resource, pkgEntry);
-    aside.append(asideCard(t('关于'),
-      el('p', { class: 'aside-desc', text: resource.description || t('暂无描述。') }),
-      resource.tags.length ? tagLinks(resource.tags, { limit: 12 }) : null,
-      el('div', { class: 'row', style: { marginTop: '4px' } },
-        el('span', { class: 'byom-chip' }, icon('shield', 12), `${t('BYOM · 不含媒体')}`),
-      ),
-    ));
-
-    aside.append(asideCard(t('统计（以包为准）'),
-      el('div', { class: 'stat-grid' },
-        el('div', { class: 'stat-cell' }, el('div', { class: 'stat-num', text: fmtNum(stats.sentences) }), el('div', { class: 'stat-label', text: t('句子') })),
-        el('div', { class: 'stat-cell' }, el('div', { class: 'stat-num', text: fmtDuration(stats.durationSec) }), el('div', { class: 'stat-label', text: t('时间轴') })),
-        el('div', { class: 'stat-cell' }, el('div', { class: 'stat-num', text: fmtNum(stats.words) }), el('div', { class: 'stat-label', text: t('词数') })),
-      ),
-      el('p', { class: 'points-note', text: stats.source === 'package' ? t('句子数与时长来自课程包（详情页以包为准）。') : t('课程包未加载，显示目录索引统计。') }),
-      pkgEntry?.status === 'ok' ? asideRow(t('包大小'), fmtBytes(pkgEntry.bytes)) : null,
-      version.sizeBytes ? asideRow(t('下载大小'), fmtBytes(version.sizeBytes)) : null,
-    ));
-
-    if (declarative) {
-      aside.append(asideCard(t('声明文件'),
-        el('p', { class: 'aside-desc', text: t('声明式资源：市场只读声明、不加载执行；权限声明全为 false。') }),
-        asideRow(t('载体'), el('span', { class: 'mono', text: baseName(version.packageUrl || resource.packageUrl) || 'JSON' })),
-        version.sizeBytes ? asideRow(t('大小'), fmtBytes(version.sizeBytes)) : null,
-        asideRow(t('可执行代码'), t('无')),
-        asideRow(t('权限'), Object.entries(plugin.permissions || {}).map(([k, v]) => `${k}: ${v ? t('是') : t('否')}`).join(' · ') || '—'),
-        resource.mediaName ? asideRow(t('媒体命名'), el('code', { text: resource.mediaName })) : null,
-      ));
-    }
-
-    const about = asideCard(t('资源信息'));
-    about.append(
-      asideRow(t('资源类型'), plugin.fallback ? plugin.label : el('a', { href: `#/search?q=&type=${encodeURIComponent(plugin.id)}` }, pickLang(plugin.label, plugin.labelEn))),
-      asideRow(t('分类'), category ? el('a', { href: `#/category/${encodeURIComponent(category.id)}` }, pickLang(category.label, category.labelEn)) : (resource.category || '—')),
-      asideRow(t('难度'), resource.level || '—'),
-      asideRow(t('许可'), license
-        ? el('a', { href: `#/resource/${encodeURIComponent(resource.id)}/license` }, license.name)
-        : el('a', { href: `#/resource/${encodeURIComponent(resource.id)}/license` }, resource.license || '—')),
-      asideRow(t('版本'), el('span', { class: 'mono', text: `v${version.version || '—'}` })),
-      asideRow(t('作者'), author ? el('a', { href: `#/creator/${encodeURIComponent(author.handle)}` }, author.name) : (resource.author || '—')),
-      asideRow(t('更新'), fmtDate(resource.updatedAt) || '—'),
-      asideRow(t('下载数'), `${fmtNum(resource.downloads)} · ${t('示例统计')}`),
-    );
-    aside.append(about);
-
-    // BYOM 说明（P0 硬边界）
-    aside.append(asideCard(declarative ? t('声明式边界') : t('BYOM 与边界'),
-      el('p', { class: 'aside-desc' }, declarative
-        ? t('插件类资源是纯 JSON 声明清单：不含脚本 / 可执行代码，市场不加载也不执行；权限声明全为 false。')
-        : t('包内不含媒体：市场不托管、不上传、不分发任何影视媒体。导入后由你在桌面端选择本地媒体。')),
-      asideRow(t('媒体策略'), declarative ? t('不适用（声明式资源）') : 'BYOM'),
-      asideRow(t('语言'), (resource.language || []).join(' / ') || '—'),
-      asideRow(t('平台'), (resource.platforms || []).join(' · ') || '—'),
-      resource.requires?.shadow ? asideRow(t('兼容'), `SHADOW ${resource.requires.shadow}`) : null,
-    ));
-
-    if (plugin.fallback) {
-      aside.append(asideCard(t('插件状态'),
-        el('p', { class: 'aside-desc', text: t('该资源类型没有找到可用的插件清单（plugins/<type>/manifest.json），市场已降级为通用卡片与通用详情渲染，不会崩溃。') }),
-      ));
-    } else {
-      aside.append(asideCard(t('插件声明'),
-        el('p', { class: 'aside-desc' }, t('资源类型由声明式插件清单注册，市场只读声明、不执行插件代码。'), ' ', el('code', { text: plugin.id })),
-        asideRow(t('插件清单'), el('a', { href: `plugins/${encodeURIComponent(plugin.id)}/manifest.json`, target: '_blank', rel: 'noopener' }, 'manifest.json')),
-        asideRow(t('导入方式'), plugin.install?.mode || 'download-only'),
-      ));
-    }
-
-    aside.append(asideCard(t('反馈与投诉'),
-      el('p', { class: 'aside-desc', text: t('资源失效、内容问题或版权投诉，都可以直接联系我们。') }),
-      el('a', { class: 'aside-link', href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`[SHADOW 市场] 资源反馈：${resource.id}`)}` }, icon('mail', 13), t('发送邮件反馈')),
-      el('a', { class: 'aside-link', href: '#/complaint' }, icon('scale', 13), t('版权投诉')),
-    ));
-  }
-
-  const head = el('header', { class: 'repo-head' },
-    breadcrumb([
-      { label: t('市场'), href: '#/' },
-      category ? { label: pickLang(category.label, category.labelEn), href: `#/category/${encodeURIComponent(category.id)}` } : null,
-      { label: resource.title },
-    ].filter(Boolean)),
-    el('div', { class: 'repo-title-row' },
-      coverIcon(resource, { size: 'lg' }),
-      el('div', { class: 'repo-heading' },
-        el('h1', { class: 'repo-title' }, resource.title, titleBadges),
-        resource.subtitle ? el('p', { class: 'repo-subtitle', lang: 'en', text: resource.subtitle }) : null,
+  const hero = el('section', { class: 'detail-hero' },
+    waveBg,
+    el('div', { class: 'hero-top' },
+      elFromHtml('<div class="hero-icon-lg" aria-hidden="true"><svg class="wave" viewBox="0 0 160 60"><g fill="currentColor"><rect x="2" y="23" width="22" height="10" rx="5"/><rect x="36" y="14" width="9" height="34" rx="4.5"/><rect x="55" y="4" width="9" height="52" rx="4.5"/><rect x="74" y="17" width="9" height="28" rx="4.5"/><rect x="93" y="23" width="22" height="10" rx="5"/></g></svg></div>'),
+      el('div', { class: 'hero-text' },
+        el('div', { class: 'hero-title-row' },
+          el('h1', { class: 'hero-title', text: resource.title }),
+          heroBadges,
+        ),
+        resource.subtitle ? el('p', { class: 'hero-sub', lang: 'en', text: resource.subtitle }) : null,
+        el('div', { class: 'hero-meta' }, heroMeta),
       ),
     ),
-    resource.description ? el('p', { class: 'repo-description', text: resource.description }) : null,
-    actions,
-    advancedHint,
+    el('div', { class: 'hero-action-row' },
+      el('button', { class: 'btn btn-primary', type: 'button', 'data-testid': 'download-import-btn', onclick: () => importModal(resource) }, icon('download', 16), t('下载导入')),
+      favoriteToggle(resource),
+      el('button', { class: 'btn btn-icon', type: 'button', 'aria-label': t('分享'), title: t('分享'), onclick: shareResource }, icon('link', 16)),
+      el('span', { class: 'meta-hint' }, declarative ? t('纯 JSON 声明 · 无法执行') : t('{n} 个导入产物', { n: Math.max(1, importFileEntries(resource).length - 1) }), ' · ', t('全部免费')),
+    ),
   );
 
-  renderTabs();
-  renderAside();
-  detailMain.append(tabHost);
-  view.append(head, el('div', { class: 'detail-grid' }, detailMain, aside));
+  // Tabs（键盘可切换；panel 常驻 hidden）
+  const tabKeys = declarative ? ['readme', 'files', 'versions'] : ['readme', 'sentences', 'files', 'versions'];
+  const activeInitial = tabKeys.includes(route.query.get('tab')) ? route.query.get('tab') : 'readme';
+  const labels = { readme: t('简介'), sentences: t('句子预览'), files: t('文件'), versions: t('版本与变更') };
+  const counts = {
+    readme: null,
+    sentences: stats.sentences || null,
+    files: importFileEntries(resource).length || null,
+    versions: (resource.versions || []).length || 1,
+  };
+  const tabbar = el('div', { class: 'tabs detail-tabs', role: 'tablist', 'aria-label': t('资源详情分区') });
+  const panelHost = el('div', {});
+  const buttons = new Map();
+  const panels = {};
+  let activeTab = activeInitial;
 
-  // 慢网兜底：首屏用了加载骨架、包随后才到 → 增量刷新（正常网络在首屏渲染前已取到包）
-  if (!declarative && resource.packageUrl && pkgState.entry?.status === 'loading') {
-    loadPackage(resource.packageUrl).then((entry) => {
-      if (!view.isConnected) return;
-      pkgState.entry = entry;
-      renderTabs();
-      renderAside();
-      if (entry.status === 'ok' && !String(entry.pkg?.readme || '').trim() && resource.importFiles?.readme) {
-        fallbackReadme(resource);
-      }
+  const select = (key, { focus = false, updateHash = true } = {}) => {
+    if (!tabKeys.includes(key)) return;
+    activeTab = key;
+    for (const [k, btn] of buttons) {
+      const on = k === key;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      btn.tabIndex = on ? 0 : -1;
+      if (on && focus) btn.focus();
+    }
+    for (const [k, panel] of Object.entries(panels)) panel.hidden = k !== key;
+    if (updateHash) {
+      const params = new URLSearchParams(route.query.toString());
+      params.set('tab', key);
+      try { history.replaceState(null, '', `#/resource/${encodeURIComponent(resource.id)}?${params.toString()}`); } catch { /* ignore */ }
+    }
+  };
+
+  const contentFor = (key) => {
+    if (key === 'readme') return readmePanel(resource, pkgEntry);
+    if (key === 'sentences') return sentencesPanel(resource, pkgEntry);
+    if (key === 'files') return filesPanel(resource);
+    return versionsPanel(resource);
+  };
+
+  for (const key of tabKeys) {
+    const btn = el('button', {
+      class: 'tab', type: 'button', role: 'tab', id: `tab-${key}`,
+      'aria-controls': `panel-${key}`, 'aria-selected': 'false', tabindex: '-1',
+      'data-testid': `tab-${key}`,
+      onclick: () => select(key),
+    }, labels[key], counts[key] !== null && counts[key] !== undefined ? el('span', { class: 'count', text: String(counts[key]) }) : null);
+    buttons.set(key, btn);
+    tabbar.append(btn);
+    const panel = el('section', {
+      class: 'panel', id: `panel-${key}`, role: 'tabpanel', 'aria-labelledby': `tab-${key}`,
+      'data-testid': `tab-panel-${key}`, hidden: true,
     });
+    panel.append(contentFor(key));
+    panels[key] = panel;
+    panelHost.append(panel);
   }
+  tabbar.addEventListener('keydown', (e) => {
+    const idx = tabKeys.indexOf(activeTab);
+    let next = null;
+    if (e.key === 'ArrowRight') next = tabKeys[(idx + 1) % tabKeys.length];
+    else if (e.key === 'ArrowLeft') next = tabKeys[(idx - 1 + tabKeys.length) % tabKeys.length];
+    else if (e.key === 'Home') next = tabKeys[0];
+    else if (e.key === 'End') next = tabKeys[tabKeys.length - 1];
+    if (next) { e.preventDefault(); select(next, { focus: true }); }
+  });
+  select(activeInitial, { updateHash: false });
+
+  const breadcrumb = el('nav', { class: 'breadcrumb', 'aria-label': t('面包屑') },
+    el('a', { href: '#/' }, t('工作台')),
+    el('span', { class: 'sep', text: '/' }),
+    el('a', { href: '#/market' }, t('市场')),
+    category ? el('span', { class: 'sep', text: '/' }) : null,
+    category ? el('a', { href: `#/category/${encodeURIComponent(category.id)}` }, pickLang(category.label, category.labelEn)) : null,
+    el('span', { class: 'sep', text: '/' }),
+    el('span', { class: 'current', text: resource.title }),
+  );
+
+  view.append(breadcrumb, hero);
+  await nextPaint(); // 先绘制 Hero（LCP），再插入 Tabs/README
+  view.append(tabbar, panelHost);
+
+  // 课程包到达后原地刷新（README / 句子预览），不重排整页
+  if (pkgPromise) {
+    pkgPromise.then((loaded) => {
+      if (!loaded || !view.isConnected) return;
+      pkgEntry = loaded;
+      if (panels.readme) panels.readme.replaceChildren(readmePanel(resource, pkgEntry));
+      if (panels.sentences) panels.sentences.replaceChildren(sentencesPanel(resource, pkgEntry));
+    }).catch(() => { /* 包不可用时保留目录数据 */ });
+  }
+
+  view.append(el('p', { class: 'footer-note' },
+    el('span', { text: `SHADOW ${t('市场')} · ${t('全免费')}` }),
+    el('span', { text: `BYOM · ${t('不托管媒体')}` }),
+    el('span', { text: t('无强制登录') }),
+  ));
 }
+
+export default { renderResource, renderRail };

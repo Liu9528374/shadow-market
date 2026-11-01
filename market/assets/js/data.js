@@ -220,8 +220,19 @@ function normalizePlugin(raw) {
   });
 }
 
+/** 内置资源类型的默认展示标签（插件清单未加载时的首屏兜底；清单加载后仍以清单为准） */
+const BUILTIN_TYPE_LABELS = Object.freeze({
+  course: { label: '课程包', labelEn: 'Course pack', icon: 'book-open' },
+  subtitle: { label: '字幕包', labelEn: 'Subtitle pack', icon: 'file-text' },
+  plugin: { label: '插件说明', labelEn: 'Plugin notes', icon: 'layers' },
+  generic: { label: '通用资源', labelEn: 'Generic', icon: 'info' },
+});
+
 export function pluginFor(type) {
-  return state.pluginMap.get(String(type || '')) || GENERIC_PLUGIN;
+  const found = state.pluginMap.get(String(type || ''));
+  if (found) return found;
+  const fallback = BUILTIN_TYPE_LABELS[String(type || '')] || BUILTIN_TYPE_LABELS.generic;
+  return { ...GENERIC_PLUGIN, id: String(type || 'generic'), label: fallback.label, labelEn: fallback.labelEn, icon: fallback.icon };
 }
 
 export function enabledPlugins() { return state.plugins.filter((p) => p.enabled); }

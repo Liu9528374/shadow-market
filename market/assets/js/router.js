@@ -1,29 +1,26 @@
 /**
- * hash 路由（纯前端，无依赖 · P0 全程使用 hash 以适配静态托管与离线缓存）。
+ * hash 路由（纯前端，无依赖 · 静态托管/离线缓存友好）。
  *
- * 路由表：
- *   #/                          home（推荐 + 最新 + 分类/标签入口）
- *   #/category/<id>             category
- *   #/tag/<tag>                 tag（标签页，支持中文标签、URL 编码）
- *   #/search?q=&type=&sort=     search
- *   #/resource/<id>             resource（?tab=readme|sentences|files|versions）
- *   #/resource/<id>/license     resource 的许可证页（也接受 #/license/<id>）
- *   #/creator/<handle>          creator
- *   #/favorites                 favorites（本地收藏）
- *   #/changelog                 changelog
- *   #/contribute                contribute
- *   #/about                     about
- *   #/privacy                   privacy
- *   #/complaint                 complaint
- *   #/import                    import
- *   #/points                    points（P1 预览）
- *   #/settings[/<section>]      settings
- *   #/404 或未知路由             notFound
+ * 重设计后的路由表：
+ *   #/                          工作台 dashboard（进入网站默认页）
+ *   #/market                    市场 market（探索/筛选/搜索主入口）
+ *   #/search?q=&type=&level=&sort=   市场搜索（复用 market 视图）
+ *   #/category/<id>             市场分类（复用 market 视图）
+ *   #/tag/<tag>                 市场标签（复用 market 视图）
+ *   #/resource/<id>             资源详情（?tab=readme|sentences|files|versions）
+ *   #/resource/<id>/license     许可证页（也接受 #/license/<id>）
+ *   #/creator/<handle>          作者页
+ *   #/favorites                 我的收藏（本地）
+ *   #/changelog  #/contribute  #/about  #/privacy  #/complaint  #/import
+ *   #/points                    积分（P1 本地演示）
+ *   #/settings[/<section>]      设置
+ *   #/404 或未知路由 → notFound
  * 刷新 / 直达 / 前进后退均由 hashchange 驱动。
  */
 
 export const ROUTES = Object.freeze([
-  'home', 'category', 'tag', 'search', 'resource', 'license', 'creator',
+  'dashboard', 'market', 'category', 'tag', 'search',
+  'resource', 'license', 'creator',
   'favorites', 'changelog', 'contribute', 'about', 'privacy', 'complaint',
   'import', 'points', 'settings', 'notFound',
 ]);
@@ -42,9 +39,10 @@ export function parseHash(hash = window.location.hash) {
   const path = pathPart.replace(/^\/+/, '');
   const segments = path.split('/').filter((s) => s.length > 0).map(safeDecode);
 
-  if (segments.length === 0) return { name: 'home', params: {}, query, raw };
+  if (segments.length === 0) return { name: 'dashboard', params: {}, query, raw };
   const head = segments[0];
   switch (head) {
+    case 'market': return { name: 'market', params: {}, query, raw };
     case 'resource':
       if (!segments[1]) return notFound(query, raw);
       if (segments[2] === 'license') return { name: 'license', params: { id: segments[1], from: 'resource' }, query, raw };
@@ -75,6 +73,7 @@ export function parseHash(hash = window.location.hash) {
     case 'points': return { name: 'points', params: {}, query, raw };
     case 'settings': return { name: 'settings', params: { section: segments[1] || '' }, query, raw };
     case 'import': return { name: 'import', params: {}, query, raw };
+    case 'home': return { name: 'dashboard', params: {}, query, raw }; // 旧链接兼容
     case '404': return notFound(query, raw);
     default: return { name: 'notFound', params: { path }, query, raw };
   }
@@ -104,7 +103,7 @@ function emit(reason) {
 
 export function startRouter() {
   if (!window.location.hash) {
-    try { history.replaceState(null, '', buildHash('')); } catch { window.location.hash = '#/'; }
+    try { history.replaceState(null, '', buildHash('/')); } catch { window.location.hash = '#/'; }
   }
   window.addEventListener('hashchange', () => emit('hashchange'));
   return emit('start');
@@ -117,7 +116,7 @@ export function navigate(path, query) {
   window.location.hash = target;
 }
 
-/** 替换当前历史项（搜索框实时过滤 / Tab 切换用，不污染后退栈） */
+/** 替换当前历史项（搜索实时过滤 / Tab 切换用，不污染后退栈） */
 export function replaceRoute(path, query) {
   const target = buildHash(path, query);
   if (window.location.hash === target) return;
@@ -131,11 +130,6 @@ export function replaceRoute(path, query) {
 }
 
 export function currentRoute() { return parseHash(); }
-
-/** 是否移动端视口（≤820px，与 app.css 断点一致） */
-export function isCompactViewport() {
-  try { return window.matchMedia('(max-width: 820px)').matches; } catch { return window.innerWidth <= 820; }
-}
 
 /** 尊重 prefers-reduced-motion 的滚动（JS smooth 降级） */
 export function scrollToY(y = 0, { behavior = 'auto' } = {}) {

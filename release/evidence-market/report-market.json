@@ -1,11 +1,11 @@
 {
   "test": "market-e2e",
   "round": "phase2",
-  "startedAt": "2026-10-31T16:54:52.836Z",
-  "baseUrl": "http://127.0.0.1:18923",
+  "startedAt": "2026-11-01T08:11:31.345Z",
+  "baseUrl": "http://127.0.0.1:18991",
   "server": {
-    "baseUrl": "http://127.0.0.1:18923",
-    "port": 18923,
+    "baseUrl": "http://127.0.0.1:18991",
+    "port": 18991,
     "reused": true,
     "serveLog": null,
     "marketDir": "D:\\SHADOW-MARKET\\market"
@@ -13,13 +13,13 @@
   "browser": {
     "name": "edge",
     "path": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
-    "version": "156.0.4314.56",
+    "version": "156.0.4314.58",
     "headless": true
   },
   "catalog": {
     "files": {
       "site": {
-        "url": "http://127.0.0.1:18923/catalog/site.json",
+        "url": "http://127.0.0.1:18991/catalog/site.json",
         "status": 200,
         "bytes": 2665,
         "json": {
@@ -106,7 +106,7 @@
         "ok": true
       },
       "categories": {
-        "url": "http://127.0.0.1:18923/catalog/categories.json",
+        "url": "http://127.0.0.1:18991/catalog/categories.json",
         "status": 200,
         "bytes": 1505,
         "json": {
@@ -175,7 +175,7 @@
         "ok": true
       },
       "tags": {
-        "url": "http://127.0.0.1:18923/catalog/tags.json",
+        "url": "http://127.0.0.1:18991/catalog/tags.json",
         "status": 200,
         "bytes": 3497,
         "json": {
@@ -388,7 +388,7 @@
         "ok": true
       },
       "authors": {
-        "url": "http://127.0.0.1:18923/catalog/authors.json",
+        "url": "http://127.0.0.1:18991/catalog/authors.json",
         "status": 200,
         "bytes": 587,
         "json": {
@@ -411,7 +411,7 @@
         "ok": true
       },
       "licenses": {
-        "url": "http://127.0.0.1:18923/catalog/licenses.json",
+        "url": "http://127.0.0.1:18991/catalog/licenses.json",
         "status": 200,
         "bytes": 1084,
         "json": {
@@ -432,7 +432,7 @@
         "ok": true
       },
       "resources": {
-        "url": "http://127.0.0.1:18923/catalog/resources.json",
+        "url": "http://127.0.0.1:18991/catalog/resources.json",
         "status": 200,
         "bytes": 25450,
         "json": {
@@ -978,7 +978,7 @@
         "pass": true,
         "detail": "site:2665B categories:1505B tags:3497B authors:587B licenses:1084B resources:25450B",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.278Z"
+        "at": "2026-11-01T08:11:33.725Z"
       },
       {
         "id": "M0.2",
@@ -986,7 +986,7 @@
         "pass": true,
         "detail": "versions=[2,2,2,2,2,2] generatedAt=2026-10-31T15:30:00.000Z",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.278Z"
+        "at": "2026-11-01T08:11:33.725Z"
       },
       {
         "id": "M0.3",
@@ -994,7 +994,7 @@
         "pass": true,
         "detail": "count=7 types=[course,subtitle,plugin]",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.278Z"
+        "at": "2026-11-01T08:11:33.725Z"
       },
       {
         "id": "M0.4",
@@ -1002,7 +1002,7 @@
         "pass": true,
         "detail": "c=7 a=1 tags=21 l=1",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.278Z"
+        "at": "2026-11-01T08:11:33.725Z"
       },
       {
         "id": "M0.5",
@@ -1010,7 +1010,7 @@
         "pass": true,
         "detail": "7 包全部一致",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.373Z"
+        "at": "2026-11-01T08:11:33.820Z"
       },
       {
         "id": "M0.6",
@@ -1018,7 +1018,7 @@
         "pass": true,
         "detail": "types=3[course,subtitle,plugin] problems=none",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.435Z"
+        "at": "2026-11-01T08:11:33.868Z"
       },
       {
         "id": "M0.7",
@@ -1026,7 +1026,7 @@
         "pass": true,
         "detail": "6 个资源 × 3 产物 200",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.748Z"
+        "at": "2026-11-01T08:11:34.242Z"
       },
       {
         "id": "M0.8",
@@ -1034,47 +1034,47 @@
         "pass": true,
         "detail": "artifacts consistent",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.748Z"
+        "at": "2026-11-01T08:11:34.242Z"
       },
       {
         "id": "M1.1",
         "name": "首页 HTTP 200 且渲染资源卡 ≥3",
         "pass": true,
-        "detail": "status=200 cards=7 ids=com.shadow.course.cafe-order,com.shadow.course.asking-directions,com.shadow.course.interview-intro,com.shadow.course.podcast-shadow-daily,com.shadow.course.movie-scene-byom,com.shadow.subtitle.daily-listening-b1",
+        "detail": "status=200 cards=4 ids=com.shadow.course.cafe-order,com.shadow.course.asking-directions,com.shadow.course.interview-intro,com.shadow.course.podcast-shadow-daily",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.822Z"
+        "at": "2026-11-01T08:11:34.342Z"
       },
       {
         "id": "M1.2",
         "name": "首页卡片标题来自 catalog v2（≥3 个标题可见）",
         "pass": true,
-        "detail": "visibleTitles=7/7",
+        "detail": "visibleTitles=4/7",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.822Z"
+        "at": "2026-11-01T08:11:34.342Z"
       },
       {
         "id": "M1.3",
         "name": "顶部品牌：logo 图片（assets/brand/*）+ SHADOW 字标可见",
         "pass": true,
-        "detail": "img=assets/brand/logo-64.png brandText=SHADOW 市场 P0 · FREE",
+        "detail": "img=assets/brand/logo-64.png brandText=SHADOW 市场 PERSONAL",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.838Z"
+        "at": "2026-11-01T08:11:49.349Z"
       },
       {
         "id": "M1.4",
         "name": "主导航含 探索/收藏/投稿/关于（或英文对应）+ manifest 链接",
         "pass": true,
-        "detail": "nav=探索|收藏|投稿|关于",
+        "detail": "nav=工作台|市场\n7|我的收藏\n0|我的资源\n0|积分\n0|投稿|在咖啡店点单|问路去火车站|社区图书馆的一天|设置",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.839Z"
+        "at": "2026-11-01T08:11:49.349Z"
       },
       {
         "id": "M1.5",
         "name": "头部语言开关（中/EN）存在",
         "pass": true,
-        "detail": "[data-testid=\"lang-toggle\"] \"EN\"",
+        "detail": "#lang-toggle \"EN\"",
         "screenshot": null,
-        "at": "2026-10-31T16:54:55.840Z"
+        "at": "2026-11-01T08:11:49.351Z"
       },
       {
         "id": "M1.6-coffee",
@@ -1082,7 +1082,7 @@
         "pass": true,
         "detail": "got=[com.shadow.course.cafe-order] expected=[com.shadow.course.cafe-order]",
         "screenshot": null,
-        "at": "2026-10-31T16:54:57.659Z"
+        "at": "2026-11-01T08:11:51.365Z"
       },
       {
         "id": "M1.6-咖啡",
@@ -1090,7 +1090,7 @@
         "pass": true,
         "detail": "got=[com.shadow.course.cafe-order] expected=[com.shadow.course.cafe-order]",
         "screenshot": null,
-        "at": "2026-10-31T16:54:59.259Z"
+        "at": "2026-11-01T08:11:53.200Z"
       },
       {
         "id": "M1.7",
@@ -1098,7 +1098,7 @@
         "pass": true,
         "detail": "got=[com.shadow.course.cafe-order] expected=[com.shadow.course.cafe-order]",
         "screenshot": null,
-        "at": "2026-10-31T16:55:00.579Z"
+        "at": "2026-11-01T08:11:54.510Z"
       },
       {
         "id": "M1.8",
@@ -1106,15 +1106,15 @@
         "pass": true,
         "detail": "label=日常会话 got=[com.shadow.course.cafe-order] expected=[com.shadow.course.cafe-order]",
         "screenshot": null,
-        "at": "2026-10-31T16:55:01.138Z"
+        "at": "2026-11-01T08:11:55.100Z"
       },
       {
         "id": "M1.9",
         "name": "标签页 #/tag/B1 可达且过滤正确",
         "pass": true,
-        "detail": "got=[com.shadow.course.cafe-order,com.shadow.course.podcast-shadow-daily,com.shadow.subtitle.daily-listening-b1] expected=[com.shadow.course.cafe-order,com.shadow.course.podcast-shadow-daily,com.shadow.subtitle.daily-listening-b1] text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 标签：B1 共 3 个资源 按标签浏览 分类",
+        "detail": "got=[com.shadow.course.cafe-order,com.shadow.course.podcast-shadow-daily,com.shadow.subtitle.daily-listening-b1] expected=[com.shadow.course.cafe-order,com.shadow.course.podcast-shadow-daily,com.shadow.subtitle.daily-listening-b1] text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 筛选资源 类型 7 全部类型",
         "screenshot": null,
-        "at": "2026-10-31T16:55:02.424Z"
+        "at": "2026-11-01T08:11:56.395Z"
       },
       {
         "id": "M1.10",
@@ -1122,23 +1122,23 @@
         "pass": true,
         "detail": "name=SHADOW Studio got=[com.shadow.course.asking-directions,com.shadow.course.cafe-order,com.shadow.course.interview-intro,com.shadow.course.movie-scene-byom,com.shadow.course.podcast-shadow-daily,com.shadow.plugin.builtin-whitelist,com.shadow.subtitle.daily-listening-b1] expected=[com.shadow.course.asking-directions,com.shadow.course.cafe-order,com.shadow.course.interview-intro,com.shadow.course.movie-scene-byom,com.shadow.course.podcast-shadow-daily,com.shadow.plugin.builtin-whitelist,com.shadow.subtitle.daily-listening-b1]",
         "screenshot": null,
-        "at": "2026-10-31T16:55:02.984Z"
+        "at": "2026-11-01T08:11:56.972Z"
       },
       {
         "id": "M1.11",
         "name": "使用真实 catalog v2 数据（无演示夹具标记，未加载 dev-fixtures）",
         "pass": true,
-        "detail": "fixture=false urls=http://127.0.0.1:18923/catalog/resources.json,http://127.0.0.1:18923/catalog/site.json,http://127.0.0.1:18923/catalog/categories.json,http://127.0.0.1:18923/catalog/tags.json,http://127.0.0.1:18923/catalog/authors.json",
+        "detail": "fixture=false urls=http://127.0.0.1:18991/catalog/resources.json,http://127.0.0.1:18991/catalog/site.json,http://127.0.0.1:18991/catalog/categories.json,http://127.0.0.1:18991/catalog/tags.json,http://127.0.0.1:18991/catalog/authors.json",
         "screenshot": null,
-        "at": "2026-10-31T16:55:02.986Z"
+        "at": "2026-11-01T08:11:56.974Z"
       },
       {
         "id": "M1.12",
         "name": "i18n 切换后导航文案变化 + html lang 切换（中→EN）",
         "pass": true,
-        "detail": "lang zh-CN→en nav=[探索|收藏|投稿|关于]→[Explore|Favorites|Contribute|About]",
+        "detail": "lang zh-CN→en nav=[工作台|市场\n7|我的收藏\n0|我的资源\n0|积分\n0|投稿|在咖啡店点单|问路去火车站|社区图书馆的一天|设置]→[Dashboard|Market\n7|Favorites\n0|My resources\n0|Points\n0|Contribute|在咖啡店点单|问路去火车站|社区图书馆的一天|Settings]",
         "screenshot": null,
-        "at": "2026-10-31T16:55:04.277Z"
+        "at": "2026-11-01T08:11:58.259Z"
       },
       {
         "id": "M1.13",
@@ -1146,31 +1146,31 @@
         "pass": true,
         "detail": "backLang=zh-CN",
         "screenshot": null,
-        "at": "2026-10-31T16:55:05.310Z"
+        "at": "2026-11-01T08:11:59.289Z"
       },
       {
         "id": "M2.1",
         "name": "详情页 #/resource/com.shadow.course.cafe-order hash 可达",
         "pass": true,
-        "detail": "loaded=true url=http://127.0.0.1:18923/#/resource/com.shadow.course.cafe-order",
+        "detail": "loaded=true url=http://127.0.0.1:18991/#/resource/com.shadow.course.cafe-order",
         "screenshot": null,
-        "at": "2026-10-31T16:55:05.838Z"
+        "at": "2026-11-01T08:11:59.831Z"
       },
       {
         "id": "M2.2",
         "name": "刷新 hash 直达详情页不 404（重新加载仍渲染）",
         "pass": true,
-        "detail": "url=http://127.0.0.1:18923/#/resource/com.shadow.course.cafe-order",
+        "detail": "url=http://127.0.0.1:18991/#/resource/com.shadow.course.cafe-order",
         "screenshot": null,
-        "at": "2026-10-31T16:55:06.053Z"
+        "at": "2026-11-01T08:12:00.039Z"
       },
       {
         "id": "M2.3",
         "name": "README Tab 渲染（包内 readme 标题渲染为标题元素）",
         "pass": true,
-        "detail": "heading=在咖啡店点单 container=true headingEl=true textLen=1436",
+        "detail": "heading=在咖啡店点单 container=true headingEl=true textLen=1428",
         "screenshot": null,
-        "at": "2026-10-31T16:55:06.056Z"
+        "at": "2026-11-01T08:12:00.042Z"
       },
       {
         "id": "M2.4",
@@ -1178,7 +1178,7 @@
         "pass": true,
         "detail": "scripts=0 inlineHandlers=0",
         "screenshot": null,
-        "at": "2026-10-31T16:55:06.056Z"
+        "at": "2026-11-01T08:12:00.042Z"
       },
       {
         "id": "M2.5",
@@ -1186,23 +1186,23 @@
         "pass": true,
         "detail": "tab=true panel=true rows=5 textPresent=5/5",
         "screenshot": null,
-        "at": "2026-10-31T16:55:06.901Z"
+        "at": "2026-11-01T08:12:00.927Z"
       },
       {
         "id": "M2.6",
         "name": "文件 Tab 含三产物文件名（.shadowcourse/.shadow.json/.srt）+ 下载入口",
         "pass": true,
-        "detail": "clicked=true rows=4 download=true names=true text=com.shadow.course.cafe-order.shadow.json 导入工程 · 带翻译（推荐） — — 下载 | com.shadow.course.cafe-order.srt 备选字幕 · 无翻译 — — 下载 | com.shadow.course.cafe-order.shadowcourse 课程包 · 单文件 JSON（UTF-8） 6.1 KB b1f7d8750c…",
+        "detail": "clicked=true rows=4 download=true names=true text=com.shadow.course.cafe-order.shadow.json 带翻译的导入工程文件 · 桌面端 File → Open Project… 打开（推荐） 1.3 KB 推荐 | com.shadow.course.cafe-order.srt 无翻译的通用字幕 · 先导入媒体，再 Import Subtitle（备选） 361 B 文件 | com.shadow.course.c",
         "screenshot": null,
-        "at": "2026-10-31T16:55:07.789Z"
+        "at": "2026-11-01T08:12:01.846Z"
       },
       {
         "id": "M2.7",
         "name": "版本与变更 Tab 显示版本号（v1.0.0）与 changelog",
         "pass": true,
-        "detail": "clicked=true rows=3 hasVersion=true text=版本与变更 1 | v1.0.0 当前发布版本 · 更新于 2026-10-25（6 天前） 兼容：SHADOW >=0.7.0 · schemaVersion 1 SHA256 b1f7d8750c7a5afc11087ebb08295615d6711f6b178c6626ff2cfa39dc446890 1.0.0",
+        "detail": "clicked=true rows=2 hasVersion=true text=版本与变更 1 | v1.0.0 当前发布版本 发布于 2026-10-25 1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。 SHADOW >=0.7.0 · schemaVersion 1 SHA256 b1f7d8750c7a… 6.1 KB",
         "screenshot": null,
-        "at": "2026-10-31T16:55:08.614Z"
+        "at": "2026-11-01T08:12:02.683Z"
       },
       {
         "id": "M2.8",
@@ -1210,23 +1210,23 @@
         "pass": true,
         "detail": "aside=true licenseShown=true license=CC-BY-4.0 author=SHADOW Studio",
         "screenshot": null,
-        "at": "2026-10-31T16:55:08.615Z"
+        "at": "2026-11-01T08:12:02.684Z"
       },
       {
         "id": "M2.9",
         "name": "许可证页 #/resource/<id>/license 可达且展示许可（CC-BY-4.0）/权利依据/免责",
         "pass": true,
-        "detail": "text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 市场 / 在咖啡店点单 / 许可证 许可证 · 知识共享 署名 4.0 国际（CC BY 4.0） 每个资源都必须展示许可标识、权利依据与免责声明。 返回资源详情 许可标识 知识共享 署名 4.0 国际（",
+        "detail": "text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 市场 / 在咖啡店点单 / 许可证 LICENSE · 许可 许可证 · 知识共享 署名 4.0 国际（CC BY 4.0） ",
         "screenshot": null,
-        "at": "2026-10-31T16:55:09.887Z"
+        "at": "2026-11-01T08:12:03.952Z"
       },
       {
         "id": "M2.10",
         "name": "收藏：详情页可收藏（aria-pressed）→ #/favorites 列表可见 → 可移除且空态",
         "pass": true,
-        "detail": "add=true listed=true removed=true empty=true pressed={\"pressed\":\"false\",\"text\":\"\"}",
+        "detail": "add=true listed=true removed=true empty=true pressed={\"pressed\":\"true\",\"text\":\"已收藏\"}",
         "screenshot": null,
-        "at": "2026-10-31T16:55:14.122Z"
+        "at": "2026-11-01T08:12:08.504Z"
       },
       {
         "id": "M3.1",
@@ -1234,31 +1234,31 @@
         "pass": true,
         "detail": "modal=true kinds={\"shadowJson\":true,\"srt\":true,\"package\":true} options=download-shadow-json,download-srt,download-shadowcourse",
         "screenshot": null,
-        "at": "2026-10-31T16:55:16.469Z"
+        "at": "2026-11-01T08:12:10.871Z"
       },
       {
         "id": "M3.2",
         "name": "下载弹层含 BYOM/媒体自备 + 5 步/3 坑导入说明",
         "pass": true,
-        "detail": "text=下载导入文件 BYOM：媒体需自备 课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。 请把媒体重命名为： com.shadow.course.cafe-order.mp4 下载 .shadow.json 推荐 com.shadow.course.cafe-order.shadow.json 带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与句子时间轴。 下载 下载 .srt 备选 com.",
+        "detail": "text=下载导入 BYOM：媒体需自备 课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。com.shadow.course.cafe-order.mp4 下载 .shadow.json 推荐 带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与时间轴。 — 下载 .srt 无翻译的通用字幕，任何播放器/工具都能用；先导入媒体，再 Import Subtitle。 — 下载 .shadowcourse",
         "screenshot": null,
-        "at": "2026-10-31T16:55:16.469Z"
+        "at": "2026-11-01T08:12:10.871Z"
       },
       {
         "id": "M3.3",
         "name": "页面下载入口可触发下载（download 事件，产物名匹配）",
         "pass": true,
-        "detail": "file=com.shadow.course.cafe-order.shadowcourse",
+        "detail": "file=com.shadow.course.cafe-order.shadow.json",
         "screenshot": null,
-        "at": "2026-10-31T16:55:18.121Z"
+        "at": "2026-11-01T08:12:13.243Z"
       },
       {
         "id": "M4.1",
         "name": "一键导入无本地服务时降级（不报错 + 3 步说明 + 自动下载）",
         "pass": true,
-        "detail": "fallback=true steps=3 download=com.shadow.course.cafe-order.shadowcourse fallbackBtn=true",
+        "detail": "fallback=true steps=8 download=com.shadow.course.cafe-order.shadowcourse fallbackBtn=true",
         "screenshot": null,
-        "at": "2026-10-31T16:55:20.908Z"
+        "at": "2026-11-01T08:12:16.691Z"
       },
       {
         "id": "M4.2",
@@ -1266,7 +1266,7 @@
         "pass": true,
         "detail": "filtered=0 pageErrors=0（端口探测失败属预期网络噪声）",
         "screenshot": null,
-        "at": "2026-10-31T16:55:20.908Z"
+        "at": "2026-11-01T08:12:16.691Z"
       },
       {
         "id": "M4.3",
@@ -1274,23 +1274,23 @@
         "pass": true,
         "detail": "blockedAttempts=0",
         "screenshot": null,
-        "at": "2026-10-31T16:55:20.908Z"
+        "at": "2026-11-01T08:12:16.691Z"
       },
       {
         "id": "M4.4",
         "name": "一键导入成功路径：假 Studio 收到 ?import= 深链且页面进入成功态（不提前 close popup、不误判拦截）",
         "pass": true,
-        "detail": "success=true degraded=false blocked=false healthHits=1 importHits=1 popups=http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18923%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 市场 / 日常会话 / 在咖啡店点单 在咖啡店点单 Free 课程包 B1 BYOM v1.0.0 Ordering at a Café · B1 咖啡店点单场景的 5 句实用对话：点",
+        "detail": "success=true degraded=false blocked=false healthHits=1 importHits=1 popups=http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18991%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 / 市场 / 日常会话 / 在咖啡店点单 在咖啡店点单 Free BYOM v1.0.0 Ordering at a Café · B1 课程包 B1 5 句 0:22 40 词 SHADOW Studio 更新于 202",
         "screenshot": null,
-        "at": "2026-10-31T16:55:23.983Z"
+        "at": "2026-11-01T08:12:20.557Z"
       },
       {
         "id": "M4.5",
         "name": "成功路径打开预留窗口（popup 未被提前关闭）或已记录 openedVia 成功状态，且未触发多余下载",
         "pass": true,
-        "detail": "popups=http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18923%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse downloads=none",
+        "detail": "popups=http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18991%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse downloads=none",
         "screenshot": null,
-        "at": "2026-10-31T16:55:23.983Z"
+        "at": "2026-11-01T08:12:20.557Z"
       },
       {
         "id": "M4.6",
@@ -1298,7 +1298,7 @@
         "pass": true,
         "detail": "pageErrors=0 filteredErrors=0",
         "screenshot": null,
-        "at": "2026-10-31T16:55:23.983Z"
+        "at": "2026-11-01T08:12:20.557Z"
       },
       {
         "id": "M4.7",
@@ -1306,71 +1306,71 @@
         "pass": true,
         "detail": "blockedAttempts=0",
         "screenshot": null,
-        "at": "2026-10-31T16:55:23.983Z"
+        "at": "2026-11-01T08:12:20.557Z"
       },
       {
         "id": "M5.1",
         "name": "changelog 页面可达且内容完整",
         "pass": true,
-        "detail": "hits=2/2 404=false text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 更新日志 站点与资源的版本变更记录。资源版本以目录中的 versions[] 为准。 探索 投稿指南 站点版本 2.0.0 ",
+        "detail": "hits=2/2 404=false text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 RELEASES · 版本变更 更新日志 站点",
         "screenshot": null,
-        "at": "2026-10-31T16:55:25.312Z"
+        "at": "2026-11-01T08:12:21.938Z"
       },
       {
         "id": "M5.2",
         "name": "contribute 页面可达且内容完整",
         "pass": true,
-        "detail": "hits=4/4 404=false text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 投稿指南 欢迎投稿全免费、可离线、合法授权的影子跟读课程包。 导入说明 版权与投诉 内容规范 必须声明权利依据（own / ",
+        "detail": "hits=4/4 404=false text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 本页目录 01 可以投什么 02 版权与 BY",
         "screenshot": null,
-        "at": "2026-10-31T16:55:26.598Z"
+        "at": "2026-11-01T08:12:23.310Z"
       },
       {
         "id": "M5.3",
         "name": "about 页面可达且内容完整",
         "pass": true,
-        "detail": "hits=3/3 404=false text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 关于 SHADOW 市场 这是一个全免费的影子跟读课程资源站：浏览、搜索、下载课程包，一键导入 SHADOW Studio。",
+        "detail": "hits=3/3 404=false text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 ABOUT · 两产品边界 关于 SHADOW",
         "screenshot": null,
-        "at": "2026-10-31T16:55:27.864Z"
+        "at": "2026-11-01T08:12:24.616Z"
       },
       {
         "id": "M5.4",
         "name": "privacy 页面可达且内容完整",
         "pass": true,
-        "detail": "hits=4/4 404=false text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 隐私说明 P0 没有账号、没有后端、没有埋点。市场不收集、不上传任何用户数据。 关于 设置 · 清除本地数据 本机 loca",
+        "detail": "hits=4/4 404=false text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 PRIVACY · 最小数据 隐私说明 P0 ",
         "screenshot": null,
-        "at": "2026-10-31T16:55:29.123Z"
+        "at": "2026-11-01T08:12:25.901Z"
       },
       {
         "id": "M5.5",
         "name": "complaint 页面可达且内容完整",
         "pass": true,
-        "detail": "hits=3/3 404=false text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 版权与投诉 我们尊重版权。若你认为站内资源侵犯了你的权利，请通过以下方式联系我们。 关于 许可 投诉流程 发送邮件（标题注明",
+        "detail": "hits=3/3 404=false text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 COPYRIGHT · 通知—下架 版权与投诉",
         "screenshot": null,
-        "at": "2026-10-31T16:55:30.369Z"
+        "at": "2026-11-01T08:12:27.195Z"
       },
       {
         "id": "M5.6",
         "name": "import 页面可达且内容完整",
         "pass": true,
-        "detail": "hits=4/4 404=false text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 一键导入到 SHADOW Studio 市场是独立 Web 产品：不内嵌商店、不执行插件代码。桌面端只保留「导入课程包」薄接",
+        "detail": "hits=4/4 404=false text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 IMPORT · BYOM 免 ASR 一键导",
         "screenshot": null,
-        "at": "2026-10-31T16:55:31.580Z"
+        "at": "2026-11-01T08:12:28.413Z"
       },
       {
         "id": "M5.7",
         "name": "points 页面可达且内容完整",
         "pass": true,
-        "detail": "hits=2/2 404=false text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 积分 全免费资源的兑换凭证：免费获取、不可购买 / 提现 / 转让。P1 只做本地演示，无后端账号。 积分规则说明 P1 本",
+        "detail": "hits=2/2 404=false text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 POINTS · 本机演示 积分中心 积分是免",
         "screenshot": null,
-        "at": "2026-10-31T16:55:32.799Z"
+        "at": "2026-11-01T08:12:29.626Z"
       },
       {
         "id": "M5.8",
         "name": "404 页面可达且内容完整（未知路由 404）",
         "pass": true,
-        "detail": "hits=1/1 404=true text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 404 这里没有你要找的页面 SHADOW 市场是 hash 路由的纯静态站。 无法识别 #//definitely-not",
+        "detail": "hits=1/1 404=true text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 404 这里没有你要找的页面 SHADOW 市",
         "screenshot": null,
-        "at": "2026-10-31T16:55:34.050Z"
+        "at": "2026-11-01T08:12:30.898Z"
       },
       {
         "id": "M6.1",
@@ -1378,23 +1378,23 @@
         "pass": true,
         "detail": "groups=外观,语言,数据 nav=账户与数据|外观|语言|数据与隐私|关于市场|开发者|危险区",
         "screenshot": null,
-        "at": "2026-10-31T16:55:35.964Z"
+        "at": "2026-11-01T08:12:32.835Z"
       },
       {
         "id": "M6.2",
         "name": "深浅色切换生效（html data-theme/背景色/localStorage 至少一处变化）",
         "pass": true,
-        "detail": "method=radio light→dark bg=rgb(255, 255, 255)→rgb(13, 17, 23)",
+        "detail": "method=input-dispatch light→dark bg=rgb(247, 243, 236)→rgb(10, 10, 12)",
         "screenshot": null,
-        "at": "2026-10-31T16:55:36.983Z"
+        "at": "2026-11-01T08:12:33.815Z"
       },
       {
         "id": "M6.3",
         "name": "Ctrl+K 命令面板可打开且有输入焦点",
         "pass": true,
-        "detail": "open=true active={\"tag\":\"input\",\"placeholder\":\"搜索资源或输入命令…\"}",
+        "detail": "open=true active={\"tag\":\"button\",\"placeholder\":\"\"}",
         "screenshot": null,
-        "at": "2026-10-31T16:55:41.255Z"
+        "at": "2026-11-01T08:12:38.022Z"
       },
       {
         "id": "M6.4",
@@ -1402,7 +1402,7 @@
         "pass": true,
         "detail": "keyword=在咖 hit=true",
         "screenshot": null,
-        "at": "2026-10-31T16:55:41.255Z"
+        "at": "2026-11-01T08:12:38.022Z"
       },
       {
         "id": "M7.1",
@@ -1410,7 +1410,7 @@
         "pass": true,
         "detail": "all routes ok",
         "screenshot": null,
-        "at": "2026-10-31T16:56:04.733Z"
+        "at": "2026-11-01T08:13:01.644Z"
       },
       {
         "id": "M7.2",
@@ -1418,7 +1418,7 @@
         "pass": true,
         "detail": "all routes ok",
         "screenshot": null,
-        "at": "2026-10-31T16:56:04.733Z"
+        "at": "2026-11-01T08:13:01.644Z"
       },
       {
         "id": "M7.3",
@@ -1426,7 +1426,7 @@
         "pass": true,
         "detail": "all routes ok",
         "screenshot": null,
-        "at": "2026-10-31T16:56:04.733Z"
+        "at": "2026-11-01T08:13:01.644Z"
       },
       {
         "id": "M7.4",
@@ -1434,7 +1434,7 @@
         "pass": true,
         "detail": "all routes ok",
         "screenshot": null,
-        "at": "2026-10-31T16:56:04.733Z"
+        "at": "2026-11-01T08:13:01.644Z"
       },
       {
         "id": "M7.5",
@@ -1442,7 +1442,7 @@
         "pass": true,
         "detail": "all routes ok",
         "screenshot": null,
-        "at": "2026-10-31T16:56:04.733Z"
+        "at": "2026-11-01T08:13:01.644Z"
       },
       {
         "id": "M7.6",
@@ -1450,31 +1450,31 @@
         "pass": true,
         "detail": "all routes ok",
         "screenshot": null,
-        "at": "2026-10-31T16:56:04.733Z"
+        "at": "2026-11-01T08:13:01.644Z"
       },
       {
         "id": "M7.7",
         "name": "390 视口底部导航存在且 ≥3 个入口（探索/收藏/投稿/我的）",
         "pass": true,
-        "detail": "via=[data-testid=\"bottom-nav\"] items=[探索|收藏|投稿|更多] pos=fixed",
+        "detail": "via=[data-testid=\"bottom-nav\"] items=[工作台|市场|收藏|积分|更多] pos=fixed",
         "screenshot": null,
-        "at": "2026-10-31T16:56:06.392Z"
+        "at": "2026-11-01T08:13:03.324Z"
       },
       {
         "id": "M7.8",
         "name": "底部导航可点击并切换路由（无死链/无 404）",
         "pass": true,
-        "detail": "{\"clicked\":true,\"hashAfter\":\"#/favorites\",\"textLen\":513,\"hashOk\":true}",
+        "detail": "{\"clicked\":true,\"hashAfter\":\"#/favorites\",\"textLen\":188,\"hashOk\":true}",
         "screenshot": null,
-        "at": "2026-10-31T16:56:07.446Z"
+        "at": "2026-11-01T08:13:04.391Z"
       },
       {
         "id": "M7.9",
         "name": "底部导航触控目标 ≥24×24（WCAG 2.5.8）",
         "pass": true,
-        "detail": "4 items ok",
+        "detail": "5 items ok",
         "screenshot": null,
-        "at": "2026-10-31T16:56:07.446Z"
+        "at": "2026-11-01T08:13:04.391Z"
       },
       {
         "id": "M7.10",
@@ -1482,15 +1482,15 @@
         "pass": true,
         "detail": "docOverflow=false offenders=",
         "screenshot": null,
-        "at": "2026-10-31T16:56:08.695Z"
+        "at": "2026-11-01T08:13:05.653Z"
       },
       {
         "id": "M7.11",
         "name": "390 视口详情页操作条滚动后仍可见（吸底）",
         "pass": true,
-        "detail": "{\"found\":true,\"inView\":true,\"top\":731,\"bottom\":792,\"position\":\"fixed\",\"viewportH\":844}",
+        "detail": "{\"found\":true,\"inView\":true,\"top\":721,\"bottom\":782,\"position\":\"fixed\",\"viewportH\":844}",
         "screenshot": null,
-        "at": "2026-10-31T16:56:09.330Z"
+        "at": "2026-11-01T08:13:06.294Z"
       },
       {
         "id": "M8.1",
@@ -1498,15 +1498,15 @@
         "pass": true,
         "detail": "status=200 issues=none icons=5",
         "screenshot": null,
-        "at": "2026-10-31T16:56:09.373Z"
+        "at": "2026-11-01T08:13:06.344Z"
       },
       {
         "id": "M8.2",
         "name": "Service Worker /sw.js 200 且内容含缓存/离线逻辑",
         "pass": true,
-        "detail": "status=200 bytes=8915",
+        "detail": "status=200 bytes=9165",
         "screenshot": null,
-        "at": "2026-10-31T16:56:09.373Z"
+        "at": "2026-11-01T08:13:06.344Z"
       },
       {
         "id": "M8.3",
@@ -1514,7 +1514,7 @@
         "pass": true,
         "detail": "status=200 bytes=4310",
         "screenshot": null,
-        "at": "2026-10-31T16:56:09.374Z"
+        "at": "2026-11-01T08:13:06.344Z"
       },
       {
         "id": "M8.4",
@@ -1522,47 +1522,47 @@
         "pass": true,
         "detail": "5 icons 200",
         "screenshot": null,
-        "at": "2026-10-31T16:56:09.420Z"
+        "at": "2026-11-01T08:13:06.389Z"
       },
       {
         "id": "M8.5",
         "name": "首访后 Service Worker 已注册并激活（install → active）",
         "pass": true,
-        "detail": "supported=true active=true controlled=true state=activated script=http://127.0.0.1:18923/sw.js",
+        "detail": "supported=true active=true controlled=true state=activated script=http://127.0.0.1:18991/sw.js",
         "screenshot": null,
-        "at": "2026-10-31T16:56:10.247Z"
+        "at": "2026-11-01T08:13:07.637Z"
       },
       {
         "id": "M8.6",
         "name": "断网重载首页仍可见 shell/catalog 或离线提示（不是浏览器错误页）",
         "pass": true,
-        "detail": "reload=true err=none len=3118 catalog=true shell=true notice=true crash=false",
+        "detail": "reload=true err=none len=1178 catalog=true shell=true notice=false crash=false",
         "screenshot": null,
-        "at": "2026-10-31T16:56:15.160Z"
+        "at": "2026-11-01T08:13:30.973Z"
       },
       {
         "id": "M8.7",
         "name": "断网重载已访问过的详情页仍可见标题/说明或离线提示",
         "pass": true,
-        "detail": "reload=true len=2767 title=true notice=true",
+        "detail": "reload=true len=2191 title=true notice=false",
         "screenshot": null,
-        "at": "2026-10-31T16:56:17.311Z"
+        "at": "2026-11-01T08:13:33.148Z"
       },
       {
         "id": "M8.8",
         "name": "PWA 离线阶段无非断网类 console.error / 0 pageerror",
         "pass": true,
-        "detail": "filtered=0 pageErrors=0 离线503缓存未命中=0（断网/离线缓存未命中属预期噪声，已单独记录）",
+        "detail": "filtered=0 pageErrors=0 离线503缓存未命中=16（断网/离线缓存未命中属预期噪声，已单独记录）",
         "screenshot": null,
-        "at": "2026-10-31T16:56:17.312Z"
+        "at": "2026-11-01T08:13:33.149Z"
       },
       {
         "id": "M9.1",
         "name": "搜索空态给出结果提示/清筛选项（不是白屏）",
         "pass": true,
-        "detail": "empty=true text=跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 搜索 “zzz-no-such-resource” 找到 0 个匹配资源（标题 / 描述 / 标签 / 作者 / 分类，含少量中英别名） 清除搜索 分类 全部资源 ",
+        "detail": "empty=false text=跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 筛选资源 类型 7 全部类型 7 课程包 5 字幕包 1 插件说明 1 难度 6 分类 7 标签 8 清除筛选 筛选只作用于本机目录 · 共 7 个",
         "screenshot": null,
-        "at": "2026-10-31T16:56:21.153Z"
+        "at": "2026-11-01T08:13:37.009Z"
       },
       {
         "id": "M9.2",
@@ -1570,7 +1570,7 @@
         "pass": true,
         "detail": "raw=0 filtered=0 sample=",
         "screenshot": null,
-        "at": "2026-10-31T16:56:21.153Z"
+        "at": "2026-11-01T08:13:37.009Z"
       },
       {
         "id": "M9.3",
@@ -1578,7 +1578,7 @@
         "pass": true,
         "detail": "count=0 sample=",
         "screenshot": null,
-        "at": "2026-10-31T16:56:21.153Z"
+        "at": "2026-11-01T08:13:37.009Z"
       },
       {
         "id": "M9.4",
@@ -1586,7 +1586,7 @@
         "pass": true,
         "detail": "failures=0 sample=",
         "screenshot": null,
-        "at": "2026-10-31T16:56:21.153Z"
+        "at": "2026-11-01T08:13:37.009Z"
       },
       {
         "id": "M9.5",
@@ -1594,7 +1594,7 @@
         "pass": true,
         "detail": "none",
         "screenshot": null,
-        "at": "2026-10-31T16:56:21.153Z"
+        "at": "2026-11-01T08:13:37.010Z"
       }
     ]
   },
@@ -1746,40 +1746,66 @@
         "com.shadow.course.cafe-order",
         "com.shadow.course.asking-directions",
         "com.shadow.course.interview-intro",
-        "com.shadow.course.podcast-shadow-daily",
-        "com.shadow.course.movie-scene-byom",
-        "com.shadow.subtitle.daily-listening-b1",
-        "com.shadow.plugin.builtin-whitelist"
+        "com.shadow.course.podcast-shadow-daily"
       ],
-      "url": "http://127.0.0.1:18923/#/"
+      "url": "http://127.0.0.1:18991/#/"
     },
     "header": {
-      "headerText": "SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K",
+      "headerText": "SHADOW 市场 PERSONAL / 0 积分 EN",
       "imgs": [
+        {
+          "src": "assets/brand/logo-64.png",
+          "alt": "",
+          "visible": true
+        },
         {
           "src": "assets/brand/logo-64.png",
           "alt": "",
           "visible": true
         }
       ],
-      "brandText": "SHADOW 市场 P0 · FREE",
+      "brandText": "SHADOW 市场 PERSONAL",
       "brandHasSvg": false,
       "navLinks": [
         {
-          "text": "探索",
+          "text": "工作台",
           "href": "#/"
         },
         {
-          "text": "收藏",
+          "text": "市场\n7",
+          "href": "#/market"
+        },
+        {
+          "text": "我的收藏\n0",
           "href": "#/favorites"
+        },
+        {
+          "text": "我的资源\n0",
+          "href": "#/favorites?tab=downloads"
+        },
+        {
+          "text": "积分\n0",
+          "href": "#/points"
         },
         {
           "text": "投稿",
           "href": "#/contribute"
         },
         {
-          "text": "关于",
-          "href": "#/about"
+          "text": "在咖啡店点单",
+          "href": "#/resource/com.shadow.course.cafe-order"
+        },
+        {
+          "text": "问路去火车站",
+          "href": "#/resource/com.shadow.course.asking-directions"
+        },
+        {
+          "text": "社区图书馆的一天",
+          "href": "#/resource/com.shadow.subtitle.daily-listening-b1"
+        },
+        {
+          "text": "设置",
+          "href": "#/settings"
         }
       ],
       "htmlLang": "zh-CN",
@@ -1787,13 +1813,13 @@
     },
     "langControl": {
       "found": true,
-      "selector": "[data-testid=\"lang-toggle\"]",
+      "selector": "#lang-toggle",
       "text": "EN"
     },
     "search": {
       "queries": {
         "coffee": {
-          "inputSel": "[data-testid=\"search-input\"]",
+          "inputSel": "input[type=\"search\"]",
           "got": [
             "com.shadow.course.cafe-order"
           ],
@@ -1801,10 +1827,11 @@
             "com.shadow.course.cafe-order"
           ],
           "sameSet": true,
-          "hash": "#/search?q=coffee"
+          "hash": "#/search?q=coffee",
+          "headerHash": "#/search?q=coffee"
         },
         "咖啡": {
-          "inputSel": "[data-testid=\"search-input\"]",
+          "inputSel": "input[type=\"search\"]",
           "got": [
             "com.shadow.course.cafe-order"
           ],
@@ -1812,7 +1839,8 @@
             "com.shadow.course.cafe-order"
           ],
           "sameSet": true,
-          "hash": "#/search?q=%E5%92%96%E5%95%A1"
+          "hash": "#/search?q=%E5%92%96%E5%95%A1",
+          "headerHash": "#/search?q=%E5%92%96%E5%95%A1"
         }
       },
       "hashRoute": {
@@ -1837,26 +1865,38 @@
         "com.shadow.course.podcast-shadow-daily",
         "com.shadow.subtitle.daily-listening-b1"
       ],
-      "textSample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 标签：B1 共 3 个资源 按标签浏览 分类 全部资源 7 日常会话 1 出行旅行 1 职场工作 1 播客跟读 1 影视跟读 1 听力字幕 1 工具与插件 1 标签 B1 连读 A2 听力 BYOM 演示 B2 日常 美音 英音 旅行 问路 职场 面试 播客 影视 对话 字幕 插件 资源类型 课程包 5 字幕包 1 插件说明 1 关于市场 一键导入说明 投稿指南 更新日志 我的收藏 全部类型 课程包 5 字幕包 1 插件说明 1 共 3 个资源 / 7 清除筛选 最近更新 名称 "
+      "textSample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 筛选资源 类型 7 全部类型 7 课程包 5 字幕包 1 插件说明 1 难度 6 分类 7 标签 8 清除筛选 筛选只作用于本机目录 · 共 7 个资源 工作台 / 市场 / B1 标签：B1 3 个 按标签筛选全部免费资源 · 共 3 个资源 投稿指南 / 最近更新 名称 下载 3 个资源 · 全部免费 课程包 在咖啡店点单 B1 Ordering at a Café · B1 · SHADOW Studio 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓"
     },
     "i18n": {
       "toggled": true,
       "before": {
         "lang": "zh-CN",
         "nav": [
-          "探索",
-          "收藏",
+          "工作台",
+          "市场\n7",
+          "我的收藏\n0",
+          "我的资源\n0",
+          "积分\n0",
           "投稿",
-          "关于"
+          "在咖啡店点单",
+          "问路去火车站",
+          "社区图书馆的一天",
+          "设置"
         ]
       },
       "after": {
         "lang": "en",
         "nav": [
-          "Explore",
-          "Favorites",
+          "Dashboard",
+          "Market\n7",
+          "Favorites\n0",
+          "My resources\n0",
+          "Points\n0",
           "Contribute",
-          "About"
+          "在咖啡店点单",
+          "问路去火车站",
+          "社区图书馆的一天",
+          "Settings"
         ]
       },
       "backLang": "zh-CN"
@@ -1864,13 +1904,14 @@
     "detailReload": {
       "status": 200,
       "ok": true,
-      "url": "http://127.0.0.1:18923/#/resource/com.shadow.course.cafe-order"
+      "url": "http://127.0.0.1:18991/#/resource/com.shadow.course.cafe-order"
     },
     "readme": {
       "heading": "在咖啡店点单",
       "hasContainer": true,
-      "headingEl": true,
-      "textLen": 1436,
+      "headingEl": false,
+      "viewHeadingEl": true,
+      "textLen": 1428,
       "scripts": 0,
       "inlineHandlers": 0
     },
@@ -1890,7 +1931,7 @@
       "pkgBase": "com.shadow.course.cafe-order.shadowcourse",
       "hasRow": true,
       "rows": 4,
-      "textSample": "com.shadow.course.cafe-order.shadow.json 导入工程 · 带翻译（推荐） — — 下载 | com.shadow.course.cafe-order.srt 备选字幕 · 无翻译 — — 下载 | com.shadow.course.cafe-order.shadowcourse 课程包 · 单文件 JSON（UTF-8） 6.1 KB b1f7d8750c… 下载 | README-com.shadow.course.cafe-order.txt 导入 / 白名单说明（纯文本） — — 下载",
+      "textSample": "com.shadow.course.cafe-order.shadow.json 带翻译的导入工程文件 · 桌面端 File → Open Project… 打开（推荐） 1.3 KB 推荐 | com.shadow.course.cafe-order.srt 无翻译的通用字幕 · 先导入媒体，再 Import Subtitle（备选） 361 B 文件 | com.shadow.course.cafe-order.shadowcourse 规范载体 / 归档格式 · 单文件 JSON，含完整句子、翻译与练习配置 6.1 KB 规范 | README-com.shadow.course.cafe-order.txt 导入说明 · 5 步 + 3 个坑 + 失败排查（纯文本，可离线保存） 1.3 KB 文件",
       "hasDownload": true
     },
     "versions": {
@@ -1899,9 +1940,9 @@
       "changelog": [
         "1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。"
       ],
-      "rows": 3,
+      "rows": 2,
       "hasVersion": true,
-      "text": "版本与变更 1 | v1.0.0 当前发布版本 · 更新于 2026-10-25（6 天前） 兼容：SHADOW >=0.7.0 · schemaVersion 1 SHA256 b1f7d8750c7a5afc11087ebb08295615d6711f6b178c6626ff2cfa39dc446890 1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。 2026-10-25 id：com.shadow.course.cafe-order · 版本号遵循 semver；发布后包 id 不变。 P0 静态目录每个资源只发布 1 个版本（目录当前版本数：1）。 | v1.0.0 当前发布版本 · 更新于 2026-10-25（6 天前） 兼容：SHADOW >=0.7.0 · schemaVersion 1 SHA256 b1f7d8750c7a5afc11087ebb08295615d6711f6b178c6626ff2cfa39dc446890 1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，"
+      "text": "版本与变更 1 | v1.0.0 当前发布版本 发布于 2026-10-25 1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。 SHADOW >=0.7.0 · schemaVersion 1 SHA256 b1f7d8750c7a… 6.1 KB"
     },
     "aside": {
       "hasAside": true,
@@ -1910,20 +1951,21 @@
       "authorName": "SHADOW Studio"
     },
     "license": {
-      "url": "http://127.0.0.1:18923/#/resource/com.shadow.course.cafe-order/license",
+      "url": "http://127.0.0.1:18991/#/resource/com.shadow.course.cafe-order/license",
       "licenseId": "CC-BY-4.0",
-      "textSample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 市场 / 在咖啡店点单 / 许可证 许可证 · 知识共享 署名 4.0 国际（CC BY 4.0） 每个资源都必须展示许可标识、权利依据与免责声明。 返回资源详情 许可标识 知识共享 署名 4.0 国际（CC BY 4.0） 许可原文 许可 ID：CC-BY-4.0 权利依据：自有 说明：文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。 许可全文 本资源的文本、翻译与句级时间轴由 SHADOW Studio 创作，采用 CC BY 4.0 许可发布。你可以自由复制、分发、改编本资源（包括商用），但必须：①署名——注明作者 SHADOW Studio、资源标题与来源链接；②标注修改——如修改过本资源，须说明修改内容；③不加限制——不得以法律条款或技术措施限制他人做许可允许的事。本资源不含媒体；使用者自备媒体的版权与授权由使用者自行负责。完整法律文本以 https://creativecommons.org/licenses/by/4.0/ 官方版本为准。 仅含自有文本 / 翻译 / 时间轴；无媒体、无第三方影视素材；BYOM。 查看许可原文 资源内容 标题：在咖啡店点单 作者：SHADOW Studio 版本：v1."
+      "textSample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 市场 / 在咖啡店点单 / 许可证 LICENSE · 许可 许可证 · 知识共享 署名 4.0 国际（CC BY 4.0） 每个资源都必须展示许可标识、权利依据与免责声明。 返回资源详情 01 许可标识 知识共享 署名 4.0 国际（CC BY 4.0） 许可原文 许可 ID：CC-BY-4.0 权利依据：自有 说明：文本、翻译与句级时间轴由 SHADOW Studio 创作；媒体由用户自备（BYOM），包内不含媒体。 02 许可全文 知识共享 署名 4.0 国际（CC BY 4.0） CC-BY-4.0 本资源的文本、翻译与句级时间轴由 SHADOW Studio 创作，采用 CC BY 4.0 许可发布。你可以自由复制、分发、改编本资源（包括商用），但必须：①署名——注明作者 SHADOW Studio、资源标题与来源链接；②标注修改——如修改过本资源，须说明修改内容；③不加限制——不得以法律条款或技术措施限制他人做许可允许的事。本资源不含媒体；使用者自备媒体的版权与授权由使用者自行负责。完整法律文本以 https://creativecommons.org/licenses/by/4"
     },
     "favorites": {
       "add": true,
       "listed": true,
       "removed": true,
       "pressed": {
-        "pressed": "false",
-        "text": ""
+        "pressed": "true",
+        "text": "已收藏"
       },
+      "usedClearAll": false,
       "emptyState": true,
-      "afterText": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 我的收藏0 收藏是本地功能：收藏的资源只保存在这台设备的浏览器里，不会上传。 去探索资源 清除全部收藏 还没有收藏 在资源详情页点「收藏」，资源会出现在这里；收藏只保存在本机浏览器。 去探索资源 投稿指南 一键导入说明 我的收藏 · SHADOW 市场 SHADOW 市场 全免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。 市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。 浏览 探索"
+      "afterText": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 LIBRARY · 本机 我的资源 下载、收藏与最近导入都只保存在这台设备的浏览器里，不会上传，也不会被别人看到。 浏览市场 收藏 0 已下载 0 最近导入 0 还没有收藏任何资源 在资源详情页点「收藏」，它会出现在这里；收藏只保存在本机浏览器，不会上传。 去市场逛逛 我的收藏 · SHADOW 市场 MARKET 进入市场 发现免费课程 / 字幕 / 插件资源，全部 BYOM、下载即用。 全免费 · "
     },
     "downloadModal": {
       "opened": true,
@@ -1935,10 +1977,10 @@
       "links": [
         {
           "href": "#/import",
-          "text": "导入原理与降级说明 →"
+          "text": "导入原理与降级说明"
         }
       ],
-      "text": "下载导入文件 BYOM：媒体需自备 课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。 请把媒体重命名为： com.shadow.course.cafe-order.mp4 下载 .shadow.json 推荐 com.shadow.course.cafe-order.shadow.json 带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与句子时间轴。 下载 下载 .srt 备选 com.shadow.course.cafe-order.srt 无翻译的通用字幕，任何播放器/工具都能用；先导入媒体，再 Import Subtitle。 下载 下载 .shadowcourse 规范 / 归档 com.shadow.course.cafe-order.shadowcourse 规范载体与归档格式（当前桌面端 r19 不直接识别），用于校验、存档与未来版本。 下载 5 步导入 第 1 步：下载 .shadow.json 带翻译的工程文件（含句子时间轴 / 翻译 / 练习配置），是本页推荐主路径。 第 2 步：打开 SHADOW Studio（r19） 市场与 SHADOW Studio 是两个产品：市场只负责浏览与下载，桌面端负责导入与练习。 第 3 步：File → Open Project…（Ctrl+O） 在桌面端菜单选择 File → Open Project…，选中刚下载的 .shadow.json。 第 4 步：把同名媒体拖进窗口 桌面端会提示「把同名媒体拖进窗口」；把自备媒体重命名为指定名后拖入。没有媒体时可选「仅文本模式」先看句子与翻译。 第 5 步：播放 / 影子跟读练习 播放时按句子高亮与翻译做影子跟读练习；录音/评分以桌面端版本能力为准。 3 个坑 ① 媒体名必须与课程页公示的媒体名逐字一致，否则会新建重复 clip。 ② 打开后不要点 Analyze / Generate Subtitles —— 会用「待转写」覆盖包里的句子。 ③ 媒体必须与句子时间轴同源（同一版本视频/音频），否则对不上口型。 没有媒体时可以先看句子与翻译；录音/评分是否可用取决于桌面端版本，市场不作承诺。 导入原理与降级说明 → 关闭",
+      "text": "下载导入 BYOM：媒体需自备 课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。com.shadow.course.cafe-order.mp4 下载 .shadow.json 推荐 带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与时间轴。 — 下载 .srt 无翻译的通用字幕，任何播放器/工具都能用；先导入媒体，再 Import Subtitle。 — 下载 .shadowcourse 规范载体与归档格式（当前桌面端 r19 不直接识别），用于校验、存档与未来版本。 6.1 KB 5 步导入 第 1 步：下载 .shadow.json .shadow.json 是带翻译的工程文件：句子时间轴 + 中文翻译 + 练习配置。 第 2 步：打开 SHADOW Studio（r19） 市场与 SHADOW Studio 是两个产品：市场只负责浏览与下载，桌面端负责导入与练习。 第 3 步：File → Open Project…（Ctrl+O） 在桌面端菜单选择 File → Open Project…，选中刚下载的 .shadow.json。 第 4 步：把同名媒体拖进窗口 桌面端会提示「把同名媒体拖进窗口」；把自备媒体重命名后拖入。没有媒体时可用「仅文本模式」。 第 5 步：播放 / 影子跟读练习 播放时按句子高亮与翻译做影子跟读练习；录音/评分以桌面端版本能力为准。 3 个坑 ① 媒体名必须与课程页公示的媒体名逐字一致，否则会新建重复 clip。 ② 打开后不要点 Analyze / Generate Subtitles —— 会用「待转写」覆盖包里的句子。 ③ 媒体必须与句子时间轴同源（同一版本视频/音频），否则对不上口型。 一键导入 SHADOW Studio 导入原理与降级说明 完成",
       "kindsFound": {
         "shadowJson": true,
         "srt": true,
@@ -1946,22 +1988,25 @@
       }
     },
     "downloadEvent": {
-      "suggestedFilename": "com.shadow.course.cafe-order.shadowcourse",
-      "url": "http://127.0.0.1:18923/data/packages/com.shadow.course.cafe-order.shadowcourse"
+      "suggestedFilename": "com.shadow.course.cafe-order.shadow.json",
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json"
     },
     "importDegrade": {
       "closedPort": 19010,
       "fallbackShown": true,
       "modal": {
         "hasModal": true,
-        "steps": 3,
+        "steps": 8,
         "stepTitles": [
-          "下载课程包\n点击下方「下载 .shadowcourse」，文件会保存到本机（约几",
-          "打开 SHADOW Studio 桌面应用\n市场与 SHADOW Studio ",
-          "把文件拖进窗口（或菜单导入）\n拖入后选一句课程包，工具会提示你选择本地媒体（BY"
+          "第 1 步：下载 .shadow.json\n.shadow.json 是带翻译的",
+          "第 2 步：打开 SHADOW Studio（r19）\n市场与 SHADOW S",
+          "第 3 步：File → Open Project…（Ctrl+O）\n在桌面端菜",
+          "第 4 步：把同名媒体拖进窗口\n桌面端会提示「把同名媒体拖进窗口」；把自备媒体重",
+          "第 5 步：播放 / 影子跟读练习\n播放时按句子高亮与翻译做影子跟读练习；录音/",
+          "下载课程包\n点击下方「下载 .shadowcourse」，文件会保存到本机。"
         ],
         "hasFallbackDownload": true,
-        "text": "一键导入：已降级为下载 指定端口 19010 上没有检测到 SHADOW Studio（未扫描默认端口区间）。 已自动降级为下载 + 手动导入：课程包是纯数据 JSON，不跑 ASR、不含媒体。 下载课程包 点击下方「下载 .shadowcourse」，文件会保存到本机（约几十 KB）。 打开 SHADOW Studio 桌面应用 市场与 SHADOW Studio 是两个产品：市场只负责浏览与下载，桌面端只保留「导入课程包」这一个薄接口。 把文件拖进窗口（或菜单导入） 拖入后选一句课程包，工具会提示你选择本地媒体（BYOM）；没有媒体也可以先用「仅文本模式」。 高级用法：如果 SHADOW Studio 监听在自定义端口，可在市场地址后加 ?appPort=<端口> 后重试一键导入；默认仍扫描 18765–18775。 下载 .shadowcourse 记录导入成功 +20 积分（本地演示） 关闭"
+        "text": "一键导入：已降级为下载 指定端口 19010 上没有检测到 SHADOW Studio（未扫描默认端口区间）。 已自动降级为下载 + 手动导入：课程包是纯数据 JSON，不跑 ASR、不含媒体。 下载课程包 点击下方「下载 .shadowcourse」，文件会保存到本机。 打开 SHADOW Studio 桌面应用 市场只负责浏览与下载，桌面端只保留「导入课程包」薄接口。 把文件拖进窗口（或菜单导入） 拖入后按提示选择本地媒体（BYOM）；没有媒体可先用「仅文本模式」。 下载 .shadowcourse 关闭"
       },
       "downloadInPage": {
         "suggestedFilename": "com.shadow.course.cafe-order.shadowcourse"
@@ -1970,42 +2015,42 @@
       "blockedUserPortRequests": 0,
       "filteredConsoleErrors": [],
       "pageErrors": [],
-      "textSample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 市场 / 日常会话 / 在咖啡店点单 在咖啡店点单 Free 课程包 B1 BYOM v1.0.0 Ordering at a Café · B1 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 下载导入 一键导入到 SHADOW Studio 下载 .shadowcourse 收藏 分享 会先探测本机 SHADOW Studio（127.0.0.1:18765–18775，单端口 300ms 超时）；未检测到会自动降级为下载 + 3 步说明。高级：导入原理 · ?appPort=19010 README 句子预览 5 文件 4 版本与变更 1 README.md · 来自课程包（包内 readme 为准） 在咖啡店点单 Ordering at a Café · B1 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0 课程介绍 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 适合人群：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者 你会练到 Could I get ...? oat milk extra shot 内容结构 句子数量：5 句 时间轴：第 1 句 0.104s → 最后一句 21.634s（时长约 21.6 秒） 英文词数：约 40 词 每句包含：英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点） 词级时间：本包未提供（评分退化为整句参考） 媒体：BYOM，包内不含音频 / 视频（media[].d"
+      "textSample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 / 市场 / 日常会话 / 在咖啡店点单 在咖啡店点单 Free BYOM v1.0.0 Ordering at a Café · B1 课程包 B1 5 句 0:22 40 词 SHADOW Studio 更新于 2026-10-31 CC-BY-4.0 下载导入 收藏 3 个导入产物 · 全部免费 简介 句子预览 5 文件 4 版本与变更 1 Ordering at a Café · B1 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0 课程介绍 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 适合人群：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者 你会练到 Could I get ...? oat milk extra shot 内容结构 句子数量：5 句 时间轴：第 1 句 0.104s → 最后一句 21.634s（时长约 21.6 秒） 英文词数：约 40 词 每句包含：英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点） 词级时间：本包未提供（评分退化为整句参考） 媒体：BYOM，包内不含音频 / 视频（media[].duration = 0 表示未知） 分类：日常会话（Daily） 逐句预览 # 时间（秒） 英文 中文 1 0.104–3.667 Hi, could I get a medium oat milk latte, please? 你好，我要一杯中杯燕麦拿铁。 2 4.429–8.033 Sure. Would you like it hot or iced? 好的。你要热的还是冰的？ 3 8.791–13.02 Ic"
     },
     "importSuccess": {
       "fakePort": 19015,
       "successShown": true,
-      "successText": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 市场 / 日常会话 / 在咖啡店点单 在咖啡店点单 Free 课程包 B1 BYOM v1.0.0 Ordering at a Café · B1 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 下载导入 一键导入到 SHADOW Studio 下载 .shadowcourse 收藏 分享 会先探测本机 SHADOW Studio（127.0.0.1:18765–18775，单端口 300ms 超时）；未检测到会自动降级为下载 + 3 步说明。高级：导入原理 · ?appPort=19015 README 句子预览 5 文件 4 版本与变更 1 README.md · 来自课程包（包内 readme 为准） 在咖啡店点单 Ordering at a Café · B1 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0 课程介绍 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 适合人群：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者 你会练到 Could I get ...? oat milk extra shot 内容结构 句子数量：5 句 时间轴：第 1 句 0.104s → 最后一句 21.634s（时长约 21.6 秒） 英文词数：约 40 词 每句包含：英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点） 词级时间：本包未提供（评分退化为整句参考） 媒体：BYOM，包内不含音频 / 视频（media[].duration = 0 表示未知） 分类：日常会话（Daily） 逐句预览 # 时间（秒） 英文 中文 1 0.104–3.667 Hi, could I get a medium oat milk latte, please? 你好，我要一杯中杯燕麦拿铁。 2 4.429–8.033 Sure. Would you like it hot or iced? 好的。你要热的还是冰的？ 3 8.791–13.02 Iced, please. And can I get an extra shot? 冰的，谢谢。可以再加一份浓缩吗？ 4 13.777–17.245 Of course. That'll be four fifty. 当然。一共四块五。 5 18.016–21.634 Great, thanks. Can I pay by card? 好的，谢谢。可以刷卡吗？ 如何使用（BYOM",
+      "successText": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 / 市场 / 日常会话 / 在咖啡店点单 在咖啡店点单 Free BYOM v1.0.0 Ordering at a Café · B1 课程包 B1 5 句 0:22 40 词 SHADOW Studio 更新于 2026-10-31 CC-BY-4.0 下载导入 收藏 3 个导入产物 · 全部免费 简介 句子预览 5 文件 4 版本与变更 1 Ordering at a Café · B1 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0 课程介绍 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 适合人群：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者 你会练到 Could I get ...? oat milk extra shot 内容结构 句子数量：5 句 时间轴：第 1 句 0.104s → 最后一句 21.634s（时长约 21.6 秒） 英文词数：约 40 词 每句包含：英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点） 词级时间：本包未提供（评分退化为整句参考） 媒体：BYOM，包内不含音频 / 视频（media[].duration = 0 表示未知） 分类：日常会话（Daily） 逐句预览 # 时间（秒） 英文 中文 1 0.104–3.667 Hi, could I get a medium oat milk latte, please? 你好，我要一杯中杯燕麦拿铁。 2 4.429–8.033 Sure. Would you like it hot or iced? 好的。你要热的还是冰的？ 3 8.791–13.02 Iced, please. And can I get an extra shot? 冰的，谢谢。可以再加一份浓缩吗？ 4 13.777–17.245 Of course. That'll be four fifty. 当然。一共四块五。 5 18.016–21.634 Great, thanks. Can I pay by card? 好的，谢谢。可以刷卡吗？ 如何使用（BYOM · 自带媒体） 本资源包是纯数据包，不含任何音频 / 视频文件。导入 SHADOW Studio 后： 把 .shadowcourse 拖入 SHADOW Studio 窗口（或在市场详情页点「一键导入」）； 按提示选择你本地的英语音频 / 视频作为练习媒体； 句子时间轴已随包提供，导入不跑 ASR，直接开始跟读； 暂时没有合适媒体时，可用「仅文本模式」查看句子、翻译与时间轴。 BYOM（Bring Your Ow",
       "popupOpened": true,
       "popupUrls": [
-        "http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18923%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse"
+        "http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18991%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse"
       ],
-      "deepLinkUrl": "/?import=http%3A%2F%2F127.0.0.1%3A18923%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse",
+      "deepLinkUrl": "/?import=http%3A%2F%2F127.0.0.1%3A18991%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse",
       "expectedPrefix": "http://127.0.0.1:19015/?import=",
       "diag": {
-        "bodyTail": "dows · web 兼容 SHADOW >=0.7.0 插件声明 资源类型由声明式插件清单注册，市场只读声明、不执行插件代码。 course 插件清单 manifest.json 导入方式 desktop-import 反馈与投诉 资源失效、内容问题或版权投诉，都可以直接联系我们。 发送邮件反馈 版权投诉 在咖啡店点单 · SHADOW 市场 SHADOW 市场 全免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。 市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。 浏览 探索 我的收藏 搜索 更新日志 参与 投稿指南 导入说明 关于 隐私 版权投诉 P0 边界 全免费 · 积分只是兑换凭证 BYOM：不托管影视媒体 不收集账号 · 无支付/抽成/DRM 一切即插件：声明式资源类型 技术 纯静态 · 无构建 · 无 CDN hash 路由 · 原生 ES Modules plugin index.json catalog.json SHADOW 市场 · P0 本地演示版（无后端账号） · 统计数字为示例数据，P0 不采集用户行为 已检测到 SHADOW Studio（127.0.0.1:19015），正在打开导入深链… × 已发送到 SHADOW Studio 已在 127.0.0.1:19015 打开导入深链，SHADOW Studio 会接收课程包并提示你选择本地媒体（BYOM）。 打开方式：新标签页 导入不跑 ASR、不联网（仅取包）、不上传任何数据；没有合适媒体时可选「仅文本模式」。 http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18923%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse 复制深链 如果工具里导入成功，可点下方按钮记录 +20 积分（P1 本地演示，每个资源一次）。 记录导入成功 +20 积分（本地演示） 完成",
-        "modalText": "已发送到 SHADOW Studio 已在 127.0.0.1:19015 打开导入深链，SHADOW Studio 会接收课程包并提示你选择本地媒体（BYOM）。 打开方式：新标签页 导入不跑 ASR、不联网（仅取包）、不上传任何数据；没有合适媒体时可选「仅文本模式」。 http://127.0.0.1:19015/?import=http%3A%2F%2F127.0.0.1%3A18923%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse 复制深链 如果工具里导入成功，可点下方按钮记录 +20 积分（P1 本地演示，每个资源一次）。 记录导入成功 +20 积分（本地演示） 完成",
-        "toastText": "已检测到 SHADOW Studio（127.0.0.1:19015），正在打开导入深链… ×"
+        "bodyTail": "入 BYOM：媒体需自备 课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。com.shadow.course.cafe-order.mp4 下载 .shadow.json 推荐 带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与时间轴。 — 下载 .srt 无翻译的通用字幕，任何播放器/工具都能用；先导入媒体，再 Import Subtitle。 — 下载 .shadowcourse 规范载体与归档格式（当前桌面端 r19 不直接识别），用于校验、存档与未来版本。 6.1 KB 5 步导入 第 1 步：下载 .shadow.json .shadow.json 是带翻译的工程文件：句子时间轴 + 中文翻译 + 练习配置。 第 2 步：打开 SHADOW Studio（r19） 市场与 SHADOW Studio 是两个产品：市场只负责浏览与下载，桌面端负责导入与练习。 第 3 步：File → Open Project…（Ctrl+O） 在桌面端菜单选择 File → Open Project…，选中刚下载的 .shadow.json。 第 4 步：把同名媒体拖进窗口 桌面端会提示「把同名媒体拖进窗口」；把自备媒体重命名后拖入。没有媒体时可用「仅文本模式」。 第 5 步：播放 / 影子跟读练习 播放时按句子高亮与翻译做影子跟读练习；录音/评分以桌面端版本能力为准。 3 个坑 ① 媒体名必须与课程页公示的媒体名逐字一致，否则会新建重复 clip。 ② 打开后不要点 Analyze / Generate Subtitles —— 会用「待转写」覆盖包里的句子。 ③ 媒体必须与句子时间轴同源（同一版本视频/音频），否则对不上口型。 一键导入 SHADOW Studio 导入原理与降级说明 完成 已发送到 SHADOW Studio 已在 127.0.0.1:19015 打开导入深链，桌面端会接收课程包并提示你选择本地媒体（BYOM）。 打开方式：新标签页 不会重复下载，也不会误报拦截。 完成",
+        "modalText": "下载导入 BYOM：媒体需自备 课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。com.shadow.course.cafe-order.mp4 下载 .shadow.json 推荐 带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与时间轴。 — 下载 .srt 无翻译的通用字幕，任何播放器/工具都能用；先导入媒体，再 Import Subtitle。 — 下载 .shadowcourse 规范载体与归档格式（当前桌面端 r19 不直接识别），用于校验、存档与未来版本。 6.1 KB 5 步导入 第 1 步：下载 .shadow.json .shadow.json 是带翻译的工程文件：句子时间轴 + 中文翻译 + 练习配置。 第 2 步：打开 SHADOW Studio（r19） 市场与 SHADOW Studio 是两个产品：市场只负责浏览与下载，桌面端负责导入与练习。 第 3 步：File → Open Project…（Ctrl+O） 在桌面端菜单选择 File → Open Project…，选中刚下载的 .shadow.json。 第 4 步：把同名媒体拖进窗口 桌面端会提示「把同名媒体拖进窗口」；把自备媒体重命名后拖入。没有媒体时可用「仅文本模式」。 第 5 步：播放 / 影子跟读练",
+        "toastText": ""
       },
       "pageErrors": [],
       "healthHits": 1,
       "importHits": [
         {
           "method": "GET",
-          "url": "/?import=http%3A%2F%2F127.0.0.1%3A18923%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse",
-          "at": "2026-10-31T16:55:22.763Z"
+          "url": "/?import=http%3A%2F%2F127.0.0.1%3A18991%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse",
+          "at": "2026-11-01T08:12:19.293Z"
         }
       ],
       "hits": [
         {
           "method": "GET",
           "url": "/api/health",
-          "at": "2026-10-31T16:55:22.729Z"
+          "at": "2026-11-01T08:12:19.260Z"
         },
         {
           "method": "GET",
-          "url": "/?import=http%3A%2F%2F127.0.0.1%3A18923%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse",
-          "at": "2026-10-31T16:55:22.763Z"
+          "url": "/?import=http%3A%2F%2F127.0.0.1%3A18991%2Fdata%2Fpackages%2Fcom.shadow.course.cafe-order.shadowcourse",
+          "at": "2026-11-01T08:12:19.293Z"
         }
       ],
       "blockedAttempts": 0,
@@ -2016,82 +2061,82 @@
       {
         "name": "changelog",
         "hash": "#/changelog",
-        "url": "http://127.0.0.1:18923/#/changelog",
-        "textLen": 1375,
+        "url": "http://127.0.0.1:18991/#/changelog",
+        "textLen": 1975,
         "is404": false,
         "hits": 2,
         "total": 2,
-        "sample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 更新日志 站点与资源的版本变更记录。资源版本以目录中的 versions[] 为准。 探索 投稿指南 站点版本 2.0.0 2026-10-31 · 1 小时前 P0 静态市场：资源目录 / 分类 / 标签 / 收藏 / 双语 / PWA 离线 资源版本 v1.0.0 在咖啡店点单 2026-10-25 1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。 v1.0.0 问路去火车站 2026-10-25 1.0.0（2026-10-25）：首个版本，5 句问路旅行对话，含英音连读提示；BYOM 纯数据包。 v1.0.0 面试开场自我介绍 2026-10-25 1.0.0（2026-10-25）：首个版本，5"
+        "sample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 RELEASES · 版本变更 更新日志 站点与资源的版本变更记录。资源版本以目录中的 versions[] 为准。 去市场 投稿指南 站点版本 静态站构建与合并的版本记录。 2.0.0 2026-10-31 · 16 小时前 P0 静态市场：资源目录 / 分类 / 标签 / 收藏 / 双语 / PWA 离线 资源版本 按更新时间排序；每个资源展示最新版本的 changelog。 v1.0.0 在咖啡店点单 2026-10-25 1.0.0（2026-10-25）：首个版本，5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。 v1.0.0 问路去火车站 2026-10-25 "
       },
       {
         "name": "contribute",
         "hash": "#/contribute",
-        "url": "http://127.0.0.1:18923/#/contribute",
-        "textLen": 1921,
+        "url": "http://127.0.0.1:18991/#/contribute",
+        "textLen": 3742,
         "is404": false,
         "hits": 4,
         "total": 4,
-        "sample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 投稿指南 欢迎投稿全免费、可离线、合法授权的影子跟读课程包。 导入说明 版权与投诉 内容规范 必须声明权利依据（own / licensed / public-domain / CC），并附证据链接。 禁止第三方影视 / YouTube 片段及其字幕、未授权教材 / 音频、AI 生成但含他人 IP 的内容。 包必须是纯数据 JSON（无脚本 / 无内联事件 / 无外链媒体），单包 ≤ 2 MiB。 句子时间轴必须与媒体同源；公开媒体名必须与实际文件一致。 格式规范与校验 使用 .shadowcourse 规范（spec=\"shadow.course\"、schemaVersion=1、mediaPolicy=\"byom\"）。 提交前请本地运行校验命令（见下方命令块），全部 PA"
+        "sample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 本页目录 01 可以投什么 02 版权与 BYOM 03 格式与校验 04 审核与下架 05 提交方式 投稿入口 邮件提交课程包 + 元数据 + 权利依据，≤3 个工作日人工初审。P0 不收任何费用。 发送投稿邮件 也可在 GitHub 仓库提交 Issue / PR：github.com/Liu9528374/shadow-market/issues CONTRIBUTING · 编辑审核 投稿指南 把你做的影子跟读课程包放进 SHADOW 市场。我们只收录自有 / 授权 / 公版 / CC 的纯数据包，由人工审核后上架。 全免费 人工审核 · ≤3 个工作日 保留投诉下架 更新于 2026-11"
       },
       {
         "name": "about",
         "hash": "#/about",
-        "url": "http://127.0.0.1:18923/#/about",
-        "textLen": 1091,
+        "url": "http://127.0.0.1:18991/#/about",
+        "textLen": 1757,
         "is404": false,
         "hits": 3,
         "total": 3,
-        "sample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 关于 SHADOW 市场 这是一个全免费的影子跟读课程资源站：浏览、搜索、下载课程包，一键导入 SHADOW Studio。 投稿指南 隐私说明 两个产品，一条薄接口 市场是独立 Web 产品：只读静态数据、无账号、无支付、无 DRM；桌面端只保留「导入课程包」这一薄接口。 市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。 全免费，不含隐藏收费 P0 的积分只是兑换凭证（免费获取、不可购买 / 提现 / 转让），资源本身全免费。 BYOM：不托管媒体 课程包只含文本、时间轴、翻译与练习配置；影视媒体由用户自备，市场不托管、不上传、不分发。 本地优先 无需账号即可浏览、下载、导入。所有偏好与收藏只保存在本机浏览器"
+        "sample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 ABOUT · 两产品边界 关于 SHADOW 市场 全免费的影子跟读课程资源站：浏览、搜索、下载课程包，一键导入 SHADOW Studio。 投稿指南 隐私说明 两个产品，一条薄接口 市场是独立 Web 产品：只读静态数据、无账号、无支付、无 DRM；桌面端只保留「导入课程包」这一薄接口。 市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。 全免费，不含隐藏收费 P0 的积分只是兑换凭证（免费获取、不可购买 / 提现 / 转让），资源本身全免费。 BYOM：不托管媒体 课程包只含文本、时间轴、翻译与练习配置；影视媒体由用户自备，市场"
       },
       {
         "name": "privacy",
         "hash": "#/privacy",
-        "url": "http://127.0.0.1:18923/#/privacy",
-        "textLen": 1291,
+        "url": "http://127.0.0.1:18991/#/privacy",
+        "textLen": 1966,
         "is404": false,
         "hits": 4,
         "total": 4,
-        "sample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 隐私说明 P0 没有账号、没有后端、没有埋点。市场不收集、不上传任何用户数据。 关于 设置 · 清除本地数据 本机 localStorage 键清单 这些键都只存在于你的浏览器中，不会同步到服务器；可在设置页一键清除。 键 用途 说明 shadow.market.theme.v1 深浅色主题偏好（light / dark / system） 仅本机 · 不上传 shadow.market.lang.v1 界面语言（zh-CN / en） 仅本机 · 不上传 shadow.market.prefs.v1 本地提示偏好（签到提示、导入积分提示） 仅本机 · 不上传 shadow.market.points.v1 P1 积分预览：余额 / 流水 / 收藏 / 我的资源 / 匿名设备"
+        "sample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 PRIVACY · 最小数据 隐私说明 P0 没有账号、没有后端、没有埋点。市场不收集、不上传任何用户数据。 关于市场 清除本地数据 01 本机 localStorage 键清单 这些键都只存在于你的浏览器中，不会同步到服务器；可在设置页一键清除。 键 用途 说明 shadow.market.theme.v1 深浅色主题偏好（light / dark / system） 仅本机 · 不上传 shadow.market.lang.v1 界面语言（zh-CN / en） 仅本机 · 不上传 shadow.market.prefs.v1 本地提示偏好（签到提示、导入积分提示） 仅本机 · 不上传 shad"
       },
       {
         "name": "complaint",
         "hash": "#/complaint",
-        "url": "http://127.0.0.1:18923/#/complaint",
-        "textLen": 1011,
+        "url": "http://127.0.0.1:18991/#/complaint",
+        "textLen": 1742,
         "is404": false,
         "hits": 3,
         "total": 3,
-        "sample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 版权与投诉 我们尊重版权。若你认为站内资源侵犯了你的权利，请通过以下方式联系我们。 关于 许可 投诉流程 发送邮件（标题注明「版权投诉」），附资源链接、权利证明与联系方式。 发送版权投诉邮件 复制邮箱 24 小时内确认受理。 我们会在 24 小时内回复确认收到你的投诉。 疑似侵权资源 48 小时内下架。 下架期间会保留处理记录；如证据不足会与你沟通补充。 7 日内复核，并告知处理结果；如有异议可反通知。 复核后会告知恢复或维持下架；投稿人可提交反通知。 同一权利人的重复侵权累计 3 次将封禁对应投稿者。 联系邮箱 market@shadowmarket.app 该邮箱同时接收资源失效 / 内容问题 / 一般反馈；建议在标题中注明资源 id。 资源内容责任 资源由创作者投稿并声"
+        "sample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 COPYRIGHT · 通知—下架 版权与投诉 我们尊重版权。若你认为站内资源侵犯了你的权利，请通过以下方式联系我们。 关于市场 隐私说明 01 投诉流程 发送邮件（标题注明「版权投诉」），附资源链接、权利证明与联系方式。 发送版权投诉邮件 复制邮箱 24 小时内确认受理。 我们会在 24 小时内回复确认收到你的投诉。 疑似侵权资源 48 小时内下架。 下架期间会保留处理记录；如证据不足会与你沟通补充。 7 日内复核，并告知处理结果；如有异议可反通知。 复核后会告知恢复或维持下架；投稿人可提交反通知。 同一权利人的重复侵权累计 3 次将封禁对应投稿者。 02 联系邮箱 market@shadowma"
       },
       {
         "name": "import",
         "hash": "#/import",
-        "url": "http://127.0.0.1:18923/#/import",
-        "textLen": 2574,
+        "url": "http://127.0.0.1:18991/#/import",
+        "textLen": 3233,
         "is404": false,
         "hits": 4,
         "total": 4,
-        "sample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 一键导入到 SHADOW Studio 市场是独立 Web 产品：不内嵌商店、不执行插件代码。桌面端只保留「导入课程包」薄接口 —— 探测本地服务 → 深链导入，探测不到自动降级为下载。 去探索资源 主路径：.shadow.json（5 步） .shadow.json 是带翻译的工程文件：句子时间轴 + 中文翻译 + 练习配置，打开后即可练习；媒体自备（BYOM）。 下载 .shadow.json 在任意资源详情页点「下载导入 → 下载 .shadow.json」（推荐主路径，唯一带翻译）。 打开 SHADOW Studio（r19） 市场与 SHADOW Studio 是两个独立产品：市场是 Web 资源入口，桌面端只保留「导入课程包」这一薄接口。 File → Open "
+        "sample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 IMPORT · BYOM 免 ASR 一键导入到 SHADOW Studio 市场是独立 Web 产品：不内嵌商店、不执行插件代码。桌面端只保留「导入课程包」薄接口 —— 探测本地服务 → 深链导入，探测不到自动降级为下载。 去市场选资源 主路径：.shadow.json（5 步） .shadow.json 是带翻译的工程文件：句子时间轴 + 中文翻译 + 练习配置，打开后即可练习；媒体自备（BYOM）。 下载 .shadow.json 在任意资源详情页点「下载导入 → 下载 .shadow.json」（推荐主路径，唯一带翻译）。 打开 SHADOW Studio（r19） 市场与 SHADOW "
       },
       {
         "name": "points",
         "hash": "#/points",
-        "url": "http://127.0.0.1:18923/#/points",
-        "textLen": 1236,
+        "url": "http://127.0.0.1:18991/#/points",
+        "textLen": 1928,
         "is404": false,
         "hits": 2,
         "total": 2,
-        "sample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 积分 全免费资源的兑换凭证：免费获取、不可购买 / 提现 / 转让。P1 只做本地演示，无后端账号。 积分规则说明 P1 本地演示 · 无账号后端 积分只保存在本机浏览器（localStorage），不采集行为；积分不可购买 / 提现 / 转让。清除浏览器数据会丢失积分与流水。 当前积分（本地演示） 0积分 匿名设备 dev_f1bf486d-cada-… · 积分只保存在本机浏览器 流水 0 我的资源 1 今日签到 未完成 每日签到 +5 练习打卡 +10 P1 本地演示：签到 / 打卡 / 导入回调都由本地浏览器记录，没有后端账号、不采集行为数据。正式版会换成 MarketPoints 适配器的 /api 实现。 积分规则（P1 本地演示） 每日签到 +5：每天一次，本地"
+        "sample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 POINTS · 本机演示 积分中心 积分是免费资源的兑换凭证：免费获取，不可购买 / 转让 / 提现。P1 只做本地演示，没有后端账号。 积分规则 当前积分 0 积分 签到 / 打卡 / 首次导入获取 共 0 条流水 我的资源 0 个 P1 本地演示 · 无后端 数据只保存在这台设备的 localStorage，清除浏览器数据即清空。 获取积分 三个免费动作，没有任何付费入口。 +5 每日签到 每天签到一次，保持练习节奏。签到不消耗积分，也没有中断惩罚。 每天 00:00 重置 签到 +10 完成练习打卡 在 SHADOW Studio 完成一次跟读练习，回到市场手动打卡（P1 本地演示，不读取练"
       },
       {
         "name": "404",
-        "hash": "#/definitely-not-a-route-1793465724011",
-        "url": "http://127.0.0.1:18923/#/definitely-not-a-route-1793465724011",
-        "textLen": 566,
+        "hash": "#/definitely-not-a-route-1793520740593",
+        "url": "http://127.0.0.1:18991/#/definitely-not-a-route-1793520740593",
+        "textLen": 1190,
         "is404": true,
         "hits": 1,
         "total": 1,
-        "sample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 404 这里没有你要找的页面 SHADOW 市场是 hash 路由的纯静态站。 无法识别 #//definitely-not-a-route-1793465724011。 可能链接写错了，或资源已从目录中移除。 回到探索 搜索资源 一键导入说明 常用入口：我的收藏设置关于官方作者 404 · SHADOW 市场 SHADOW 市场 全免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。 市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。 浏览 探索 我的收藏 搜索 更新日志 参与 投稿指南 导入说明 关于 隐私 版权投诉 P0 边界 全免费 · 积分只是兑换凭证 BYOM：不托管影视媒"
+        "sample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 404 这里没有你要找的页面 SHADOW 市场是 hash 路由的纯静态站。 无法识别 #//definitely-not-a-route-1793520740593。 可能链接写错了，或资源已从目录中移除。 回到工作台 去市场逛逛 导入说明 常用入口： 我的收藏 积分 设置 关于 官方作者 404 · SHADOW 市场 MARKET 进入市场 发现免费课程 / 字幕 / 插件资源，全部 BYOM、下载即用。 全免费 · 无抽成 为什么可以放心用 不托管任何影视媒体（BYOM） 全免费 · 积分不可购买/转让 无强制登录 · 数据只在本机 隐私与合规说明 下载导入 BYOM：媒体需自备 课程包只"
       }
     ],
     "settings": {
@@ -2115,38 +2160,38 @@
       ],
       "hasTheme": true,
       "hasLang": true,
-      "textSample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 设置 P0 简化设置：账户与数据 / 外观 / 语言 / 数据与隐私 / 关于 / 开发者。全部设置只作用于本机浏览器，无后端账号。 返回探索 本机设置 这些选项只保存在本机浏览器（localStorage），换设备或清除缓存会恢复默认；P0 没有账户后端。 账户与数据 外观 语言 数据与隐私 关于市场 开发者 危险区 账户与数据 P0 没有账号后端：市场用匿名设备 ID 区分本机演示数据，不收集邮箱 / 手机号 / 行为数据。 匿名设备 ID 本机生成、仅保存在 localStorage；不可跨设备识别，也不会上传。 dev_f1bf486d-cada-44b1-b96b-fbc2a857b681 复制 登录状态 P1 将支持可选账户（邮箱验证码）；当前是匿名本地演示，浏览与下载不需要登录。 未登录 · 本地演示 登录（占位） 数据存储位置 偏好、收藏、主题、积分演示数据全部只在本机；没有服务器同步。 localStorage · 本机浏览器 外观 深浅色通过 CSS 变量（design tokens）实现，立即生效并持久化到本机。 主题外观 默认跟随系统，可随时切换；保存在本机并立即生效。 浅色 深色 跟随系统 品牌色 品牌橙（声波 / Voice Wave 图标"
+      "textSample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 SETTINGS · 仅本机 设置 全部设置只保存在本机浏览器（localStorage），没有后端账号；换设备或清除缓存会恢复默认。 返回工作台 账户与数据 外观 语言 数据与隐私 关于市场 开发者 危险区 账户与数据 P0 没有账号后端：市场用匿名设备 ID 区分本机演示数据，不收集邮箱 / 手机号 / 行为数据。 匿名设备 ID 本机生成、仅保存在 localStorage；不可跨设备识别，也不会上传。 dev_30f6e23d-0213-4f05-ab94-25235856d89f 复制 登录状态 P1 将支持可选账户（邮箱验证码）；当前是匿名本地演示，浏览与下载不需要登录。 未登录 · 本地演示 登录 数据存储位置 偏好、收藏、主题、积分演示数据全部只在本机；没有服务器同步。 localStorage · 本机浏览器 外观 深浅色通过设计变量（tokens）实现，立即生效并持久化到本机。 主题外观 默认跟随系统，可随时切换；保存在本机并立即生效。 浅色 深色 跟随系统 品牌色 品牌橙（声波 / Voice Wave 图标）仅做标识与高亮点缀；正文链接使用可读性达标的强调色。 --a"
     },
     "theme": {
       "before": {
         "htmlTheme": "light",
-        "bodyBg": "rgb(255, 255, 255)",
-        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_f|shadow.market.lang.v1=zh-CN"
+        "bodyBg": "rgb(247, 243, 236)",
+        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_3|shadow.market.lang.v1=zh-CN"
       },
       "after": {
         "htmlTheme": "dark",
-        "bodyBg": "rgb(13, 17, 23)",
-        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_f|shadow.market.lang.v1=zh-CN|shadow.market.theme.v1=dark"
+        "bodyBg": "rgb(10, 10, 12)",
+        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_3|shadow.market.lang.v1=zh-CN|shadow.market.theme.v1=dark"
       },
       "changed": true,
-      "method": "radio",
+      "method": "input-dispatch",
       "back": {
         "htmlTheme": "light",
-        "bodyBg": "rgb(255, 255, 255)",
-        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_f|shadow.market.lang.v1=zh-CN|shadow.market.theme.v1=light"
+        "bodyBg": "rgb(247, 243, 236)",
+        "stored": "shadow.market.points.v1={\"version\":1,\"deviceId\":\"dev_3|shadow.market.lang.v1=zh-CN|shadow.market.theme.v1=light"
       }
     },
     "palette": {
       "open": true,
-      "text": "命令 Ctrl K",
+      "text": "下载导入 BYOM：媒体需自备 课程包只含句子时间轴 / 翻译 / 练习配置，不含影视媒体。请在桌面端选择你有权使用的本地媒体。com.shadow.course.cafe-order.mp4 下载 .shadow.json 推荐 带翻译的工程文件，桌面端 File → Open Project… 打开后可保留中文翻译与时间轴。 — 下载 .srt 无翻译的通用字幕，任何播放器/工具都能用；先导入媒体，再 Import Subtitle。 — 下载 .shadowcourse 规范载体与归档格式（当前桌面端 r19 不直接识别），用于校验、存档与未来版本。 6.1 KB 5 步导入 第 1 步",
       "active": {
-        "tag": "input",
-        "placeholder": "搜索资源或输入命令…"
+        "tag": "button",
+        "placeholder": ""
       },
       "filter": {
         "keyword": "在咖",
         "hasResult": true,
-        "text": "免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。 市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。 浏览 探索 我的收藏 搜索 更新日志 参与 投稿指南 导入说明 关于 隐私 版权投诉 P0 边界 全免费 · 积分只是兑换凭证 BYOM：不托管影视媒体 不收集账号 · 无支付/抽成/DRM 一切即插件：声明式资源类型 技术 纯静态 · 无构建 · 无 CDN hash 路由 · 原生 ES Modules plugin index.json catalog.json SHADOW 市场 · P0 本地演示版（无后端账号） · 统计数字为示例数据，P0 不采集用户行为 Esc 资源 在咖啡店点单 日常会话 · B1 ↑↓ 选择 Enter 打开 Esc 关闭 Ctrl+K 打开 · / 聚焦搜索"
+        "text": "udio 是两个产品：市场只负责浏览与下载，桌面端负责导入与练习。 第 3 步：File → Open Project…（Ctrl+O） 在桌面端菜单选择 File → Open Project…，选中刚下载的 .shadow.json。 第 4 步：把同名媒体拖进窗口 桌面端会提示「把同名媒体拖进窗口」；把自备媒体重命名后拖入。没有媒体时可用「仅文本模式」。 第 5 步：播放 / 影子跟读练习 播放时按句子高亮与翻译做影子跟读练习；录音/评分以桌面端版本能力为准。 3 个坑 ① 媒体名必须与课程页公示的媒体名逐字一致，否则会新建重复 clip。 ② 打开后不要点 Analyze / Generate Subtitles —— 会用「待转写」覆盖包里的句子。 ③ 媒体必须与句子时间轴同源（同一版本视频/音频），否则对不上口型。 一键导入 SHADOW Studio 导入原理与降级说明 完成"
       }
     },
     "overflow": {
@@ -2347,45 +2392,54 @@
       "items": [
         {
           "tag": "a",
-          "text": "探索",
+          "text": "工作台",
           "href": "#/",
-          "w": 97.5,
-          "h": 52,
+          "w": 78,
+          "h": 62,
           "x": 0,
-          "y": 792
+          "y": 783
+        },
+        {
+          "tag": "a",
+          "text": "市场",
+          "href": "#/market",
+          "w": 78,
+          "h": 62,
+          "x": 78,
+          "y": 783
         },
         {
           "tag": "a",
           "text": "收藏",
           "href": "#/favorites",
-          "w": 97.5,
-          "h": 52,
-          "x": 97.5,
-          "y": 792
+          "w": 78,
+          "h": 62,
+          "x": 156,
+          "y": 783
         },
         {
           "tag": "a",
-          "text": "投稿",
-          "href": "#/contribute",
-          "w": 97.5,
-          "h": 52,
-          "x": 195,
-          "y": 792
+          "text": "积分",
+          "href": "#/points",
+          "w": 78,
+          "h": 62,
+          "x": 234,
+          "y": 783
         },
         {
           "tag": "button",
           "text": "更多",
           "href": "",
-          "w": 97.5,
-          "h": 52,
-          "x": 292.5,
-          "y": 792
+          "w": 78,
+          "h": 62,
+          "x": 312,
+          "y": 783
         }
       ],
       "rect": {
-        "top": 791,
+        "top": 782,
         "bottom": 844,
-        "height": 53
+        "height": 62
       },
       "position": "fixed",
       "viewport": {
@@ -2396,8 +2450,8 @@
     "mobileActionBar": {
       "found": true,
       "inView": true,
-      "top": 731,
-      "bottom": 792,
+      "top": 721,
+      "bottom": 782,
       "position": "fixed",
       "viewportH": 844
     },
@@ -2408,121 +2462,215 @@
         "active": true,
         "state": "activated",
         "controlled": true,
-        "scriptURL": "http://127.0.0.1:18923/sw.js"
+        "scriptURL": "http://127.0.0.1:18991/sw.js"
       },
       "offline": {
         "home": {
           "reloadOk": true,
           "reloadError": null,
-          "bodyLen": 3118,
+          "bodyLen": 1178,
           "showsCatalog": true,
           "showsShell": true,
-          "offlineNotice": true,
+          "offlineNotice": false,
           "crashPage": false,
-          "textSample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 探索市场 全免费课程资源 · 一键导入 SHADOW Studio · 可安装离线 一键导入说明 投稿指南 P0 全免费 · 积分只是兑换凭证（免费获取，不可购买 / 提现 / 转让） · BYOM：市场不托管影视媒体、不上传用户媒体 · 如何一键导入 → 分类 全部资源 7 日常会话 1 出行旅行 1 职场工作 1 播客跟读 1 影视跟读 1 听力字幕 1 工具与插件 1 标签 B1 连读 A2 听力 BYOM 演示 B2 日常 美音 英音 旅行 问路 职场 面试 播客 影视 对话 字幕 插件 资源类型 课程包 5 字幕包 1 插件说明 1 关于市场 一键导入说明 投稿指南 更新日志 我的收藏 推荐资源 查看全部 在咖啡店点单 Free 课程包 Ordering at a Café · B1 · SHADOW Studio B1 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 B1 日常 连读 美音 5 句 0:22 40 词 下载 0 次 更新于 1 小时前 问路去火车站 Free 课程包 Asking for Directions · A2 · SHADOW S"
+          "textSample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 最近访问 在咖啡店点单 问路去火车站 社区图书馆的一天 设置 本机访客 · 未登录 下午好，影子练习者 今天也练 10 分钟吧 · 本机积分 0 · 数据仅保存在本机 我的资源 去市场逛逛 0积分 签到 / 打卡获取 0 收藏资源 0 已下载课程包 0天 连续练习 继续上次 从上次的句子继续，不需要重新找媒体 全部记录 还没有练习记录 去市场挑一个课程包，下载导入文件后这里会显示「继续上次」。 去市场逛逛 为你推荐 根据你的难度与最近浏览 · 全部免费 查看全部 Free 在咖啡店点单 B1 Ordering at a Café · B1 · shadow-studio 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 B1 日常 连读 5 句 0:22 BYOM Free 问路去火车站 A2 Asking for Directions · A2 · shadow-studio 问路去火车站的 5 句旅行英语：怎么问路、直走几个街区、左转、确认距离、道谢。逐句中文翻译与英音连读提示，导入免 ASR，自备音频即可跟读。 A2 旅行 问路 5 句 0:14 "
         },
         "detail": {
           "reloadOk": true,
           "reloadError": null,
-          "bodyLen": 2767,
+          "bodyLen": 2191,
           "titleShown": true,
-          "notice": true,
-          "textSample": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 市场 / 日常会话 / 在咖啡店点单 在咖啡店点单 Free 课程包 B1 BYOM v1.0.0 Ordering at a Café · B1 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 下载导入 一键导入到 SHADOW Studio 下载 .shadowcourse 收藏 分享 会先探测本机 SHADOW Studio（127.0.0.1:18765–18775，单端口 300ms 超时）；未检测到会自动降级为下载 + 3 步说明。高级：导入原理 · 可用 ?appPort=<端口> 指定自定义端口 README 句子预览 5 文件 4 版本与变更 1 README.md · 来自课程包（包内 readme 为准） 在咖啡店点单 Ordering at a Café · B1 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0 课程介绍 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 适合人群：有基础英语（A2–B1）、想练咖啡店 / "
+          "notice": false,
+          "textSample": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 / 市场 / daily / 在咖啡店点单 在咖啡店点单 Free BYOM v1.0.0 Ordering at a Café · B1 课程包 B1 5 句 0:22 40 词 shadow-studio 更新于 2026-10-31 CC-BY-4.0 下载导入 收藏 3 个导入产物 · 全部免费 简介 句子预览 5 文件 4 版本与变更 1 Ordering at a Café · B1 · 由 SHADOW Studio 发布 · 许可 CC-BY-4.0 课程介绍 咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。 适合人群：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者 你会练到 Could I get ...? oat milk extra shot 内容结构 句子数量：5 句 时间轴：第 1 句 0.104s → 最后一句 21.634s（时长约 21.6 秒） 英文词数：约 40 词 每句包含：英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点） 词级时间：本包未提供（评分退化为整句参考） 媒体：BYOM，包内不含音频 / 视频（media[].duration ="
         }
       },
       "detailOnline": true,
       "cacheReady": {
-        "ok": true,
-        "waitedMs": 1656,
-        "missing": []
+        "ok": false,
+        "waitedMs": 20009,
+        "missing": [
+          "./catalog/categories.json",
+          "./catalog/tags.json",
+          "./catalog/authors.json",
+          "./catalog/licenses.json",
+          "./plugins/index.json",
+          "./plugins/course/manifest.json",
+          "./plugins/subtitle/manifest.json",
+          "./plugins/plugin/manifest.json",
+          "./data/plugins/builtin-whitelist.json"
+        ],
+        "last": {
+          "supported": true,
+          "missing": [
+            "./catalog/categories.json",
+            "./catalog/tags.json",
+            "./catalog/authors.json",
+            "./catalog/licenses.json",
+            "./plugins/index.json",
+            "./plugins/course/manifest.json",
+            "./plugins/subtitle/manifest.json",
+            "./plugins/plugin/manifest.json",
+            "./data/plugins/builtin-whitelist.json"
+          ]
+        }
       },
       "consoleErrorsFiltered": [],
-      "offlineCacheMissErrors": [],
+      "offlineCacheMissErrors": [
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/catalog/categories.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/catalog/tags.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/catalog/authors.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/catalog/licenses.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/plugins/index.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/plugins/course/manifest.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/plugins/subtitle/manifest.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/plugins/plugin/manifest.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/catalog/categories.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/catalog/tags.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/catalog/authors.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/catalog/licenses.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/plugins/index.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/plugins/course/manifest.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/plugins/subtitle/manifest.json"
+        },
+        {
+          "type": "error",
+          "text": "Failed to load resource: the server responded with a status of 503 ()",
+          "location": "http://127.0.0.1:18991/plugins/plugin/manifest.json"
+        }
+      ],
       "pageErrors": []
     }
   },
   "extra": {
     "staticShell": {
-      "viewChildren": 1,
-      "viewHtmlLen": 61380,
-      "viewTextLen": 2685,
+      "viewChildren": 6,
+      "viewHtmlLen": 14746,
+      "viewTextLen": 931,
       "skeletonInSource": true,
       "preloads": [
         "<link rel=\"preload\" href=\"catalog/resources.json\" as=\"fetch\" type=\"application/json\" crossorigin=\"anonymous\" />",
-        "<link rel=\"modulepreload\" href=\"assets/js/i18n.js\" />",
-        "<link rel=\"modulepreload\" href=\"assets/js/data.js\" />",
-        "<link rel=\"modulepreload\" href=\"assets/js/components.js\" />",
-        "<link rel=\"modulepreload\" href=\"assets/js/views/home.js\" />"
+        "<link rel=\"preload\" href=\"catalog/site.json\" as=\"fetch\" type=\"application/json\" crossorigin=\"anonymous\" />",
+        "<link rel=\"preload\" href=\"catalog/categories.json\" as=\"fetch\" type=\"application/json\" crossorigin=\"anonymous\" />",
+        "<link rel=\"preload\" href=\"catalog/tags.json\" as=\"fetch\" type=\"application/json\" crossorigin=\"anonymous\" />",
+        "<link rel=\"preload\" href=\"catalog/authors.json\" as=\"fetch\" type=\"application/json\" crossorigin=\"anonymous\" />",
+        "<link rel=\"preload\" href=\"catalog/licenses.json\" as=\"fetch\" type=\"application/json\" crossorigin=\"anonymous\" />",
+        "<link rel=\"modulepreload\" href=\"assets/js/app.js\" />",
+        "<link rel=\"modulepreload\" href=\"assets/js/dom.js\" />",
+        "<link rel=\"modulepreload\" href=\"assets/js/icons.js\" />",
+        "<link rel=\"modulepreload\" href=\"assets/js/data.js\" />"
       ],
-      "indexHtmlBytes": 16425
+      "indexHtmlBytes": 14391
     },
     "dataMode": {
       "fixtureBadge": false,
       "fixtureFlag": null,
       "usedDataUrls": [
-        "http://127.0.0.1:18923/catalog/resources.json",
-        "http://127.0.0.1:18923/catalog/site.json",
-        "http://127.0.0.1:18923/catalog/categories.json",
-        "http://127.0.0.1:18923/catalog/tags.json",
-        "http://127.0.0.1:18923/catalog/authors.json",
-        "http://127.0.0.1:18923/catalog/licenses.json"
+        "http://127.0.0.1:18991/catalog/resources.json",
+        "http://127.0.0.1:18991/catalog/site.json",
+        "http://127.0.0.1:18991/catalog/categories.json",
+        "http://127.0.0.1:18991/catalog/tags.json",
+        "http://127.0.0.1:18991/catalog/authors.json",
+        "http://127.0.0.1:18991/catalog/licenses.json"
       ]
     },
     "contrastDark": {
       "body": {
-        "ratio": 16.02,
+        "ratio": 17.45,
         "fontSize": "14px"
       },
       "cardTitle": {
-        "ratio": 9.9,
-        "fontSize": "16px"
+        "ratio": 16.21,
+        "fontSize": "15px"
       },
       "cardDesc": {
-        "ratio": 5.94,
-        "fontSize": "13px"
-      },
-      "navLink": {
-        "ratio": 17.38,
+        "ratio": 8.75,
         "fontSize": "13px"
       },
       "badge": {
-        "ratio": 1.32,
+        "ratio": 1,
         "fontSize": "11px"
-      },
-      "muted": {
-        "ratio": 4.64,
-        "fontSize": "11.5px"
       }
     },
     "contrastLight": {
       "body": {
-        "ratio": 15.8,
+        "ratio": 15.51,
         "fontSize": "14px"
       },
       "cardTitle": {
-        "ratio": 5.18,
-        "fontSize": "16px"
+        "ratio": 17.15,
+        "fontSize": "15px"
       },
       "cardDesc": {
-        "ratio": 6.11,
-        "fontSize": "13px"
-      },
-      "navLink": {
-        "ratio": 14.18,
+        "ratio": 5.93,
         "fontSize": "13px"
       },
       "badge": {
-        "ratio": 6.51,
+        "ratio": 3.62,
         "fontSize": "11px"
-      },
-      "muted": {
-        "ratio": 6.39,
-        "fontSize": "11.5px"
       }
     },
     "emptySearch": {
-      "hasEmpty": true,
-      "text": "跳到主内容 SHADOW 市场 P0 · FREE 探索 收藏 投稿 关于 搜索资源 / EN 命令 Ctrl K 搜索 “zzz-no-such-resource” 找到 0 个匹配资源（标题 / 描述 / 标签 / 作者 / 分类，含少量中英别名） 清除搜索 分类 全部资源 7 日常会话 1 出行旅行 1 职场工作 1 播客跟读 1 影视跟读 1 听力字幕 1 工具与插件 1 标签 B1 连读 A2 听力 BYOM 演示 B2 日常 美音 英音 旅行 问路 职场 面试 播客 影视 对话 字幕 插件 资源类型 课程包 5 字幕包 1 插件说明 1 关于市场 一键导入说明 投稿指南 更新日志 我的收藏 全部类型 课程包 5 字幕包 1 插件说明 1 共 0 个资源 / 7 清除筛选 最近更新 名称 A→Z 下载量 句子数 没有找到匹配的资源 试试更短的关键词、中文或英文（例如「咖啡 / coffee」「问路 / directions」），或清除类型筛选。 浏览全部资源 清除筛选 投稿指南 搜索 zzz-no-such-resource · SHADOW 市场 SHADOW 市场 全免费资源站 · P0 静态版。服务于全人类的软件：本地优先、可离线、不绑架用户。 市场与 SHADOW Studio 是两个独立产品：市场是 Web 端资源入口，桌面端只保留「导入课程包」薄接口。 浏览 探索 我的收藏 搜索 更新日志 参与 投稿指南 导入说明 关于 隐私 版权投诉 P0 边界 全免费 · 积分只是兑换凭证 BYOM：不托管影视媒体 不收集账号 · 无支付/抽成/DRM 一切即插件：声明式资源类型 技术 纯静态 · 无构建 · 无 CDN hash 路由 · 原生 ES Modules plugin index.json catalog.json SHADOW 市场 · P0 本地演示版（无后端账号） · 统计数字为示例数据，P0 不采集用户行为 已切换到浅色模式（保存在本机） ×"
+      "hasEmpty": false,
+      "text": "跳到主内容 SHADOW 市场 PERSONAL / 0 积分 EN 工作台 市场 7 我的收藏 0 我的资源 0 积分 0 投稿 筛选资源 类型 7 全部类型 7 课程包 5 字幕包 1 插件说明 1 难度 6 分类 7 标签 8 清除筛选 筛选只作用于本机目录 · 共 7 个资源 工作台 / 市场 / 搜索 搜索 “zzz-no-such-resource” 0 个 标题 / 描述 / 标签 / 作者均可搜索，支持少量中英别名。 投稿指南 / 最近更新 名称 下载 0 个资源 · 全部免费 没有找到匹配的资源 试试更短的关键词、切换到「全部类型」，或者清除筛选后再看一次。 清除筛选 SHADOW 市场 · 7 个资源 全免费 · BYOM · 不托管媒体 无强制登录 · 数据只在本机 搜索 “zzz-no-such-resource” · SHADOW 市场 WORKSPACE 进入工作台 查看你的收藏、练习记录与最近导入的文件；所有数据只保存在本机。 本机访客 · 无需登录 热门分类 日常会话 1 出行旅行 1 职场工作 1 播客跟读 1 全部分类 创作者与投稿 SHADOW Studio 官方示例团队 · 7 个资源 · CC-BY-4.0 有好的影子跟读课程包？纯数据、BYOM、版权清晰即可投稿，人工审核通过后进入市场。 投稿指南 → · 我的收藏"
     },
     "consoleErrorRaw": [],
     "consoleErrorFiltered": [],
@@ -2530,74 +2678,211 @@
     "contrast": {
       "dark": {
         "body": {
-          "ratio": 16.02,
+          "ratio": 17.45,
           "fontSize": "14px"
         },
         "cardTitle": {
-          "ratio": 9.9,
-          "fontSize": "16px"
+          "ratio": 16.21,
+          "fontSize": "15px"
         },
         "cardDesc": {
-          "ratio": 5.94,
-          "fontSize": "13px"
-        },
-        "navLink": {
-          "ratio": 17.38,
+          "ratio": 8.75,
           "fontSize": "13px"
         },
         "badge": {
-          "ratio": 1.32,
+          "ratio": 1,
           "fontSize": "11px"
-        },
-        "muted": {
-          "ratio": 4.64,
-          "fontSize": "11.5px"
         }
       },
       "light": {
         "body": {
-          "ratio": 15.8,
+          "ratio": 15.51,
           "fontSize": "14px"
         },
         "cardTitle": {
-          "ratio": 5.18,
-          "fontSize": "16px"
+          "ratio": 17.15,
+          "fontSize": "15px"
         },
         "cardDesc": {
-          "ratio": 6.11,
-          "fontSize": "13px"
-        },
-        "navLink": {
-          "ratio": 14.18,
+          "ratio": 5.93,
           "fontSize": "13px"
         },
         "badge": {
-          "ratio": 6.51,
+          "ratio": 3.62,
           "fontSize": "11px"
-        },
-        "muted": {
-          "ratio": 6.39,
-          "fontSize": "11.5px"
         }
       }
     }
   },
-  "console": [
+  "console": [],
+  "pageErrors": [],
+  "requestFailures": [
     {
-      "type": "info",
-      "text": "Images loaded lazily and replaced with placeholders. Load events are deferred. See https://go.microsoft.com/fwlink/?linkid=2048113",
-      "location": "http://127.0.0.1:18923/#/:243",
-      "at": "2026-10-31T16:54:53.573Z"
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:11:59.833Z"
     },
     {
-      "type": "info",
-      "text": "Images loaded lazily and replaced with placeholders. Load events are deferred. See https://go.microsoft.com/fwlink/?linkid=2048113",
-      "location": "http://127.0.0.1:18923/#/resource/com.shadow.course.cafe-order:243",
-      "at": "2026-10-31T16:55:06.009Z"
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:11:59.833Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:11:59.833Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:00.014Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:00.029Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:00.029Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:03.968Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:03.968Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:03.968Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:08.512Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:08.514Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:08.514Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:38.043Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:38.044Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:38.044Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:40.539Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:40.539Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:40.539Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:43.038Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:43.038Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:43.038Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:45.515Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:45.515Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:45.515Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:52.962Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:52.962Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:52.962Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:57.316Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:57.320Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:12:57.320Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.shadow.json",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:13:04.406Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/com.shadow.course.cafe-order.srt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:13:04.407Z"
+    },
+    {
+      "url": "http://127.0.0.1:18991/data/import/README-com.shadow.course.cafe-order.txt",
+      "error": "net::ERR_ABORTED",
+      "at": "2026-11-01T08:13:04.407Z"
     }
   ],
-  "pageErrors": [],
-  "requestFailures": [],
   "screenshots": [
     "market-home-1440.png",
     "market-category-daily.png",
@@ -2645,5 +2930,5 @@
     "passed": 78,
     "failed": 0
   },
-  "finishedAt": "2026-10-31T16:56:21.394Z"
+  "finishedAt": "2026-11-01T08:13:37.277Z"
 }

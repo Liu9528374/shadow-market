@@ -357,8 +357,11 @@ try {
   if (!/class=["'][^"']*skip-link/.test(indexHtml)) a11yIssues.push('缺 skip-link');
   if (!/name=["']viewport["'][^>]*width=device-width/.test(indexHtml)) a11yIssues.push('缺 viewport width=device-width');
   if (/id=["']view["'][^>]*aria-live/.test(indexHtml)) a11yIssues.push('#view 不应整页 aria-live');
-  if (!/:focus-visible/.test(readRel('assets/styles/app.css'))) a11yIssues.push('CSS 缺 :focus-visible 焦点环');
-  if (!/prefers-reduced-motion/.test(readRel('assets/styles/app.css') + readRel('assets/styles/tokens.css'))) a11yIssues.push('缺 prefers-reduced-motion');
+  // UI v2：样式拆分为 tokens/base/pages-*，焦点环与 reduced-motion 在 base.css；扫描全部站点 CSS
+  const allSiteCss = ['tokens.css', 'base.css', 'pages-dashboard.css', 'pages-core.css', 'pages-personal.css']
+    .map((f) => readRel('assets/styles/' + f)).join('\n');
+  if (!/:focus-visible/.test(allSiteCss)) a11yIssues.push('CSS 缺 :focus-visible 焦点环');
+  if (!/prefers-reduced-motion/.test(allSiteCss)) a11yIssues.push('缺 prefers-reduced-motion');
   ok('SA31', '无障碍静态基础（lang/skip-link/viewport/焦点环/降低动效/aria-live 收敛）',
     a11yIssues.length === 0, a11yIssues.join(' | ') || 'ok');
 

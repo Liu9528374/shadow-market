@@ -1,169 +1,219 @@
 # SHADOW 市场 Phase 2 · 被测工作区快照（由 QA 只读生成，无 git 写操作）
-generatedAt=2026-10-31T16:56:53.501Z
+generatedAt=2026-11-01T08:16:02.285Z
 被测对象=D:\SHADOW-MARKET
 git branch: main
-HEAD: 213ba282dd948c72087c8d58ac337a6d17aa11e6
-HEAD short: 213ba28
-HEAD commit date: 2026-11-01T00:00:20+08:00
+HEAD: 1c3ac9ef50af9b9d6e259828d29d3758b27ae1a9
+HEAD short: 1c3ac9e
+HEAD commit date: 2026-11-01T00:57:55+08:00
 
 ## git status --porcelain=v1
 M CHANGELOG.md
  M README.md
  M market/assets/js/app.js
- M market/assets/js/components.js
  M market/assets/js/data.js
- M market/assets/js/dom.js
+ M market/assets/js/i18n-en.js
  M market/assets/js/icons.js
- M market/assets/js/importer.js
- M market/assets/js/palette.js
  M market/assets/js/router.js
- M market/assets/js/theme.js
+ M market/assets/js/views/about.js
+ M market/assets/js/views/changelog.js
+ M market/assets/js/views/complaint.js
+ M market/assets/js/views/contribute.js
  M market/assets/js/views/creator.js
+ M market/assets/js/views/favorites.js
  M market/assets/js/views/home.js
  M market/assets/js/views/import.js
+ M market/assets/js/views/license.js
  M market/assets/js/views/notfound.js
+ M market/assets/js/views/points.js
+ M market/assets/js/views/privacy.js
  M market/assets/js/views/resource.js
  M market/assets/js/views/settings.js
- M market/assets/styles/app.css
- M market/data/packages/com.shadow.course.asking-directions.shadowcourse
- M market/data/packages/com.shadow.course.cafe-order.shadowcourse
- M market/data/packages/com.shadow.course.interview-intro.shadowcourse
- M market/data/packages/com.shadow.course.movie-scene-byom.shadowcourse
- M market/data/packages/com.shadow.course.podcast-shadow-daily.shadowcourse
+ D market/assets/styles/app.css
+ M market/assets/styles/tokens.css
  M market/index.html
- M market/plugins/course/manifest.json
- M market/plugins/index.json
- M market/plugins/plugin/manifest.json
- M market/plugins/subtitle/manifest.json
- M market/serve.mjs
- M tools/qa/market/common.mjs
- M tools/qa/market/data-contract-check.mjs
+ M market/manifest.webmanifest
+ M market/sw.js
+ M release/evidence-market/SHA256SUMS.txt
+ M release/evidence-market/lighthouse/README.md
+ M release/evidence-market/lighthouse/lighthouse-status.json
+ M release/evidence-market/lighthouse/market-mobile-1.report.html
+ M release/evidence-market/lighthouse/market-mobile-1.report.json
+ M release/evidence-market/lighthouse/market-mobile-2.report.html
+ M release/evidence-market/lighthouse/market-mobile-2.report.json
+ M release/evidence-market/phase2-summary.md
+ M release/evidence-market/report-data-contract.json
+ M release/evidence-market/report-market.json
+ M release/evidence-market/report-static-audit.json
+ M release/evidence-market/shots/market-404.png
+ M release/evidence-market/shots/market-about.png
+ M release/evidence-market/shots/market-category-daily.png
+ M release/evidence-market/shots/market-changelog.png
+ M release/evidence-market/shots/market-complaint.png
+ M release/evidence-market/shots/market-contribute.png
+ M release/evidence-market/shots/market-creator-shadow-studio.png
+ M release/evidence-market/shots/market-ctrlk-palette.png
+ M release/evidence-market/shots/market-detail-1440.png
+ M release/evidence-market/shots/market-detail-sentences.png
+ M release/evidence-market/shots/market-empty-search.png
+ M release/evidence-market/shots/market-favorites.png
+ M release/evidence-market/shots/market-home-1440.png
+ M release/evidence-market/shots/market-home-dark.png
+ M release/evidence-market/shots/market-i18n-en.png
+ M release/evidence-market/shots/market-import-degraded.png
+ M release/evidence-market/shots/market-import-success.png
+ M release/evidence-market/shots/market-license.png
+ M release/evidence-market/shots/market-mobile-390.png
+ M release/evidence-market/shots/market-mobile-bottom-nav.png
+ M release/evidence-market/shots/market-mobile-detail-390.png
+ M release/evidence-market/shots/market-mobile-detail-actionbar.png
+ M release/evidence-market/shots/market-privacy.png
+ M release/evidence-market/shots/market-pwa-offline.png
+ M release/evidence-market/shots/market-settings-dark.png
+ M release/evidence-market/shots/market-tag.png
+ M release/evidence-market/workspace-git.txt
+ M release/evidence-market/workspace-sha256.txt
+ M tools/qa/market/collect-evidence.mjs
  M tools/qa/market/market-e2e.mjs
  M tools/qa/market/report-data-contract.json
  M tools/qa/market/report-market.json
  M tools/qa/market/report-static-audit.json
  M tools/qa/market/shots/market-404.png
+ M tools/qa/market/shots/market-about.png
  M tools/qa/market/shots/market-category-daily.png
+ M tools/qa/market/shots/market-changelog.png
+ M tools/qa/market/shots/market-complaint.png
+ M tools/qa/market/shots/market-contribute.png
  M tools/qa/market/shots/market-creator-shadow-studio.png
  M tools/qa/market/shots/market-ctrlk-palette.png
  M tools/qa/market/shots/market-detail-1440.png
  M tools/qa/market/shots/market-detail-sentences.png
  M tools/qa/market/shots/market-empty-search.png
+ M tools/qa/market/shots/market-favorites.png
  M tools/qa/market/shots/market-home-1440.png
  M tools/qa/market/shots/market-home-dark.png
+ M tools/qa/market/shots/market-i18n-en.png
  M tools/qa/market/shots/market-import-degraded.png
  M tools/qa/market/shots/market-import-success.png
+ M tools/qa/market/shots/market-license.png
  M tools/qa/market/shots/market-mobile-390.png
+ M tools/qa/market/shots/market-mobile-bottom-nav.png
  M tools/qa/market/shots/market-mobile-detail-390.png
+ M tools/qa/market/shots/market-mobile-detail-actionbar.png
+ M tools/qa/market/shots/market-privacy.png
+ M tools/qa/market/shots/market-pwa-offline.png
  M tools/qa/market/shots/market-settings-dark.png
+ M tools/qa/market/shots/market-tag.png
  M tools/qa/market/static-audit.mjs
- M tools/shadowcourse/README.md
- M tools/shadowcourse/build-packages.mjs
- M tools/shadowcourse/sources/courses.json
-?? .github/
-?? content/
-?? deploy/
-?? market/assets/brand/logo-128.png
-?? market/assets/brand/logo-64.png
-?? market/assets/js/i18n-en.js
-?? market/assets/js/i18n.js
-?? market/assets/js/pwa.js
-?? market/assets/js/views/about.js
-?? market/assets/js/views/changelog.js
-?? market/assets/js/views/complaint.js
-?? market/assets/js/views/contribute.js
-?? market/assets/js/views/favorites.js
-?? market/assets/js/views/license.js
-?? market/assets/js/views/privacy.js
-?? market/catalog/
-?? market/data/import/
-?? market/data/packages/com.shadow.subtitle.daily-listening-b1.shadowcourse
-?? market/data/plugins/
-?? market/manifest.webmanifest
-?? market/offline.html
-?? market/sw.js
-?? release/
-?? tools/catalog/
-?? tools/import/
-?? tools/qa/market/README.md
-?? tools/qa/market/collect-evidence.mjs
-?? tools/qa/market/lighthouse-run.ps1
-?? tools/qa/market/run-phase2.ps1
-?? tools/qa/market/shots/market-about.png
-?? tools/qa/market/shots/market-changelog.png
-?? tools/qa/market/shots/market-complaint.png
-?? tools/qa/market/shots/market-contribute.png
-?? tools/qa/market/shots/market-fatal.png
-?? tools/qa/market/shots/market-favorites.png
-?? tools/qa/market/shots/market-i18n-en.png
-?? tools/qa/market/shots/market-license.png
-?? tools/qa/market/shots/market-mobile-bottom-nav.png
-?? tools/qa/market/shots/market-mobile-detail-actionbar.png
-?? tools/qa/market/shots/market-privacy.png
-?? tools/qa/market/shots/market-pwa-offline.png
-?? tools/qa/market/shots/market-tag.png
-?? tools/qa/market/shots/overflow-360x740-detail.png
-?? tools/qa/market/shots/overflow-360x740-privacy.png
-?? tools/qa/market/shots/overflow-375x812-detail.png
-?? tools/qa/market/shots/overflow-375x812-privacy.png
-?? tools/qa/market/shots/overflow-390x844-detail.png
-?? tools/qa/market/shots/overflow-390x844-privacy.png
+?? design/
+?? market/assets/fonts/
+?? market/assets/icons/
+?? market/assets/js/views/market.js
+?? market/assets/js/views/ui.js
+?? market/assets/styles/base.css
+?? market/assets/styles/pages-core.css
+?? market/assets/styles/pages-dashboard.css
+?? market/assets/styles/pages-personal.css
+?? release/evidence-market/redesign/
 
 ## git diff --stat（工作区 vs HEAD：本轮未提交改动摘要）
-CHANGELOG.md                                       |   26 +-
- README.md                                          |   85 +-
- market/assets/js/app.js                            |  508 +++-
- market/assets/js/components.js                     |  210 +-
- market/assets/js/data.js                           |  659 ++++-
- market/assets/js/dom.js                            |   12 +-
- market/assets/js/icons.js                          |    8 +
- market/assets/js/importer.js                       |  146 +-
- market/assets/js/palette.js                        |  108 +-
- market/assets/js/router.js                         |   94 +-
- market/assets/js/theme.js                          |    3 +-
- market/assets/js/views/creator.js                  |   79 +-
- market/assets/js/views/home.js                     |  270 +-
- market/assets/js/views/import.js                   |  134 +-
- market/assets/js/views/notfound.js                 |   26 +-
- market/assets/js/views/resource.js                 |  943 ++++---
- market/assets/js/views/settings.js                 |  280 +-
- market/assets/styles/app.css                       |  475 ++++
- ...om.shadow.course.asking-directions.shadowcourse |    4 +-
- .../com.shadow.course.cafe-order.shadowcourse      |    4 +-
- .../com.shadow.course.interview-intro.shadowcourse |    4 +-
- ...com.shadow.course.movie-scene-byom.shadowcourse |    4 +-
- ...shadow.course.podcast-shadow-daily.shadowcourse |    4 +-
- market/index.html                                  |  239 +-
- market/plugins/course/manifest.json                |    3 +-
- market/plugins/index.json                          |    9 +-
- market/plugins/plugin/manifest.json                |   15 +-
- market/plugins/subtitle/manifest.json              |   13 +-
- market/serve.mjs                                   |   23 +
- tools/qa/market/common.mjs                         |  164 +-
- tools/qa/market/data-contract-check.mjs            |  543 +++-
- tools/qa/market/market-e2e.mjs                     | 1790 ++++++++-----
- tools/qa/market/report-data-contract.json          |  343 ++-
- tools/qa/market/report-market.json                 | 2685 ++++++++++++++++----
- tools/qa/market/report-static-audit.json           |  272 +-
- tools/qa/market/shots/market-404.png               |  Bin 88073 -> 64096 bytes
- tools/qa/market/shots/market-category-daily.png    |  Bin 117022 -> 109574 bytes
- .../market/shots/market-creator-shadow-studio.png  |  Bin 151371 -> 158337 bytes
- tools/qa/market/shots/market-ctrlk-palette.png     |  Bin 130752 -> 191526 bytes
- tools/qa/market/shots/market-detail-1440.png       |  Bin 160273 -> 168843 bytes
- tools/qa/market/shots/market-detail-sentences.png  |  Bin 178616 -> 183042 bytes
- tools/qa/market/shots/market-empty-search.png      |  Bin 116797 -> 118547 bytes
- tools/qa/market/shots/market-home-1440.png         |  Bin 193480 -> 193608 bytes
- tools/qa/market/shots/market-home-dark.png         |  Bin 200926 -> 200223 bytes
- tools/qa/market/shots/market-import-degraded.png   |  Bin 228481 -> 225020 bytes
- tools/qa/market/shots/market-import-success.png    |  Bin 230670 -> 213618 bytes
- tools/qa/market/shots/market-mobile-390.png        |  Bin 98968 -> 88740 bytes
- tools/qa/market/shots/market-mobile-detail-390.png |  Bin 90228 -> 84865 bytes
- tools/qa/market/shots/market-settings-dark.png     |  Bin 125676 -> 150539 bytes
- tools/qa/market/static-audit.mjs                   |  474 +++-
- tools/shadowcourse/README.md                       |   56 +-
- tools/shadowcourse/build-packages.mjs              |  296 +--
- tools/shadowcourse/sources/courses.json            |   18 +-
- 53 files changed, 8303 insertions(+), 2726 deletions(-)
+CHANGELOG.md                                       |   17 +
+ README.md                                          |   41 +-
+ market/assets/js/app.js                            |  872 ++--
+ market/assets/js/data.js                           |   13 +-
+ market/assets/js/i18n-en.js                        |  253 +
+ market/assets/js/icons.js                          |  142 +-
+ market/assets/js/router.js                         |   50 +-
+ market/assets/js/views/about.js                    |   73 +-
+ market/assets/js/views/changelog.js                |  109 +-
+ market/assets/js/views/complaint.js                |  118 +-
+ market/assets/js/views/contribute.js               |  298 +-
+ market/assets/js/views/creator.js                  |  125 +-
+ market/assets/js/views/favorites.js                |  319 +-
+ market/assets/js/views/home.js                     |  535 +--
+ market/assets/js/views/import.js                   |  131 +-
+ market/assets/js/views/license.js                  |  167 +-
+ market/assets/js/views/notfound.js                 |    7 +-
+ market/assets/js/views/points.js                   |  411 +-
+ market/assets/js/views/privacy.js                  |   90 +-
+ market/assets/js/views/resource.js                 | 1317 ++----
+ market/assets/js/views/settings.js                 |  178 +-
+ market/assets/styles/app.css                       | 1952 --------
+ market/assets/styles/tokens.css                    |  319 +-
+ market/index.html                                  |  370 +-
+ market/manifest.webmanifest                        |   41 +-
+ market/sw.js                                       |   18 +-
+ release/evidence-market/SHA256SUMS.txt             |  100 +-
+ release/evidence-market/lighthouse/README.md       |   10 +-
+ .../lighthouse/lighthouse-status.json              |  124 +-
+ .../lighthouse/market-mobile-1.report.html         |    2 +-
+ .../lighthouse/market-mobile-1.report.json         | 4981 +++++++++-----------
+ .../lighthouse/market-mobile-2.report.html         |    2 +-
+ .../lighthouse/market-mobile-2.report.json         | 4471 +++++++++---------
+ release/evidence-market/phase2-summary.md          |   20 +-
+ release/evidence-market/report-data-contract.json  |   84 +-
+ release/evidence-market/report-market.json         |  953 ++--
+ release/evidence-market/report-static-audit.json   |   80 +-
+ release/evidence-market/shots/market-404.png       |  Bin 64096 -> 186537 bytes
+ release/evidence-market/shots/market-about.png     |  Bin 151061 -> 246456 bytes
+ .../shots/market-category-daily.png                |  Bin 109574 -> 202642 bytes
+ release/evidence-market/shots/market-changelog.png |  Bin 172654 -> 245958 bytes
+ release/evidence-market/shots/market-complaint.png |  Bin 142629 -> 242989 bytes
+ .../evidence-market/shots/market-contribute.png    |  Bin 145483 -> 220593 bytes
+ .../shots/market-creator-shadow-studio.png         |  Bin 158337 -> 232932 bytes
+ .../evidence-market/shots/market-ctrlk-palette.png |  Bin 191526 -> 265738 bytes
+ .../evidence-market/shots/market-detail-1440.png   |  Bin 168843 -> 219224 bytes
+ .../shots/market-detail-sentences.png              |  Bin 183042 -> 297231 bytes
+ .../evidence-market/shots/market-empty-search.png  |  Bin 118547 -> 188990 bytes
+ release/evidence-market/shots/market-favorites.png |  Bin 76955 -> 155844 bytes
+ release/evidence-market/shots/market-home-1440.png |  Bin 193608 -> 297768 bytes
+ release/evidence-market/shots/market-home-dark.png |  Bin 200223 -> 280706 bytes
+ release/evidence-market/shots/market-i18n-en.png   |  Bin 147698 -> 219876 bytes
+ .../shots/market-import-degraded.png               |  Bin 225020 -> 211003 bytes
+ .../shots/market-import-success.png                |  Bin 213618 -> 192998 bytes
+ release/evidence-market/shots/market-license.png   |  Bin 132486 -> 227518 bytes
+ .../evidence-market/shots/market-mobile-390.png    |  Bin 88740 -> 109048 bytes
+ .../shots/market-mobile-bottom-nav.png             |  Bin 51944 -> 58789 bytes
+ .../shots/market-mobile-detail-390.png             |  Bin 84865 -> 125214 bytes
+ .../shots/market-mobile-detail-actionbar.png       |  Bin 51427 -> 98598 bytes
+ release/evidence-market/shots/market-privacy.png   |  Bin 157865 -> 241142 bytes
+ .../evidence-market/shots/market-pwa-offline.png   |  Bin 193608 -> 293938 bytes
+ .../evidence-market/shots/market-settings-dark.png |  Bin 150539 -> 204609 bytes
+ release/evidence-market/shots/market-tag.png       |  Bin 179320 -> 288549 bytes
+ release/evidence-market/workspace-git.txt          |  302 +-
+ release/evidence-market/workspace-sha256.txt       |  165 +-
+ tools/qa/market/collect-evidence.mjs               |    8 +-
+ tools/qa/market/market-e2e.mjs                     |  122 +-
+ tools/qa/market/report-data-contract.json          |   84 +-
+ tools/qa/market/report-market.json                 |  953 ++--
+ tools/qa/market/report-static-audit.json           |   80 +-
+ tools/qa/market/shots/market-404.png               |  Bin 64096 -> 186537 bytes
+ tools/qa/market/shots/market-about.png             |  Bin 151061 -> 246456 bytes
+ tools/qa/market/shots/market-category-daily.png    |  Bin 109574 -> 202642 bytes
+ tools/qa/market/shots/market-changelog.png         |  Bin 172654 -> 245958 bytes
+ tools/qa/market/shots/market-complaint.png         |  Bin 142629 -> 242989 bytes
+ tools/qa/market/shots/market-contribute.png        |  Bin 145483 -> 220593 bytes
+ .../market/shots/market-creator-shadow-studio.png  |  Bin 158337 -> 232932 bytes
+ tools/qa/market/shots/market-ctrlk-palette.png     |  Bin 191526 -> 265738 bytes
+ tools/qa/market/shots/market-detail-1440.png       |  Bin 168843 -> 219224 bytes
+ tools/qa/market/shots/market-detail-sentences.png  |  Bin 183042 -> 297231 bytes
+ tools/qa/market/shots/market-empty-search.png      |  Bin 118547 -> 188990 bytes
+ tools/qa/market/shots/market-favorites.png         |  Bin 76955 -> 155844 bytes
+ tools/qa/market/shots/market-home-1440.png         |  Bin 193608 -> 297768 bytes
+ tools/qa/market/shots/market-home-dark.png         |  Bin 200223 -> 280706 bytes
+ tools/qa/market/shots/market-i18n-en.png           |  Bin 147698 -> 219876 bytes
+ tools/qa/market/shots/market-import-degraded.png   |  Bin 225020 -> 211003 bytes
+ tools/qa/market/shots/market-import-success.png    |  Bin 213618 -> 192998 bytes
+ tools/qa/market/shots/market-license.png           |  Bin 132486 -> 227518 bytes
+ tools/qa/market/shots/market-mobile-390.png        |  Bin 88740 -> 109048 bytes
+ tools/qa/market/shots/market-mobile-bottom-nav.png |  Bin 51944 -> 58789 bytes
+ tools/qa/market/shots/market-mobile-detail-390.png |  Bin 84865 -> 125214 bytes
+ .../shots/market-mobile-detail-actionbar.png       |  Bin 51427 -> 98598 bytes
+ tools/qa/market/shots/market-privacy.png           |  Bin 157865 -> 241142 bytes
+ tools/qa/market/shots/market-pwa-offline.png       |  Bin 193608 -> 293938 bytes
+ tools/qa/market/shots/market-settings-dark.png     |  Bin 150539 -> 204609 bytes
+ tools/qa/market/shots/market-tag.png               |  Bin 179320 -> 288549 bytes
+ tools/qa/market/static-audit.mjs                   |    7 +-
+ 97 files changed, 9498 insertions(+), 11016 deletions(-)
 
 ## git diff --stat --cached（暂存区 vs HEAD）
 

@@ -1,7 +1,7 @@
 {
   "test": "static-audit",
   "round": "phase2",
-  "startedAt": "2026-10-31T16:54:52.758Z",
+  "startedAt": "2026-11-01T08:14:08.166Z",
   "marketDir": "D:\\SHADOW-MARKET\\market",
   "checks": [
     {
@@ -10,7 +10,7 @@
       "pass": true,
       "skipped": false,
       "detail": "",
-      "at": "2026-10-31T16:54:52.760Z"
+      "at": "2026-11-01T08:14:08.168Z"
     },
     {
       "id": "SA2",
@@ -18,15 +18,15 @@
       "pass": true,
       "skipped": false,
       "detail": "all present",
-      "at": "2026-10-31T16:54:52.762Z"
+      "at": "2026-11-01T08:14:08.170Z"
     },
     {
       "id": "SA3",
       "name": "index.html 引用品牌图标（header logo 图片 / favicon / apple-touch / manifest）",
       "pass": true,
       "skipped": false,
-      "detail": "refs=assets/brand/favicon.ico,assets/brand/favicon-32.png,assets/brand/favicon-16.png,assets/brand/apple-touch-icon-180.png,assets/brand/logo-64.png,assets/brand/icon-192.png headerImg=true",
-      "at": "2026-10-31T16:54:52.762Z"
+      "detail": "refs=assets/brand/favicon-32.png,assets/brand/favicon-16.png,assets/brand/apple-touch-icon-180.png,assets/brand/logo-64.png,assets/brand/logo-128.png headerImg=true",
+      "at": "2026-11-01T08:14:08.170Z"
     },
     {
       "id": "SA4",
@@ -34,23 +34,23 @@
       "pass": true,
       "skipped": false,
       "detail": "manifest ok",
-      "at": "2026-10-31T16:54:52.763Z"
+      "at": "2026-11-01T08:14:08.171Z"
     },
     {
       "id": "SA5",
       "name": "Service Worker（预缓存 shell/assets/catalog/plugins + 离线回退 + SKIP_WAITING）",
       "pass": true,
       "skipped": false,
-      "detail": "8036B",
-      "at": "2026-10-31T16:54:52.763Z"
+      "detail": "8278B",
+      "at": "2026-11-01T08:14:08.171Z"
     },
     {
       "id": "SA6",
       "name": "前端注册 Service Worker（app.js / index.html）",
       "pass": true,
       "skipped": false,
-      "detail": "market/assets/js/app.js:632: const ready = await navigator.serviceWorker.ready; | market/assets/js/app.js:633: (ready.active || navigator.serviceWorker.controller)?.postMessage({ type: 'PREFETCH' });",
-      "at": "2026-10-31T16:54:52.764Z"
+      "detail": "market/assets/js/pwa.js:22: const hadControllerAtStart = !!(typeof navigator !== 'undefined' && navigator.serviceWorker && navigator.serviceWorker.controller); | market/assets/js/pwa.js:39: navigator.serviceWorker.addEventListener('controllerchange', () => {",
+      "at": "2026-11-01T08:14:08.173Z"
     },
     {
       "id": "SA7",
@@ -58,7 +58,7 @@
       "pass": true,
       "skipped": false,
       "detail": "4080B",
-      "at": "2026-10-31T16:54:52.765Z"
+      "at": "2026-11-01T08:14:08.173Z"
     },
     {
       "id": "SA8",
@@ -66,7 +66,7 @@
       "pass": true,
       "skipped": false,
       "detail": "index.html head",
-      "at": "2026-10-31T16:54:52.765Z"
+      "at": "2026-11-01T08:14:08.173Z"
     },
     {
       "id": "SA9",
@@ -74,7 +74,7 @@
       "pass": true,
       "skipped": false,
       "detail": "none",
-      "at": "2026-10-31T16:54:52.766Z"
+      "at": "2026-11-01T08:14:08.175Z"
     },
     {
       "id": "SA10",
@@ -82,7 +82,7 @@
       "pass": true,
       "skipped": false,
       "detail": "none",
-      "at": "2026-10-31T16:54:52.767Z"
+      "at": "2026-11-01T08:14:08.176Z"
     },
     {
       "id": "SA11",
@@ -90,7 +90,7 @@
       "pass": true,
       "skipped": false,
       "detail": "12250B 只读",
-      "at": "2026-10-31T16:54:52.768Z"
+      "at": "2026-11-01T08:14:08.177Z"
     },
     {
       "id": "SA12",
@@ -98,7 +98,7 @@
       "pass": true,
       "skipped": false,
       "detail": "6 个声明文件",
-      "at": "2026-10-31T16:54:52.768Z"
+      "at": "2026-11-01T08:14:08.177Z"
     },
     {
       "id": "SA13",
@@ -106,7 +106,7 @@
       "pass": true,
       "skipped": false,
       "detail": "3 types [course,subtitle,plugin]",
-      "at": "2026-10-31T16:54:52.769Z"
+      "at": "2026-11-01T08:14:08.178Z"
     },
     {
       "id": "SA14",
@@ -114,7 +114,7 @@
       "pass": true,
       "skipped": false,
       "detail": "none",
-      "at": "2026-10-31T16:54:52.770Z"
+      "at": "2026-11-01T08:14:08.180Z"
     },
     {
       "id": "SA15",
@@ -122,7 +122,7 @@
       "pass": true,
       "skipped": false,
       "detail": "all self-hosted",
-      "at": "2026-10-31T16:54:52.771Z"
+      "at": "2026-11-01T08:14:08.182Z"
     },
     {
       "id": "SA16",
@@ -130,7 +130,7 @@
       "pass": true,
       "skipped": false,
       "detail": "none",
-      "at": "2026-10-31T16:54:52.774Z"
+      "at": "2026-11-01T08:14:08.184Z"
     },
     {
       "id": "SA17",
@@ -138,15 +138,15 @@
       "pass": true,
       "skipped": false,
       "detail": "none",
-      "at": "2026-10-31T16:54:52.775Z"
+      "at": "2026-11-01T08:14:08.186Z"
     },
     {
       "id": "SA18",
       "name": "支付/抽成/DRM 提及均带否定语义（仅边界说明，不做实现）",
       "pass": true,
       "skipped": false,
-      "detail": "negative mentions=13",
-      "at": "2026-10-31T16:54:52.776Z"
+      "detail": "negative mentions=15",
+      "at": "2026-11-01T08:14:08.188Z"
     },
     {
       "id": "SA19",
@@ -154,7 +154,7 @@
       "pass": true,
       "skipped": false,
       "detail": "7 资源全免费",
-      "at": "2026-10-31T16:54:52.777Z"
+      "at": "2026-11-01T08:14:08.188Z"
     },
     {
       "id": "SA20",
@@ -162,7 +162,7 @@
       "pass": true,
       "skipped": false,
       "detail": "all pages present",
-      "at": "2026-10-31T16:54:52.777Z"
+      "at": "2026-11-01T08:14:08.189Z"
     },
     {
       "id": "SA21",
@@ -170,7 +170,7 @@
       "pass": true,
       "skipped": false,
       "detail": "14 keys: shadow.market.catalog,shadow.market.fixture.v1,shadow.market.resources,shadow.market.lang.v1,shadow.market.points.v1,shadow.market.prefs.v1",
-      "at": "2026-10-31T16:54:52.777Z"
+      "at": "2026-11-01T08:14:08.189Z"
     },
     {
       "id": "SA22",
@@ -178,7 +178,7 @@
       "pass": true,
       "skipped": false,
       "detail": "{\"topic\":true,\"process\":true,\"contact\":true}",
-      "at": "2026-10-31T16:54:52.778Z"
+      "at": "2026-11-01T08:14:08.190Z"
     },
     {
       "id": "SA23",
@@ -186,7 +186,7 @@
       "pass": true,
       "skipped": false,
       "detail": "licenses=CC-BY-4.0",
-      "at": "2026-10-31T16:54:52.778Z"
+      "at": "2026-11-01T08:14:08.190Z"
     },
     {
       "id": "SA24",
@@ -194,7 +194,7 @@
       "pass": true,
       "skipped": false,
       "detail": "resources=7 categories=7 authors=1 tags=21 licenses=1",
-      "at": "2026-10-31T16:54:52.778Z"
+      "at": "2026-11-01T08:14:08.190Z"
     },
     {
       "id": "SA25",
@@ -202,7 +202,7 @@
       "pass": true,
       "skipped": false,
       "detail": "7 versions ok",
-      "at": "2026-10-31T16:54:52.778Z"
+      "at": "2026-11-01T08:14:08.190Z"
     },
     {
       "id": "SA26",
@@ -210,7 +210,7 @@
       "pass": true,
       "skipped": false,
       "detail": "course,subtitle,plugin",
-      "at": "2026-10-31T16:54:52.778Z"
+      "at": "2026-11-01T08:14:08.190Z"
     },
     {
       "id": "SA27",
@@ -218,7 +218,7 @@
       "pass": true,
       "skipped": false,
       "detail": "ok",
-      "at": "2026-10-31T16:54:52.778Z"
+      "at": "2026-11-01T08:14:08.190Z"
     },
     {
       "id": "SA28",
@@ -226,7 +226,7 @@
       "pass": true,
       "skipped": false,
       "detail": "8195B",
-      "at": "2026-10-31T16:54:52.779Z"
+      "at": "2026-11-01T08:14:08.191Z"
     },
     {
       "id": "SA29",
@@ -234,7 +234,7 @@
       "pass": true,
       "skipped": false,
       "detail": "3579B",
-      "at": "2026-10-31T16:54:52.779Z"
+      "at": "2026-11-01T08:14:08.191Z"
     },
     {
       "id": "SA30",
@@ -242,7 +242,7 @@
       "pass": true,
       "skipped": false,
       "detail": "router.js hash-based",
-      "at": "2026-10-31T16:54:52.779Z"
+      "at": "2026-11-01T08:14:08.191Z"
     },
     {
       "id": "SA31",
@@ -250,7 +250,7 @@
       "pass": true,
       "skipped": false,
       "detail": "ok",
-      "at": "2026-10-31T16:54:52.780Z"
+      "at": "2026-11-01T08:14:08.192Z"
     },
     {
       "id": "SA32",
@@ -258,7 +258,7 @@
       "pass": true,
       "skipped": false,
       "detail": "Phase 2 证据落盘位置",
-      "at": "2026-10-31T16:54:52.780Z"
+      "at": "2026-11-01T08:14:08.192Z"
     },
     {
       "id": "SA33",
@@ -266,7 +266,7 @@
       "pass": true,
       "skipped": true,
       "detail": "本仓库无该子系统（非市场仓库范围）",
-      "at": "2026-10-31T16:54:52.780Z"
+      "at": "2026-11-01T08:14:08.192Z"
     },
     {
       "id": "SA34",
@@ -274,7 +274,7 @@
       "pass": true,
       "skipped": true,
       "detail": "本仓库无该子系统（非市场仓库范围）",
-      "at": "2026-10-31T16:54:52.780Z"
+      "at": "2026-11-01T08:14:08.192Z"
     }
   ],
   "summary": {
@@ -290,5 +290,5 @@
     "pluginTypes": 3
   },
   "pass": true,
-  "finishedAt": "2026-10-31T16:54:52.780Z"
+  "finishedAt": "2026-11-01T08:14:08.192Z"
 }

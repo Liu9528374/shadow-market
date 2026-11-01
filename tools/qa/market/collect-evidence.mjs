@@ -257,7 +257,11 @@ const dcPass = !!(dc && dc.pass === true);
 const saPass = !!(sa && sa.pass === true);
 const consoleFiltered = marketReport && marketReport.extra ? (marketReport.extra.consoleErrorFiltered || []).length : null;
 const pageErrorCount = marketReport ? (marketReport.pageErrors || []).length : null;
-const reqFailCount = marketReport ? (marketReport.requestFailures || []).length : null;
+// 下载产物 fetch 由浏览器接管后主动中断（net::ERR_ABORTED），属预期行为，不计入失败请求
+const rawRequestFailures = marketReport ? (marketReport.requestFailures || []) : [];
+const requestFailures = rawRequestFailures.filter((f) => !(f && /ERR_ABORTED/.test(String(f.error || '')) && /\/data\/(import|packages)\//.test(String(f.url || ''))));
+const reqFailCount = marketReport ? requestFailures.length : null;
+const abortedDownloads = rawRequestFailures.length - requestFailures.length;
 const consoleOk = consoleFiltered === 0 && pageErrorCount === 0 && reqFailCount === 0;
 const m7 = blockStats.M7 || { passed: 0, total: 0 };
 const m8 = blockStats.M8 || { passed: 0, total: 0 };
@@ -304,7 +308,7 @@ const summaryLines = [
   gateRow('E2E（Playwright / Edge headless）', '全 PASS', marketReport && marketReport.summary ? `${marketReport.summary.passed}/${marketReport.summary.total} PASS，${marketReport.summary.failed} FAIL` : '未运行', e2ePass),
   gateRow('数据契约（catalog v2 / sha256 / importFiles）', '全 PASS', dc && dc.summary ? `${dc.summary.passed}/${dc.summary.total} PASS，${dc.summary.failed} FAIL` : '未运行', dcPass),
   gateRow('静态审计（品牌/PWA/合规/CDN/部署）', '全 PASS（SKIP 不计）', sa && sa.summary ? `${sa.summary.passed}/${sa.summary.total - (sa.summary.skipped || 0)} PASS，${sa.summary.failed} FAIL` : '未运行', saPass),
-  gateRow('console.error / pageerror / 失败请求', '0 / 0 / 0', `${consoleFiltered ?? 'n/a'} / ${pageErrorCount ?? 'n/a'} / ${reqFailCount ?? 'n/a'}`, consoleOk),
+  gateRow('console.error / pageerror / 失败请求', '0 / 0 / 0', `${consoleFiltered ?? 'n/a'} / ${pageErrorCount ?? 'n/a'} / ${reqFailCount ?? 'n/a'}${abortedDownloads ? `（另 ${abortedDownloads} 条下载中断为预期）` : ''}`, consoleOk),
   gateRow('响应式（1440/1024/768/390/375/360 无页面级横溢）', 'M7 全 PASS', `${m7.passed}/${m7.total}`, responsiveOk),
   gateRow('PWA 离线（首访后断网重载列表/详情）', 'M8 全 PASS', `${m8.passed}/${m8.total}`, pwaOk),
   '',
