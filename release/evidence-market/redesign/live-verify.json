@@ -1,0 +1,25 @@
+{
+  "url": "https://liu9528374.github.io/shadow-market/",
+  "home": {
+    "title": "SHADOW 市场 · 个人工作台",
+    "h1": "下午好，影子练习者",
+    "theme": "light",
+    "cards": 4,
+    "rail": 3,
+    "overflow": 0,
+    "bodyText": "跳到主内容\nSHADOW 市场\nPERSONAL\n/\n0\n积分\nEN\n工作台\n市场\n7\n我的收藏\n0\n我的资源\n0\n积分\n0\n投稿\n\n最近访问\n\n在咖啡店点单\n"
+  },
+  "market": {
+    "h1": "发现资源7 个",
+    "cards": 7,
+    "overflow": 0
+  },
+  "detail": {
+    "h1": "在咖啡店点单",
+    "tabs": 4,
+    "overflow": 0
+  },
+  "sw": "registered",
+  "errors": [],
+  "checkedAt": "2026-11-01T08:17:55.484Z"
+}
