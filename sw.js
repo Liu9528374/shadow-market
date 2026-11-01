@@ -14,7 +14,7 @@
  * 不缓存：用户媒体（市场没有媒体）、POST 请求、跨域请求。
  */
 
-const VERSION = 'v2026.11.03.1';
+const VERSION = 'v2026.11.03.2';
 const CACHE = `shadow-market-${VERSION}`;
 const OFFLINE_URL = './offline.html';
 
