@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SHADOW 市场 · 投稿指南（设计稿）</title>
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/pages-personal.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<!-- ===== 顶栏（与 index.html 同构） ===== -->
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img class="brand-mark" src="../../market/assets/brand/logo-128.png" width="30" height="30" alt="" />
+    <span class="brand-word">SHADOW 市场</span>
+    <span class="brand-label">CONTRIBUTING</span>
+  </a>
+
+  <label class="search">
+    <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="search" placeholder="搜索课程、字幕包、插件…" aria-label="搜索资源" />
+    <span class="kbd">/</span>
+  </label>
+
+  <div class="topbar-actions">
+    <span class="pill-points" title="积分：免费获取，不可购买/转让/提现">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg>
+      <span class="num">120</span> 积分
+    </span>
+    <button class="icon-btn" data-theme-toggle aria-label="切换主题" title="切换深色 / 浅色">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="切换语言" title="Switch language">EN</button>
+    <button class="user-chip" aria-label="账户菜单">
+      <img class="avatar" src="../../market/assets/brand/logo-128.png" alt="" />
+    </button>
+  </div>
+</header>
+
+<!-- ===== 编辑式两栏（左目录 + 正文） ===== -->
+<div class="app doc-app">
+
+  <!-- 左目录 -->
+  <aside class="doc-toc" aria-label="本页目录">
+    <div>
+      <p class="eyebrow" style="margin-bottom:10px">本页目录</p>
+      <nav class="doc-toc-list">
+        <a class="doc-toc-link is-active" href="#s1"><span class="num">01</span>可以投什么</a>
+        <a class="doc-toc-link" href="#s2"><span class="num">02</span>版权与 BYOM</a>
+        <a class="doc-toc-link" href="#s3"><span class="num">03</span>格式与校验</a>
+        <a class="doc-toc-link" href="#s4"><span class="num">04</span>审核与下架</a>
+        <a class="doc-toc-link" href="#s5"><span class="num">05</span>提交方式</a>
+      </nav>
+    </div>
+
+    <div class="doc-submit">
+      <span class="doc-submit-title">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        投稿入口
+      </span>
+      <p>邮件提交课程包 + 元数据 + 权利依据，≤3 个工作日人工初审。P0 不收任何费用。</p>
+      <a class="btn btn-secondary btn-sm btn-block" href="mailto:market@shadowmarket.app">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        复制投稿邮箱
+      </a>
+      <p class="tiny faint" style="margin-top:9px;line-height:1.5">提交方式：GitHub 仓库 Issues 或邮件（正式地址见关于页）。</p>
+    </div>
+  </aside>
+
+  <!-- 正文 -->
+  <main class="doc-article" id="main">
+    <div class="doc-head">
+      <span class="eyebrow">Contributing · 编辑审核</span>
+      <h1>投稿指南</h1>
+      <p class="lead">把你做的影子跟读课程包放进 SHADOW 市场。我们只收录<b style="color:var(--text)">自有 / 授权 / 公版 / CC</b> 的纯数据包，由人工审核后上架。</p>
+      <div class="doc-meta">
+        <span class="row"><svg class="icon" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>全免费</span>
+        <span class="inline-dot"></span>
+        <span class="row"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>人工审核 · ≤3 个工作日</span>
+        <span class="inline-dot"></span>
+        <span class="row"><svg class="icon" viewBox="0 0 24 24"><path d="M12 22c5.5-2.5 8-6.5 8-12V5l-8-3-8 3v5c0 5.5 2.5 9.5 8 12z"/><path d="M9 12l2 2 4-4"/></svg>保留投诉下架</span>
+        <span class="inline-dot"></span>
+        <span>更新于 2026-11-01</span>
+      </div>
+    </div>
+
+    <article class="prose">
+
+      <section id="s1">
+        <h2><span class="sec-num">01</span>可以投什么</h2>
+        <p>市场只分发<b>纯数据资源包</b>：句子时间轴 + 中英翻译 + 练习配置，<b>不包含任何媒体文件</b>。用户用自己的媒体（BYOM）在 SHADOW Studio 里完成绑定与练习。</p>
+
+        <table class="doc-table">
+          <thead>
+            <tr><th style="width:23%">类型</th><th>内容与要求</th><th style="width:26%">示例</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tag-cell">课程包</td>
+              <td>5–20 句；句级时间轴（start/end）；英文原文 + 中文翻译；可选重音/连读提示。对应 <code>type: "course"</code>。</td>
+              <td>在咖啡店点单 · B1</td>
+            </tr>
+            <tr>
+              <td class="tag-cell">字幕包</td>
+              <td>SRT 时间轴或字幕 JSON；中文翻译可选；不得含影视原片片段或第三方字幕。</td>
+              <td>社区图书馆的一天 · B1</td>
+            </tr>
+            <tr>
+              <td class="tag-cell">插件说明</td>
+              <td>只收<b>声明式 JSON</b>：内置类型 / 能力 / 权限声明，权限全部为 false，不含任何 JS / WASM / 二进制。</td>
+              <td>内置插件白名单</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <blockquote class="quote">
+          <span class="quote-label"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>什么不适合市场</span>
+          <p>影视原片、YouTube / 播客的第三方片段及其字幕；未授权教材、音频或付费课程内容；需要联网执行、上传用户数据的插件；任何以 DRM、付费墙为前提的内容。</p>
+        </blockquote>
+      </section>
+
+      <section id="s2">
+        <h2><span class="sec-num">02</span>版权与 BYOM</h2>
+        <p>每一个资源都必须在元数据里声明 <b>license</b> 与 <b>rights.basis</b>，并保留可核验的权利依据。人工审核会逐条确认；无法说明来源的投稿会被退回。</p>
+
+        <h3>允许的许可</h3>
+        <ul class="bullets">
+          <li><code>own</code> · 自有内容（文本、翻译、时间轴均为你创作）。</li>
+          <li><code>licensed</code> · 已获得书面授权，需附证据链接或授权说明。</li>
+          <li><code>public-domain</code> · 公有领域，注明来源与判定依据。</li>
+          <li><code>CC-BY / CC-BY-SA / CC0</code> 等 CC 系列，注明版本与署名要求。</li>
+        </ul>
+
+        <h3>BYOM：媒体由用户自备</h3>
+        <p>包内<b>不得</b>包含视频、音频、截图或 base64 媒体；也不得记录作者本机的绝对路径。<code>mediaMode</code> 固定为 <code>byom</code>，用户导入后用同名媒体完成绑定。</p>
+        <ul class="checklist">
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>已声明 <code>license</code> 与 <code>rights.basis</code></li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>文本 / 翻译 / 时间轴均为原创或已授权</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>包内无媒体、无第三方影视片段、无外链媒体</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>README 中说明媒体名（与 <code>clip.name</code> 逐字一致）</li>
+        </ul>
+      </section>
+
+      <section id="s3">
+        <h2><span class="sec-num">03</span>格式与校验</h2>
+        <p>课程包为单个 JSON（<code>.shadowcourse</code>，<code>spec: "shadow.course"</code>，UTF-8 无 BOM，≤2 MiB）。提交前请在本机跑一次校验，确保时间轴、字段与纯数据约束全部通过。</p>
+
+        <ol class="steps">
+          <li>
+            <span class="step-title">准备资源包与元数据</span>
+            <span class="step-desc">按 <code>docs/53</code> 的字段生成 <code>.shadowcourse</code>；同时准备标题、副标、分类、难度、标签、作者、许可与更新说明。</span>
+          </li>
+          <li>
+            <span class="step-title">运行校验器</span>
+            <span class="step-desc">任何 FAIL 都先修复；校验器同时检查 <code>end &gt; start</code>、时间轴升序、纯数据（无脚本 / iframe / 内联事件）与 ≤2 MiB。</span>
+          </li>
+          <li>
+            <span class="step-title">生成导入产物（可选，推荐）</span>
+            <span class="step-desc">同时提供 <code>.shadow.json</code>（带翻译的 r19 工程）与 <code>.srt</code>（备选），并在 README 写清 5 步 + 3 个坑。</span>
+          </li>
+        </ol>
+
+        <div class="codeblock">
+          <div class="codeblock-head"><span>终端 · 本地校验</span><span>PowerShell / bash</span></div>
+<pre><span class="c"># 1) 校验单个课程包（或整个目录）</span>
+node tools/shadowcourse/validate.mjs --dir content/packages
+
+<span class="c"># 2) 生成 / 校验 catalog（构建期会写入 sha256 与 sizeBytes）</span>
+node tools/catalog/build-catalog.mjs
+node tools/catalog/validate-catalog.mjs
+
+<span class="c"># 3) 生成 .shadow.json 与 .srt 导入产物（可选）</span>
+node tools/import/build-shadow-json.mjs</pre>
+        </div>
+
+        <p class="hint">提示：校验通过后，构建脚本会为每个版本写入 <code>sha256</code> 与 <code>sizeBytes</code>，用户下载时可核对完整性。</p>
+      </section>
+
+      <section id="s4">
+        <h2><span class="sec-num">04</span>审核与下架</h2>
+        <p>市场是人工运营的免费资源站，不设自动上架。审核关注三件事：<b>版权可核验</b>、<b>纯数据无媒体</b>、<b>内容质量与安全</b>。</p>
+
+        <ol class="steps">
+          <li>
+            <span class="step-title">机器预检</span>
+            <span class="step-desc">构建期自动检查 schema、引用完整性、SHA256 / 文件大小、纯数据扫描（脚本 / iframe / 外链媒体）与敏感词初筛。</span>
+          </li>
+          <li>
+            <span class="step-title">人工初审（≤3 个工作日）</span>
+            <span class="step-desc">核对 license / rights / evidenceUrl、内容质量、标签与分类准确性；必要时邮件沟通修改。</span>
+          </li>
+          <li>
+            <span class="step-title">上架与版本更新</span>
+            <span class="step-desc">首次上架记为 <code>v1.0.0</code>；后续更新递增版本并在 changelog 写明变更。</span>
+          </li>
+        </ol>
+
+        <blockquote class="quote">
+          <span class="quote-label"><svg class="icon" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>投诉与下架（始终保留）</span>
+          <p>投诉邮箱 24 小时内确认受理；疑似侵权资源 48 小时内下架；7 日内完成复核与反通知流程。重复侵权累计 3 次封禁投稿资格。</p>
+        </blockquote>
+      </section>
+
+      <section id="s5">
+        <h2><span class="sec-num">05</span>提交方式</h2>
+        <p>把以下内容打包成一封邮件（或按仓库 PR 流程提交），审核通过后会给你一个上架确认与资源链接。</p>
+
+        <ul class="checklist">
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><code>.shadowcourse</code> 资源包（校验器 PASS）</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>元数据 JSON：标题 / 副标 / 描述 / 分类 / 难度 / 标签 / 语言 / 作者 / 许可</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><code>rights.basis</code> 与证据链接（自有可写 <code>own</code> + 说明）</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>可选：<code>.shadow.json</code> / <code>.srt</code> / 导入说明 README / 媒体名提示</li>
+        </ul>
+
+        <div class="codeblock">
+          <div class="codeblock-head"><span>邮件格式</span><span>纯文本模板</span></div>
+<pre>主题： [投稿] 在咖啡店点单 · 课程包 · B1
+
+正文：
+- 资源名称 / 副标 / 一句话描述
+- 类型： course | subtitle | plugin
+- 许可： CC-BY-4.0（rights.basis: own）
+- 校验结果： validate.mjs PASS（粘贴最后 10 行输出）
+- 附件： resource.shadowcourse / metadata.json / README.md</pre>
+        </div>
+
+        <p>提交后如 3 个工作日未收到回复，可再发一封跟进邮件；不收取任何费用，也没有加急通道。</p>
+
+        <div class="doc-foot">
+          <span>SHADOW 市场 · 投稿指南 · v2.0</span>
+          <a class="text-link small" href="index.html">返回工作台</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<script>
+  // 设计稿预览：?theme=light 切换主题；顶栏主题按钮切换 data-theme（与 index/market/resource 一致）
+  (function () {
+    var q = new URLSearchParams(location.search).get('theme');
+    if (q === 'light' || q === 'dark') document.documentElement.dataset.theme = q;
+    document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var el = document.documentElement;
+        el.dataset.theme = el.dataset.theme === 'light' ? 'dark' : 'light';
+      });
+    });
+  })();
+
+  // 目录高亮（滚动联动，设计稿演示）
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.doc-toc-link'));
+    var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    if (!sections.length || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (a) {
+          a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-96px 0px -65% 0px', threshold: 0 });
+    sections.forEach(function (s) { io.observe(s); });
+  })();
+</script>
+</body>
+</html>
+
+

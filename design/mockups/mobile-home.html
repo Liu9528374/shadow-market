@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>SHADOW 市场 · 移动端工作台（设计稿 390×844）</title>
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/pages-personal.css" />
+</head>
+<body class="mobile-page">
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<div class="m-shell">
+
+  <!-- 顶栏 56：品牌 icon + 搜索 + 头像 -->
+  <header class="m-topbar">
+    <a class="m-brand" href="mobile-home.html" aria-label="SHADOW 市场工作台">
+      <img class="brand-mark" src="../../market/assets/brand/logo-128.png" width="26" height="26" alt="" />
+      <span class="word">SHADOW</span>
+    </a>
+    <div class="m-topbar-actions">
+      <button class="icon-btn" aria-label="搜索资源">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button class="user-chip" aria-label="账户菜单">
+        <img class="avatar" src="../../market/assets/brand/logo-128.png" alt="" />
+      </button>
+    </div>
+  </header>
+
+  <main class="m-main" id="main">
+
+    <!-- 问候 -->
+    <section class="m-greet">
+      <span class="eyebrow">本机访客 · 未登录</span>
+      <h1>下午好，影子练习者</h1>
+      <p>今天也练 10 分钟吧 · 数据只保存在本机</p>
+    </section>
+
+    <!-- 2×2 数据 -->
+    <section class="m-stat-grid" aria-label="我的数据">
+      <div class="stat stat-accent">
+        <span class="stat-value">120<span class="unit">积分</span></span>
+        <span class="stat-label">签到 / 打卡获取</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">3</span>
+        <span class="stat-label">收藏资源</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">2</span>
+        <span class="stat-label">已下载</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">4<span class="unit">天</span></span>
+        <span class="stat-label">连续练习</span>
+      </div>
+    </section>
+
+    <!-- 继续上次 -->
+    <section class="m-section">
+      <div class="m-section-head">
+        <span class="m-section-title">
+          <svg class="icon" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          继续上次
+        </span>
+        <a class="m-link" href="library.html">全部记录
+          <svg class="icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+
+      <div class="m-continue">
+        <div class="m-continue-cover" aria-hidden="true">
+          <svg class="wave" viewBox="0 0 160 60"><g fill="currentColor"><rect x="2" y="23" width="22" height="10" rx="5"/><rect x="36" y="14" width="9" height="34" rx="4.5"/><rect x="55" y="4" width="9" height="52" rx="4.5"/><rect x="74" y="17" width="9" height="28" rx="4.5"/><rect x="93" y="23" width="22" height="10" rx="5"/></g></svg>
+        </div>
+        <div class="m-continue-body">
+          <span class="m-continue-title">在咖啡店点单 · 第 3 / 5 句</span>
+          <span class="m-continue-meta">Ordering at a Café · B1 · 今天 14:02</span>
+          <div class="progress"><div class="progress-fill" style="width:60%"></div></div>
+        </div>
+        <a class="btn btn-primary m-continue-go" href="resource.html">继续</a>
+      </div>
+    </section>
+
+    <!-- 为你推荐 -->
+    <section class="m-section">
+      <div class="m-section-head">
+        <span class="m-section-title">
+          <svg class="icon" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg>
+          为你推荐
+        </span>
+        <a class="m-link" href="mobile-market.html">查看全部
+          <svg class="icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      </div>
+
+      <div class="m-res-list">
+        <a class="res-card" href="resource.html">
+          <div class="cover">
+            <svg class="wave" viewBox="0 0 160 60"><g fill="currentColor"><rect x="2" y="23" width="22" height="10" rx="5"/><rect x="36" y="14" width="9" height="34" rx="4.5"/><rect x="55" y="4" width="9" height="52" rx="4.5"/><rect x="74" y="17" width="9" height="28" rx="4.5"/><rect x="93" y="23" width="22" height="10" rx="5"/></g></svg>
+            <span class="badge badge-soft">Free</span>
+          </div>
+          <div class="res-body">
+            <span class="res-title">在咖啡店点单 <span class="badge badge-outline">B1</span></span>
+            <span class="res-sub">Ordering at a Café · SHADOW Studio</span>
+            <p class="res-desc">咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡——导入即练。</p>
+            <div class="res-meta">
+              <span><svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>5 句</span>
+              <span><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>0:22</span>
+              <span>BYOM</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="res-card" href="resource.html">
+          <div class="cover cover-2">
+            <svg class="wave" viewBox="0 0 160 60"><g fill="currentColor"><rect x="2" y="23" width="22" height="10" rx="5"/><rect x="36" y="14" width="9" height="34" rx="4.5"/><rect x="55" y="4" width="9" height="52" rx="4.5"/><rect x="74" y="17" width="9" height="28" rx="4.5"/><rect x="93" y="23" width="22" height="10" rx="5"/></g></svg>
+            <span class="badge badge-soft">Free</span>
+          </div>
+          <div class="res-body">
+            <span class="res-title">社区图书馆的一天 <span class="badge badge-outline">B1</span></span>
+            <span class="res-sub">听力字幕包 · 9 句 · 字幕类型</span>
+            <p class="res-desc">一段安静的自习室对话：借书、问路、找座位、办理借阅卡。自带媒体即可练习。</p>
+            <div class="res-meta">
+              <span><svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>9 句</span>
+              <span><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>0:38</span>
+              <span>BYOM</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 进入市场 -->
+    <a class="m-cta" href="mobile-market.html">
+      <svg class="wave" viewBox="0 0 160 60" aria-hidden="true"><g fill="currentColor"><rect x="2" y="23" width="22" height="10" rx="5"/><rect x="36" y="14" width="9" height="34" rx="4.5"/><rect x="55" y="4" width="9" height="52" rx="4.5"/><rect x="74" y="17" width="9" height="28" rx="4.5"/><rect x="93" y="23" width="22" height="10" rx="5"/></g></svg>
+      <span class="m-cta-body">
+        <span class="eyebrow">Market</span>
+        <b>进入市场</b>
+        <span>7 个免费资源 · 全部 BYOM</span>
+      </span>
+      <span class="m-cta-arrow">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </a>
+
+    <p class="footer-note" style="justify-content:center;text-align:center">
+      <span>全免费 · 无强制登录</span>
+      <span>数据仅在本机</span>
+    </p>
+  </main>
+</div>
+
+<!-- 底部导航 4 项（fixed，不遮内容） -->
+<nav class="mobile-nav" aria-label="移动端主导航">
+  <div class="mobile-nav-inner">
+    <a class="mobile-nav-item is-active" href="mobile-home.html" aria-current="page">
+      <svg class="icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      工作台
+    </a>
+    <a class="mobile-nav-item" href="mobile-market.html">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      市场
+    </a>
+    <a class="mobile-nav-item" href="library.html">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      收藏
+    </a>
+    <a class="mobile-nav-item" href="points.html">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+      积分
+    </a>
+  <a class="mobile-nav-item" href="settings.html">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        更多
+      </a>
+    </div>
+</nav>
+
+<script>
+  (function () {
+    var q = new URLSearchParams(location.search).get('theme');
+    if (q === 'light' || q === 'dark') document.documentElement.dataset.theme = q;
+  })();
+</script>
+</body>
+</html>
+
+

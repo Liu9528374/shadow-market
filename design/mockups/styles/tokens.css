@@ -1,0 +1,189 @@
+/* ==========================================================================
+   SHADOW 市场 · Design Tokens v2「Obsidian & Amber」
+   Lead 定稿；mockup 页面只读引用，不要改本文件。
+   设计方向：个人工作台优先（GitHub 式四栏）+ 暖黑/暖纸双主题 + 琥珀强调。
+   ========================================================================== */
+
+@font-face {
+  font-family: "InterVariable";
+  src: url("../../assets/fonts/InterVariable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../../assets/fonts/JetBrainsMono-Medium.woff2") format("woff2");
+  font-weight: 500 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* 基底（暖黑，取自品牌图标的 #0C0C0E / #181512） */
+  --bg: #0A0A0C;
+  --bg-canvas: #0C0C0F;
+  --bg-1: #101013;
+  --bg-2: #141418;
+  --bg-3: #1B1B21;
+  --bg-4: #23232A;
+  --line: #24242B;
+  --line-strong: #34343E;
+
+  /* 文字（暖白） */
+  --text: #F5F0E9;
+  --text-2: #B9B2A8;
+  --text-3: #9A938A;
+  --text-inverse: #15110C;
+
+  /* 品牌（Voice Wave 琥珀） */
+  --amber: #FFB55C;
+  --amber-2: #F0913B;
+  --amber-3: #E27418;
+  --amber-ink: #1A1208;
+  --amber-text: #FFB55C;
+  --amber-soft: rgba(255, 181, 92, 0.12);
+  --amber-line: rgba(255, 181, 92, 0.3);
+  --amber-gradient: linear-gradient(180deg, #FFC06E 0%, #FFB55C 42%, #F0913B 100%);
+  --amber-glow: radial-gradient(60% 60% at 28% 8%, rgba(255, 181, 92, 0.1), transparent 70%);
+
+  /* 状态（克制：只用成功/危险两个） */
+  --success: #7FD99A;
+  --success-soft: rgba(127, 217, 154, 0.12);
+  --danger: #FF7A6B;
+  --danger-soft: rgba(255, 122, 107, 0.12);
+
+  /* 资源封面（只允许琥珀/暖灰 5 档，禁止绿紫蓝） */
+  --cover-1: radial-gradient(120% 120% at 18% 12%, #3A2A18 0%, #17130F 55%, #0E0D0B 100%);
+  --cover-2: radial-gradient(120% 120% at 80% 8%, #332417 0%, #14110E 60%, #0C0B0A 100%);
+  --cover-3: radial-gradient(120% 120% at 22% 90%, #2A2118 0%, #12100D 60%, #0B0A09 100%);
+  --cover-4: radial-gradient(120% 120% at 78% 82%, #3C2B19 0%, #16120E 60%, #0D0C0A 100%);
+  --cover-5: radial-gradient(120% 120% at 50% 10%, #241B12 0%, #100E0C 60%, #0A0A09 100%);
+
+  /* 阴影/焦点/动效 */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 12px 32px rgba(0, 0, 0, 0.3);
+  --shadow-pop: 0 20px 56px rgba(0, 0, 0, 0.5);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--amber);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 160ms;
+
+  /* 遮罩/半透明 */
+  --overlay: rgba(4, 4, 6, 0.66);
+  --glass: rgba(10, 10, 12, 0.78);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* 暖纸 */
+  --bg: #F7F3EC;
+  --bg-canvas: #FBF8F3;
+  --bg-1: #FFFFFF;
+  --bg-2: #FFFFFF;
+  --bg-3: #F1EBE1;
+  --bg-4: #E9E1D5;
+  --line: #E9E1D5;
+  --line-strong: #D5C9B8;
+
+  --text: #1E1B17;
+  --text-2: #6A6359;
+  --text-3: #6E675D;
+  --text-inverse: #FFFFFF;
+
+  --amber: #E88A2E;
+  --amber-2: #C2410C;
+  --amber-3: #9A3412;
+  --amber-ink: #1A1208;
+  --amber-text: #7C2D12;
+  --amber-soft: rgba(232, 138, 46, 0.12);
+  --amber-line: rgba(194, 65, 12, 0.24);
+  --amber-gradient: linear-gradient(180deg, #F29A3E 0%, #E88A2E 45%, #D2761C 100%);
+  --amber-glow: radial-gradient(60% 60% at 28% 8%, rgba(232, 138, 46, 0.09), transparent 70%);
+
+  --success: #2F8F4E;
+  --success-soft: rgba(47, 143, 78, 0.1);
+  --danger: #C0362C;
+  --danger-soft: rgba(192, 54, 44, 0.08);
+
+  --cover-1: radial-gradient(120% 120% at 18% 12%, #F3D7B4 0%, #FBF2E4 60%, #FFFDFA 100%);
+  --cover-2: radial-gradient(120% 120% at 80% 8%, #EFCDA6 0%, #FAF1E2 60%, #FFFDFA 100%);
+  --cover-3: radial-gradient(120% 120% at 22% 90%, #F6E2C6 0%, #FCF5E9 60%, #FFFDFA 100%);
+  --cover-4: radial-gradient(120% 120% at 78% 82%, #F0D2AC 0%, #FAF3E6 60%, #FFFDFA 100%);
+  --cover-5: radial-gradient(120% 120% at 50% 10%, #F5E6D2 0%, #FBF6EC 60%, #FFFDFA 100%);
+
+  --shadow-card: 0 1px 2px rgba(35, 27, 18, 0.05), 0 12px 32px rgba(35, 27, 18, 0.06);
+  --shadow-pop: 0 20px 56px rgba(35, 27, 18, 0.14);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--amber-2);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur: 160ms;
+
+  --overlay: rgba(30, 27, 23, 0.4);
+  --glass: rgba(251, 248, 243, 0.82);
+}
+
+/* ---------- 与主题无关的常量 ---------- */
+:root {
+  /* 字体 */
+  --font-sans: "InterVariable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Noto Sans SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", "SF Mono", Consolas, monospace;
+
+  /* 字阶 */
+  --fs-display: 34px;
+  --fs-h1: 28px;
+  --fs-h2: 22px;
+  --fs-h3: 17px;
+  --fs-body: 14px;
+  --fs-sm: 13px;
+  --fs-micro: 12px;
+  --fs-tiny: 11px;
+  --lh-tight: 1.15;
+  --lh-heading: 1.32;
+  --lh-body: 1.62;
+
+  /* 间距（4 基数） */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-7: 32px;
+  --sp-8: 40px;
+  --sp-9: 48px;
+  --sp-10: 64px;
+
+  /* 圆角 */
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-2xl: 24px;
+  --r-pill: 999px;
+
+  /* 布局 */
+  --container: 1440px;
+  --sidebar-w: 248px;
+  --rail-w: 320px;
+  --header-h: 64px;
+  --gutter: 24px;
+  --page-x: 40px;
+  --content-max: 880px;
+
+  --z-header: 30;
+  --z-float: 60;
+  --z-overlay: 80;
+}

@@ -1,0 +1,6 @@
+﻿brandonhimpfen/awesome-design — 无许可证文件说明
+================================================
+
+来源：https://github.com/brandonhimpfen/awesome-design （HEAD d48158e2617f6454a5ae7d660a6d5bf7e1ca79f8）
+该仓库未提供 LICENSE 文件（GitHub license 字段为 null），因此本目录只保存其 README.md 作为「设计资源索引」参考
+（design/skills/awesome-design.md），不复制/不再分发其中的任何素材，不随产品分发。

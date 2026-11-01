@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>在咖啡店点单 · 资源详情（设计稿）</title>
+<link rel="stylesheet" href="styles/tokens.css" />
+<link rel="stylesheet" href="styles/base.css" />
+<link rel="stylesheet" href="styles/pages-market.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+
+<!-- ===== 顶栏（与 index.html 同构） ===== -->
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img class="brand-mark" src="../../market/assets/brand/logo-128.png" width="30" height="30" alt="" />
+    <span class="brand-word">SHADOW 市场</span>
+    <span class="brand-label">COURSE</span>
+  </a>
+
+  <label class="search">
+    <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="search" placeholder="搜索课程、字幕包、插件…" aria-label="搜索资源" />
+    <span class="kbd">/</span>
+  </label>
+
+  <div class="topbar-actions">
+    <span class="pill-points" title="积分：免费获取，不可购买/转让/提现">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/></svg>
+      <span class="num">120</span> 积分
+    </span>
+    <button class="icon-btn" data-theme-toggle aria-label="切换主题" title="切换深色 / 浅色">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    </button>
+    <button class="icon-btn" aria-label="切换语言" title="Switch language">EN</button>
+    <button class="user-chip" aria-label="账户菜单">
+      <img class="avatar" src="../../market/assets/brand/logo-128.png" alt="" />
+    </button>
+  </div>
+</header>
+
+<!-- ===== 详情两栏布局 ===== -->
+<div class="app app--detail">
+
+  <main class="main detail-main" id="main">
+
+    <nav class="breadcrumb" aria-label="面包屑">
+      <a href="index.html">工作台</a>
+      <span class="sep">/</span>
+      <a href="market.html">市场</a>
+      <span class="sep">/</span>
+      <span class="current">在咖啡店点单</span>
+    </nav>
+
+    <!-- Hero -->
+    <section class="detail-hero" aria-labelledby="resource-title">
+      <svg class="hero-wave-bg" viewBox="0 0 320 160" aria-hidden="true"><g fill="currentColor"><rect x="4" y="64" width="44" height="22" rx="11"/><rect x="72" y="38" width="18" height="74" rx="9"/><rect x="110" y="10" width="18" height="130" rx="9"/><rect x="148" y="44" width="18" height="62" rx="9"/><rect x="186" y="62" width="44" height="26" rx="13"/></g></svg>
+
+      <div class="hero-top">
+        <div class="hero-icon-lg" aria-hidden="true">
+          <svg class="wave" viewBox="0 0 160 60"><g fill="currentColor"><rect x="2" y="23" width="22" height="10" rx="5"/><rect x="36" y="14" width="9" height="34" rx="4.5"/><rect x="55" y="4" width="9" height="52" rx="4.5"/><rect x="74" y="17" width="9" height="28" rx="4.5"/><rect x="93" y="23" width="22" height="10" rx="5"/></g></svg>
+        </div>
+        <div class="hero-text">
+          <div class="hero-title-row">
+            <h1 class="hero-title" id="resource-title">在咖啡店点单</h1>
+            <span class="badge badge-soft">Free</span>
+            <span class="badge badge-neutral">BYOM</span>
+            <span class="badge badge-neutral mono">v1.0.0</span>
+          </div>
+          <p class="hero-sub">Ordering at a Café · 含中文翻译与重音 / 连读提示</p>
+          <div class="hero-meta">
+            <span>课程包</span>
+            <span class="hero-sep"></span>
+            <span>B1</span>
+            <span class="hero-sep"></span>
+            <span>5 句</span>
+            <span class="hero-sep"></span>
+            <span>0:22 · 40 词</span>
+            <span class="hero-sep"></span>
+            <span class="hero-author">
+              <img src="../../market/assets/brand/logo-128.png" alt="" />
+              <b>SHADOW Studio</b>
+            </span>
+            <span class="hero-sep"></span>
+            <span>更新于 2026-10-31</span>
+            <span class="hero-sep"></span>
+            <span>CC-BY-4.0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-action-row">
+        <a class="btn btn-primary" href="#rail-download">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          下载导入
+        </a>
+        <button class="btn btn-ghost" aria-pressed="false">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          收藏
+        </button>
+        <button class="btn btn-icon" aria-label="分享资源" title="分享">
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+        </button>
+        <span class="meta-hint">3 个导入产物 · 最大 <b>6.1 KB</b> · 全部免费</span>
+      </div>
+    </section>
+
+    <!-- Tabs + 面板 -->
+    <div class="detail-tabs-wrap">
+      <div class="tabs detail-tabs" role="tablist" aria-label="资源详情分区">
+        <button class="tab is-active" id="tab-intro" role="tab" aria-selected="true" aria-controls="panel-intro" tabindex="0">简介</button>
+        <button class="tab" id="tab-sentences" role="tab" aria-selected="false" aria-controls="panel-sentences" tabindex="-1">句子预览 <span class="count">5</span></button>
+        <button class="tab" id="tab-files" role="tab" aria-selected="false" aria-controls="panel-files" tabindex="-1">文件 <span class="count">4</span></button>
+        <button class="tab" id="tab-versions" role="tab" aria-selected="false" aria-controls="panel-versions" tabindex="-1">版本与变更 <span class="count">1</span></button>
+      </div>
+
+      <!-- 简介 -->
+      <section class="panel" id="panel-intro" role="tabpanel" aria-labelledby="tab-intro" tabindex="0">
+        <div class="readme">
+          <p class="readme-lead">咖啡店点单场景的 5 句实用对话：点单、选冷热、加浓缩、问价、刷卡。每句带中文翻译、重音与连读提示，导入即练——不跑 ASR、不含媒体（BYOM）。</p>
+
+          <div class="readme-quote">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div>适合人群：有基础英语（A2–B1）、想练咖啡店 / 餐厅点单口语的学习者。</div>
+          </div>
+
+          <div class="readme-section">
+            <h2>你会练到</h2>
+            <div class="phrase-row">
+              <code class="phrase">Could I get …?</code>
+              <code class="phrase">oat milk</code>
+              <code class="phrase">extra shot</code>
+            </div>
+          </div>
+
+          <div class="readme-section">
+            <h2>内容结构</h2>
+            <div class="readme-kv">
+              <div class="kv-row"><span class="kv-key">句子数量</span><span class="kv-val"><b>5 句</b> · 时间轴 0.1s → 21.6s</span></div>
+              <div class="kv-row"><span class="kv-key">英文词数</span><span class="kv-val">约 <b>40 词</b></span></div>
+              <div class="kv-row"><span class="kv-key">每句包含</span><span class="kv-val">英文原文、中文翻译、教学提示（重音 / 连读 / 发音要点）</span></div>
+              <div class="kv-row"><span class="kv-key">词级时间</span><span class="kv-val">未提供（评分退化为整句参考）</span></div>
+              <div class="kv-row"><span class="kv-key">媒体</span><span class="kv-val">BYOM，包内不含音频 / 视频</span></div>
+              <div class="kv-row"><span class="kv-key">分类</span><span class="kv-val">日常会话（Daily）</span></div>
+            </div>
+          </div>
+
+          <div class="readme-section">
+            <h2>如何使用（BYOM · 自带媒体）</h2>
+            <ol class="steps">
+              <li>下载 <b>.shadow.json</b>（带翻译的工程文件），或使用备选 <b>.srt</b> 字幕。</li>
+              <li>打开 SHADOW Studio，选择 <b>File → Open Project…（Ctrl+O）</b>。</li>
+              <li>把自备媒体重命名为 <b>com.shadow.course.cafe-order.mp4</b> 后拖进窗口。</li>
+              <li>句子时间轴已随包提供，导入 <b>不跑 ASR</b>，直接开始跟读。</li>
+            </ol>
+          </div>
+
+          <div class="readme-quote">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+            <div><b>BYOM（Bring Your Own Media）</b>：市场不托管影视媒体、不上传用户媒体。媒体版权由使用者自行负责；本包不含任何第三方影视 / 音乐素材。</div>
+          </div>
+
+          <div class="readme-section">
+            <h2>授权与素材说明</h2>
+            <ul class="readme-list">
+              <li>包内文本、翻译、句级时间轴：由 <b>SHADOW Studio</b> 创作，许可 <b>CC-BY-4.0</b>。</li>
+              <li>包内<b>不含媒体</b>；媒体由用户自备（BYOM），其版权与授权由用户自行负责。</li>
+              <li>权利依据 <b>rights.basis = own</b>；商用或再分发请遵循 CC-BY-4.0 并署名 SHADOW Studio。</li>
+            </ul>
+          </div>
+
+          <p class="tiny faint mono">包 id：com.shadow.course.cafe-order · schemaVersion 1 · 校验：node tools/shadowcourse/validate.mjs</p>
+        </div>
+      </section>
+
+      <!-- 句子预览 -->
+      <section class="panel" id="panel-sentences" role="tabpanel" aria-labelledby="tab-sentences" tabindex="0" hidden>
+        <div class="sent-summary">
+          <span class="badge badge-neutral">5 句</span>
+          <span class="badge badge-neutral">0:22</span>
+          <span class="badge badge-neutral">40 词</span>
+          <span>词级时间：无（整句评分）</span>
+          <span>·</span>
+          <span>媒体：BYOM（包内不含媒体）</span>
+        </div>
+
+        <div class="sent-list">
+          <div class="sent-row">
+            <div class="sent-time"><span class="t">0.1–3.7s</span><span class="n">#01</span></div>
+            <div class="sent-body">
+              <p class="sent-en" lang="en">Hi, could I get a medium oat milk latte, please?</p>
+              <p class="sent-zh">你好，我要一杯中杯燕麦拿铁。</p>
+              <div class="sent-notes"><span class="note-chip">重音 <b>get · medium · oat · latte</b></span><span class="note-chip">连读 <b>could I → coul-dai</b></span></div>
+            </div>
+          </div>
+          <div class="sent-row">
+            <div class="sent-time"><span class="t">4.4–8.0s</span><span class="n">#02</span></div>
+            <div class="sent-body">
+              <p class="sent-en" lang="en">Sure. Would you like it hot or iced?</p>
+              <p class="sent-zh">好的。你要热的还是冰的？</p>
+              <div class="sent-notes"><span class="note-chip">重音 <b>hot · iced</b></span><span class="note-chip">连读 <b>would you → woul-joo</b></span></div>
+            </div>
+          </div>
+          <div class="sent-row">
+            <div class="sent-time"><span class="t">8.8–13.0s</span><span class="n">#03</span></div>
+            <div class="sent-body">
+              <p class="sent-en" lang="en">Iced, please. And can I get an extra shot?</p>
+              <p class="sent-zh">冰的，谢谢。可以再加一份浓缩吗？</p>
+              <div class="sent-notes"><span class="note-chip">重音 <b>Iced · extra · shot</b></span><span class="note-chip">连读 <b>get an → ge-da</b></span></div>
+            </div>
+          </div>
+          <div class="sent-row">
+            <div class="sent-time"><span class="t">13.8–17.2s</span><span class="n">#04</span></div>
+            <div class="sent-body">
+              <p class="sent-en" lang="en">Of course. That'll be four fifty.</p>
+              <p class="sent-zh">当然。一共四块五。</p>
+              <div class="sent-notes"><span class="note-chip">重音 <b>four · fifty</b></span><span class="note-chip">连读 <b>That'll → tha-dl</b></span></div>
+            </div>
+          </div>
+          <div class="sent-row">
+            <div class="sent-time"><span class="t">18.0–21.6s</span><span class="n">#05</span></div>
+            <div class="sent-body">
+              <p class="sent-en" lang="en">Great, thanks. Can I pay by card?</p>
+              <p class="sent-zh">好的，谢谢。可以刷卡吗？</p>
+              <div class="sent-notes"><span class="note-chip">重音 <b>pay · card</b></span><span class="note-chip">连读 <b>pay by → pay-bai</b></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 文件 -->
+      <section class="panel" id="panel-files" role="tabpanel" aria-labelledby="tab-files" tabindex="0" hidden>
+        <div class="file-list">
+          <div class="file-row">
+            <span class="file-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+            <div class="file-body">
+              <span class="file-name">com.shadow.course.cafe-order.shadow.json</span>
+              <span class="file-desc">带翻译的导入工程文件 · 桌面端 File → Open Project… 打开（推荐）</span>
+            </div>
+            <div class="file-side">
+              <span class="badge badge-soft">推荐</span>
+              <span class="file-size">3.5 KB</span>
+            </div>
+          </div>
+          <div class="file-row">
+            <span class="file-icon"><svg class="icon" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2" ry="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span>
+            <div class="file-body">
+              <span class="file-name">com.shadow.course.cafe-order.srt</span>
+              <span class="file-desc">无翻译的通用字幕 · 先导入媒体，再 Import Subtitle（备选）</span>
+            </div>
+            <div class="file-side">
+              <span class="badge badge-neutral">备选</span>
+              <span class="file-size">0.4 KB</span>
+            </div>
+          </div>
+          <div class="file-row">
+            <span class="file-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
+            <div class="file-body">
+              <span class="file-name">com.shadow.course.cafe-order.shadowcourse</span>
+              <span class="file-desc">规范载体 / 归档格式 · 单文件 JSON，含完整句子、翻译与练习配置</span>
+            </div>
+            <div class="file-side">
+              <span class="badge badge-neutral">规范</span>
+              <span class="file-size">6.1 KB</span>
+            </div>
+          </div>
+          <div class="file-row">
+            <span class="file-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+            <div class="file-body">
+              <span class="file-name">README-com.shadow.course.cafe-order.txt</span>
+              <span class="file-desc">导入说明 · 5 步 + 3 个坑 + 失败排查（纯文本，可离线保存）</span>
+            </div>
+            <div class="file-side">
+              <span class="badge badge-neutral">说明</span>
+              <span class="file-size">2.2 KB</span>
+            </div>
+          </div>
+        </div>
+        <div class="notice">
+          <span class="dot"></span>
+          <span>下载入口统一在右侧「下载导入」卡；这里用于核对文件名、大小与校验值（SHA256 与目录记录一致）。</span>
+        </div>
+      </section>
+
+      <!-- 版本与变更 -->
+      <section class="panel" id="panel-versions" role="tabpanel" aria-labelledby="tab-versions" tabindex="0" hidden>
+        <div class="card version-card">
+          <div class="version-head">
+            <span class="version-num">v1.0.0</span>
+            <span class="badge badge-soft">当前发布版本</span>
+            <span class="version-date">发布于 2026-10-25 · 更新于 2026-10-31</span>
+          </div>
+          <div class="version-changes">
+            <ul class="version-changes" style="display:flex;flex-direction:column;gap:9px">
+              <li><span class="dot"></span>首个版本：5 句咖啡店点单对话，含中文翻译与重音 / 连读提示；BYOM 纯数据包。</li>
+            </ul>
+          </div>
+          <div class="version-meta">
+            <span class="badge badge-neutral mono">SHADOW &gt;=0.7.0</span>
+            <span class="badge badge-neutral mono">schemaVersion 1</span>
+            <span class="badge badge-neutral mono">CC-BY-4.0</span>
+            <span class="badge badge-neutral mono">6,256 bytes</span>
+          </div>
+          <div class="readme-kv">
+            <div class="kv-row"><span class="kv-key">包 id</span><span class="kv-val mono">com.shadow.course.cafe-order</span></div>
+            <div class="kv-row"><span class="kv-key">SHA256</span><span class="kv-val mono">b1f7d8750c7a5afc…（在此页可核对完整值）</span></div>
+            <div class="kv-row"><span class="kv-key">载体</span><span class="kv-val">.shadowcourse 单文件 JSON（UTF-8）</span></div>
+          </div>
+        </div>
+        <p class="tiny faint">历史版本：当前只有首个发布版本；后续更新会按时间记录在此，并同步到工作台的动态。</p>
+      </section>
+    </div>
+
+    <p class="footer-note">
+      <span>SHADOW 市场 · 全免费</span>
+      <span>BYOM · 不托管媒体</span>
+      <span>无强制登录</span>
+      <span>P0 · 免费</span>
+    </p>
+  </main>
+
+  <!-- ===== 右栏（3 块：下载导入强调卡 / 许可与资源信息 / 反馈与入口） ===== -->
+  <aside class="rail" aria-label="下载、统计与许可">
+
+    <!-- 块 1/3：下载导入（唯一强调卡，无边框：色差 + 阴影） -->
+    <div class="rail-card rail-card--emphasis" id="rail-download">
+      <div class="rail-card-head">
+        <div>
+          <h2 class="rail-card-title">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            下载导入
+          </h2>
+          <p class="rail-card-sub">纯数据包 · 不含媒体 · 3 个产物任选其一</p>
+        </div>
+        <span class="badge badge-neutral">BYOM</span>
+      </div>
+
+      <div class="artifact-list">
+        <div class="artifact is-primary">
+          <span class="artifact-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+          <div class="artifact-body">
+            <span class="artifact-name">.shadow.json <span class="badge badge-soft">推荐</span></span>
+            <span class="artifact-desc">带翻译的工程文件，打开即可练习</span>
+          </div>
+          <span class="artifact-size">3.5 KB</span>
+          <button class="icon-btn" aria-label="下载 .shadow.json"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></button>
+        </div>
+        <div class="artifact">
+          <span class="artifact-icon"><svg class="icon" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2" ry="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></span>
+          <div class="artifact-body">
+            <span class="artifact-name">.srt</span>
+            <span class="artifact-desc">无翻译的通用字幕，任何播放器都能用</span>
+          </div>
+          <span class="artifact-size">0.4 KB</span>
+          <button class="icon-btn" aria-label="下载 .srt"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></button>
+        </div>
+        <div class="artifact">
+          <span class="artifact-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
+          <div class="artifact-body">
+            <span class="artifact-name">.shadowcourse</span>
+            <span class="artifact-desc">规范载体 / 归档格式（含完整配置）</span>
+          </div>
+          <span class="artifact-size">6.1 KB</span>
+          <button class="icon-btn" aria-label="下载 .shadowcourse"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></button>
+        </div>
+      </div>
+
+      <div class="media-note">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+        <div>
+          媒体需自备，并逐字重命名为课程页公示的文件名：
+          <span class="media-name">
+            com.shadow.course.cafe-order.mp4
+            <svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          </span>
+        </div>
+      </div>
+
+      <details class="import-details">
+        <summary>
+          <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          查看导入步骤（5 步 · 3 个坑）
+          <svg class="icon icon-sm chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="import-body">
+          <ol class="steps">
+            <li>下载 <b>.shadow.json</b>（唯一带翻译的工程文件）</li>
+            <li>打开 <b>SHADOW Studio</b>（r19）</li>
+            <li>菜单 <b>File → Open Project…（Ctrl+O）</b></li>
+            <li>把同名媒体拖进窗口（没有媒体时可先用「仅文本模式」）</li>
+            <li>播放 / 影子跟读练习</li>
+          </ol>
+          <ul class="pitfalls">
+            <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>媒体名必须与公示名逐字一致，否则会新建重复 clip。</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>打开后不要点 Analyze / Generate Subtitles——会用「待转写」覆盖包里的句子。</li>
+            <li><svg class="icon" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>媒体必须与句子时间轴同源，否则对不上口型。</li>
+          </ul>
+        </div>
+      </details>
+
+      <a class="rail-link" href="#">
+        完整的导入与降级说明
+        <svg class="icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+      </a>
+    </div>
+
+    <!-- 块 2/3：统计（卡内 20–24，数字 650） -->
+    <div class="rail-card">
+      <p class="rail-title">统计</p>
+      <div class="rail-stats">
+        <div class="rail-stat"><div class="v">5<span class="unit">句</span></div><div class="k">句子</div></div>
+        <div class="rail-stat"><div class="v">0:22</div><div class="k">时间轴</div></div>
+        <div class="rail-stat"><div class="v">40<span class="unit">词</span></div><div class="k">词数</div></div>
+        <div class="rail-stat"><div class="v">6.1<span class="unit">KB</span></div><div class="k">包大小</div></div>
+      </div>
+      <div class="rail-hash">
+        <span>SHA256 <span class="mono">b1f7d8750c7a…</span></span>
+        <button class="icon-btn" aria-label="复制完整 SHA256"><svg class="icon" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg></button>
+      </div>
+      <div class="rail-info-row"><span class="k">格式</span><span class="v mono">.shadowcourse · schemaVersion 1</span></div>
+      <div class="rail-info-row"><span class="k">兼容</span><span class="v mono">SHADOW &gt;=0.7.0</span></div>
+      <div class="rail-info-row"><span class="k">文件</span><span class="v">4 个（3 个产物 + README）</span></div>
+    </div>
+
+    <!-- 块 3/3：许可与资源信息 + 反馈入口（不新增第 4 块） -->
+    <div class="rail-card">
+      <p class="rail-title">许可与资源信息</p>
+      <div class="license-badge-row">
+        <span class="badge badge-soft">CC-BY-4.0</span>
+        <a class="text-link tiny" href="#">查看许可全文</a>
+      </div>
+      <div class="rail-info-row"><span class="k">类型</span><span class="v">课程包 · B1 · 5 句</span></div>
+      <div class="rail-info-row"><span class="k">分类</span><span class="v">日常会话（Daily）</span></div>
+      <div class="rail-info-row"><span class="k">作者</span><span class="v">SHADOW Studio · 更新 2026-10-31</span></div>
+      <div class="rail-info-row"><span class="k">权利依据</span><span class="v"><b>自有</b>（rights.basis = own）</span></div>
+      <div class="rail-info-row"><span class="k">素材</span><span class="v">文本 / 翻译 / 时间轴由官方团队创作</span></div>
+      <div class="rail-info-row"><span class="k">媒体</span><span class="v">用户自备（BYOM），版权自负</span></div>
+
+      <div class="rail-divider"></div>
+      <div class="feedback-links">
+        <a class="feedback-link" href="#">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          资源失效 / 内容问题反馈
+          <span class="ext">↗</span>
+        </a>
+        <a class="feedback-link" href="contribute.html">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          版权投诉与下架流程
+          <span class="ext">↗</span>
+        </a>
+      </div>
+      <div class="rail-foot-links">
+        <a href="index.html">← 回到工作台</a>
+        <span class="sep">·</span>
+        <a href="market.html">继续逛市场 →</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- 移动端底部导航（与工作台一致，本页高亮收藏） -->
+<nav class="mobile-nav" aria-label="移动端导航">
+  <div class="mobile-nav-inner">
+    <a class="mobile-nav-item" href="index.html">
+      <svg class="icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      工作台
+    </a>
+    <a class="mobile-nav-item" href="market.html">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+      市场
+    </a>
+    <a class="mobile-nav-item is-active" href="library.html">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      收藏
+    </a>
+    <a class="mobile-nav-item" href="points.html">
+      <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+      积分
+    </a>
+  </div>
+</nav>
+
+<script>
+  // 仅设计稿预览：?theme=light 切换主题；顶栏主题按钮切换 data-theme；Tabs 键盘可操作
+  (function () {
+    var q = new URLSearchParams(location.search).get('theme');
+    if (q === 'light' || q === 'dark') document.documentElement.dataset.theme = q;
+    document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var el = document.documentElement;
+        el.dataset.theme = el.dataset.theme === 'light' ? 'dark' : 'light';
+      });
+    });
+
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs [role="tab"]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('[role="tabpanel"]'));
+    function select(id) {
+      tabs.forEach(function (tb) {
+        var on = tb.getAttribute('aria-controls') === id;
+        tb.classList.toggle('is-active', on);
+        tb.setAttribute('aria-selected', on ? 'true' : 'false');
+        tb.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach(function (p) { p.hidden = p.id !== id; });
+    }
+    tabs.forEach(function (tb) {
+      tb.addEventListener('click', function () { select(tb.getAttribute('aria-controls')); });
+      tb.addEventListener('keydown', function (e) {
+        var i = tabs.indexOf(tb), next = null;
+        if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+        else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') next = tabs[0];
+        else if (e.key === 'End') next = tabs[tabs.length - 1];
+        if (next) { e.preventDefault(); next.focus(); select(next.getAttribute('aria-controls')); }
+      });
+    });
+  })();
+</script>
+</body>
+</html>

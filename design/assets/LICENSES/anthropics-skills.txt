@@ -1,0 +1,11 @@
+﻿anthropics/skills — 许可证说明
+================================
+
+来源：https://github.com/anthropics/skills （HEAD ca45fc496a3436251f191354091d557da31c15b5）
+仓库根目录未声明统一 license（GitHub license 字段为 null）；4 个 skill 目录各自携带 LICENSE.txt：
+- skills/frontend-design/LICENSE.txt    Apache License 2.0
+- skills/brand-guidelines/LICENSE.txt   Apache License 2.0
+- skills/canvas-design/LICENSE.txt      Apache License 2.0
+- skills/theme-factory/LICENSE.txt      Apache License 2.0
+本文件即 frontend-design/LICENSE.txt 的副本，作为代表许可证原文；其余 skill 的 LICENSE.txt 随各目录保存在 design/skills/anthropics-skills/<skill>/LICENSE.txt。
+用途：仅作内部设计参考（设计规则提炼），不随 SHADOW 市场产品分发。

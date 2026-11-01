@@ -1,0 +1,28 @@
+/* 个人工作台页面级样式（Lead） */
+
+.dash-greet {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.dash-greet .profile-hero { gap: 16px; }
+.dash-greet .avatar-lg { border-radius: 20px; box-shadow: 0 0 0 1px var(--line-strong), 0 12px 28px rgba(0, 0, 0, 0.28); }
+.dash-greet-actions { display: flex; align-items: center; gap: 8px; }
+
+.continue-card { padding: 18px 20px; }
+.continue-card .continue-cover { box-shadow: var(--shadow-inset); }
+.continue-card .progress { margin-top: 2px; }
+
+.compliance-card .rail-title { margin-bottom: 12px; }
+.compliance-card li { line-height: 1.5; }
+
+@media (max-width: 860px) {
+  .dash-greet { flex-direction: column; align-items: flex-start; }
+  .dash-greet-actions { width: 100%; }
+  .dash-greet-actions .btn { flex: 1; }
+  .continue-card { flex-wrap: wrap; }
+  .continue-actions { width: 100%; }
+  .continue-actions .btn { flex: 1; }
+}
