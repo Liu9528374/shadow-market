@@ -1,9 +1,9 @@
 /**
  * SHADOW 市场 · Service Worker（手写，零依赖，无第三方 CDN）
  *
- * 性能优先的分层缓存（P0 收口）：
- *   1) install：只预缓存「首屏关键外壳」（HTML/CSS/核心 JS/home 视图/品牌小图）≈23 项，
- *      不在首访时批量预取 40+ 资源，避免抢占 FCP/LCP 带宽；
+ * 性能优先的分层缓存（Obsidian & Amber 重设计后）：
+ *   1) install：只预缓存「首屏关键外壳」（HTML/CSS/字体/核心 JS/dashboard 视图/品牌小图），
+ *      不在首访时批量预取全部资源，避免抢占 FCP/LCP 带宽；
  *   2) 页面 load 且首屏渲染后，app.js postMessage {type:'PREFETCH'}，
  *      SW 后台低并发预取其余视图模块 / 英文词典 / catalog / plugins（不抢首屏，离线仍可用）；
  *   3) 静态资源 cache-first + 后台回填（SWR），JSON network-first（3s 超时）回退缓存，
@@ -14,7 +14,7 @@
  * 不缓存：用户媒体（市场没有媒体）、POST 请求、跨域请求。
  */
 
-const VERSION = 'v2026.11.01.1';
+const VERSION = 'v2026.11.03.1';
 const CACHE = `shadow-market-${VERSION}`;
 const OFFLINE_URL = './offline.html';
 
@@ -25,7 +25,10 @@ const SHELL_CRITICAL = [
   './offline.html',
   './manifest.webmanifest',
   './assets/styles/tokens.css',
-  './assets/styles/app.css',
+  './assets/styles/base.css',
+  './assets/styles/pages-dashboard.css',
+  './assets/styles/pages-core.css',
+  './assets/fonts/InterVariable-latin.woff2',
   './assets/brand/logo-64.png',
   './assets/brand/logo-128.png',
   './assets/brand/icon-192.png',
@@ -43,14 +46,18 @@ const SHELL_CRITICAL = [
   './assets/js/prefs.js',
   './assets/js/pwa.js',
   './assets/js/views/home.js',
+  './assets/js/views/ui.js',
 ];
 
 // 后台预取：其余路由模块 / 英文词典 / catalog / plugins（页面 load 后由 app.js 触发）
 const PREFETCH = [
+  './assets/styles/pages-personal.css',
   './assets/js/i18n-en.js',
   './assets/js/importer.js',
   './assets/js/markdown.js',
   './assets/js/palette.js',
+  './assets/js/views/market.js',
+  './assets/js/views/resource.js',
   './assets/js/views/about.js',
   './assets/js/views/changelog.js',
   './assets/js/views/complaint.js',
@@ -62,7 +69,6 @@ const PREFETCH = [
   './assets/js/views/notfound.js',
   './assets/js/views/points.js',
   './assets/js/views/privacy.js',
-  './assets/js/views/resource.js',
   './assets/js/views/settings.js',
   './assets/brand/favicon.ico',
   './assets/brand/icon-512.png',

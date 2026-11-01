@@ -1,49 +1,24 @@
 {
   "name": "SHADOW 市场",
   "short_name": "SHADOW 市场",
-  "description": "全免费的影子跟读课程资源站：移动优先、中英双语、可安装离线。BYOM 不含媒体；浏览 / 下载 / 导入都不需要登录。",
+  "description": "全免费的影子跟读课程资源站：个人工作台优先、移动适配、中英双语、可安装离线。BYOM 不含媒体；浏览 / 下载 / 导入都不需要登录。",
   "id": "/",
   "start_url": "./#/",
   "scope": "./",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui"],
   "orientation": "any",
-  "theme_color": "#E88A2E",
-  "background_color": "#0C0C0E",
+  "theme_color": "#0A0A0C",
+  "background_color": "#0A0A0C",
   "lang": "zh-CN",
   "dir": "ltr",
   "categories": ["education", "language", "productivity"],
   "prefer_related_applications": false,
   "icons": [
-    {
-      "src": "assets/brand/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/brand/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "assets/brand/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "assets/brand/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "assets/brand/apple-touch-icon-180.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    }
+    { "src": "assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/brand/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/brand/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/brand/apple-touch-icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
   ]
 }

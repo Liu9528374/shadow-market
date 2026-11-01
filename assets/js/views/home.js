@@ -1,347 +1,254 @@
-/** Explore 首页 / 分类页 / 标签页 / 搜索页（GitHub Explore 逻辑：侧栏 Topics + 资源卡列表 + 排序 + 推荐位） */
+/**
+ * 个人工作台（#/）
+ * 设计依据：design/mockups/index.html（Obsidian & Amber · 个人工作台优先）。
+ * 结构：问候 + 本机数据摘要 + 继续上次 + 为你推荐 2×2 + 最近动态；右栏：进入市场 CTA / 热门标签 / 合规。
+ * 数据全部来自本机（localStorage: 积分/收藏/我的资源）+ 静态 catalog；无账号、无上传。
+ */
 
-import { el, fmtNum, fmtDate, fmtRelative } from '../dom.js';
+import { el, fmtRelative } from '../dom.js';
 import { icon } from '../icons.js';
-import {
-  getState, enabledPlugins, searchResources, sortResources, SORTS, pluginFor,
-  categoryById, tagInfo, resourcesByTag, featuredResources, latestResources, resourceById,
-} from '../data.js';
-import { pageHead, resourceCard, emptyState, tagLinks } from '../components.js';
-import { replaceRoute, navigate } from '../router.js';
 import { t, pickLang } from '../i18n.js';
+import { getState, featuredResources, latestResources, resourceById, getAllTags } from '../data.js';
+import { MarketPoints } from '../points.js';
+import { resourceCard, sectionHead, emptyCard } from './ui.js';
 
-const DEFAULT_SORT = 'updated';
+const APP_VERSION = 'v2.0';
 
-function counts(state) {
-  const categoryCounts = new Map();
-  const typeTotals = new Map();
-  for (const r of state.catalog.resources) {
-    categoryCounts.set(r.category, (categoryCounts.get(r.category) || 0) + 1);
-    typeTotals.set(r.type, (typeTotals.get(r.type) || 0) + 1);
-  }
-  return { categoryCounts, typeTotals };
+function greeting() {
+  const hour = new Date().getHours();
+  if (hour < 6) return t('夜深了');
+  if (hour < 12) return t('上午好');
+  if (hour < 18) return t('下午好');
+  return t('晚上好');
 }
 
-function currentPathParts() {
-  const raw = (window.location.hash || '#/').replace(/^#/, '');
-  const [pathPart, queryPart = ''] = raw.split('?');
-  return { pathPart: pathPart.startsWith('/') ? pathPart : `/${pathPart}`, queryPart };
+/** 连续练习天数：按 ledger 中 practice 的去重日期从今天/昨天往回数 */
+function practiceStreak() {
+  try {
+    const days = new Set(MarketPoints.getLedger()
+      .filter((e) => e.action === 'practice' && e.dedupeKey)
+      .map((e) => String(e.dedupeKey).replace('practice:', '')));
+    if (days.size === 0) return 0;
+    const dayKey = (d) => {
+      const p = (x) => String(x).padStart(2, '0');
+      return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+    };
+    let streak = 0;
+    const cursor = new Date();
+    if (!days.has(dayKey(cursor))) cursor.setDate(cursor.getDate() - 1);
+    while (days.has(dayKey(cursor))) {
+      streak += 1;
+      cursor.setDate(cursor.getDate() - 1);
+    }
+    return streak;
+  } catch { return 0; }
 }
 
-function updateQuery(patch) {
-  const { pathPart, queryPart } = currentPathParts();
-  const params = new URLSearchParams(queryPart);
-  for (const [key, value] of Object.entries(patch)) {
-    if (value === null || value === undefined || value === '') params.delete(key);
-    else params.set(key, String(value));
-  }
-  replaceRoute(pathPart, params.toString());
+function greetingNode(points) {
+  return el('section', { class: 'page-head dash-greet' },
+    el('div', { class: 'profile-hero' },
+      el('img', { class: 'avatar-lg', src: 'assets/brand/logo-128.png', width: '56', height: '56', alt: '', 'aria-hidden': 'true' }),
+      el('div', { class: 'profile-name' },
+        el('span', { class: 'eyebrow', text: t('本机访客 · 未登录') }),
+        el('h1', { class: 'name', text: `${greeting()}，${t('影子练习者')}` }),
+        el('span', { class: 'meta', text: `${t('今天也练 10 分钟吧')} · ${t('本机积分')} ${points} · ${t('数据仅保存在本机')}` }),
+      ),
+    ),
+    el('div', { class: 'dash-greet-actions' },
+      el('a', { class: 'btn btn-secondary', href: '#/favorites?tab=downloads' }, icon('file-text', 16), t('我的资源')),
+      el('a', { class: 'btn btn-secondary', href: '#/market' }, icon('compass', 16), t('去市场逛逛')),
+    ),
+  );
 }
 
-/* ---------------- 侧栏 ---------------- */
+function statRow(points, favorites, downloads, streak) {
+  return el('section', { class: 'stat-row', 'aria-label': t('我的数据') },
+    el('div', { class: 'stat stat-accent' },
+      el('span', { class: 'stat-value' }, String(points), el('span', { class: 'unit', text: t('积分') })),
+      el('span', { class: 'stat-label', text: t('签到 / 打卡获取') }),
+    ),
+    el('div', { class: 'stat' },
+      el('span', { class: 'stat-value', text: String(favorites) }),
+      el('span', { class: 'stat-label', text: t('收藏资源') }),
+    ),
+    el('div', { class: 'stat' },
+      el('span', { class: 'stat-value', text: String(downloads) }),
+      el('span', { class: 'stat-label', text: t('已下载课程包') }),
+    ),
+    el('div', { class: 'stat' },
+      el('span', { class: 'stat-value' }, String(streak), el('span', { class: 'unit', text: t('天') })),
+      el('span', { class: 'stat-label', text: t('连续练习') }),
+    ),
+  );
+}
 
-function sidebar(state, { mode, categoryId, activeTag }) {
-  const { categoryCounts, typeTotals } = counts(state);
-  const nav = el('nav', { class: 'side-nav', 'aria-label': t('资源分类与筛选'), 'data-testid': 'explore-sidebar' });
+function continueSection() {
+  const myResources = MarketPoints.getMyResources();
+  const latest = myResources[0] || null;
+  const resource = latest ? resourceById(latest.id) : null;
+  const section = el('section', { class: 'section' },
+    sectionHead(t('继续上次'), t('从上次的句子继续，不需要重新找媒体'), { href: '#/favorites?tab=downloads', label: t('全部记录') }),
+  );
 
-  const topicGroup = el('div', { class: 'side-group' }, el('h2', { class: 'side-title', text: t('分类') }));
-  const allActive = mode !== 'category' && !categoryId;
-  topicGroup.append(el('a', {
-    class: 'side-link',
-    href: '#/',
-    'aria-current': allActive ? 'page' : null,
-    'data-testid': 'sidebar-all',
-  },
-    icon('compass', 14, 'side-icon'),
-    t('全部资源'),
-    el('span', { class: 'side-count', text: String(state.catalog.resources.length) }),
-  ));
-
-  for (const category of state.catalog.categories) {
-    topicGroup.append(el('a', {
-      class: 'side-link',
-      href: `#/category/${encodeURIComponent(category.id)}`,
-      'aria-current': mode === 'category' && categoryId === category.id ? 'page' : null,
-      'data-testid': 'sidebar-category',
-      dataset: { categoryId: category.id },
-    },
-      el('span', { class: 'side-dot', style: { background: 'var(--border-strong)' } }),
-      el('span', { text: pickLang(category.label, category.labelEn) }),
-      el('span', { class: 'side-count', text: String(categoryCounts.get(category.id) || 0) }),
+  if (resource) {
+    const version = resource.versions?.[0] || {};
+    const coverClass = `cover-${(String(resource.id).length % 5) + 1}`;
+    section.append(el('div', { class: 'card continue-card' },
+      el('div', { class: `continue-cover cover ${coverClass}`, style: { width: '132px' } }),
+      el('div', { class: 'continue-body' },
+        el('span', { class: 'continue-title', text: resource.title }),
+        el('span', { class: 'continue-meta', text: `${resource.subtitle || ''} · ${resource.level || ''} · ${t('上次打开')}：${fmtRelative(latest.at)}` }),
+        el('span', { class: 'continue-meta', text: `${t('导入文件')}：${version.version ? `v${version.version}` : '—'} · ${t('BYOM 纯数据包')}` }),
+      ),
+      el('div', { class: 'continue-actions' },
+        el('a', { class: 'btn btn-secondary btn-sm', href: `#/resource/${encodeURIComponent(resource.id)}?tab=files` }, t('查看导入文件')),
+        el('a', { class: 'btn btn-primary btn-sm', href: `#/resource/${encodeURIComponent(resource.id)}` }, t('继续练习')),
+      ),
+    ));
+  } else {
+    section.append(el('div', { class: 'card continue-card continue-card--empty' },
+      el('div', { class: 'continue-cover cover cover-2' }),
+      el('div', { class: 'continue-body' },
+        el('span', { class: 'continue-title', text: t('还没有练习记录') }),
+        el('span', { class: 'continue-meta', text: t('去市场挑一个课程包，下载导入文件后这里会显示「继续上次」。') }),
+      ),
+      el('div', { class: 'continue-actions' },
+        el('a', { class: 'btn btn-primary btn-sm', href: '#/market' }, icon('compass', 16), t('去市场逛逛')),
+      ),
     ));
   }
-  nav.append(topicGroup);
+  return section;
+}
 
-  // 标签入口（GitHub Topics 逻辑：标签页 #/tag/<tag>）
-  const tags = (state.catalog.tags || []).slice().sort((a, b) => (b.count || 0) - (a.count || 0)).slice(0, 18);
-  if (tags.length) {
-    const tagGroup = el('div', { class: 'side-group' }, el('h2', { class: 'side-title', text: t('标签') }));
-    const cloud = el('div', { class: 'side-tags', 'data-testid': 'sidebar-tags' });
-    for (const tag of tags) {
-      cloud.append(el('a', {
-        class: 'tag tag-plain',
-        href: `#/tag/${encodeURIComponent(tag.tag)}`,
-        'aria-current': activeTag && tagInfo(activeTag).tag === tag.tag ? 'true' : null,
-        title: `${t('标签：{tag}', { tag: tag.tag })} · ${t('共 {n} 个资源', { n: tag.count || 0 })}`,
-      }, pickLang(tag.label, tag.labelEn)));
-    }
-    tagGroup.append(cloud);
-    nav.append(tagGroup);
+function recommendSection() {
+  let list = featuredResources(4);
+  if (!list.length) list = latestResources(4);
+  if (list.length === 0) {
+    return el('section', { class: 'section' },
+      sectionHead(t('为你推荐'), t('全部免费 · 本地优先')),
+      emptyCard({ iconName: 'compass', title: t('资源目录还是空的'), desc: t('数据生成后，这里会出现推荐的课程包与字幕包。'), action: { href: '#/market', label: t('打开市场') } }),
+    );
   }
-
-  const typeGroup = el('div', { class: 'side-group' }, el('h2', { class: 'side-title', text: t('资源类型') }));
-  for (const plugin of enabledPlugins()) {
-    typeGroup.append(el('a', {
-      class: 'side-link',
-      href: `#/search?q=&type=${encodeURIComponent(plugin.id)}`,
-      'data-testid': 'sidebar-type',
-      title: `${pickLang(plugin.label, plugin.labelEn)}：plugins/${plugin.id}/manifest.json`,
-    }, icon(plugin.icon, 14, 'side-icon'), pickLang(plugin.label, plugin.labelEn), el('span', { class: 'side-count', text: String(typeTotals.get(plugin.id) || 0) })));
-  }
-  nav.append(typeGroup);
-
-  const aboutGroup = el('div', { class: 'side-group' }, el('h2', { class: 'side-title', text: t('关于市场') }));
-  aboutGroup.append(
-    el('a', { class: 'side-link', href: '#/import' }, icon('upload', 14, 'side-icon'), t('一键导入说明')),
-    el('a', { class: 'side-link', href: '#/contribute' }, icon('book', 14, 'side-icon'), t('投稿指南')),
-    el('a', { class: 'side-link', href: '#/changelog' }, icon('history', 14, 'side-icon'), t('更新日志')),
-    el('a', { class: 'side-link', href: '#/favorites' }, icon('star', 14, 'side-icon'), t('我的收藏')),
-  );
-  nav.append(aboutGroup);
-  return nav;
-}
-
-function typeChips(state, activeType) {
-  const { typeTotals } = counts(state);
-  const chips = el('div', { class: 'chip-list', 'data-testid': 'type-chips', role: 'group', 'aria-label': t('资源类型') });
-  chips.append(el('button', {
-    class: 'chip', type: 'button', 'data-active': activeType ? 'false' : 'true',
-    'data-testid': 'type-chip-all',
-    'aria-pressed': activeType ? 'false' : 'true',
-    onclick: () => updateQuery({ type: null }),
-  }, t('全部类型')));
-  for (const type of typeTotals.keys()) {
-    const plugin = pluginFor(type);
-    const active = activeType === type;
-    chips.append(el('button', {
-      class: 'chip', type: 'button', 'data-active': active ? 'true' : 'false',
-      'data-testid': 'type-chip',
-      'aria-pressed': active ? 'true' : 'false',
-      dataset: { type },
-      title: plugin.fallback ? t('未注册类型的降级通用渲染') : `plugins/${plugin.id}/manifest.json`,
-      onclick: () => updateQuery({ type: active ? null : type }),
-    }, pickLang(plugin.label, plugin.labelEn), el('span', { class: 'side-count', text: String(typeTotals.get(type) || 0) })));
-  }
-  return chips;
-}
-
-function sortSelector(current) {
-  const select = el('select', {
-    class: 'sort-select',
-    'aria-label': t('排序方式'),
-    'data-testid': 'sort-select',
-    onchange: (e) => {
-      const value = e.currentTarget.value;
-      updateQuery({ sort: value === DEFAULT_SORT ? null : value });
-    },
-  });
-  for (const sort of SORTS) {
-    const option = el('option', { value: sort.id, text: pickLang(sort.label, sort.labelEn) });
-    if (sort.id === current) option.selected = true;
-    select.append(option);
-  }
-  return select;
-}
-
-function toolbar({ total, shown, sort, hasFilters }) {
-  return el('div', { class: 'list-toolbar', 'data-testid': 'list-toolbar' },
-    el('span', { class: 'toolbar-count', 'aria-live': 'polite' },
-      t('共 {n} 个资源', { n: shown }),
-      total !== shown ? el('span', { class: 'subtle', text: ` / ${total}` }) : null),
-    el('span', { class: 'toolbar-spacer' }),
-    hasFilters
-      ? el('button', {
-        class: 'chip chip-muted', type: 'button', 'data-testid': 'clear-filters',
-        onclick: () => {
-          const { pathPart } = currentPathParts();
-          navigate(pathPart, '');
-        },
-      }, t('清除筛选'), icon('x', 11))
-      : null,
-    sortSelector(sort),
-  );
-}
-
-function homeNotice() {
-  return el('div', { class: 'notice', 'data-testid': 'home-notice' },
-    icon('shield', 16, 'notice-icon'),
-    el('div', {},
-      el('strong', { text: t('P0 全免费') }), ' · ',
-      t('积分只是兑换凭证（免费获取，不可购买 / 提现 / 转让）'), ' · ',
-      el('strong', { text: 'BYOM' }), '：',
-      t('市场不托管影视媒体、不上传用户媒体'), ' · ',
-      el('a', { href: '#/import' }, t('如何一键导入 →')),
-    ),
-  );
-}
-
-function emptyFor({ mode, hasFilters }) {
-  return emptyState({
-    iconName: mode === 'search' ? 'search' : 'folder',
-    title: mode === 'search' ? t('没有找到匹配的资源') : t('这里还没有资源'),
-    desc: mode === 'search'
-      ? t('试试更短的关键词、中文或英文（例如「咖啡 / coffee」「问路 / directions」），或清除类型筛选。')
-      : t('可以切换分类，或回到探索查看全部资源。'),
-    actions: [
-      { label: t('浏览全部资源'), href: '#/', kind: 'primary', icon: 'compass' },
-      hasFilters ? { label: t('清除筛选'), icon: 'x', onClick: () => navigate('/') } : null,
-      { label: t('投稿指南'), href: '#/contribute', icon: 'upload' },
-    ].filter(Boolean),
-  });
-}
-
-/* ---------------- 首页推荐 / 最新 ---------------- */
-
-function featuredSection(state) {
-  const list = featuredResources(3);
-  if (!list.length) return null;
-  const grid = el('div', { class: 'res-list featured-list', role: 'list', 'aria-label': t('推荐资源') });
-  for (const resource of list) grid.append(resourceCard(resource));
-  return el('section', { class: 'home-section', 'data-testid': 'home-featured' },
-    el('div', { class: 'section-head' },
-      el('h2', { class: 'section-title' }, icon('sparkles', 16, 'section-icon'), t('推荐资源')),
-      el('a', { class: 'section-more', href: '#/' }, t('查看全部'), icon('chevron-right', 12)),
-    ),
+  const grid = el('div', { class: 'res-grid' });
+  list.forEach((resource, idx) => grid.append(resourceCard(resource, { variant: 'dashboard', index: idx })));
+  return el('section', { class: 'section' },
+    sectionHead(t('为你推荐'), t('根据你的难度与最近浏览 · 全部免费'), { href: '#/market', label: t('查看全部') }),
     grid,
   );
 }
 
-function latestRows(state) {
-  const list = latestResources(6);
-  if (!list.length) return null;
-  const rows = el('ul', { class: 'latest-list', 'data-testid': 'home-latest' });
-  for (const resource of list) {
-    rows.append(el('li', { class: 'latest-item' },
-      el('a', { class: 'latest-title', href: `#/resource/${encodeURIComponent(resource.id)}` }, resource.title),
-      el('span', { class: 'latest-meta' },
-        el('span', { class: 'badge badge-type' }, pickLang(pluginFor(resource.type).label, pluginFor(resource.type).labelEn)),
-        el('span', { class: 'subtle', text: fmtDate(resource.updatedAt) }),
-        el('span', { class: 'subtle', lang: 'en', text: resource.subtitle }),
-      ),
-    ));
+function activityEvents() {
+  const events = [];
+  try {
+    for (const entry of MarketPoints.getLedger()) {
+      events.push({ at: entry.at, kind: entry.action, text: entry.label || entry.action, delta: entry.delta });
+    }
+    for (const item of MarketPoints.getMyResources()) {
+      events.push({ at: item.at, kind: 'download', text: `${t('下载导入文件')} · ${item.title}` });
+    }
+  } catch { /* ignore */ }
+  return events.filter((e) => e.at).sort((a, b) => String(b.at).localeCompare(String(a.at))).slice(0, 5);
+}
+
+function activitySection() {
+  const events = activityEvents();
+  const body = el('div', { class: 'card card-pad' });
+  if (events.length === 0) {
+    body.append(el('p', { class: 'small muted', text: t('还没有本机动态：签到、打卡、收藏或下载导入文件后会记录在这里。') }));
+  } else {
+    const timeline = el('div', { class: 'timeline' });
+    for (const event of events) {
+      const text = el('span', { class: 'timeline-text' });
+      if (event.delta) {
+        text.append(`${event.text} `, el('b', { text: `${event.delta > 0 ? '+' : ''}${event.delta} ${t('积分')}` }));
+      } else {
+        text.append(event.text);
+      }
+      timeline.append(el('div', { class: 'timeline-item' },
+        el('span', { class: 'timeline-time', text: fmtRelative(event.at) }),
+        text,
+      ));
+    }
+    body.append(timeline);
   }
-  return el('section', { class: 'home-section home-latest', 'data-testid': 'home-latest-section' },
-    el('div', { class: 'section-head' },
-      el('h2', { class: 'section-title' }, icon('history', 16, 'section-icon'), t('最新更新')),
-    ),
-    rows,
+  return el('section', { class: 'section' },
+    sectionHead(t('最近动态'), '', { href: '#/favorites?tab=downloads', label: t('全部') }),
+    body,
   );
 }
 
-function homeHero(state) {
-  return pageHead({
-    title: t('探索市场'),
-    sub: `${t('全免费课程资源')} · ${t('一键导入')} SHADOW Studio · ${t('共 {n} 个资源', { n: state.catalog.resources.length })}`,
-    actions: [
-      { label: t('一键导入说明'), href: '#/import', icon: 'upload' },
-      { label: t('投稿指南'), href: '#/contribute', icon: 'book' },
-    ],
-  });
+/** 工作台右栏：进入市场 CTA / 热门标签 / 合规 */
+export function renderRail() {
+  const tags = getAllTags().slice().sort((a, b) => (b.count || 0) - (a.count || 0)).slice(0, 5);
+  const frag = document.createDocumentFragment();
+
+  const cta = el('a', { class: 'cta-market', href: '#/market' },
+    el('span', { class: 'cta-eyebrow', text: 'Market' }),
+    el('h3', { text: t('进入市场') }),
+    el('p', { text: t('发现免费课程 / 字幕 / 插件资源，全部 BYOM、下载即用。') }),
+    el('span', { class: 'wave', html: '<svg viewBox="0 0 160 60" aria-hidden="true"><g fill="currentColor"><rect x="2" y="23" width="22" height="10" rx="5"/><rect x="36" y="14" width="9" height="34" rx="4.5"/><rect x="55" y="4" width="9" height="52" rx="4.5"/><rect x="74" y="17" width="9" height="28" rx="4.5"/><rect x="93" y="23" width="22" height="10" rx="5"/></g></svg>' }),
+    el('span', { class: 'cta-foot' },
+      el('span', { class: 'micro', style: { opacity: '.8' }, text: t('全免费 · 无抽成') }),
+      el('span', { class: 'cta-arrow' }, icon('arrow-right', 18)),
+    ),
+  );
+  frag.append(cta);
+
+  frag.append(el('div', { class: 'rail-card' },
+    el('p', { class: 'rail-title', text: t('热门标签') }),
+    el('div', { class: 'tag-row' }, tags.map((tag) => el('a', {
+      class: 'chip',
+      href: `#/tag/${encodeURIComponent(tag.tag)}`,
+    }, pickLang(tag.label, tag.labelEn), el('span', { class: 'count', text: String(tag.count || 0) })))),
+  ));
+
+  frag.append(el('div', { class: 'rail-card compliance-card' },
+    el('p', { class: 'rail-title', text: t('为什么可以放心用') }),
+    el('ul', { class: 'stack-8' },
+      el('li', { class: 'row small muted', style: { gap: '9px' } }, icon('shield', 16, 'rail-check'), t('不托管任何影视媒体（BYOM）')),
+      el('li', { class: 'row small muted', style: { gap: '9px' } }, icon('gift', 16, 'rail-check'), t('全免费 · 积分不可购买/转让')),
+      el('li', { class: 'row small muted', style: { gap: '9px' } }, icon('user', 16, 'rail-check'), t('无强制登录 · 数据只在本机')),
+    ),
+    el('a', { class: 'text-link small', href: '#/privacy', style: { marginTop: '12px', display: 'inline-block' }, text: t('隐私与合规说明') }),
+  ));
+  return frag;
 }
 
-function categoryHead(category, list) {
-  return pageHead({
-    title: category ? pickLang(category.label, category.labelEn) : t('分类不存在'),
-    sub: category
-      ? `${category.labelEn && category.labelEn !== category.label ? category.labelEn : ''} · ${t('共 {n} 个资源', { n: list.length })}${category.description ? ` · ${category.description}` : ''}`
-      : t('目录里没有这个分类，可能链接过期。'),
-    actions: [{ label: t('返回探索'), href: '#/', icon: 'compass' }],
-  });
-}
-
-function tagHead(state, activeTag, list) {
-  const info = tagInfo(activeTag);
-  return pageHead({
-    title: `${t('标签：{tag}', { tag: info.tag })}`,
-    sub: `${t('共 {n} 个资源', { n: list.length })}${info.labelEn && info.labelEn !== info.tag ? ` · ${info.labelEn}` : ''}`,
-    actions: [{ label: t('按标签浏览'), href: '#/', icon: 'tag' }],
-  });
-}
-
-function searchHead(query, list) {
-  const q = String(query || '').trim();
-  return pageHead({
-    title: q ? `${t('搜索')} “${q}”` : t('搜索资源'),
-    sub: q
-      ? t('找到 {n} 个匹配资源（标题 / 描述 / 标签 / 作者 / 分类，含少量中英别名）', { n: list.length })
-      : t('输入关键词，按标题、描述、标签、作者搜索全部免费资源（按 / 聚焦搜索框）'),
-    actions: q ? [{ label: t('清除搜索'), href: '#/', icon: 'x' }] : [],
-  });
-}
-
-/** 主渲染：mode = home | category | tag | search */
-export function renderExplore(view, { mode, categoryId = '', tag = '', query = '', queryParams }) {
+export function renderDashboard(view) {
   const state = getState();
-  if (!state.catalog) { view.replaceChildren(); return; } // 数据缺失兜底由 app.js 统一处理
-  // home 首屏：复用 index.html 的静态 page-head / notice（LCP 节点不重绘 → LCP 提前、CLS 稳定）
-  const staticRoot = mode === 'home' ? view.querySelector('[data-first-paint]:not([data-rendered])') : null;
-  if (!staticRoot) view.replaceChildren();
+  view.replaceChildren();
+  const points = MarketPoints.getPoints();
+  const favorites = MarketPoints.getFavorites().length;
+  const downloads = MarketPoints.getMyResources().length;
+  const streak = practiceStreak();
 
-  const params = queryParams instanceof URLSearchParams ? queryParams : new URLSearchParams();
-  const activeType = params.get('type') || '';
-  const sort = params.get('sort') || DEFAULT_SORT;
-  const category = mode === 'category' ? categoryById(categoryId) : null;
-
-  let baseList;
-  if (mode === 'category') baseList = category ? searchResources('', { category: categoryId, type: activeType }) : [];
-  else if (mode === 'tag') baseList = resourcesByTag(tag).filter((r) => !activeType || r.type === activeType);
-  else if (mode === 'search') baseList = searchResources(query, { type: activeType });
-  else baseList = searchResources('', { type: activeType });
-
-  const list = sortResources(baseList, sort);
-  const total = state.catalog.resources.length;
-  const hasFilters = Boolean(activeType || sort !== DEFAULT_SORT || mode === 'search' || mode === 'tag');
-
-  let head;
-  if (mode === 'category') head = categoryHead(category, list);
-  else if (mode === 'tag') head = tagHead(state, tag, list);
-  else if (mode === 'search') head = searchHead(query, list);
-  else head = homeHero(state);
-
-  const main = el('div', { class: 'explore-main' });
-  if (mode === 'home') {
-    if (!staticRoot) main.append(homeNotice());
-    const featured = featuredSection(state);
-    if (featured) main.append(featured);
-    const latest = latestRows(state);
-    if (latest) main.append(latest);
-    main.append(el('div', { class: 'section-head section-head-list' },
-      el('h2', { class: 'section-title' }, icon('layers', 16, 'section-icon'), t('全部资源')),
+  if (!state.catalog) {
+    view.append(el('section', { class: 'page-head' },
+      el('div', { class: 'profile-name' },
+        el('h1', { class: 'name', text: `${greeting()}，${t('影子练习者')}` }),
+        el('span', { class: 'meta', text: t('资源目录尚未加载，请稍后重试。') }),
+      ),
     ));
-  }
-
-  if ((mode === 'category' && !category) || (mode === 'tag' && !resourcesByTag(tag).length && !tagInfo(tag).tag)) {
-    main.append(emptyState({
-      iconName: 'folder',
-      title: mode === 'category' ? t('分类不存在') : t('标签不存在'),
-      desc: t('可能链接写错了，或资源已从目录中移除。'),
-      actions: [{ label: t('回到探索'), href: '#/', kind: 'primary', icon: 'compass' }],
+    view.append(emptyCard({
+      iconName: 'help-circle',
+      title: t('数据未加载'),
+      desc: t('请确认本地服务已启动（node market/serve.mjs）或数据目录已生成。'),
+      action: { href: '#/market', label: t('重试进入市场') },
     }));
-  } else {
-    main.append(typeChips(state, activeType));
-    main.append(toolbar({ total, shown: list.length, sort, hasFilters }));
-    const listNode = el('div', { class: 'res-list', 'data-testid': 'resource-list', role: 'list', 'aria-label': t('资源列表') });
-    if (list.length === 0) listNode.append(emptyFor({ mode, hasFilters }));
-    else for (const resource of list) listNode.append(resourceCard(resource));
-    main.append(listNode);
+    return;
   }
 
-  const grid = el('div', { class: 'explore-grid' }, sidebar(state, { mode, categoryId, activeTag: mode === 'tag' ? tag : '' }), main);
-  if (staticRoot) {
-    staticRoot.dataset.rendered = '1';
-    staticRoot.querySelector('.first-paint-list')?.remove();
-    staticRoot.append(grid);
-  } else {
-    view.append(head, grid);
-  }
+  view.append(greetingNode(points));
+  view.append(statRow(points, favorites, downloads, streak));
+  view.append(continueSection());
+  view.append(recommendSection());
+  view.append(activitySection());
+  view.append(el('p', { class: 'footer-note' },
+    el('span', { text: `SHADOW ${t('市场')} · ${t('全免费')}` }),
+    el('span', { text: `BYOM · ${t('不托管媒体')}` }),
+    el('span', { text: t('无强制登录') }),
+    el('span', { text: APP_VERSION }),
+  ));
 }
+
+export default renderDashboard;
