@@ -35,6 +35,7 @@
 - 外网需要代理 `http://127.0.0.1:7897`；本地站不用代理。
 - QA：`$env:NODE_PATH='D:\SHADOW-MARKET\tools\qa\node_modules'`；`node tools/qa/market/data-contract-check.mjs`、`static-audit.mjs`、`market-e2e.mjs --base-url=...`；全套 `powershell -ExecutionPolicy Bypass -File tools/qa/market/run-phase2.ps1 -Port 18921`；Lighthouse CLI 在 `D:\SHADOW-MARKET\.tmp\lh\node_modules\lighthouse\cli\index.js`（临时目录，新环境需重装，设置 `CHROME_PATH`）。
 - 部署：改完 `git push origin main`，再 `git subtree push --prefix market origin gh-pages`；等 1–2 分钟 Pages 构建，用代理打开线上验证。旧访客 SW 由 `index.html` 内联迁移脚本自动处理（`shadow.market.shell.v1` 版本门，见 `app.js`/`sw.js`）。
+- ⚠️ **GitHub Pages 部署目前有问题（接手先修）**：仓库同时存在 Actions workflow（`main` 推送触发，Deploy job 一直失败）和 gh-pages 分支构建（实际生效）；2026-11-01 09:23 UTC 起分支构建的 deploy job 也失败，线上仍是旧构建（`419bbc4`），`gh-pages` 已到 `fc1ba29`。先查 Settings → Pages / 部署环境，二选一部署机制（建议只保留分支部署），重试并验证；`main` 与 `gh-pages` 的 `market/` 必须一致。详见 docs/114 §7。另外 Pages CDN 更新有 1–2 分钟延迟，验证时用 `?cb=时间戳` 或等待重试。
 
 ## 四、下一步任务：P1（账号 + 积分 + 我的资源 + 审核）
 
