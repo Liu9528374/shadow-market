@@ -1,6 +1,6 @@
 # 被测工作区文件 SHA256（market/ + tools/qa/market/ + deploy/ + .github/）
-# generatedAt=2026-11-01T08:16:02.285Z
-# HEAD=1c3ac9ef50af9b9d6e259828d29d3758b27ae1a9（提交待定：本次测试的是工作区内容）
+# generatedAt=2026-11-01T08:18:17.648Z
+# HEAD=1fb0e921a642992610f3b4cfaf4ac986a55f7044（提交待定：本次测试的是工作区内容）
 ae0739ac3959e016567f37a70c6769c87a1b59459085278889f57340409d6946  .github/workflows/pages.yml
 df698c0839f869efe7e9d47488654c2fcbb3911ce5c1609e1a953c8f1f82d475  deploy/README.md
 7b9d2a2ed54430659f0169f3667270f2cfb4d5f9f276ef962e469f389e5dab2d  deploy/cloudflare-pages.md

@@ -2,7 +2,7 @@
 
 > 由 `tools/qa/market/collect-evidence.mjs` 依据 `lighthouse-status.json` 与 `market-mobile-*.report.json` 自动生成，分数为真实报告值，未做任何改写。
 
-- 生成时间：2026-11-01T08:16:02.279Z
+- 生成时间：2026-11-01T08:18:17.634Z
 - 工具：Lighthouse  · Edge headless · 默认 mobile preset（未使用 --preset=desktop）
 - 检测记录：n/a
 - 质量门（docs/111 §9）：Performance ≥90、Accessibility ≥90；结论：**PASS**

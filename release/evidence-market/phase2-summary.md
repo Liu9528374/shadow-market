@@ -1,8 +1,8 @@
 # SHADOW 市场 Phase 2 P0 · QA/部署证据汇总
 
-- 生成时间：2026-11-01T08:16:03.085Z
-- 被测对象：D:\SHADOW-MARKET（工作区内容，非提交）· HEAD `1c3ac9e`（提交待定，快照见下）
-- 备注：UI v2（Obsidian & Amber）重设计实施后全量回归：E2E 78/78 + 数据契约 40/40 + 静态审计 32/32+2 SKIP + Lighthouse 首页 P94/详情 P95（A100，CLS 0）
+- 生成时间：2026-11-01T08:18:18.269Z
+- 被测对象：D:\SHADOW-MARKET（工作区内容，非提交）· HEAD `1fb0e92`（提交待定，快照见下）
+- 备注：UI v2（Obsidian & Amber）重设计实施后全量回归：E2E 78/78 + 数据契约 40/40 + 静态审计 32/32+2 SKIP + Lighthouse 首页 P94/详情 P95（A100，CLS 0）+ 线上 GitHub Pages 实测通过
 - 站点：http://127.0.0.1:18991
 - 环境：Node v24.19.0 · Edge headless（Playwright）· 独立端口（189xx）
 - 工作区快照：`workspace-git.txt`（HEAD / git status / git diff --stat）+ `workspace-sha256.txt`（240 个被测文件临时 SHA256，提交后可与 commit 对照）
@@ -51,7 +51,7 @@
   - 首页 `http://127.0.0.1:18991/#/` → P 0.94 / A 1 / BP 1 / SEO 1
   - 详情页 `http://127.0.0.1:18991/#/resource/com.shadow.course.cafe-order` → P 0.95 / A 1 / BP 1 / SEO 1
 - 截图：26 张（`shots/`）
-- 证据文件：54 个，SHA256 清单见 `SHA256SUMS.txt`
+- 证据文件：57 个，SHA256 清单见 `SHA256SUMS.txt`
 
 ## 失败项（如实记录）
 
