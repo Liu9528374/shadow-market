@@ -31,6 +31,50 @@
     })();
   </script>
 
+  <!-- 旧版 Service Worker 自动迁移：
+       P0 旧 SW 会 cache-first 返回旧 app.js/CSS，与新 index.html 混用会白屏/404。
+       检测到「有 SW 控制 + 壳版本不一致」时清掉本应用缓存并自动刷新一次，避免用户手动清缓存。 -->
+  <script>
+    (function () {
+      var SHELL = '2026.11.03.1';
+      var KEY = 'shadow.market.shell.v1';
+      var stored = null;
+      try { stored = localStorage.getItem(KEY) || null; } catch (e) { /* ignore */ }
+      var hasController = false;
+      try { hasController = !!(navigator.serviceWorker && navigator.serviceWorker.controller); } catch (e) { /* ignore */ }
+      if (stored === SHELL || !hasController) {
+        try { localStorage.setItem(KEY, SHELL); } catch (e) { /* ignore */ }
+        return;
+      }
+      // 旧壳缓存与新资源混用：标记后跳过 app.js，清缓存 + 注销旧 SW，然后自动刷新
+      window.__SHELL_STALE__ = true;
+      try { localStorage.setItem(KEY, SHELL); } catch (e) { /* ignore */ }
+      document.documentElement.style.visibility = 'hidden';
+      var tasks = [];
+      try {
+        tasks.push(navigator.serviceWorker.getRegistrations().then(function (regs) {
+          return Promise.all(regs.map(function (r) { return r.unregister().catch(function () {}); }));
+        }).catch(function () {}));
+      } catch (e) { /* ignore */ }
+      try {
+        if (window.caches) {
+          tasks.push(caches.keys().then(function (keys) {
+            return Promise.all(keys.filter(function (k) { return k.indexOf('shadow-market-') === 0; })
+              .map(function (k) { return caches.delete(k).catch(function () {}); }));
+          }).catch(function () {}));
+        }
+      } catch (e) { /* ignore */ }
+      var done = false;
+      function reload() {
+        if (done) return;
+        done = true;
+        try { location.reload(); } catch (e) { /* ignore */ }
+      }
+      try { Promise.all(tasks).then(reload, reload); } catch (e) { reload(); }
+      setTimeout(reload, 1500);
+    })();
+  </script>
+
   <!-- 字体与样式 -->
   <link rel="stylesheet" href="assets/styles/tokens.css" />
   <link rel="stylesheet" href="assets/styles/base.css" />
@@ -231,6 +275,15 @@
   <div class="noscript">SHADOW 市场需要 JavaScript 才能浏览资源。请启用 JavaScript，或用 <code>node market/serve.mjs</code> 本地启动后访问。</div>
 </noscript>
 
-<script type="module" src="assets/js/app.js"></script>
+<!-- 旧 SW 迁移中不加载旧脚本（等待自动刷新）；正常访问动态注入，避免旧缓存模块抢先执行 -->
+<script>
+  (function () {
+    if (window.__SHELL_STALE__) return;
+    var s = document.createElement('script');
+    s.type = 'module';
+    s.src = 'assets/js/app.js';
+    document.body.appendChild(s);
+  })();
+</script>
 </body>
 </html>
